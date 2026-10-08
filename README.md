@@ -21,12 +21,14 @@ Open `http://localhost:3000`.
 Run the complete production check before every deployment:
 
 ```bash
-npm run check
+npm run verify
 ```
 
-This executes ESLint with zero warnings allowed, TypeScript without emitting files, and a complete Next.js production build.
+This executes ESLint with zero warnings allowed, TypeScript without emitting files, a complete Next.js production build, every public route and internal-link check, security-header checks, and a production dependency audit.
 
-TypeScript 6.0.3 is intentionally pinned. TypeScript 7.0.2 is newer, but the ESLint stack bundled with the current Next.js release explicitly does not support the TypeScript 7 compiler API yet. Upgrade only when `eslint-config-next` supports it and `npm run check` passes.
+TypeScript is intentionally constrained to version 6. TypeScript 7.0.2 is newer, but the ESLint stack bundled with the current Next.js release explicitly does not support the TypeScript 7 compiler API yet. Upgrade only when `eslint-config-next` supports it and `npm run verify` passes.
+
+The production dependency audit is clean. A full development-tree audit may still report the current `braces` advisory inherited by `eslint-config-next`; npm offers no patched `braces` release and suggests an incompatible Next.js downgrade. It is not shipped in the runtime bundle. Recheck it whenever the Next.js lint stack updates.
 
 ## Content architecture
 

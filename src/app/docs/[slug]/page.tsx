@@ -3,6 +3,8 @@ import { notFound } from "next/navigation";
 import { DocPage } from "@/components/doc-page";
 import { docs, getDoc } from "@/lib/docs";
 
+export const instant = false;
+
 export function generateStaticParams() {
   return docs.map((doc) => ({ slug: doc.slug }));
 }

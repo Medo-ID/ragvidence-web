@@ -11,9 +11,12 @@
     "start": "next start",
     "lint": "eslint . --max-warnings=0",
     "typecheck": "tsc --noEmit",
-    "check": "npm run lint && npm run typecheck && npm run build"
+    "verify:site": "node scripts/verify-site.mjs",
+    "check": "npm run lint && npm run typecheck && npm run build",
+    "verify": "npm run check && npm run verify:site && npm audit --omit=dev --audit-level=high"
   },
   "dependencies": {
+    "geist": "^1.7.2",
     "lucide-react": "^1.53.0",
     "next": "16.4.0",
     "react": "19.3.0",
@@ -21,10 +24,10 @@
   },
   "devDependencies": {
     "@tailwindcss/turbopack": "^4.3.3",
-    "@types/node": "^24.10.0",
+    "@types/node": "^24.19.1",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
-    "eslint": "^9",
+    "eslint": "^10.12.0",
     "eslint-config-next": "16.4.0",
     "tailwindcss": "^4.3.3",
     "typescript": "^6.0.3"
