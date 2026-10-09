@@ -9,7 +9,7 @@ const groups = [
 
 export function SiteFooter() {
   return (
-    <footer className="no-print mt-28 border-t border-line/80 bg-panel/35">
+    <footer className="no-print mt-16 border-t border-line/80 bg-panel/35">
       <div className="shell grid gap-12 py-14 md:grid-cols-[1.4fr_2fr]">
         <div>
           <Brand />

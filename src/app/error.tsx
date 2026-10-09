@@ -14,7 +14,7 @@ export default function ErrorPage({ error, reset }: { error: Error & { digest?: 
         <p className="font-mono text-sm font-semibold text-danger">UNEXPECTED ERROR</p>
         <h1 className="mt-5 text-balance text-4xl font-semibold tracking-[-0.045em] text-ink">The page could not finish loading.</h1>
         <p className="mx-auto mt-5 max-w-lg text-base leading-7 text-muted">Your local RAGvidence data is not involved. Retry this page, and contact support if the problem continues.</p>
-        <button type="button" onClick={reset} className="mt-8 inline-flex items-center gap-2 rounded-xl bg-ink px-4 py-2.5 text-sm font-semibold text-canvas hover:bg-white"><RotateCcw size={15} /> Try again</button>
+        <button type="button" onClick={reset} className="mt-8 inline-flex items-center gap-2 rounded-none bg-ink px-4 py-2.5 text-sm font-semibold text-canvas hover:bg-white"><RotateCcw size={15} /> Try again</button>
       </div>
     </div>
   );

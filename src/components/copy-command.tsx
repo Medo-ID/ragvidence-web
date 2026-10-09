@@ -1,26 +1,34 @@
 "use client";
 
-import { Check, Copy } from "lucide-react";
+import { Check, Copy, TriangleAlert } from "lucide-react";
 import { useEffect, useState } from "react";
 
 export function CopyCommand({ command, label = "Copy" }: { command: string; label?: string }) {
-  const [copied, setCopied] = useState(false);
+  const [status, setStatus] = useState<"idle" | "copied" | "error">("idle");
 
   useEffect(() => {
-    if (!copied) return;
-    const timeout = window.setTimeout(() => setCopied(false), 1800);
+    if (status !== "copied") return;
+    const timeout = window.setTimeout(() => setStatus("idle"), 1800);
     return () => window.clearTimeout(timeout);
-  }, [copied]);
+  }, [status]);
 
   async function copy() {
-    await navigator.clipboard.writeText(command);
-    setCopied(true);
+    try {
+      if (!navigator.clipboard?.writeText) throw new Error("Clipboard unavailable");
+      await navigator.clipboard.writeText(command);
+      setStatus("copied");
+    } catch {
+      setStatus("error");
+    }
   }
 
   return (
-    <button type="button" onClick={copy} aria-label={`Copy command: ${command}`} className="inline-flex items-center gap-2 rounded-lg border border-line bg-white/[0.025] px-3 py-2 text-xs font-medium text-muted transition-colors hover:border-signal/30 hover:text-ink">
-      {copied ? <Check size={14} className="text-success" /> : <Copy size={14} />}
-      {copied ? "Copied" : label}
-    </button>
+    <span className="inline-flex shrink-0 items-center">
+      <button type="button" onClick={copy} aria-label={`Copy command: ${command}`} title={status === "error" ? "Clipboard unavailable. Select the command and copy it manually, or try again." : undefined} className="inline-flex min-h-11 items-center gap-2 border border-line bg-white/2.5 px-3 text-xs font-medium text-muted transition-colors hover:border-signal/30 hover:text-ink">
+        {status === "copied" ? <Check size={14} className="text-success" aria-hidden="true" /> : status === "error" ? <TriangleAlert size={14} className="text-danger" aria-hidden="true" /> : <Copy size={14} aria-hidden="true" />}
+        {status === "copied" ? "Copied" : status === "error" ? "Copy failed" : label}
+      </button>
+      <span role="status" aria-live="polite" aria-atomic="true" className="sr-only">{status === "copied" ? "Command copied to clipboard." : status === "error" ? "Clipboard unavailable. Select the command and copy it manually, or try again." : ""}</span>
+    </span>
   );
 }

@@ -3,10 +3,11 @@
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Brand } from "./brand";
 
 const links = [
+  { href: "/#walkthrough", label: "Walkthrough" },
   { href: "/#how-it-works", label: "How it works" },
   { href: "/#proof", label: "Proof" },
   { href: "/#plans", label: "Plans" },
@@ -16,30 +17,44 @@ const links = [
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
+  const toggleRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    if (!open) return;
+    function dismiss(event: KeyboardEvent) {
+      if (event.key === "Escape") {
+        setOpen(false);
+        toggleRef.current?.focus();
+      }
+    }
+    document.addEventListener("keydown", dismiss);
+    return () => document.removeEventListener("keydown", dismiss);
+  }, [open]);
 
   return (
-    <header className="no-print sticky top-0 z-50 px-4 pt-3">
-      <nav aria-label="Primary navigation" className="mx-auto flex h-[3.65rem] max-w-[1180px] items-center justify-between rounded-2xl border border-line/85 bg-canvas/80 px-3 shadow-[0_14px_48px_rgba(0,0,0,0.28)] backdrop-blur-xl sm:px-4">
+    <header className="glass-nav no-print sticky top-0 z-50 border-b border-line/80">
+      <nav aria-label="Primary navigation" className="shell flex h-17 items-center justify-between gap-6">
         <Brand />
         <div className="hidden items-center gap-1 md:flex">
           {links.map((link) => (
-            <Link key={link.href} href={link.href} className={`rounded-lg px-3 py-2 text-sm transition-colors hover:bg-white/[0.04] hover:text-ink ${pathname.startsWith("/docs") && link.href === "/docs" ? "text-ink" : "text-muted"}`}>
+            <Link key={link.href} href={link.href} aria-current={pathname.startsWith("/docs") && link.href === "/docs" ? "page" : undefined} className={`inline-flex min-h-11 items-center px-3 text-sm transition-colors hover:bg-white/4 hover:text-ink ${pathname.startsWith("/docs") && link.href === "/docs" ? "text-ink" : "text-muted"}`}>
               {link.label}
             </Link>
           ))}
-          <a href="https://test.pypi.org/project/ragvidence/" target="_blank" rel="noreferrer" className="ml-2 rounded-lg border border-signal/30 bg-signal/10 px-3.5 py-2 text-sm font-semibold text-signal transition-colors hover:bg-signal/15">v0.1.0</a>
+          <Link href="/docs/installation" className="ml-3 inline-flex min-h-10 items-center border border-signal/40 bg-signal px-4 text-sm font-semibold text-canvas transition-colors hover:bg-[#8af0fa]">Install Free</Link>
         </div>
-        <button type="button" aria-expanded={open} aria-controls="mobile-navigation" aria-label={open ? "Close navigation" : "Open navigation"} onClick={() => setOpen((value) => !value)} className="grid size-10 place-items-center rounded-lg text-muted hover:bg-white/[0.05] hover:text-ink md:hidden">
+        <button ref={toggleRef} type="button" aria-expanded={open} aria-controls="mobile-navigation" aria-label={open ? "Close navigation" : "Open navigation"} onClick={() => setOpen((value) => !value)} className="grid size-11 place-items-center border border-line text-muted hover:bg-white/5 hover:text-ink md:hidden">
           {open ? <X size={20} /> : <Menu size={20} />}
         </button>
       </nav>
-      {open && (
-        <div id="mobile-navigation" className="mx-auto mt-2 max-w-[1180px] rounded-2xl border border-line bg-panel/95 p-2 shadow-2xl backdrop-blur-xl md:hidden">
+      <div id="mobile-navigation" hidden={!open} className="border-t border-line bg-panel/80 md:hidden">
+        <div className="shell py-3">
           {links.map((link) => (
-            <Link key={link.href} href={link.href} onClick={() => setOpen(false)} className="block rounded-xl px-4 py-3 text-sm text-muted hover:bg-white/[0.04] hover:text-ink">{link.label}</Link>
+            <Link key={link.href} href={link.href} onClick={() => setOpen(false)} className="block px-3 py-3 text-sm text-muted hover:bg-white/4 hover:text-ink">{link.label}</Link>
           ))}
+          <Link href="/docs/installation" onClick={() => setOpen(false)} className="mt-2 block border border-signal/40 bg-signal px-3 py-3 text-sm font-semibold text-canvas hover:bg-[#8af0fa]">Install Free</Link>
         </div>
-      )}
+      </div>
     </header>
   );
 }

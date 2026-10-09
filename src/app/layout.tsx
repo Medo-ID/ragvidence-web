@@ -4,6 +4,7 @@ import { GeistSans } from "geist/font/sans";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import "./globals.css";
+import { ReactNode } from "react";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://ragvidence.medo-id.com"),
@@ -30,11 +31,11 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = { themeColor: "#07090d", colorScheme: "dark" };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable}`}>
       <body className="flex min-h-dvh flex-col font-sans antialiased">
-        <a href="#main-content" className="fixed left-4 top-3 z-[100] -translate-y-20 rounded-lg bg-signal px-4 py-2 text-sm font-semibold text-canvas transition-transform focus:translate-y-0">
+        <a href="#main-content" className="fixed left-4 top-3 z-100 -translate-y-20 rounded-none bg-signal px-4 py-2 text-sm font-semibold text-canvas transition-transform focus:translate-y-0">
           Skip to content
         </a>
         <SiteHeader />
