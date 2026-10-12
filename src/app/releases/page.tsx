@@ -22,7 +22,7 @@ export default function ReleasesPage() {
           <time dateTime="2026-10-08" className="text-sm text-muted">October 8, 2026</time>
         </div>
         <p className="mt-6 text-sm leading-7 text-muted">Initial Free release · Python 3.12 · Proprietary software. No account or paid activation is required.</p>
-        <ul className="mt-6 list-disc space-y-3 pl-5 text-sm leading-7 text-muted marker:text-signal">
+        <ul className="mt-6 list-disc space-y-3 pl-5 text-sm leading-7 text-muted marker:text-signal-ink">
           <li>BM25, optional FastEmbed semantic retrieval, and Ollama / OpenAI-compatible embedding adapters.</li>
           <li>Controlled body versus heading-context comparisons and imported retriever results.</li>
           <li>Evidence-level evaluation, improvement and regression analysis, and deterministic diagnosis.</li>
@@ -32,7 +32,7 @@ export default function ReleasesPage() {
           <p>The bundled tutorial compares the same ten questions at k=2 using BM25. Evidence sufficiency changes from 60% to 90%; this teaching example is not a benchmark for another corpus.</p>
           <p className="mt-4">Plus features remain future direction. This release does not provide paid checkout or team hosting.</p>
         </div>
-        <div className="mt-8 flex flex-wrap gap-6 text-sm text-signal">
+        <div className="mt-8 flex flex-wrap gap-6 text-sm text-signal-ink">
           <Link href="/docs/installation" className="inline-flex min-h-11 items-center gap-2 hover:text-ink">Installation guide<ArrowRight size={15} aria-hidden="true" /></Link>
           <a href="https://pypi.org/project/ragvidence/0.1.0/" className="inline-flex min-h-11 items-center gap-2 hover:text-ink">Release on PyPI<ExternalLink size={15} aria-hidden="true" /></a>
           <a href="/ragvidence-0.1.0-license.txt" className="inline-flex min-h-11 items-center gap-2 hover:text-ink">Read the shipped license<ArrowRight size={15} aria-hidden="true" /></a>

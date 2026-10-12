@@ -17,7 +17,7 @@ export function ProductWalkthrough({ video }: { video?: WalkthroughVideo }) {
 
       <figure className="glass-panel mx-auto mt-14 max-w-5xl border border-line sm:mt-16">
         <div className="flex flex-wrap items-center justify-between gap-3 border-b border-line px-5 py-4 sm:px-7">
-          <span className="inline-flex items-center gap-3 text-sm text-ink"><MonitorPlay size={18} className="text-signal" aria-hidden="true" />RAGvidence / first experiment</span>
+          <span className="inline-flex items-center gap-3 text-sm text-ink"><MonitorPlay size={18} className="text-signal-ink" aria-hidden="true" />RAGvidence / first experiment</span>
           <span className="font-mono text-xs text-muted">{video ? "Step-by-step walkthrough" : "Your first run"}</span>
         </div>
 
@@ -33,7 +33,7 @@ export function ProductWalkthrough({ video }: { video?: WalkthroughVideo }) {
               <p className="eyebrow">Your terminal. Your evidence.</p>
               <h3 className="mt-5 text-balance text-2xl font-semibold tracking-tight text-ink sm:text-3xl">One workflow, from command to clarity.</h3>
               <p className="mt-5 text-sm leading-7 text-muted">Start with the bundled example. It keeps the questions and retrieval depth fixed so you can inspect what a single change to the searchable text recovered.</p>
-              <Link href="/docs/first-tutorial" className="mt-8 inline-flex min-h-11 items-center gap-2 text-sm text-signal hover:text-ink">Follow along in the docs<ArrowRight size={15} aria-hidden="true" /></Link>
+              <Link href="/docs/first-tutorial" className="mt-8 inline-flex min-h-11 items-center gap-2 text-sm text-signal-ink hover:text-ink">Follow along in the docs<ArrowRight size={15} aria-hidden="true" /></Link>
             </div>
             <ol className="grid min-w-0 grid-cols-1 gap-4 sm:grid-cols-2">
               {[
@@ -42,11 +42,11 @@ export function ProductWalkthrough({ video }: { video?: WalkthroughVideo }) {
                 ["Run", "Compare body text with heading context on ten labeled questions.", "ragvi tutorial"],
                 ["Inspect", "Open the generated report. Review changed questions and the ranked evidence.", "workspaces/first-run/reports/tutorial.html"],
               ].map(([title, text, command], index) => (
-                <li key={title} className="min-w-0 border border-line bg-white/2.5 p-5">
+                <li key={title} className="surface min-w-0 p-5">
                   <p className="font-mono text-xs text-muted">0{index + 1}</p>
                   <h3 className="mt-3 text-base font-semibold text-ink">{title}</h3>
                   <p className="mt-3 text-sm leading-6 text-muted">{text}</p>
-                  <div className="mt-4 overflow-x-auto"><code className="whitespace-nowrap font-mono text-xs leading-6 text-signal">{command}</code></div>
+                  <div className="mt-4 overflow-x-auto"><code className="whitespace-nowrap font-mono text-xs leading-6 text-signal-ink">{command}</code></div>
                 </li>
               ))}
             </ol>
@@ -54,7 +54,7 @@ export function ProductWalkthrough({ video }: { video?: WalkthroughVideo }) {
         )}
 
         <figcaption id="walkthrough-caption" className="border-t border-line px-5 py-4 text-xs leading-6 text-muted sm:px-7">
-          Bundled tutorial · v0.1.0 · 10 questions · BM25 · k=2 · body vs. heading-context. <a href="/sample-report.html" className="text-signal underline underline-offset-4 hover:text-ink">Inspect the sample report</a>.
+          Bundled tutorial · v0.1.0 · 10 questions · BM25 · k=2 · body vs. heading-context. <a href="/sample-report.html" className="text-signal-ink underline underline-offset-4 hover:text-ink">Inspect the sample report</a>.
         </figcaption>
       </figure>
     </section>

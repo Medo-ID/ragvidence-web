@@ -14,14 +14,14 @@ export function SiteFooter() {
         <div>
           <Brand />
           <p className="mt-4 max-w-sm text-sm leading-6 text-muted">Evidence-first retrieval diagnostics for engineers who want to know why a RAG change helped—or hurt.</p>
-          <p className="mt-5 font-mono text-xs text-muted">Built independently by <a className="text-ink hover:text-signal" href="https://medo-id.com">Medo-ID</a>.</p>
+          <p className="mt-5 font-mono text-xs text-muted">Built independently by <a className="text-ink hover:text-signal-ink" href="https://medo-id.com">Medo-ID</a>.</p>
         </div>
         <div className="grid grid-cols-2 gap-8 sm:grid-cols-3">
           {groups.map((group) => (
             <div key={group.title}>
               <h2 className="text-sm font-semibold text-ink">{group.title}</h2>
               <ul className="mt-4 space-y-3">
-                {group.links.map(([label, href]) => <li key={href}><Link href={href} className="text-sm text-muted transition-colors hover:text-signal">{label}</Link></li>)}
+                {group.links.map(([label, href]) => <li key={href}><Link href={href} className="text-sm text-muted transition-colors hover:text-signal-ink">{label}</Link></li>)}
               </ul>
             </div>
           ))}

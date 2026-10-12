@@ -50,7 +50,7 @@ test("copy failure provides feedback and retry copies the real command", async (
   const copy = page.locator("#demo").getByRole("button", { name: /Copy command/ });
   await copy.click();
   await expect(copy).toHaveText("Copy failed");
-  await expect(page.locator("#demo [role=status]")).toContainText("copy it manually");
+  await expect(page.locator("#demo").getByRole("status")).toContainText("copy it manually");
   await copy.click();
   await expect(copy).toHaveText("Copied");
   await expect(page.locator("html")).toHaveAttribute("data-copied", 'uv tool install --python 3.12 "ragvidence[semantic]"');
@@ -108,6 +108,21 @@ test("printed documentation keeps headings, links, and commands readable", async
 });
 
 for (const width of [320, 390, 768, 1024, 1440, 1920]) {
+  test(`tutorial selection keeps hero geometry stable at ${width}px`, async ({ page }) => {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto("/");
+    await page.evaluate(() => document.fonts.ready);
+    const initialHero = await page.locator("#install").boundingBox();
+    const initialDemo = await page.locator("#demo").boundingBox();
+    for (const label of ["Check", "Run", "Inspect", "Install"]) {
+      await page.getByRole("button", { name: new RegExp(label), exact: false }).filter({ hasText: label }).first().click();
+      await expect(page.locator("#demo").getByRole("heading", { level: 2 })).toBeVisible();
+      expect(Math.abs((await page.locator("#install").boundingBox())!.height - initialHero!.height)).toBeLessThan(0.5);
+      expect(Math.abs((await page.locator("#demo").boundingBox())!.height - initialDemo!.height)).toBeLessThan(0.5);
+      await expect(page.locator("#demo").getByRole("button", { name: /Copy command/ })).toHaveCount(1);
+    }
+  });
+
   test(`homepage and long docs fit at ${width}px`, async ({ page }) => {
     await page.setViewportSize({ width, height: 900 });
     for (const route of ["/", "/docs/installation", "/docs/metrics", "/sample-report.html"]) {

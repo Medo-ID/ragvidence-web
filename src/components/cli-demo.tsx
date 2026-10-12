@@ -87,68 +87,70 @@ export function CliDemo() {
   return (
     <div id="demo" className="glass-panel scroll-mt-24 border border-line text-left">
       <div className="flex flex-wrap items-center justify-between gap-3 border-b border-line px-5 py-4">
-        <div className="flex items-center gap-3 text-sm font-medium text-ink"><Terminal size={17} className="text-signal" aria-hidden="true" />From command to evidence</div>
+        <div className="flex items-center gap-3 text-sm font-medium text-ink"><Terminal size={17} className="text-signal-ink" aria-hidden="true" />From command to evidence</div>
         <span className="font-mono text-xs text-muted">Guided tutorial preview</span>
       </div>
 
       <div className="no-print grid grid-cols-4 border-b border-line" aria-label="Tutorial steps">
         {steps.map((item, index) => (
-          <button key={item.label} type="button" aria-pressed={active === index} aria-controls="cli-demo-stage" onClick={() => selectStep(index)} className={`min-h-14 border-r border-line px-2 py-3 text-sm transition-colors last:border-r-0 sm:px-4 ${active === index ? "bg-signal/8 text-signal shadow-[inset_0_-2px_0_#c4edf1]" : "text-muted hover:bg-panel-raised hover:text-ink"}`}>
+          <button key={item.label} type="button" aria-pressed={active === index} aria-controls="cli-demo-stage" onClick={() => selectStep(index)} className={`min-h-14 border-r border-line px-2 py-3 text-sm transition-colors last:border-r-0 sm:px-4 ${active === index ? "bg-signal/8 text-signal-ink shadow-[inset_0_-2px_0_#387478]" : "text-muted hover:bg-panel-raised hover:text-ink"}`}>
             <span className="mr-2 font-mono text-xs opacity-65" aria-hidden="true">0{index + 1}</span>{item.label}
           </button>
         ))}
       </div>
 
-      <div id="cli-demo-stage" role="region" aria-labelledby="cli-demo-title" className="px-5 py-5 sm:px-6 sm:py-6">
-        <div key={active} className="demo-stage">
-          <div className="mb-5 flex items-start justify-between gap-4">
-            <div>
-              <p className="mb-2 font-mono text-xs text-signal">STEP 0{active + 1} / 04</p>
-              <h2 id="cli-demo-title" className="text-lg font-semibold tracking-tight text-ink sm:text-xl">{step.title}</h2>
-            </div>
-            <FileSearch size={22} className="mt-1 shrink-0 text-muted" aria-hidden="true" />
-          </div>
-
-          <div className="border border-line bg-canvas">
-            <div className="flex items-center justify-between gap-3 border-b border-line px-4 py-2">
-              <span className="font-mono text-xs text-muted">{active === 3 ? "Generated report" : "Terminal"}</span>
-              <CopyCommand command={step.command} label={active === 3 ? "Copy path" : "Copy"} />
-            </div>
-            <div className="overflow-x-auto p-4">
-              <code className="block whitespace-pre font-mono text-xs leading-6 text-ink sm:text-sm">{active !== 3 && <span className="mr-3 select-none text-signal" aria-hidden="true">$</span>}{step.command}</code>
-            </div>
-          </div>
-
-          <p className="mt-5 text-sm leading-6 text-muted">{step.description}</p>
-
-          <div className="mt-5 min-h-32">
-            {active < 2 ? (
-              <div className="space-y-2 border-l-2 border-signal/40 bg-canvas/50 p-4 text-sm text-muted">
-                {(active === 0 ? ["Free edition with lexical and semantic retrieval", "Isolated installation with uv", "Local workspaces and portable reports"] : ["Required runtime and dependencies", "Workspace permissions and bundled data", "Optional semantic support and privacy defaults"]).map((item) => (
-                  <p key={item} className="flex items-center gap-3"><Check size={15} className="shrink-0 text-signal" aria-hidden="true" />{item}</p>
-                ))}
+      <div id="cli-demo-stage" role="region" aria-labelledby="cli-demo-title" className="grid px-5 py-5 sm:px-6 sm:py-6">
+        {steps.map((step, index) => (
+          <div key={step.label} aria-hidden={active !== index} inert={active !== index} className={`demo-panel col-start-1 row-start-1 min-w-0 ${active === index ? "demo-stage visible" : "invisible pointer-events-none"}`}>
+            <div className="mb-5 flex items-start justify-between gap-4">
+              <div>
+                <p className="mb-2 font-mono text-xs text-signal-ink">STEP 0{index + 1} / 04</p>
+                <h2 id={active === index ? "cli-demo-title" : `cli-demo-title-${index}`} className="text-lg font-semibold tracking-tight text-ink sm:text-xl">{step.title}</h2>
               </div>
-            ) : (
-              <div className="border border-line bg-canvas/75 p-4 text-ink">
-                <p className="mb-4 text-xs font-medium text-muted">Bundled tutorial · 10 questions · BM25 · k=2 · v0.1.0</p>
-                <div className="grid grid-cols-2 gap-4">
-                  <div><p className="text-xs">Body only</p><p className="mt-2 text-3xl font-semibold tracking-tight">60%</p><p className="mt-1 text-xs">6 / 10 sufficient</p></div>
-                  <div className="border-l border-line pl-4"><p className="text-xs">With heading context</p><p className="mt-2 text-3xl font-semibold tracking-tight text-signal">90%</p><p className="mt-1 text-xs">9 / 10 sufficient</p></div>
+              <FileSearch size={22} className="mt-1 shrink-0 text-muted" aria-hidden="true" />
+            </div>
+
+            <div className="border border-line bg-canvas">
+              <div className="flex items-center justify-between gap-3 border-b border-line px-4 py-2">
+                <span className="font-mono text-xs text-muted">{index === 3 ? "Generated report" : "Terminal"}</span>
+                <CopyCommand command={step.command} label={index === 3 ? "Copy path" : "Copy"} />
+              </div>
+              <div className="overflow-x-auto p-4">
+                <code className="block whitespace-pre font-mono text-xs leading-6 text-ink sm:text-sm">{index !== 3 && <span className="mr-3 select-none text-signal-ink" aria-hidden="true">$</span>}{step.command}</code>
+              </div>
+            </div>
+
+            <p className="mt-5 text-sm leading-6 text-muted">{step.description}</p>
+
+            <div className="mt-5 min-h-32">
+              {index < 2 ? (
+                <div className="space-y-2 border-l-2 border-signal/40 bg-canvas/50 p-4 text-sm text-muted">
+                  {(index === 0 ? ["Free edition with lexical and semantic retrieval", "Isolated installation with uv", "Local workspaces and portable reports"] : ["Required runtime and dependencies", "Workspace permissions and bundled data", "Optional semantic support and privacy defaults"]).map((item) => (
+                    <p key={item} className="flex items-center gap-3"><Check size={15} className="shrink-0 text-signal-ink" aria-hidden="true" />{item}</p>
+                  ))}
                 </div>
-                <p className="mt-4 border-t border-line pt-3 text-xs leading-5 text-success">3 improved · 0 regressions · 1 still insufficient</p>
-              </div>
-            )}
-          </div>
+              ) : (
+                <div className="border border-line bg-canvas/75 p-4 text-ink">
+                  <p className="mb-4 text-xs font-medium text-muted">Bundled tutorial · 10 questions · BM25 · k=2 · v0.1.0</p>
+                  <div className="grid grid-cols-2 gap-4">
+                    <div><p className="text-xs">Body only</p><p className="mt-2 text-3xl font-semibold tracking-tight">60%</p><p className="mt-1 text-xs">6 / 10 sufficient</p></div>
+                    <div className="border-l border-line pl-4"><p className="text-xs">With heading context</p><p className="mt-2 text-3xl font-semibold tracking-tight text-signal-ink">90%</p><p className="mt-1 text-xs">9 / 10 sufficient</p></div>
+                  </div>
+                  <p className="mt-4 border-t border-line pt-3 text-xs leading-5 text-success">3 improved · 0 regressions · 1 still insufficient</p>
+                </div>
+              )}
+            </div>
 
-          <p className="mt-3 text-xs leading-5 text-muted">{step.detail}</p>
-        </div>
+            <p className="mt-3 text-xs leading-5 text-muted">{step.detail}</p>
+          </div>
+        ))}
       </div>
 
-      <div className="no-print flex flex-wrap items-center justify-between gap-3 border-t border-line bg-canvas/50 px-5 py-3">
-        <Link href={step.href} className="inline-flex min-h-11 items-center gap-2 text-xs font-medium text-signal hover:text-ink">{step.link}<ArrowRight size={13} aria-hidden="true" /></Link>
-        <button type="button" onClick={togglePlayback} disabled={reducedMotion} title={reducedMotion ? "Automatic playback is disabled with reduced motion." : undefined} className="inline-flex min-h-11 items-center gap-2 text-xs text-ink hover:text-signal disabled:cursor-default disabled:text-muted">
+      <div className="no-print grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3 border-t border-line bg-canvas/30 px-5 py-3">
+        <Link href={step.href} className="col-span-2 inline-flex min-h-11 items-center gap-2 text-xs font-medium text-signal-ink hover:text-ink">{step.link}<ArrowRight size={13} aria-hidden="true" /></Link>
+        <button type="button" onClick={togglePlayback} disabled={reducedMotion} aria-label={reducedMotion ? "Explore at your pace" : isPlaying ? "Pause walkthrough" : active === steps.length - 1 ? "Replay walkthrough" : "Play walkthrough"} title={reducedMotion ? "Automatic playback is disabled with reduced motion." : undefined} className="inline-flex min-h-11 items-center gap-2 whitespace-nowrap text-xs text-ink hover:text-signal-ink disabled:cursor-default disabled:text-muted">
           {isPlaying ? <Pause size={15} aria-hidden="true" /> : active === steps.length - 1 ? <RotateCcw size={15} aria-hidden="true" /> : <Play size={15} aria-hidden="true" />}
-          {reducedMotion ? "Explore at your pace" : isPlaying ? "Pause walkthrough" : active === steps.length - 1 ? "Replay walkthrough" : "Play walkthrough"}
+          {reducedMotion ? "Manual steps" : isPlaying ? "Pause" : active === steps.length - 1 ? "Replay" : "Play"}
         </button>
         <div className="flex items-center gap-3">
           <button type="button" aria-label="Previous tutorial step" disabled={active === 0} onClick={() => selectStep(active - 1)} className="grid size-11 place-items-center border border-line text-muted hover:border-signal/40 hover:text-ink disabled:cursor-default disabled:opacity-30"><ChevronLeft size={17} aria-hidden="true" /></button>
@@ -156,7 +158,7 @@ export function CliDemo() {
         </div>
       </div>
       <p className="sr-only" aria-live="polite" aria-atomic="true">Step {active + 1} of 4: {step.label}. {step.title}</p>
-      <noscript><p className="border-t border-line p-5 text-sm text-muted">Follow the <Link href="/docs/first-tutorial" className="text-signal underline">first tutorial</Link> for every step and the complete report.</p></noscript>
+      <noscript><p className="border-t border-line p-5 text-sm text-muted">Follow the <Link href="/docs/first-tutorial" className="text-signal-ink underline">first tutorial</Link> for every step and the complete report.</p></noscript>
     </div>
   );
 }

@@ -35,7 +35,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable}`}>
       <body className="flex min-h-dvh flex-col font-sans antialiased">
-        <a href="#main-content" className="fixed left-4 top-3 z-100 -translate-y-20 rounded-none bg-signal px-4 py-2 text-sm font-semibold text-canvas transition-transform focus:translate-y-0">
+        <a href="#main-content" className="fixed left-4 top-3 z-100 -translate-y-20 rounded-none bg-signal px-4 py-2 text-sm font-semibold text-ink transition-transform focus:translate-y-0">
           Skip to content
         </a>
         <SiteHeader />

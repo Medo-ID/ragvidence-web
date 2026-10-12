@@ -10,21 +10,22 @@
     :root {
       color-scheme: light;
       --canvas: #f2f6f8;
+      --brand: #387478;
       --ink: #17212b;
       --muted: #526477;
       --line: #d4dfe6;
-      --surface: rgb(255 255 255 / 0.78);
-      --surface-soft: #edf3f6;
-      --nav-glass: rgb(242 246 248 / 0.78);
-      --signal: #086a78;
-      --signal-soft: #def1f4;
+      --surface: rgb(255 255 255 / 0.62);
+      --surface-soft: rgb(255 255 255 / 0.52);
+      --nav-glass: rgb(242 246 248 / 0.56);
+      --signal: #387478;
+      --signal-soft: #e1edee;
       --green: #147a4b;
       --green-soft: #e9f7ef;
       --red: #b42332;
       --red-soft: #fff0f1;
       --amber: #805800;
       --amber-soft: #fff7df;
-      --shadow: inset 0 1px 0 rgb(255 255 255 / 0.04);
+      --shadow: inset 0 1px 0 rgb(255 255 255 / 0.2), inset 1px 0 0 rgb(255 255 255 / 0.07), 0 18px 48px rgb(0 0 0 / 0.12);
 
       font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       font-synthesis: none;
@@ -36,12 +37,12 @@
       --canvas: #07090d;
       --ink: #f3f7fa;
       --muted: #94a3b8;
-      --line: #2b333c;
-      --surface: rgb(13 17 23 / 0.78);
-      --surface-soft: #111821;
-      --nav-glass: rgb(7 9 13 / 0.68);
-      --signal: #c4edf1;
-      --signal-soft: #253b40;
+      --line: #344b50;
+      --surface: rgb(21 39 44 / 0.46);
+      --surface-soft: rgb(26 44 49 / 0.58);
+      --nav-glass: rgb(17 32 37 / 0.5);
+      --signal: #78b0b4;
+      --signal-soft: #162f32;
       --green: #55d68b;
       --green-soft: #142a20;
       --red: #ff6b78;
@@ -55,12 +56,12 @@
         --canvas: #07090d;
         --ink: #f3f7fa;
         --muted: #94a3b8;
-        --line: #2b333c;
-        --surface: rgb(13 17 23 / 0.78);
-        --surface-soft: #111821;
-        --nav-glass: rgb(7 9 13 / 0.68);
-        --signal: #c4edf1;
-        --signal-soft: #253b40;
+        --line: #344b50;
+        --surface: rgb(21 39 44 / 0.46);
+        --surface-soft: rgb(26 44 49 / 0.58);
+        --nav-glass: rgb(17 32 37 / 0.5);
+        --signal: #78b0b4;
+        --signal-soft: #162f32;
         --green: #55d68b;
         --green-soft: #142a20;
         --red: #ff6b78;
@@ -79,7 +80,7 @@
       margin: 0;
       line-height: 1.65;
       color: var(--ink);
-      background: var(--canvas);
+      background: radial-gradient(ellipse at 95% 0%, color-mix(in srgb, var(--brand) 24%, transparent), transparent 55rem), radial-gradient(ellipse at 0% 35%, rgb(255 255 255 / 0.06), transparent 65rem), var(--canvas);
     }
 
     main {
@@ -147,6 +148,12 @@
       box-shadow: var(--shadow);
     }
 
+    .hero, section, .question-card, .metric-card, .callout, .hit, details {
+      background-size: auto;
+      background-image: linear-gradient(135deg, rgb(255 255 255 / 0.12), transparent 45%), repeating-linear-gradient(0deg, rgb(255 255 255 / 0.018) 0 1px, transparent 1px 4px);
+      box-shadow: var(--shadow);
+    }
+
     .section-heading {
       display: flex;
       align-items: flex-start;
@@ -189,7 +196,7 @@
     }
 
     .metric-card.featured {
-      border-color: var(--signal);
+      border-color: var(--brand);
       background: var(--signal-soft);
     }
 
@@ -438,7 +445,8 @@
     .table-wrapper table { min-width: 600px; }
     .preview { font-family: ui-monospace, monospace; font-size: 0.85rem; line-height: 1.8; }
     @supports (backdrop-filter: blur(1px)) {
-      .report-nav { background-color: var(--nav-glass); backdrop-filter: blur(20px) saturate(135%); }
+      .hero, section, .question-card { backdrop-filter: blur(24px) saturate(140%); }
+      .report-nav { background-color: var(--nav-glass); backdrop-filter: blur(28px) saturate(145%); }
     }
     @media (min-width: 640px) {
       main, .report-nav-inner { width: calc(100% - 48px); }
@@ -460,23 +468,25 @@
       :root:has(#theme-system:checked), :root:has(#theme-light:checked), :root:has(#theme-dark:checked) {
         color-scheme: light;
         --canvas: #f2f6f8;
+      --brand: #387478;
         --ink: #17212b;
         --muted: #526477;
         --line: #d4dfe6;
-        --surface: rgb(255 255 255 / 0.78);
-        --surface-soft: #edf3f6;
-        --nav-glass: rgb(242 246 248 / 0.78);
-        --signal: #086a78;
-        --signal-soft: #def1f4;
+        --surface: rgb(255 255 255 / 0.62);
+        --surface-soft: rgb(255 255 255 / 0.52);
+        --nav-glass: rgb(242 246 248 / 0.56);
+        --signal: #387478;
+        --signal-soft: #e1edee;
         --green: #147a4b;
         --green-soft: #e9f7ef;
         --red: #b42332;
         --red-soft: #fff0f1;
         --amber: #805800;
         --amber-soft: #fff7df;
-        --shadow: inset 0 1px 0 rgb(255 255 255 / 0.04);
+        --shadow: inset 0 1px 0 rgb(255 255 255 / 0.2), inset 1px 0 0 rgb(255 255 255 / 0.07), 0 18px 48px rgb(0 0 0 / 0.12);
       }
       .report-nav, .skip-link { display: none; }
+      .hero, section, .question-card, .metric-card, .callout, .hit, details { background-image: none; backdrop-filter: none; box-shadow: none; }
       body { background: white; color: black; }
       main { width: 100%; margin: 0; }
       .hero { padding: 24px; color: var(--ink); box-shadow: none; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
