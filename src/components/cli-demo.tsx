@@ -86,14 +86,14 @@ export function CliDemo() {
 
   return (
     <div id="demo" className="glass-panel scroll-mt-24 border border-line text-left">
-      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-line px-5 py-4">
+      <div className="flex flex-wrap items-center justify-between gap-3 px-5 py-7 sm:px-6 sm:py-8">
         <div className="flex items-center gap-3 text-sm font-medium text-ink"><Terminal size={17} className="text-signal-ink" aria-hidden="true" />From command to evidence</div>
         <span className="font-mono text-xs text-muted">Guided tutorial preview</span>
       </div>
 
       <div className="no-print grid grid-cols-4 border-b border-line" aria-label="Tutorial steps">
         {steps.map((item, index) => (
-          <button key={item.label} type="button" aria-pressed={active === index} aria-controls="cli-demo-stage" onClick={() => selectStep(index)} className={`min-h-14 border-r border-line px-2 py-3 text-sm transition-colors last:border-r-0 sm:px-4 ${active === index ? "bg-signal/8 text-signal-ink shadow-[inset_0_-2px_0_#387478]" : "text-muted hover:bg-panel-raised hover:text-ink"}`}>
+          <button key={item.label} type="button" aria-pressed={active === index} aria-controls="cli-demo-stage" onClick={() => selectStep(index)} className={`min-h-14 border-r border-line px-2 py-3 text-sm transition-colors last:border-r-0 sm:px-4 ${active === index ? "bg-white/5 text-ink shadow-[inset_0_-2px_0_#ededed]" : "text-muted hover:bg-panel-raised hover:text-ink"}`}>
             <span className="mr-2 font-mono text-xs opacity-65" aria-hidden="true">0{index + 1}</span>{item.label}
           </button>
         ))}
@@ -146,7 +146,7 @@ export function CliDemo() {
         ))}
       </div>
 
-      <div className="no-print grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3 border-t border-line bg-canvas/30 px-5 py-3">
+      <div className="no-print grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3 px-5 py-7 sm:px-6 sm:py-8">
         <Link href={step.href} className="col-span-2 inline-flex min-h-11 items-center gap-2 text-xs font-medium text-signal-ink hover:text-ink">{step.link}<ArrowRight size={13} aria-hidden="true" /></Link>
         <button type="button" onClick={togglePlayback} disabled={reducedMotion} aria-label={reducedMotion ? "Explore at your pace" : isPlaying ? "Pause walkthrough" : active === steps.length - 1 ? "Replay walkthrough" : "Play walkthrough"} title={reducedMotion ? "Automatic playback is disabled with reduced motion." : undefined} className="inline-flex min-h-11 items-center gap-2 whitespace-nowrap text-xs text-ink hover:text-signal-ink disabled:cursor-default disabled:text-muted">
           {isPlaying ? <Pause size={15} aria-hidden="true" /> : active === steps.length - 1 ? <RotateCcw size={15} aria-hidden="true" /> : <Play size={15} aria-hidden="true" />}

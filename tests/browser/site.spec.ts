@@ -126,31 +126,82 @@ for (const failure of ["http", "invalid-index"]) {
   });
 }
 
-test("real walkthrough waits for playback and loads video with English captions", async ({ page }) => {
-  const mediaRequests: string[] = [];
-  page.on("request", (request) => { if (request.url().endsWith("/media/walkthrough.webm")) mediaRequests.push(request.url()); });
+test("silent product demo starts only in view, supports keyboard chapters, and can be paused", async ({ page }) => {
+  const requests: string[] = [];
+  page.on("request", request => { if (request.url().endsWith("/media/walkthrough.webm")) requests.push(request.url()); });
   await page.goto("/");
   const video = page.locator("#walkthrough video");
   await expect(video).toHaveAttribute("preload", "none");
-  await expect(video).not.toHaveAttribute("autoplay", "");
-  expect(mediaRequests).toHaveLength(0);
-  await expect(video.locator("track")).toHaveAttribute("src", "/media/walkthrough.en.vtt");
-  await video.evaluate((element: HTMLVideoElement) => element.play());
+  expect(requests).toHaveLength(0);
+  await video.scrollIntoViewIfNeeded();
+  await expect(page.getByRole("button", { name: "Pause product demo" })).toBeVisible();
   await expect.poll(() => video.evaluate((element: HTMLVideoElement) => element.currentTime)).toBeGreaterThan(0);
-  const metadata = await video.evaluate((element: HTMLVideoElement) => ({ width: element.videoWidth, height: element.videoHeight, duration: element.duration }));
-  expect(metadata.width).toBe(1280);
-  expect(metadata.height).toBe(720);
-  expect(metadata.duration).toBeGreaterThan(50);
-  expect(metadata.duration).toBeLessThan(180);
-  await expect.poll(() => video.evaluate((element: HTMLVideoElement) => element.textTracks[0]?.cues?.length ?? 0)).toBe(6);
-  const captionEnd = await video.evaluate((element: HTMLVideoElement) => {
-    const cues = element.textTracks[0].cues!;
-    return cues[cues.length - 1].endTime;
-  });
-  expect(Math.abs(captionEnd - metadata.duration)).toBeLessThan(0.05);
-  await video.evaluate((element: HTMLVideoElement) => element.pause());
+  const metadata = await video.evaluate((element: HTMLVideoElement) => ({ width: element.videoWidth, height: element.videoHeight, duration: element.duration, muted: element.muted, loop: element.loop, tracks: element.textTracks.length }));
+  expect(metadata).toMatchObject({ width: 1280, height: 720, muted: true, loop: true, tracks: 0 });
+  expect(metadata.duration).toBeCloseTo(24, 1);
+  await page.getByRole("button", { name: "Pause product demo" }).click();
+  await expect.poll(() => video.evaluate((element: HTMLVideoElement) => element.paused)).toBe(true);
+  await page.getByRole("tab", { name: "Run tutorial" }).click();
+  await page.keyboard.press("ArrowRight");
+  await expect(page.getByRole("tab", { name: "Compare results" })).toBeFocused();
+  expect(await video.evaluate((element: HTMLVideoElement) => element.currentTime)).toBeCloseTo(8, 0);
+  await page.keyboard.press("End");
+  await expect(page.getByRole("tab", { name: "Inspect evidence" })).toBeFocused();
+  expect(await video.evaluate((element: HTMLVideoElement) => element.currentTime)).toBeCloseTo(16, 0);
+  await page.getByRole("button", { name: "Play product demo" }).click();
+  await expect.poll(() => video.evaluate((element: HTMLVideoElement) => element.paused)).toBe(false);
+  await page.locator("#install").scrollIntoViewIfNeeded();
+  await expect.poll(() => video.evaluate((element: HTMLVideoElement) => element.paused)).toBe(true);
+});
+
+test("reduced motion keeps the demo still until explicitly played", async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.goto("/");
+  const video = page.locator("#walkthrough video");
+  await video.scrollIntoViewIfNeeded();
+  await expect(page.getByRole("button", { name: "Play product demo" })).toBeVisible();
   expect(await video.evaluate((element: HTMLVideoElement) => element.paused)).toBe(true);
-  await expect(page.locator("#walkthrough").getByRole("link", { name: "Follow the written tutorial" })).toHaveAttribute("href", "/docs/first-tutorial");
+  await page.getByRole("button", { name: "Play product demo" }).click();
+  await expect.poll(() => video.evaluate((element: HTMLVideoElement) => element.currentTime)).toBeGreaterThan(0);
+  await page.getByRole("button", { name: "Pause product demo" }).click();
+  await expect.poll(() => video.evaluate((element: HTMLVideoElement) => element.paused)).toBe(true);
+});
+
+test("site actions stay neutral and glass remains confined to the website", async ({ page }) => {
+  await page.goto("/");
+  const button = page.locator("#install").getByRole("link", { name: "Install Free", exact: true });
+  const channels = await button.evaluate(element => getComputedStyle(element).backgroundColor.match(/[\d.]+/g)!.slice(0, 3).map(Number));
+  expect(Math.max(...channels) - Math.min(...channels)).toBeLessThan(1);
+  expect(channels[0]).toBeGreaterThan(220);
+  expect(await page.locator("#demo").evaluate(element => getComputedStyle(element).backdropFilter)).toContain("blur(36px)");
+  await page.goto("/sample-report.html");
+  for (const theme of ["light", "dark"]) {
+    await page.locator("label").filter({ has: page.locator("#theme-" + theme) }).click();
+    const styles = await page.locator(".hero, .report-nav, section, .metric-card").evaluateAll(elements => elements.map(element => {
+      const css = getComputedStyle(element);
+      const channels = css.backgroundColor.match(/[\d.]+/g)?.map(Number) ?? [];
+      return { blur: css.backdropFilter, image: css.backgroundImage, alpha: channels[3] ?? 1 };
+    }));
+    for (const style of styles) {
+      expect(style.blur).toBe("none");
+      expect(style.image).toBe("none");
+      expect(style.alpha).toBe(1);
+    }
+    const samples = await page.locator(".hero-copy, .metric-card .metric-label, .metric-card .metric-value").evaluateAll(elements => elements.map(element => {
+      const foreground = getComputedStyle(element).color.match(/[\d.]+/g)!.slice(0, 3).map(Number);
+      let ancestor: Element | null = element;
+      let background: number[] = [];
+      while (ancestor) {
+        const values = getComputedStyle(ancestor).backgroundColor.match(/[\d.]+/g)!.map(Number);
+        if (values.length === 3 || values[3] === 1) { background = values.slice(0, 3); break; }
+        ancestor = ancestor.parentElement;
+      }
+      const luminance = (rgb: number[]) => rgb.map(channel => { const v = channel / 255; return v <= 0.04045 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4; }).reduce((total, v, i) => total + v * [0.2126, 0.7152, 0.0722][i], 0);
+      const f = luminance(foreground), b = luminance(background);
+      return { text: element.textContent, contrast: (Math.max(f, b) + 0.05) / (Math.min(f, b) + 0.05) };
+    }));
+    for (const sample of samples) expect(sample.contrast, sample.text ?? "").toBeGreaterThanOrEqual(4.5);
+  }
 });
 
 test("unknown docs show not-found content and noindex", async ({ page }) => {

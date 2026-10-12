@@ -1,6 +1,8 @@
 # Project health baseline
 
-Current verification: [follow-up-verification.md](follow-up-verification.md)
+Current visual system: [neutral-design-pass.md](neutral-design-pass.md) records
+the charcoal redesign, opaque reporting HTML, and silent 60fps product demo.
+Earlier verification: [follow-up-verification.md](follow-up-verification.md)
 records the successful October 12 production gate in a fresh checkout and remaining
 release checks. [implementation-pass.md](implementation-pass.md) describes the UI changes.
 The tables below remain the historical October 8 audit.

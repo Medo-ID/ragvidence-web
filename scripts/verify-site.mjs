@@ -57,8 +57,8 @@ async function verify() {
   if (!explicitUrl) await startProduction();
   else if (!(await request()).ok) throw new Error(`Site is unavailable at ${baseUrl}.`);
 
-  const routes = ["/", "/docs", ...docs.map(({ slug }) => `/docs/${slug}`), "/releases", "/privacy", "/terms", "/security", "/sample-report.html", "/ragvidence-0.1.0-license.txt", "/robots.txt", "/sitemap.xml", "/opengraph-image", "/favicon.ico", "/docs/search-index.json", "/media/walkthrough.webm", "/media/walkthrough-poster.png", "/media/walkthrough.en.vtt"];
-  const binaryRoutes = new Set(["/opengraph-image", "/favicon.ico", "/media/walkthrough.webm", "/media/walkthrough-poster.png"]);
+  const routes = ["/", "/docs", ...docs.map(({ slug }) => `/docs/${slug}`), "/releases", "/privacy", "/terms", "/security", "/sample-report.html", "/ragvidence-0.1.0-license.txt", "/robots.txt", "/sitemap.xml", "/opengraph-image", "/favicon.ico", "/docs/search-index.json", "/media/walkthrough.webm", "/media/walkthrough-poster.webp", "/media/walkthrough-provenance.json"];
+  const binaryRoutes = new Set(["/opengraph-image", "/favicon.ico", "/media/walkthrough.webm", "/media/walkthrough-poster.webp"]);
   const failures = [];
   const pages = new Map();
   const headers = [
@@ -90,7 +90,10 @@ async function verify() {
       if (typeof index[doc.slug] !== "string" || !index[doc.slug].includes(doc.title.toLowerCase())) failures.push(`Search index missing ${doc.slug}`);
     }
   } catch { failures.push("Documentation search index is not valid JSON."); }
-  if (!(pages.get("/media/walkthrough.en.vtt") ?? "").startsWith("WEBVTT")) failures.push("Walkthrough captions are not WebVTT.");
+  try {
+    const media = JSON.parse(pages.get("/media/walkthrough-provenance.json") ?? "{}");
+    if (media.fps !== 60 || media.audio !== false || media.captions !== false || media.changes?.improved !== 3 || media.changes?.regressed !== 0) failures.push("Demo provenance does not match the verified silent tutorial.");
+  } catch { failures.push("Demo provenance is not valid JSON."); }
   const home = pages.get("/") ?? "";
   for (const phrase of ["ragvidence[semantic]", "See whether your RAG change", "60%", "90%", "10 answerable questions", "The Free edition is a real tool"]) {
     if (!home.includes(phrase)) failures.push(`/: missing ${phrase}`);

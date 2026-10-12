@@ -2,6 +2,10 @@
 
 Verified October 12, 2026, following the teal theme commit `902f6b9`.
 
+The subsequent [neutral design pass](neutral-design-pass.md) replaces the
+captioned recording and report glass styling described below. This document
+retains the preceding implementation and verification history.
+
 ## Completed work
 
 - Added a silent, approximately 66-second 1280×720 recording of the production

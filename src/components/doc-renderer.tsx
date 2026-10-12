@@ -20,7 +20,7 @@ export function DocRenderer({ blocks }: { blocks: DocBlock[] }) {
           return (
             <div key={index} className="glass-panel my-6 overflow-hidden border border-line">
               <div className="flex items-center justify-between border-b border-line px-4 py-2.5"><span className="font-mono text-[10px] uppercase tracking-wider text-muted">{block.label ?? "Code"}</span><CopyCommand command={block.code} /></div>
-              <pre className="overflow-x-auto p-4 font-mono text-[0.82rem] leading-6 text-[#d6e2e9]"><code>{block.code}</code></pre>
+              <pre className="overflow-x-auto p-4 font-mono text-[0.82rem] leading-6 text-ink"><code>{block.code}</code></pre>
             </div>
           );
         }

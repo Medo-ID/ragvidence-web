@@ -64,45 +64,50 @@ The production dependency audit is clean. A full development-tree audit may stil
 - `src/app/docs` — documentation routes
 - `src/app/releases` — verified CLI release history and distribution links
 - `src/app/privacy`, `terms`, `security` — trust pages
-- `public/sample-report.html` — website-styled presentation of the bundled v0.1.0 tutorial report; recorded results and provenance are preserved, with offline Auto/Light/Dark appearance controls
+- `public/sample-report.html` — opaque, readable presentation of the bundled v0.1.0 tutorial report; recorded results and provenance are preserved, with offline Auto/Light/Dark appearance controls
 - `public/ragvidence-0.1.0-license.txt` — verbatim LICENSE.md from the production PyPI wheel
 
-## Walkthrough recording
+## Product demo
 
-The homepage includes a silent recording of the real production v0.1.0 CLI:
-installation into a new isolated tool environment, version and health checks,
-the bundled tutorial, and its generated report. The approximately 66-second
-1280×720 WebM has English WebVTT captions and a poster in `public/media/`.
-`walkthrough-provenance.json` records actual commands, output, and verified
-6/10 versus 9/10 evaluations and three improved questions with no regressions.
-Two additional unanswerable questions have N/A evidence metrics and are excluded
-from the rate denominator. Host installation caches were reused. Report content
-is unchanged; the recording applies the website presentation CSS.
+The homepage includes a 24-second, 1280×720, 60fps silent demo of the production
+v0.1.0 CLI and its generated report. It types the tutorial command, shows actual
+results, compares 60% versus 90%, and opens the recovered ranked evidence.
+Camera moves, cursor motion, typing, and transitions are composed over captured
+real states. There is no audio or caption track. The provenance JSON records the
+executed commands, actual output, checked evaluations, and post-production.
 
-The video uses native controls, inline playback, a reserved 16:9 frame, and no
-autoplay or video preload. The written tutorial and download remain available
-outside the player. Article search loads a static full-text index only on the
-first search; filtering and queries remain in the browser. Failed index loads
-fall back to navigation metadata with an explicit retry.
+The square player loops only while visible. A pause/play control and keyboard
+chapter navigation remain available. Reduced motion shows a still poster until
+the visitor explicitly plays the demo. The written tutorial is linked below it.
+The WebP poster is much smaller than the preceding PNG; video uses preload none
+and starts loading when the player enters view.
 
-To recreate the recording (optional authoring, outside the quality gate):
+Article search loads a static full-text index only on the first search; filtering
+and queries remain in the browser. Failed index loads fall back to navigation
+metadata with an explicit retry.
+
+To recreate the demo (optional Linux authoring, outside the quality gate):
 
 ```bash
-# Requires uv, Python 3.12, and the installed Playwright Chromium browser.
+# Requires uv, Python 3.12, and installed Playwright Chromium/FFmpeg.
 node scripts/record-walkthrough.mjs
 ```
 
-The script uses a new temporary tool environment and workspace, installs the
-pinned release from production PyPI, and fails if the tutorial results change.
-Real command output is displayed after each command exits, with reading pauses.
-Caption boundaries are aligned to chapter transitions in the encoded frames.
-Media is staged in the temporary workspace and copied to the destination after
-the commands, artifact validation, and caption alignment succeed.
-`UV_EXECUTABLE`, `UV_CACHE_DIR`, and `RAGVIDENCE_RECORDING_DIR` can configure the
-uv executable, reusable cache, and output location. Temporary source artifacts
-are retained for review. Do not overwrite the recording until verifying a new
-release's results. The component also supports replacement MP4 media by setting
-`video.type` to `video/mp4`.
+The script installs the pinned production release in a new temporary environment,
+runs the tutorial, verifies 6/10 versus 9/10 and the exact question-level changes,
+captures genuine report interactions, and encodes 1,440 frames at 60fps.
+Two unanswerable cases have N/A metrics and do not enter the success-rate denominator.
+Host installation caches may be reused. Report data is unchanged; its presentation
+uses the website's opaque report CSS. Successful media is staged before copying
+to its destination. Temporary source artifacts remain available for review.
+
+`UV_EXECUTABLE`, `UV_CACHE_DIR`, `FFMPEG_EXECUTABLE`, and
+`RAGVIDENCE_RECORDING_DIR` configure authoring paths. By default, the encoder
+comes from the installed Playwright browser cache.
+
+The current neutral visual system and verification are recorded in
+[neutral-design-pass.md](docs/neutral-design-pass.md). Glass belongs to the website;
+the reporting HTML uses opaque surfaces, readable prose, and semantic status colors.
 
 The website does not collect user input, host user data, or provide checkout yet. Update privacy and terms before adding analytics, forms, accounts, or payment processing.
 
