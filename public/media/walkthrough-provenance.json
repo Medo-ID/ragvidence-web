@@ -1,0 +1,67 @@
+{
+  "cliVersion": "0.1.0",
+  "recordedAt": "2026-10-12T15:01:02.193Z",
+  "durationSeconds": 65.76,
+  "platform": "linux",
+  "captionAlignment": "Chapter heading transitions measured from encoded video frames, within 40ms.",
+  "commands": [
+    {
+      "command": "uv tool install --python 3.12 \"ragvidence[semantic]==0.1.0\"",
+      "argv": [
+        "uv",
+        "tool",
+        "install",
+        "--python",
+        "3.12",
+        "--index-url",
+        "https://pypi.org/simple",
+        "ragvidence[semantic]==0.1.0"
+      ],
+      "code": 0,
+      "text": "Resolved 46 packages in 677ms\nInstalled 46 packages in 39ms\n + annotated-doc==0.0.5\n + annotated-types==0.8.0\n + anyio==4.15.1\n + bm25s==0.2.14\n + certifi==2026.7.22\n + charset-normalizer==3.5.2\n + click==8.5.0\n + fastembed==0.9.0\n + filelock==4.1.1\n + flatbuffers==25.12.19\n + fsspec==2026.9.0\n + h11==0.16.0\n + hf-xet==1.7.0\n + httpcore==1.0.9\n + httpx==0.28.1\n + huggingface-hub==1.33.0\n + idna==3.20\n + jinja2==3.1.6\n + loguru==0.7.3\n + markdown-it-py==4.2.0\n + markupsafe==3.0.4\n + mdurl==0.1.2\n + mmh3==5.3.1\n + numpy==2.5.4\n + onnxruntime==1.31.0\n + packaging==26.3\n + pillow==12.3.0\n + protobuf==7.36.2\n + py-rust-stemmers==0.1.8\n + pydantic==2.14.1\n + pydantic-core==2.50.1\n + pydantic-settings==2.15.0\n + pygments==2.21.0\n + python-dotenv==1.2.4\n + pyyaml==6.0.3\n + ragvidence==0.1.0\n + requests==2.34.2\n + rich==14.3.4\n + scipy==1.18.1\n + shellingham==1.5.4\n + tokenizers==0.23.3\n + tqdm==4.70.1\n + typer==0.27.3\n + typing-extensions==4.16.0\n + typing-inspection==0.4.4\n + urllib3==2.8.0\nInstalled 1 executable: ragvi\n"
+    },
+    {
+      "command": "ragvi --version",
+      "argv": [
+        "/tmp/ragvidence-recording-cOdL1V/bin/ragvi",
+        "--version"
+      ],
+      "code": 0,
+      "text": "0.1.0\n"
+    },
+    {
+      "command": "ragvi health",
+      "argv": [
+        "/tmp/ragvidence-recording-cOdL1V/bin/ragvi",
+        "health"
+      ],
+      "code": 0,
+      "text": "┏━━━━━━━━┳━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓\n┃ Status ┃ Check            ┃ Detail                                                           ┃\n┡━━━━━━━━╇━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩\n│ PASS   │ Python           │ 3.12.14                                                          │\n│ PASS   │ Bundled exercise │ data and evidence references are valid                           │\n│ PASS   │ Dependencies     │ bm25s=0.2.14, jinja2=3.1.6, numpy=2.5.4, pydantic=2.14.1,        │\n│        │                  │ rich=14.3.4, typer=0.27.3                                        │\n│ PASS   │ Workspace        │ writable: workspaces                                             │\n│ PASS   │ Semantic extra   │ available                                                        │\n│ PASS   │ Privacy          │ no account, telemetry, or API key required for local BM25        │\n└────────┴──────────────────┴──────────────────────────────────────────────────────────────────┘\n"
+    },
+    {
+      "command": "ragvi tutorial",
+      "argv": [
+        "/tmp/ragvidence-recording-cOdL1V/bin/ragvi",
+        "tutorial"
+      ],
+      "code": 0,
+      "text": "Running bm25-body at k=2\nRunning bm25-heading_context at k=2\nCOMPLETE Guided comparison finished.\nReport: /tmp/ragvidence-recording-cOdL1V/workspaces/first-run/reports/tutorial.html\nNext: Open the report, inspect changed questions, then read the Getting started guide included \nwith your download.\n"
+    }
+  ],
+  "baseline": {
+    "successful": 6,
+    "answerable": 10,
+    "sufficient_evidence_rate": 0.6
+  },
+  "candidate": {
+    "successful": 9,
+    "answerable": 10,
+    "sufficient_evidence_rate": 0.9
+  },
+  "changes": {
+    "improved": 3,
+    "regressed": 0,
+    "stillInsufficient": 1
+  },
+  "presentation": "Real command output displayed after each command exits, with reading pauses. Host caches may be reused. Generated report uses website CSS; report content is unchanged. No output or result is simulated."
+}

@@ -4,6 +4,7 @@ import { SectionHeading } from "./section-heading";
 
 type WalkthroughVideo = {
   src: string;
+  type?: "video/mp4" | "video/webm";
   poster?: string;
   captions: string;
 };
@@ -23,7 +24,7 @@ export function ProductWalkthrough({ video }: { video?: WalkthroughVideo }) {
 
         {video ? (
           <video className="aspect-video w-full bg-canvas" width={1920} height={1080} controls playsInline preload="none" poster={video.poster} aria-label="RAGvidence installation and first experiment walkthrough" aria-describedby="walkthrough-caption">
-            <source src={video.src} type="video/mp4" />
+            <source src={video.src} type={video.type ?? "video/mp4"} />
             <track src={video.captions} kind="captions" srcLang="en" label="English" default />
             <p>Your browser cannot play this video. <a href={video.src}>Download the walkthrough</a> or follow the <Link href="/docs/first-tutorial">written tutorial</Link>.</p>
           </video>
@@ -39,7 +40,7 @@ export function ProductWalkthrough({ video }: { video?: WalkthroughVideo }) {
               {[
                 ["Install", "Install the Free CLI with uv. The installation guide covers uv and Python setup.", "uv tool install --python 3.12 \"ragvidence[semantic]\""],
                 ["Check", "Resolve required failures before running an experiment.", "ragvi health"],
-                ["Run", "Compare body text with heading context on ten labeled questions.", "ragvi tutorial"],
+                ["Run", "Compare body text with heading context on ten answerable questions.", "ragvi tutorial"],
                 ["Inspect", "Open the generated report. Review changed questions and the ranked evidence.", "workspaces/first-run/reports/tutorial.html"],
               ].map(([title, text, command], index) => (
                 <li key={title} className="surface min-w-0 p-5">
@@ -54,7 +55,7 @@ export function ProductWalkthrough({ video }: { video?: WalkthroughVideo }) {
         )}
 
         <figcaption id="walkthrough-caption" className="border-t border-line px-5 py-4 text-xs leading-6 text-muted sm:px-7">
-          Bundled tutorial · v0.1.0 · 10 questions · BM25 · k=2 · body vs. heading-context. <a href="/sample-report.html" className="text-signal-ink underline underline-offset-4 hover:text-ink">Inspect the sample report</a>.
+          Bundled tutorial · v0.1.0 · 10 answerable questions · BM25 · k=2 · body vs. heading-context. <a href="/sample-report.html" className="text-signal-ink underline underline-offset-4 hover:text-ink">Inspect the sample report</a>. {video && <><Link href="/docs/first-tutorial" className="text-signal-ink underline underline-offset-4 hover:text-ink">Follow the written tutorial</Link> or <a href={video.src} className="text-signal-ink underline underline-offset-4 hover:text-ink">download the recording</a>.</>}
         </figcaption>
       </figure>
     </section>

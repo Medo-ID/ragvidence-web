@@ -69,25 +69,40 @@ The production dependency audit is clean. A full development-tree audit may stil
 
 ## Walkthrough recording
 
-The hero contains the interactive CLI preview. The separate written walkthrough
-in `src/components/product-walkthrough.tsx` can also host a recording.
+The homepage includes a silent recording of the real production v0.1.0 CLI:
+installation into a new isolated tool environment, version and health checks,
+the bundled tutorial, and its generated report. The approximately 66-second
+1280×720 WebM has English WebVTT captions and a poster in `public/media/`.
+`walkthrough-provenance.json` records actual commands, output, and verified
+6/10 versus 9/10 evaluations and three improved questions with no regressions.
+Two additional unanswerable questions have N/A evidence metrics and are excluded
+from the rate denominator. Host installation caches were reused. Report content
+is unchanged; the recording applies the website presentation CSS.
 
-To add your recording, place an MP4, English WebVTT captions, and an optional poster
-in `public/`, then pass them to the homepage component:
+The video uses native controls, inline playback, a reserved 16:9 frame, and no
+autoplay or video preload. The written tutorial and download remain available
+outside the player. Article search loads a static full-text index only on the
+first search; filtering and queries remain in the browser. Failed index loads
+fall back to navigation metadata with an explicit retry.
 
-```tsx
-<ProductWalkthrough
-  video={{
-    src: "/walkthrough.mp4",
-    captions: "/walkthrough.en.vtt",
-    poster: "/walkthrough-poster.webp",
-  }}
-/>
+To recreate the recording (optional authoring, outside the quality gate):
+
+```bash
+# Requires uv, Python 3.12, and the installed Playwright Chromium browser.
+node scripts/record-walkthrough.mjs
 ```
 
-The video replaces the written steps inside the same window. It uses native playback
-controls, inline playback, a reserved 16:9 frame, and no autoplay or video preload.
-The first-tutorial documentation remains the written walkthrough.
+The script uses a new temporary tool environment and workspace, installs the
+pinned release from production PyPI, and fails if the tutorial results change.
+Real command output is displayed after each command exits, with reading pauses.
+Caption boundaries are aligned to chapter transitions in the encoded frames.
+Media is staged in the temporary workspace and copied to the destination after
+the commands, artifact validation, and caption alignment succeed.
+`UV_EXECUTABLE`, `UV_CACHE_DIR`, and `RAGVIDENCE_RECORDING_DIR` can configure the
+uv executable, reusable cache, and output location. Temporary source artifacts
+are retained for review. Do not overwrite the recording until verifying a new
+release's results. The component also supports replacement MP4 media by setting
+`video.type` to `video/mp4`.
 
 The website does not collect user input, host user data, or provide checkout yet. Update privacy and terms before adding analytics, forms, accounts, or payment processing.
 

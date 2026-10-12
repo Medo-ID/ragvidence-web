@@ -1,0 +1,25 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:12.125
+Install version 0.1.0 with Python 3.12. The semantic extra enables local embeddings; this tutorial uses BM25.
+
+2
+00:00:12.125 --> 00:00:18.344
+Check the installed version before following the versioned documentation.
+
+3
+00:00:18.344 --> 00:00:28.906
+Run health checks. Resolve required failures before continuing. The local BM25 tutorial needs no account or API key.
+
+4
+00:00:28.906 --> 00:00:42.063
+Evaluate ten answerable questions at k=2. Compare body text with heading context while keeping questions and retrieval depth fixed.
+
+5
+00:00:42.063 --> 00:00:53.688
+Open the generated HTML report locally. The tutorial records 60% versus 90% evidence sufficiency. This is bundled example data.
+
+6
+00:00:53.688 --> 00:01:05.760
+Open a question's ranked evidence. Three questions improved, none regressed, and one remains insufficient.

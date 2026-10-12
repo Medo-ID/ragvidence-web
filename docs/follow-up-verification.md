@@ -68,12 +68,10 @@ y=882px at 1440px, so the introduction and preview controls fit together within 
 
 ## Remaining items
 
-- A real walkthrough recording and captions are optional content work; the written
-  walkthrough and interactive preview are complete without them.
+- The real walkthrough and full-text search were subsequently completed; see
+  [optional-feature-verification.md](optional-feature-verification.md).
 - The development-only `braces` advisory remains inherited through the Next lint
   stack. Registry checks still report braces 3.0.3 and eslint-config-next 16.4.0;
   no compatible patched release was found. The production audit remains clean.
-- Richer full-text documentation search remains optional. Current search filters
-  navigation metadata and is tested; it does not search complete article bodies.
 - Hosting, HTTPS/DNS, and the hosted CI run remain release checks outside this
   local verification. No deployment or GitHub push was performed.

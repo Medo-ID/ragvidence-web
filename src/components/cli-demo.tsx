@@ -28,7 +28,7 @@ const steps = [
     label: "Run",
     title: "Same questions. One controlled change.",
     command: "ragvi tutorial",
-    description: "Compare BM25 on body text against heading-context using the same ten labeled questions at k=2.",
+    description: "Compare BM25 on body text against heading-context using the same ten answerable questions at k=2.",
     detail: "The bundled example recovers three failures without introducing a regression. Results depend on your own corpus.",
     href: "/docs/first-tutorial",
     link: "Follow the tutorial",
@@ -131,7 +131,7 @@ export function CliDemo() {
                 </div>
               ) : (
                 <div className="border border-line bg-canvas/75 p-4 text-ink">
-                  <p className="mb-4 text-xs font-medium text-muted">Bundled tutorial · 10 questions · BM25 · k=2 · v0.1.0</p>
+                  <p className="mb-4 text-xs font-medium text-muted">Bundled tutorial · 10 answerable questions · BM25 · k=2 · v0.1.0</p>
                   <div className="grid grid-cols-2 gap-4">
                     <div><p className="text-xs">Body only</p><p className="mt-2 text-3xl font-semibold tracking-tight">60%</p><p className="mt-1 text-xs">6 / 10 sufficient</p></div>
                     <div className="border-l border-line pl-4"><p className="text-xs">With heading context</p><p className="mt-2 text-3xl font-semibold tracking-tight text-signal-ink">90%</p><p className="mt-1 text-xs">9 / 10 sufficient</p></div>

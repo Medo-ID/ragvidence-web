@@ -57,8 +57,8 @@ async function verify() {
   if (!explicitUrl) await startProduction();
   else if (!(await request()).ok) throw new Error(`Site is unavailable at ${baseUrl}.`);
 
-  const routes = ["/", "/docs", ...docs.map(({ slug }) => `/docs/${slug}`), "/releases", "/privacy", "/terms", "/security", "/sample-report.html", "/ragvidence-0.1.0-license.txt", "/robots.txt", "/sitemap.xml", "/opengraph-image", "/favicon.ico"];
-  const binaryRoutes = new Set(["/opengraph-image", "/favicon.ico"]);
+  const routes = ["/", "/docs", ...docs.map(({ slug }) => `/docs/${slug}`), "/releases", "/privacy", "/terms", "/security", "/sample-report.html", "/ragvidence-0.1.0-license.txt", "/robots.txt", "/sitemap.xml", "/opengraph-image", "/favicon.ico", "/docs/search-index.json", "/media/walkthrough.webm", "/media/walkthrough-poster.png", "/media/walkthrough.en.vtt"];
+  const binaryRoutes = new Set(["/opengraph-image", "/favicon.ico", "/media/walkthrough.webm", "/media/walkthrough-poster.png"]);
   const failures = [];
   const pages = new Map();
   const headers = [
@@ -78,16 +78,24 @@ async function verify() {
     }
     if (typeof body !== "string") continue;
     pages.set(route, body);
-    if (!route.endsWith(".txt") && !route.endsWith(".xml")) {
+    if (!/\.(txt|xml|json|vtt)$/.test(route)) {
       if (!body.includes("<html")) failures.push(`${route}: not an HTML document`);
       if (notFound(body)) failures.push(`${route}: unexpectedly rendered not-found content`);
     }
     if (/Create Next App|Lorem ipsum|TODO|FIXME/i.test(body)) failures.push(`${route}: placeholder content`);
   }
+  try {
+    const index = JSON.parse(pages.get("/docs/search-index.json") ?? "{}");
+    for (const doc of docs) {
+      if (typeof index[doc.slug] !== "string" || !index[doc.slug].includes(doc.title.toLowerCase())) failures.push(`Search index missing ${doc.slug}`);
+    }
+  } catch { failures.push("Documentation search index is not valid JSON."); }
+  if (!(pages.get("/media/walkthrough.en.vtt") ?? "").startsWith("WEBVTT")) failures.push("Walkthrough captions are not WebVTT.");
   const home = pages.get("/") ?? "";
-  for (const phrase of ["ragvidence[semantic]", "See whether your RAG change", "60%", "90%", "The Free edition is a real tool"]) {
+  for (const phrase of ["ragvidence[semantic]", "See whether your RAG change", "60%", "90%", "10 answerable questions", "The Free edition is a real tool"]) {
     if (!home.includes(phrase)) failures.push(`/: missing ${phrase}`);
   }
+  if (!(pages.get("/docs/first-tutorial") ?? "").includes("Why the report lists 12 questions")) failures.push("Tutorial docs do not explain the score denominator.");
   if (/<script|https?:\/\//i.test(pages.get("/sample-report.html") ?? "")) failures.push("Sample report contains scripts or remote assets.");
 
   const internalLinks = new Map();
@@ -99,6 +107,7 @@ async function verify() {
     }
   }
   for (const [link, target] of internalLinks) {
+    if (binaryRoutes.has(target.pathname)) continue;
     let html = pages.get(target.pathname);
     if (html === undefined) {
       const response = await request(target.pathname + target.search);

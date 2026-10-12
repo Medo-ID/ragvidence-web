@@ -72,7 +72,8 @@ export const docs: DocPage[] = [
     description: "Generate a complete controlled comparison and learn what changed.",
     group: "Start here",
     blocks: [
-      { type: "p", text: "The bundled tutorial is the fastest way to understand RAGvidence. It compares BM25 over raw body text with BM25 over heading-enriched text using the same ten labeled questions at k=2." },
+      { type: "p", text: "The bundled tutorial is the fastest way to understand RAGvidence. It compares BM25 over raw body text with BM25 over heading-enriched text using the same ten answerable questions at k=2." },
+      { type: "note", title: "Why the report lists 12 questions", text: "The dataset also includes two unanswerable questions. Their evidence-level metrics are N/A and they are excluded from the success-rate denominator. The reported 60% and 90% therefore mean 6/10 and 9/10 answerable questions.", tone: "info" },
       { type: "h2", id: "run", text: "Run it" },
       { type: "code", label: "Terminal", code: "ragvi tutorial" },
       { type: "p", text: "The command creates workspaces/first-run and writes a self-contained report to workspaces/first-run/reports/tutorial.html." },

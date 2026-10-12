@@ -77,11 +77,80 @@ test("search filters pages and announces an empty result", async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto("/docs");
   const sidebar = page.locator("aside").filter({ has: page.getByRole("textbox", { name: "Search documentation" }) });
-  await sidebar.getByRole("textbox", { name: "Search documentation" }).fill("metrics");
+  await sidebar.getByRole("textbox", { name: "Search documentation" }).fill("metrics reference");
   await expect(sidebar.getByRole("link", { name: "Metrics reference" })).toBeVisible();
   await expect(sidebar.getByRole("link", { name: "Installation", exact: true })).toHaveCount(0);
   await sidebar.getByRole("textbox", { name: "Search documentation" }).fill("no-such-topic");
   await expect(sidebar).toContainText("No documentation pages match");
+});
+
+test("full-text search loads on demand, keeps queries local, and finds article content", async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  const requests: string[] = [];
+  page.on("request", (request) => { if (request.url().includes("search-index.json")) requests.push(request.url()); });
+  await page.goto("/docs");
+  expect(requests).toHaveLength(0);
+  const sidebar = page.locator("aside").filter({ has: page.getByRole("textbox", { name: "Search documentation" }) });
+  const search = sidebar.getByRole("textbox", { name: "Search documentation" });
+  await search.fill("uninstall");
+  await expect(sidebar.getByRole("link", { name: "Installation", exact: true })).toBeVisible();
+  await expect(sidebar).toContainText("Searching titles, descriptions, and article text.");
+  await search.fill("Python 3.13");
+  await expect(sidebar.getByRole("link", { name: "Installation", exact: true })).toBeVisible();
+  expect(requests).toHaveLength(1);
+  expect(new URL(requests[0]).search).toBe("");
+  await search.fill("");
+  await expect(sidebar.getByRole("link", { name: "First tutorial", exact: true })).toBeVisible();
+});
+
+for (const failure of ["http", "invalid-index"]) {
+  test(`search recovers from ${failure} failure while metadata remains usable`, async ({ page }) => {
+    await page.setViewportSize({ width: 1440, height: 900 });
+    let requests = 0;
+    await page.route("**/docs/search-index.json", async (route) => {
+      requests += 1;
+      if (requests === 1) await route.fulfill({ status: failure === "http" ? 503 : 200, contentType: "application/json", body: "{}" });
+      else await route.continue();
+    });
+    await page.goto("/docs");
+    const sidebar = page.locator("aside").filter({ has: page.getByRole("textbox", { name: "Search documentation" }) });
+    const search = sidebar.getByRole("textbox", { name: "Search documentation" });
+    await search.fill("installation");
+    await expect(sidebar).toContainText("Article search is unavailable");
+    await expect(sidebar.getByRole("link", { name: "Installation", exact: true })).toBeVisible();
+    await sidebar.getByRole("button", { name: "Retry search" }).click();
+    await expect(sidebar).toContainText("Searching titles, descriptions, and article text.");
+    await search.fill("uninstall");
+    await expect(sidebar.getByRole("link", { name: "Installation", exact: true })).toBeVisible();
+    expect(requests).toBe(2);
+  });
+}
+
+test("real walkthrough waits for playback and loads video with English captions", async ({ page }) => {
+  const mediaRequests: string[] = [];
+  page.on("request", (request) => { if (request.url().endsWith("/media/walkthrough.webm")) mediaRequests.push(request.url()); });
+  await page.goto("/");
+  const video = page.locator("#walkthrough video");
+  await expect(video).toHaveAttribute("preload", "none");
+  await expect(video).not.toHaveAttribute("autoplay", "");
+  expect(mediaRequests).toHaveLength(0);
+  await expect(video.locator("track")).toHaveAttribute("src", "/media/walkthrough.en.vtt");
+  await video.evaluate((element: HTMLVideoElement) => element.play());
+  await expect.poll(() => video.evaluate((element: HTMLVideoElement) => element.currentTime)).toBeGreaterThan(0);
+  const metadata = await video.evaluate((element: HTMLVideoElement) => ({ width: element.videoWidth, height: element.videoHeight, duration: element.duration }));
+  expect(metadata.width).toBe(1280);
+  expect(metadata.height).toBe(720);
+  expect(metadata.duration).toBeGreaterThan(50);
+  expect(metadata.duration).toBeLessThan(180);
+  await expect.poll(() => video.evaluate((element: HTMLVideoElement) => element.textTracks[0]?.cues?.length ?? 0)).toBe(6);
+  const captionEnd = await video.evaluate((element: HTMLVideoElement) => {
+    const cues = element.textTracks[0].cues!;
+    return cues[cues.length - 1].endTime;
+  });
+  expect(Math.abs(captionEnd - metadata.duration)).toBeLessThan(0.05);
+  await video.evaluate((element: HTMLVideoElement) => element.pause());
+  expect(await video.evaluate((element: HTMLVideoElement) => element.paused)).toBe(true);
+  await expect(page.locator("#walkthrough").getByRole("link", { name: "Follow the written tutorial" })).toHaveAttribute("href", "/docs/first-tutorial");
 });
 
 test("unknown docs show not-found content and noindex", async ({ page }) => {

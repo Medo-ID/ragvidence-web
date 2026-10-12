@@ -84,7 +84,7 @@ export default function Home() {
 
             <div className="mt-10 border-t border-line pt-6">
               <p className="text-sm text-muted"><span className="font-mono text-lg text-ink">60% <span className="text-muted">→</span> 90%</span><span className="ml-3">evidence sufficiency</span></p>
-              <p className="mt-2 text-xs leading-6 text-muted">Bundled tutorial · v0.1.0 · 10 questions · BM25 · k=2</p>
+              <p className="mt-2 text-xs leading-6 text-muted">Bundled tutorial · v0.1.0 · 10 answerable questions · BM25 · k=2</p>
             </div>
 
             <div className="mt-6 flex max-w-lg flex-wrap gap-x-5 gap-y-3 text-xs text-muted">
@@ -106,7 +106,7 @@ export default function Home() {
         </div>
       </section>
 
-      <ProductWalkthrough />
+      <ProductWalkthrough video={{ src: "/media/walkthrough.webm", type: "video/webm", captions: "/media/walkthrough.en.vtt", poster: "/media/walkthrough-poster.png" }} />
 
       <section className="product-section shell">
         <SectionHeading eyebrow="The failure behind the answer" title="A plausible answer can hide a broken retriever.">
@@ -149,13 +149,13 @@ export default function Home() {
         <div className="grid items-start gap-12 lg:grid-cols-[0.82fr_1.18fr] lg:gap-16">
           <div className="lg:sticky lg:top-28">
             <SectionHeading eyebrow="Reproducible proof" title="See the change. Then inspect every rank.">
-              This is the bundled tutorial—not a customer benchmark. On the same ten labeled questions at k=2, adding heading context recovered three failures without introducing a regression.
+              This is the bundled tutorial—not a customer benchmark. On the same ten answerable questions at k=2, adding heading context recovered three failures without introducing a regression.
             </SectionHeading>
             <div className="mt-7 flex flex-wrap gap-3">
               <a href="/sample-report.html" className="inline-flex items-center gap-2 rounded-none bg-signal px-4 py-2.5 text-sm font-semibold text-ink hover:bg-signal-hover">Open the full report <ArrowRight size={15} /></a>
               <Link href="/docs/first-tutorial" className="inline-flex items-center gap-2 rounded-none border border-line px-4 py-2.5 text-sm font-semibold text-ink hover:border-signal/30">Reproduce it locally <ChevronRight size={15} /></Link>
             </div>
-            <p className="mt-5 text-xs leading-5 text-muted">Bundled dataset · 10 questions · BM25 · k=2 · body vs. heading-context · version 0.1.0</p>
+            <p className="mt-5 text-xs leading-5 text-muted">Bundled dataset · 10 answerable questions · BM25 · k=2 · body vs. heading-context · version 0.1.0</p>
           </div>
 
           <div className="overflow-hidden rounded-none border border-line glass-panel">
