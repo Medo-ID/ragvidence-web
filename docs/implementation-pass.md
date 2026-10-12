@@ -4,6 +4,11 @@ Implemented October 12, 2026, following `project-review.md` and the owner's
 request for 80% desktop content width, clearer section separation, translucent
 components, and a softer cyan accent.
 
+Latest status: [follow-up-verification.md](follow-up-verification.md) records a
+successful clean installation, production build, full gate, all corrected browser
+tests, and the subsequent cancellation/print fixes. The initial restriction below
+is retained as historical evidence.
+
 ## Changes
 
 - Shared content uses 80% width from 1024px, capped at 1440px on very large
@@ -54,7 +59,7 @@ The existing sample report's entire `<main>` content matches the committed
 original byte for byte. Its results, evidence, manifests, and provenance remain
 unchanged; edits are confined to presentation CSS.
 
-## Verification status and limitations
+## Initial verification status and limitations
 
 - ESLint and TypeScript pass on the final source, including the new tests/config.
 - Both verification-script regression tests pass: unavailable external targets

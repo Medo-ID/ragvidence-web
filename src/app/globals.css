@@ -125,7 +125,15 @@ a, button { -webkit-tap-highlight-color: transparent; outline-offset: 4px; }
 }
 
 @media print {
+  :root { color-scheme: light; }
   body { background: white; color: black; }
   .no-print { display: none !important; }
+  main, main * {
+    color: #17212b !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+  }
+  main a { text-decoration: underline; }
   .glass-panel, .surface { background: white; box-shadow: none; backdrop-filter: none; }
 }

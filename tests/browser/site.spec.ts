@@ -90,6 +90,23 @@ test("unknown docs show not-found content and noindex", async ({ page }) => {
   await expect(page.locator('meta[name="robots"]').first()).toHaveAttribute("content", /noindex/);
 });
 
+test("printed documentation keeps headings, links, and commands readable", async ({ page }) => {
+  await page.goto("/docs/installation");
+  await page.emulateMedia({ media: "print" });
+  const samples = await page.locator("article h1, article p, article a, article pre code").evaluateAll((elements) => elements.map((element) => {
+    const color = getComputedStyle(element).color;
+    const channels = color.match(/[\d.]+/g)?.slice(0, 3).map(Number) ?? [];
+    const linear = channels.map((channel) => {
+      const value = channel / 255;
+      return value <= 0.04045 ? value / 12.92 : ((value + 0.055) / 1.055) ** 2.4;
+    });
+    const luminance = 0.2126 * linear[0] + 0.7152 * linear[1] + 0.0722 * linear[2];
+    return { text: element.textContent?.slice(0, 60), contrastOnPaper: 1.05 / (luminance + 0.05) };
+  }));
+  expect(samples.length).toBeGreaterThan(0);
+  for (const sample of samples) expect(sample.contrastOnPaper, sample.text).toBeGreaterThanOrEqual(4.5);
+});
+
 for (const width of [320, 390, 768, 1024, 1440, 1920]) {
   test(`homepage and long docs fit at ${width}px`, async ({ page }) => {
     await page.setViewportSize({ width, height: 900 });

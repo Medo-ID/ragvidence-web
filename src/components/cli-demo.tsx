@@ -91,7 +91,7 @@ export function CliDemo() {
         <span className="font-mono text-xs text-muted">Guided tutorial preview</span>
       </div>
 
-      <div className="grid grid-cols-4 border-b border-line" aria-label="Tutorial steps">
+      <div className="no-print grid grid-cols-4 border-b border-line" aria-label="Tutorial steps">
         {steps.map((item, index) => (
           <button key={item.label} type="button" aria-pressed={active === index} aria-controls="cli-demo-stage" onClick={() => selectStep(index)} className={`min-h-14 border-r border-line px-2 py-3 text-sm transition-colors last:border-r-0 sm:px-4 ${active === index ? "bg-signal/8 text-signal shadow-[inset_0_-2px_0_#c4edf1]" : "text-muted hover:bg-panel-raised hover:text-ink"}`}>
             <span className="mr-2 font-mono text-xs opacity-65" aria-hidden="true">0{index + 1}</span>{item.label}
@@ -144,7 +144,7 @@ export function CliDemo() {
         </div>
       </div>
 
-      <div className="flex flex-wrap items-center justify-between gap-3 border-t border-line bg-canvas/50 px-5 py-3">
+      <div className="no-print flex flex-wrap items-center justify-between gap-3 border-t border-line bg-canvas/50 px-5 py-3">
         <Link href={step.href} className="inline-flex min-h-11 items-center gap-2 text-xs font-medium text-signal hover:text-ink">{step.link}<ArrowRight size={13} aria-hidden="true" /></Link>
         <button type="button" onClick={togglePlayback} disabled={reducedMotion} title={reducedMotion ? "Automatic playback is disabled with reduced motion." : undefined} className="inline-flex min-h-11 items-center gap-2 text-xs text-ink hover:text-signal disabled:cursor-default disabled:text-muted">
           {isPlaying ? <Pause size={15} aria-hidden="true" /> : active === steps.length - 1 ? <RotateCcw size={15} aria-hidden="true" /> : <Play size={15} aria-hidden="true" />}

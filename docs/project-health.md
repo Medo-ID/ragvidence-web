@@ -1,7 +1,8 @@
 # Project health baseline
 
-Current implementation follow-up: [implementation-pass.md](implementation-pass.md)
-records the October 12 changes, resolved findings, and the final build restriction.
+Current verification: [follow-up-verification.md](follow-up-verification.md)
+records the successful October 12 production gate in a fresh checkout and remaining
+release checks. [implementation-pass.md](implementation-pass.md) describes the UI changes.
 The tables below remain the historical October 8 audit.
 
 Checked on October 8, 2026, against the working tree, including pre-existing edits

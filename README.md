@@ -49,6 +49,10 @@ An unavailable explicit target fails directly without starting a local server.
 Browser traces and screenshots on failure are written to ignored `test-results/`
 and `playwright-report/` directories.
 
+The verifier stops its own production server on success, failure, or cancellation.
+The October 12 clean-install and full-gate results are recorded in
+[`docs/follow-up-verification.md`](docs/follow-up-verification.md).
+
 TypeScript is intentionally constrained to version 6. TypeScript 7.0.2 is newer, but the ESLint stack bundled with the current Next.js release explicitly does not support the TypeScript 7 compiler API yet. Upgrade only when `eslint-config-next` supports it and `npm run verify` passes.
 
 The production dependency audit is clean. A full development-tree audit may still report the current `braces` advisory inherited by `eslint-config-next`; npm offers no patched `braces` release and suggests an incompatible Next.js downgrade. It is not shipped in the runtime bundle. Recheck it whenever the Next.js lint stack updates.

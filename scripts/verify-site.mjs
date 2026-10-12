@@ -7,6 +7,7 @@ const baseUrl = new URL(explicitUrl ?? "http://127.0.0.1:3001");
 let server;
 let serverLog = "";
 let serverError;
+let stopping;
 
 async function request(path = "/", options = {}) {
   return fetch(new URL(path, baseUrl), { ...options, signal: AbortSignal.timeout(10000) });
@@ -30,13 +31,22 @@ async function startProduction() {
   throw new Error(`Production server did not become ready.\n${serverLog}`);
 }
 
-async function stopProduction() {
-  if (!server || server.exitCode !== null || server.signalCode !== null) return;
-  const closed = once(server, "close").catch(() => {});
-  server.kill("SIGTERM");
-  const timeout = setTimeout(() => server.kill("SIGKILL"), 3000);
-  await closed;
-  clearTimeout(timeout);
+function stopProduction() {
+  stopping ??= (async () => {
+    if (!server || server.exitCode !== null || server.signalCode !== null) return;
+    const closed = once(server, "close").catch(() => {});
+    server.kill("SIGTERM");
+    const timeout = setTimeout(() => server.kill("SIGKILL"), 3000);
+    await closed;
+    clearTimeout(timeout);
+  })();
+  return stopping;
+}
+
+for (const [signal, exitCode] of [["SIGINT", 130], ["SIGTERM", 143]]) {
+  process.once(signal, async () => {
+    try { await stopProduction(); } finally { process.exit(exitCode); }
+  });
 }
 
 function notFound(html) {
