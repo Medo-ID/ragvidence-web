@@ -1,114 +1,120 @@
 import { spawn } from "node:child_process";
+import { once } from "node:events";
+import { docs } from "../src/lib/docs.ts";
 
-const baseUrl = process.env.RAGVIDENCE_SITE_URL ?? "http://127.0.0.1:3000";
+const explicitUrl = process.env.RAGVIDENCE_SITE_URL;
+const baseUrl = new URL(explicitUrl ?? "http://127.0.0.1:3001");
 let server;
 let serverLog = "";
+let serverError;
 
-async function reachable() {
-  try {
-    const response = await fetch(baseUrl);
-    return response.ok;
-  } catch {
-    return false;
-  }
+async function request(path = "/", options = {}) {
+  return fetch(new URL(path, baseUrl), { ...options, signal: AbortSignal.timeout(10000) });
 }
 
-if (!(await reachable())) {
-  server = spawn("./node_modules/.bin/next", ["dev", "--hostname", "127.0.0.1"], {
+async function startProduction() {
+  server = spawn(process.execPath, ["node_modules/next/dist/bin/next", "start", "--hostname", "127.0.0.1", "--port", "3001"], {
     stdio: ["ignore", "pipe", "pipe"],
   });
-  server.stdout.on("data", (chunk) => { serverLog += chunk.toString(); });
-  server.stderr.on("data", (chunk) => { serverLog += chunk.toString(); });
-  for (let attempt = 0; attempt < 40 && !(await reachable()); attempt += 1) {
+  const collect = (chunk) => { serverLog = (serverLog + chunk.toString()).slice(-16000); };
+  server.stdout.on("data", collect);
+  server.stderr.on("data", collect);
+  server.on("error", (error) => { serverError = error; });
+  for (let attempt = 0; attempt < 120; attempt += 1) {
+    if (serverError) throw serverError;
+    if (server.exitCode !== null) throw new Error(`Production server exited (${server.exitCode}).\n${serverLog}`);
+    // A reachable port alone could belong to an older server.
+    if (serverLog.includes("Ready in") && (await request()).ok) return;
     await new Promise((resolve) => setTimeout(resolve, 250));
   }
-  if (!(await reachable())) {
-    server.kill("SIGTERM");
-    console.error(serverLog);
-    throw new Error(`Could not start a local site at ${baseUrl}`);
+  throw new Error(`Production server did not become ready.\n${serverLog}`);
+}
+
+async function stopProduction() {
+  if (!server || server.exitCode !== null || server.signalCode !== null) return;
+  const closed = once(server, "close").catch(() => {});
+  server.kill("SIGTERM");
+  const timeout = setTimeout(() => server.kill("SIGKILL"), 3000);
+  await closed;
+  clearTimeout(timeout);
+}
+
+function notFound(html) {
+  return /<meta[^>]+name="robots"[^>]+content="[^"]*noindex/.test(html);
+}
+
+async function verify() {
+  if (!explicitUrl) await startProduction();
+  else if (!(await request()).ok) throw new Error(`Site is unavailable at ${baseUrl}.`);
+
+  const routes = ["/", "/docs", ...docs.map(({ slug }) => `/docs/${slug}`), "/releases", "/privacy", "/terms", "/security", "/sample-report.html", "/ragvidence-0.1.0-license.txt", "/robots.txt", "/sitemap.xml", "/opengraph-image", "/favicon.ico"];
+  const binaryRoutes = new Set(["/opengraph-image", "/favicon.ico"]);
+  const failures = [];
+  const pages = new Map();
+  const headers = [
+    ["x-content-type-options", "nosniff"],
+    ["x-frame-options", "DENY"],
+    ["referrer-policy", "strict-origin-when-cross-origin"],
+    ["permissions-policy", "camera=(), microphone=(), geolocation=(), payment=(), usb=()"],
+    ["cross-origin-opener-policy", "same-origin"],
+  ];
+  for (const route of routes) {
+    const response = await request(route);
+    const body = binaryRoutes.has(route) ? Buffer.from(await response.arrayBuffer()) : await response.text();
+    if (!response.ok) failures.push(`${route}: HTTP ${response.status}`);
+    if (!body.length) failures.push(`${route}: empty response`);
+    for (const [name, value] of headers) {
+      if (response.headers.get(name) !== value) failures.push(`${route}: invalid ${name}`);
+    }
+    if (typeof body !== "string") continue;
+    pages.set(route, body);
+    if (!route.endsWith(".txt") && !route.endsWith(".xml")) {
+      if (!body.includes("<html")) failures.push(`${route}: not an HTML document`);
+      if (notFound(body)) failures.push(`${route}: unexpectedly rendered not-found content`);
+    }
+    if (/Create Next App|Lorem ipsum|TODO|FIXME/i.test(body)) failures.push(`${route}: placeholder content`);
   }
-}
-
-const docs = [
-  "overview", "installation", "first-tutorial", "first-report", "evidence-labels",
-  "retrieval-depth", "controlled-experiments", "bm25-workflow", "semantic-workflow",
-  "import-retriever", "bring-your-own-data", "metrics", "compare-diagnose", "reports",
-  "commands", "privacy-providers", "troubleshooting",
-];
-
-const routes = [
-  "/", "/docs", ...docs.map((slug) => `/docs/${slug}`), "/privacy", "/terms",
-  "/security", "/sample-report.html", "/robots.txt", "/sitemap.xml",
-  "/opengraph-image", "/favicon.ico",
-];
-
-const failures = [];
-const pages = new Map();
-const responses = new Map();
-
-for (const route of routes) {
-  const response = await fetch(new URL(route, baseUrl));
-  const body = await response.text();
-  pages.set(route, body);
-  responses.set(route, response);
-  if (!response.ok) failures.push(`${route}: HTTP ${response.status}`);
-  if (!body.trim()) failures.push(`${route}: empty response`);
-}
-
-const home = pages.get("/") ?? "";
-for (const phrase of [
-  'uv tool install &quot;ragvidence[semantic]&quot;',
-  "Stop guessing whether your RAG change",
-  "60%",
-  "90%",
-  "The Free edition is a real tool",
-]) {
-  if (!home.includes(phrase)) failures.push(`/: missing required content: ${phrase}`);
-}
-
-const binaryRoutes = new Set(["/opengraph-image", "/favicon.ico"]);
-for (const [route, html] of pages) {
-  if (!html.includes("<html") && !route.endsWith(".txt") && !route.endsWith(".xml") && !binaryRoutes.has(route)) {
-    failures.push(`${route}: not an HTML document`);
+  const home = pages.get("/") ?? "";
+  for (const phrase of ["ragvidence[semantic]", "See whether your RAG change", "60%", "90%", "The Free edition is a real tool"]) {
+    if (!home.includes(phrase)) failures.push(`/: missing ${phrase}`);
   }
-  if (/Create Next App|Lorem ipsum|TODO|FIXME/i.test(html)) {
-    failures.push(`${route}: placeholder content detected`);
+  if (/<script|https?:\/\//i.test(pages.get("/sample-report.html") ?? "")) failures.push("Sample report contains scripts or remote assets.");
+
+  const internalLinks = new Map();
+  for (const [route, html] of pages) {
+    if (!html.includes("<html")) continue;
+    for (const match of html.matchAll(/href="((?:\/|#)[^"]*)"/g)) {
+      const target = new URL(match[1].replaceAll("&amp;", "&"), new URL(route, baseUrl));
+      if (target.origin === baseUrl.origin) internalLinks.set(target.pathname + target.search + target.hash, target);
+    }
   }
-}
-
-const homeHeaders = responses.get("/")?.headers;
-for (const [name, expected] of [
-  ["x-content-type-options", "nosniff"],
-  ["x-frame-options", "DENY"],
-  ["referrer-policy", "strict-origin-when-cross-origin"],
-]) {
-  if (homeHeaders?.get(name) !== expected) failures.push(`/: missing security header ${name}`);
-}
-
-if (/<script|https?:\/\//i.test(pages.get("/sample-report.html") ?? "")) {
-  failures.push("/sample-report.html: report must not contain scripts or remote assets");
-}
-
-const internalLinks = new Set();
-for (const html of pages.values()) {
-  for (const match of html.matchAll(/href="(\/[^"]*)"/g)) {
-    const path = match[1].split("#")[0];
-    if (path) internalLinks.add(path);
+  for (const [link, target] of internalLinks) {
+    let html = pages.get(target.pathname);
+    if (html === undefined) {
+      const response = await request(target.pathname + target.search);
+      html = await response.text();
+      if (!response.ok || notFound(html)) failures.push(`${link}: broken internal destination`);
+    }
+    if (target.hash && !html.includes(`id="${decodeURIComponent(target.hash.slice(1))}"`)) failures.push(`${link}: missing fragment target`);
   }
+  for (const path of ["/no-such-page", "/docs/no-such-page"]) {
+    const response = await request(path);
+    const html = await response.text();
+    if (![200, 404].includes(response.status) || !notFound(html) || !html.includes("This evidence trail ends here.")) failures.push(`${path}: missing not-found UI or noindex`);
+    if (path === "/no-such-page" && response.status !== 404) failures.push(`${path}: expected HTTP 404`);
+  }
+  for (const { slug } of docs) {
+    if (!(pages.get("/sitemap.xml") ?? "").includes(`/docs/${slug}</loc>`)) failures.push(`Sitemap missing /docs/${slug}`);
+  }
+  if (failures.length) throw new Error(`Site verification failed (${failures.length}):\n${failures.map((failure) => `- ${failure}`).join("\n")}`);
+  console.log(`Verified ${routes.length} routes, ${internalLinks.size} internal links/fragments, all security headers, and not-found behavior at ${baseUrl}.`);
 }
 
-for (const path of internalLinks) {
-  const response = await fetch(new URL(path, baseUrl), { redirect: "manual" });
-  if (response.status >= 400) failures.push(`linked route ${path}: HTTP ${response.status}`);
+try {
+  await verify();
+} catch (error) {
+  console.error(error instanceof Error ? error.message : error);
+  process.exitCode = 1;
+} finally {
+  await stopProduction();
 }
-
-if (failures.length) {
-  if (serverLog) console.error(serverLog);
-  console.error(`Site verification failed (${failures.length}):`);
-  for (const failure of failures) console.error(`- ${failure}`);
-  server?.kill("SIGTERM");
-  process.exit(1);
-}
-
-console.log(`Verified ${routes.length} routes and ${internalLinks.size} internal links at ${baseUrl}.`);
-server?.kill("SIGTERM");

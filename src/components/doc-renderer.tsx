@@ -13,6 +13,9 @@ export function DocRenderer({ blocks }: { blocks: DocBlock[] }) {
           const Tag = block.ordered ? "ol" : "ul";
           return <Tag key={index} className={`my-5 space-y-2 pl-5 text-[0.95rem] leading-7 text-muted ${block.ordered ? "list-decimal" : "list-disc marker:text-signal"}`}>{block.items.map((item) => <li key={item} className="pl-1">{item}</li>)}</Tag>;
         }
+        if (block.type === "links") {
+          return <ul key={index} className="my-5 space-y-3 text-sm leading-6">{block.items.map(({ label, href }) => <li key={href}><a href={href} className="text-signal underline underline-offset-4 hover:text-ink">{label}</a></li>)}</ul>;
+        }
         if (block.type === "code") {
           return (
             <div key={index} className="my-6 overflow-hidden rounded-none border border-line bg-[#090d12]">

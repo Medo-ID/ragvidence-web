@@ -24,7 +24,30 @@ Run the complete production check before every deployment:
 npm run verify
 ```
 
-This executes ESLint with zero warnings allowed, TypeScript without emitting files, a complete Next.js production build, every public route and internal-link check, security-header checks, and a production dependency audit.
+First install the browser used by the regression checks:
+
+```bash
+npx playwright install --with-deps chromium
+```
+
+The gate executes ESLint with zero warnings allowed, TypeScript, a production
+build, route/link/fragment and security-header checks, Chromium regression tests,
+and a production dependency audit. CI runs it on pull requests and pushes to main.
+
+`npm run verify:site` starts its own production server on port 3001 and stops it
+after checking. It requires a successful build and fails if that port is occupied.
+`npm run test:browser` starts a separate production server on port 3002; both checks
+exercise production, rather than falling back to a development server.
+
+To check a deployed preview or a separately started production server:
+
+```bash
+RAGVIDENCE_SITE_URL=https://your-preview.example npm run verify:site
+```
+
+An unavailable explicit target fails directly without starting a local server.
+Browser traces and screenshots on failure are written to ignored `test-results/`
+and `playwright-report/` directories.
 
 TypeScript is intentionally constrained to version 6. TypeScript 7.0.2 is newer, but the ESLint stack bundled with the current Next.js release explicitly does not support the TypeScript 7 compiler API yet. Upgrade only when `eslint-config-next` supports it and `npm run verify` passes.
 
@@ -35,14 +58,15 @@ The production dependency audit is clean. A full development-tree audit may stil
 - `src/app/page.tsx` — product landing page
 - `src/lib/docs.ts` — versioned documentation content and navigation order
 - `src/app/docs` — documentation routes
+- `src/app/releases` — verified CLI release history and distribution links
 - `src/app/privacy`, `terms`, `security` — trust pages
 - `public/sample-report.html` — website-styled presentation of the bundled v0.1.0 tutorial report; recorded results and provenance are preserved, with offline Auto/Light/Dark appearance controls
+- `public/ragvidence-0.1.0-license.txt` — verbatim LICENSE.md from the production PyPI wheel
 
 ## Walkthrough recording
 
-The homepage reserves an integrated walkthrough window in
-`src/components/product-walkthrough.tsx`. Until the recording is ready, that window
-contains the interactive CLI preview and a clearly labeled recording status.
+The hero contains the interactive CLI preview. The separate written walkthrough
+in `src/components/product-walkthrough.tsx` can also host a recording.
 
 To add your recording, place an MP4, English WebVTT captions, and an optional poster
 in `public/`, then pass them to the homepage component:
@@ -57,7 +81,7 @@ in `public/`, then pass them to the homepage component:
 />
 ```
 
-The video replaces the preview inside the same window. It uses native playback
+The video replaces the written steps inside the same window. It uses native playback
 controls, inline playback, a reserved 16:9 frame, and no autoplay or video preload.
 The first-tutorial documentation remains the written walkthrough.
 
@@ -80,14 +104,20 @@ The website does not collect user input, host user data, or provide checkout yet
 The landing page uses the production command:
 
 ```bash
-uv tool install "ragvidence[semantic]"
+uv tool install --python 3.12 "ragvidence[semantic]"
 ```
 
-That command resolves against production PyPI. The package has already passed TestPyPI verification, but the site must not be announced until version 0.1.0 is published to production PyPI and a clean-machine install passes.
+Version 0.1.0 was published to production PyPI on October 8, 2026. On October 12,
+the command above passed a fresh isolated uv tool installation from production
+PyPI on Linux with Python 3.12.14, followed by `ragvi --version`, `ragvi health`,
+and `ragvi tutorial`. The generated evaluations recorded 6/10 versus 9/10
+sufficient questions at k=2. This is an isolated-install check on the development
+host, not a clean-machine or Windows/macOS certification. Deployment and domain
+health remain separate checks before announcement.
 
-Recommended release order:
+For subsequent releases:
 
-1. Publish `ragvidence==0.1.0` to production PyPI through the trusted GitHub workflow.
+1. Publish the verified CLI version to production PyPI through its trusted GitHub workflow.
 2. Install it into a temporary isolated `uv` tool directory.
 3. Run `ragvi --version`, `ragvi health`, and `ragvi tutorial`.
 4. Confirm the tutorial HTML report exists and opens.

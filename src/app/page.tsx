@@ -14,15 +14,15 @@ import {
   ScanSearch,
   ShieldCheck,
   Sparkles,
-  Terminal,
   TriangleAlert,
 } from "lucide-react";
 import Link from "next/link";
 import { CopyCommand } from "@/components/copy-command";
 import { SectionHeading } from "@/components/section-heading";
 import { ProductWalkthrough } from "@/components/product-walkthrough";
+import { CliDemo } from "@/components/cli-demo";
 
-const installCommand = 'uv tool install "ragvidence[semantic]"';
+const installCommand = 'uv tool install --python 3.12 "ragvidence[semantic]"';
 const tutorialCommand = "ragvi tutorial";
 
 const workflow = [
@@ -60,51 +60,41 @@ const plusDirection = [
 
 export default function Home() {
   return (
-    <>
-      <section id="install" className="relative isolate overflow-hidden border-b border-line/70 pb-20 pt-20 sm:pb-28 sm:pt-28 lg:pb-32 lg:pt-32">
+    <div className="home-sections">
+      <section id="install" className="hero-section relative isolate border-b border-line/70">
         <div className="site-grid absolute inset-0 -z-10" aria-hidden="true" />
-        <div className="shell text-center">
-          <div className="mx-auto max-w-4xl">
+        <div className="shell grid grid-cols-1 items-center gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-10 xl:gap-16">
+          <div className="min-w-0">
             <div className="inline-flex items-center gap-2 font-mono text-xs text-muted">
               <span className="size-1.5 bg-success" aria-hidden="true" />
               Local-first · CLI-native · Evidence-level
             </div>
-            <h1 className="mx-auto mt-8 max-w-4xl text-balance text-[2.65rem] font-semibold leading-[1.08] tracking-[-0.055em] text-ink sm:text-6xl lg:text-[4.5rem]">
-              Stop guessing whether your RAG change{" "}
-              <span className="text-signal">actually helped.</span>
+            <h1 className="mt-7 max-w-xl text-balance text-[2.65rem] font-semibold leading-[1.08] tracking-[-0.05em] text-ink sm:text-6xl lg:text-[3.2rem] xl:text-6xl">
+              See whether your RAG change{" "}
+              <span className="text-signal">helped.</span>
             </h1>
-            <p className="mx-auto mt-8 max-w-2xl text-pretty text-base leading-7 text-muted sm:text-lg sm:leading-8">
-              Test whether your retriever found the evidence an answer needs. Compare changes locally, catch regressions, and share a report your team can inspect.
+            <p className="mt-7 max-w-lg text-pretty text-base leading-7 text-muted sm:text-lg sm:leading-8">
+              Compare retrieval changes locally. Find missing evidence, catch regressions, and share a report your team can inspect.
             </p>
 
-            <div className="mt-9 flex flex-wrap justify-center gap-3">
-              <Link href="/docs/installation" className="inline-flex min-h-11 items-center gap-2 border border-signal bg-signal px-5 text-sm font-semibold text-canvas transition-colors hover:bg-[#8af0fa]">Install Free<ArrowRight size={16} aria-hidden="true" /></Link>
-              <a href="/sample-report.html" className="inline-flex min-h-11 items-center gap-2 border border-line bg-panel/60 px-5 text-sm font-medium text-ink transition-colors hover:border-signal/40">View sample report<FileSearch size={16} aria-hidden="true" /></a>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Link href="/docs/installation" className="inline-flex min-h-11 items-center gap-2 border border-signal bg-signal px-5 text-sm font-semibold text-canvas transition-colors hover:bg-ink">Install Free<ArrowRight size={16} aria-hidden="true" /></Link>
+              <a href="/sample-report.html" className="glass-panel inline-flex min-h-11 items-center gap-2 border border-line px-5 text-sm font-medium text-ink transition-colors hover:border-signal/40">View sample report<FileSearch size={16} aria-hidden="true" /></a>
             </div>
 
-            <div className="glass-panel mx-auto mt-10 max-w-xl border border-line text-left">
-              <div className="flex items-center justify-between gap-3 border-b border-line px-4 py-2">
-                <div className="flex items-center gap-2 font-mono text-xs text-muted"><Terminal size={14} aria-hidden="true" /> Install the full Free edition</div>
-                <CopyCommand command={installCommand} />
-              </div>
-              <div className="overflow-x-auto px-4 py-4 font-mono text-xs leading-6 sm:text-sm">
-                <code className="whitespace-nowrap">
-                  <span className="select-none text-muted">$ </span><span className="text-ink">uv tool install </span><span className="text-signal">&quot;ragvidence[semantic]&quot;</span>
-                </code>
-              </div>
-              <div className="flex flex-wrap items-center justify-between gap-3 border-t border-line px-4 py-3">
-                <code className="font-mono text-xs text-muted"><span className="text-success">then</span> · ragvi tutorial</code>
-                <Link href="/docs/first-tutorial" className="inline-flex min-h-8 items-center gap-2 text-xs text-muted hover:text-signal">Follow the tutorial<ArrowRight size={13} aria-hidden="true" /></Link>
-              </div>
+            <div className="mt-10 border-t border-line pt-6">
+              <p className="text-sm text-muted"><span className="font-mono text-lg text-ink">60% <span className="text-muted">→</span> 90%</span><span className="ml-3">evidence sufficiency</span></p>
+              <p className="mt-2 text-xs leading-6 text-muted">Bundled tutorial · v0.1.0 · 10 questions · BM25 · k=2</p>
             </div>
 
-            <div className="mx-auto mt-8 flex max-w-xl flex-wrap justify-center gap-x-6 gap-y-4 text-xs text-muted sm:text-sm">
+            <div className="mt-6 flex max-w-lg flex-wrap gap-x-5 gap-y-3 text-xs text-muted">
               <span className="inline-flex items-center gap-2"><LockKeyhole size={15} className="text-signal" /> No account</span>
               <span className="inline-flex items-center gap-2"><ShieldCheck size={15} className="text-signal" /> No telemetry</span>
               <span className="inline-flex items-center gap-2"><Database size={15} className="text-signal" /> No hosted database</span>
               <span className="inline-flex items-center gap-2"><Globe2 size={15} className="text-signal" /> Your model, or none</span>
             </div>
           </div>
+          <div className="min-w-0"><CliDemo /></div>
         </div>
       </section>
 
@@ -162,7 +152,7 @@ export default function Home() {
               This is the bundled tutorial—not a customer benchmark. On the same ten labeled questions at k=2, adding heading context recovered three failures without introducing a regression.
             </SectionHeading>
             <div className="mt-7 flex flex-wrap gap-3">
-              <a href="/sample-report.html" className="inline-flex items-center gap-2 rounded-none bg-signal px-4 py-2.5 text-sm font-semibold text-canvas hover:bg-[#8af0fa]">Open the full report <ArrowRight size={15} /></a>
+              <a href="/sample-report.html" className="inline-flex items-center gap-2 rounded-none bg-signal px-4 py-2.5 text-sm font-semibold text-canvas hover:bg-ink">Open the full report <ArrowRight size={15} /></a>
               <Link href="/docs/first-tutorial" className="inline-flex items-center gap-2 rounded-none border border-line px-4 py-2.5 text-sm font-semibold text-ink hover:border-signal/30">Reproduce it locally <ChevronRight size={15} /></Link>
             </div>
             <p className="mt-5 text-xs leading-5 text-muted">Bundled dataset · 10 questions · BM25 · k=2 · body vs. heading-context · version 0.1.0</p>
@@ -203,7 +193,7 @@ export default function Home() {
           </SectionHeading>
           <div className="mt-12 grid gap-px overflow-hidden rounded-none border border-line bg-line md:grid-cols-2 lg:grid-cols-3">
             {metrics.map(([name, description]) => (
-              <article key={name} className="bg-canvas/90 p-7 sm:p-9"><Braces size={17} className="text-signal" /><h3 className="mt-4 font-mono text-sm font-semibold text-ink">{name}</h3><p className="mt-2 text-sm leading-6 text-muted">{description}</p></article>
+              <article key={name} className="glass-panel p-7 sm:p-9"><Braces size={17} className="text-signal" /><h3 className="mt-4 font-mono text-sm font-semibold text-ink">{name}</h3><p className="mt-2 text-sm leading-6 text-muted">{description}</p></article>
             ))}
           </div>
         </div>
@@ -235,7 +225,7 @@ export default function Home() {
             Use the complete current workflow without an account. Plus will add advanced depth only after those features exist and early users validate the need.
           </SectionHeading>
           <div className="mx-auto mt-14 grid max-w-5xl grid-cols-1 gap-5 lg:grid-cols-2">
-            <article className="rounded-none border border-signal/35 bg-canvas p-7 shadow-[0_0_70px_rgba(98,231,245,0.045)] sm:p-9">
+            <article className="rounded-none border border-signal/35 bg-canvas p-7 glass-panel sm:p-9">
               <div className="flex flex-col items-start gap-4 sm:flex-row sm:justify-between"><div><p className="font-mono text-xs text-signal">FREE</p><h3 className="mt-2 text-2xl font-semibold text-ink">Build a trustworthy baseline</h3></div><span className="shrink-0 border border-success/25 bg-success/10 px-2.5 py-1 font-mono text-xs text-success">AVAILABLE</span></div>
               <p className="mt-4 text-sm leading-6 text-muted">Everything currently shipped in version 0.1.0. No activation, account, or payment required.</p>
               <ul className="mt-7 space-y-3">
@@ -243,7 +233,7 @@ export default function Home() {
               </ul>
               <div className="mt-8 rounded-none border border-line bg-panel p-3"><div className="flex items-center justify-between gap-3 overflow-hidden"><code className="truncate font-mono text-xs text-ink">{installCommand}</code><CopyCommand command={installCommand} label="Copy" /></div></div>
             </article>
-            <article className="rounded-none border border-line bg-canvas/55 p-7 sm:p-9">
+            <article className="rounded-none border border-line glass-panel p-7 sm:p-9">
               <div className="flex flex-col items-start gap-4 sm:flex-row sm:justify-between"><div><p className="font-mono text-xs text-muted">PLUS</p><h3 className="mt-2 text-2xl font-semibold text-ink">Go deeper with real workloads</h3></div><span className="shrink-0 border border-line bg-white/2.5 px-2.5 py-1 font-mono text-xs text-muted">COMING LATER</span></div>
               <p className="mt-4 text-sm leading-6 text-muted">Shaped with early users. No pre-orders and no promises disguised as shipped features.</p>
               <ul className="mt-7 space-y-3">
@@ -279,14 +269,14 @@ export default function Home() {
               ["Later · Plus", "Advanced cross-document investigations, experiment history, and team workflows."],
               ["Later · Teams", "Shared infrastructure only when multiple users genuinely need it."],
             ].map(([title, text], index) => (
-              <li key={title} className="flex gap-5 rounded-none border border-line bg-canvas/65 p-5"><span className={`mt-1 size-2.5 shrink-0 rounded-none ${index === 0 ? "bg-success shadow-[0_0_16px_rgba(85,214,139,0.6)]" : "border border-muted/50"}`} /><div><h3 className="text-sm font-semibold text-ink">{title}</h3><p className="mt-2 text-sm leading-6 text-muted">{text}</p></div></li>
+              <li key={title} className="flex gap-5 rounded-none border border-line glass-panel p-5"><span className={`mt-1 size-2.5 shrink-0 rounded-none ${index === 0 ? "bg-success shadow-[0_0_16px_rgba(85,214,139,0.6)]" : "border border-muted/50"}`} /><div><h3 className="text-sm font-semibold text-ink">{title}</h3><p className="mt-2 text-sm leading-6 text-muted">{text}</p></div></li>
             ))}
           </ol>
         </div>
       </section>
 
       <section className="product-section shell">
-        <div className="grid gap-8 rounded-none border border-line bg-canvas p-7 sm:p-10 lg:grid-cols-[auto_1fr_auto] lg:items-center">
+        <div className="grid gap-8 rounded-none border border-line glass-panel p-7 sm:p-10 lg:grid-cols-[auto_1fr_auto] lg:items-center">
           <div className="grid size-14 place-items-center rounded-none border border-signal/25 bg-signal/10 font-mono font-semibold text-signal">MI</div>
           <div><p className="text-sm font-semibold text-ink">Built by Medo-ID</p><p className="mt-2 max-w-2xl text-sm leading-6 text-muted">RAGvidence grew from a practical problem: deciding whether retrieval changes actually found the complete evidence needed for high-stakes, document-grounded answers. The project is independent, transparent about its limits, and designed in public-facing milestones.</p></div>
           <a href="https://medo-id.com" className="inline-flex items-center gap-2 text-sm font-semibold text-signal hover:text-ink">Meet the builder <ArrowRight size={15} /></a>
@@ -299,6 +289,6 @@ export default function Home() {
           <div className="relative"><BadgeCheck className="mx-auto text-signal" size={28} /><h2 className="mx-auto mt-5 max-w-2xl text-balance text-3xl font-semibold tracking-[-0.04em] text-ink sm:text-4xl">Run the evidence check before you trust the answer.</h2><p className="mx-auto mt-4 max-w-xl text-base leading-7 text-muted">Install RAGvidence, reproduce the bundled comparison, then replace the sample with questions from your own corpus.</p><div className="mx-auto mt-8 flex max-w-xl items-center gap-3 rounded-none border border-signal/20 bg-canvas/85 p-2 pl-4 text-left"><code className="min-w-0 flex-1 truncate font-mono text-xs text-ink sm:text-sm">{tutorialCommand}</code><CopyCommand command={tutorialCommand} /></div></div>
         </div>
       </section>
-    </>
+    </div>
   );
 }

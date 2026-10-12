@@ -17,6 +17,11 @@ const links = [
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
+  const [menuPath, setMenuPath] = useState(pathname);
+  if (menuPath !== pathname) {
+    setMenuPath(pathname);
+    setOpen(false);
+  }
   const toggleRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
@@ -34,27 +39,34 @@ export function SiteHeader() {
   return (
     <header className="glass-nav no-print sticky top-0 z-50 border-b border-line/80">
       <nav aria-label="Primary navigation" className="shell flex h-17 items-center justify-between gap-6">
-        <Brand />
-        <div className="hidden items-center gap-1 md:flex">
+        <Brand onClick={() => setOpen(false)} />
+        <div className="hidden items-center gap-1 xl:flex">
           {links.map((link) => (
             <Link key={link.href} href={link.href} aria-current={pathname.startsWith("/docs") && link.href === "/docs" ? "page" : undefined} className={`inline-flex min-h-11 items-center px-3 text-sm transition-colors hover:bg-white/4 hover:text-ink ${pathname.startsWith("/docs") && link.href === "/docs" ? "text-ink" : "text-muted"}`}>
               {link.label}
             </Link>
           ))}
-          <Link href="/docs/installation" className="ml-3 inline-flex min-h-10 items-center border border-signal/40 bg-signal px-4 text-sm font-semibold text-canvas transition-colors hover:bg-[#8af0fa]">Install Free</Link>
+          <Link href="/docs/installation" className="ml-3 inline-flex min-h-10 items-center border border-signal/40 bg-signal px-4 text-sm font-semibold text-canvas transition-colors hover:bg-ink">Install Free</Link>
         </div>
-        <button ref={toggleRef} type="button" aria-expanded={open} aria-controls="mobile-navigation" aria-label={open ? "Close navigation" : "Open navigation"} onClick={() => setOpen((value) => !value)} className="grid size-11 place-items-center border border-line text-muted hover:bg-white/5 hover:text-ink md:hidden">
+        <button ref={toggleRef} type="button" aria-expanded={open} aria-controls="mobile-navigation" aria-label={open ? "Close navigation" : "Open navigation"} onClick={() => setOpen((value) => !value)} className="grid size-11 place-items-center border border-line text-muted hover:bg-white/5 hover:text-ink xl:hidden">
           {open ? <X size={20} /> : <Menu size={20} />}
         </button>
       </nav>
-      <div id="mobile-navigation" hidden={!open} className="border-t border-line bg-panel/80 md:hidden">
+      <div id="mobile-navigation" hidden={!open} className="glass-panel border-t border-line xl:hidden">
         <div className="shell py-3">
           {links.map((link) => (
             <Link key={link.href} href={link.href} onClick={() => setOpen(false)} className="block px-3 py-3 text-sm text-muted hover:bg-white/4 hover:text-ink">{link.label}</Link>
           ))}
-          <Link href="/docs/installation" onClick={() => setOpen(false)} className="mt-2 block border border-signal/40 bg-signal px-3 py-3 text-sm font-semibold text-canvas hover:bg-[#8af0fa]">Install Free</Link>
+          <Link href="/docs/installation" onClick={() => setOpen(false)} className="mt-2 block border border-signal/40 bg-signal px-3 py-3 text-sm font-semibold text-canvas hover:bg-ink">Install Free</Link>
         </div>
       </div>
+      <noscript>
+        <div className="shell flex flex-wrap gap-6 border-t border-line py-3 text-sm text-muted xl:hidden">
+          <Link href="/docs/installation">Install Free</Link>
+          <Link href="/docs">Documentation</Link>
+          <a href="/sample-report.html">Sample report</a>
+        </div>
+      </noscript>
     </header>
   );
 }

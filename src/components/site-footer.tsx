@@ -3,7 +3,7 @@ import { Brand } from "./brand";
 
 const groups = [
   { title: "Product", links: [["Install", "/#install"], ["Proof", "/#proof"], ["Plans", "/#plans"], ["Roadmap", "/#roadmap"]] },
-  { title: "Learn", links: [["Documentation", "/docs"], ["First tutorial", "/docs/first-tutorial"], ["Metrics", "/docs/metrics"], ["Troubleshooting", "/docs/troubleshooting"]] },
+  { title: "Learn", links: [["Documentation", "/docs"], ["First tutorial", "/docs/first-tutorial"], ["Releases", "/releases"], ["Troubleshooting", "/docs/troubleshooting"]] },
   { title: "Trust", links: [["Privacy", "/privacy"], ["Terms", "/terms"], ["Security", "/security"], ["Support", "mailto:midaghdour@gmail.com"]] },
 ] as const;
 

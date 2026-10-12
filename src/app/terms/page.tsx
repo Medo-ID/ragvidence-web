@@ -10,6 +10,7 @@ export default function TermsPage() {
       <p>By using this website, you agree to these terms. If you use it for an organization, you represent that you have authority to accept them for that organization. If you do not agree, do not use the website.</p>
       <h2>Software license</h2>
       <p>RAGvidence is proprietary software, not an open-source package. The Free and Plus rights, restrictions, redistribution rules, and edition boundaries are stated in the LICENSE.md file shipped with the software. A package download does not transfer ownership or grant rights beyond that license.</p>
+      <p><a href="/ragvidence-0.1.0-license.txt">Read the license shipped with RAGvidence v0.1.0.</a></p>
       <h2>No professional advice or certification</h2>
       <p>RAGvidence reports retrieval evidence. They do not certify answer correctness, safety, legal compliance, financial compliance, regulatory compliance, or fitness for a high-stakes use. Documentation and examples are technical information, not legal, financial, accounting, or other professional advice.</p>
       <h2>Acceptable use</h2>

@@ -4,11 +4,11 @@
   --color-canvas: #07090d;
   --color-panel: #0d1117;
   --color-panel-raised: #111821;
-  --color-line: #202833;
+  --color-line: #2b333c;
   --color-ink: #f3f7fa;
   --color-muted: #94a3b8;
-  --color-signal: #62e7f5;
-  --color-signal-soft: #163b42;
+  --color-signal: #c4edf1;
+  --color-signal-soft: #253b40;
   --color-success: #55d68b;
   --color-danger: #ff6b78;
   --font-sans: var(--font-geist-sans);
@@ -17,7 +17,6 @@
 
 :root {
   color-scheme: dark;
-  --header-height: 4.25rem;
 }
 
 * { box-sizing: border-box; }
@@ -30,14 +29,15 @@ html {
 body {
   min-width: 320px;
   background:
-    radial-gradient(circle at 50% -10%, rgb(98 231 245 / 0.08), transparent 34rem),
+    radial-gradient(ellipse at 80% 0%, rgb(196 237 241 / 0.045), transparent 55rem),
+    radial-gradient(ellipse at 0% 35%, rgb(255 255 255 / 0.025), transparent 70rem),
     #07090d;
   color: #f3f7fa;
 }
 
-::selection { background: rgb(98 231 245 / 0.25); color: #f3f7fa; }
+::selection { background: rgb(196 237 241 / 0.2); color: #f3f7fa; }
 a, button { -webkit-tap-highlight-color: transparent; outline-offset: 4px; }
-:focus-visible { outline: 2px solid #62e7f5; }
+:focus-visible { outline: 2px solid var(--color-signal); }
 
 .site-grid {
   background-image:
@@ -47,13 +47,19 @@ a, button { -webkit-tap-highlight-color: transparent; outline-offset: 4px; }
   mask-image: linear-gradient(to bottom, black 10%, transparent 92%);
 }
 
-.shell { width: min(1180px, calc(100% - 2rem)); margin-inline: auto; }
+.shell { width: calc(100% - 2rem); margin-inline: auto; }
 
 @media (min-width: 640px) {
-  .shell { width: min(1180px, calc(100% - 4rem)); }
+  .shell { width: calc(100% - 3rem); }
 }
 
-.product-section { padding-block: clamp(5rem, 9vw, 9rem); }
+@media (min-width: 1024px) {
+  .shell { width: min(80%, 1440px); }
+}
+
+.product-section { padding-block: clamp(4rem, 7vw, 7rem); }
+.home-sections > section + section { margin-top: clamp(2rem, 5vw, 5rem); }
+.hero-section { padding-block: clamp(3rem, 5vw, 5rem); }
 
 /* Opaque fallback keeps navigation readable without backdrop-filter support. */
 .glass-nav {
@@ -69,9 +75,18 @@ a, button { -webkit-tap-highlight-color: transparent; outline-offset: 4px; }
   }
 }
 
-.glass-panel {
-  background: linear-gradient(125deg, rgb(255 255 255 / 0.025), transparent 60%), rgb(13 17 23 / 0.65);
-  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.045);
+.glass-panel, .surface {
+  background: linear-gradient(125deg, rgb(255 255 255 / 0.055), transparent 70%), #0d1117;
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.07), 0 16px 48px rgb(0 0 0 / 0.12);
+}
+
+.surface { border: 1px solid var(--color-line); }
+
+@supports (backdrop-filter: blur(1px)) {
+  .glass-panel, .surface {
+    background: linear-gradient(125deg, rgb(255 255 255 / 0.055), transparent 70%), rgb(17 24 33 / 0.48);
+    backdrop-filter: blur(14px);
+  }
 }
 
 .eyebrow {
@@ -80,16 +95,8 @@ a, button { -webkit-tap-highlight-color: transparent; outline-offset: 4px; }
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #62e7f5;
+  color: var(--color-signal);
 }
-
-.surface {
-  border: 1px solid #202833;
-  background: linear-gradient(125deg, rgb(255 255 255 / 0.025), transparent 60%), rgb(13 17 23 / 0.65);
-  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.025);
-}
-
-.text-balance { text-wrap: balance; }
 
 @keyframes demo-enter {
   from { opacity: 0; transform: translateY(4px); }
@@ -99,7 +106,7 @@ a, button { -webkit-tap-highlight-color: transparent; outline-offset: 4px; }
 .demo-stage { animation: demo-enter 180ms ease-out; }
 .prose-ragvi :where(h2, h3) { scroll-margin-top: 7rem; }
 .prose-ragvi code:not(pre code) {
-  border: 1px solid #202833;
+  border: 1px solid var(--color-line);
   border-radius: 0;
   background: #111821;
   padding: 0.1rem 0.35rem;
@@ -120,4 +127,5 @@ a, button { -webkit-tap-highlight-color: transparent; outline-offset: 4px; }
 @media print {
   body { background: white; color: black; }
   .no-print { display: none !important; }
+  .glass-panel, .surface { background: white; box-shadow: none; backdrop-filter: none; }
 }

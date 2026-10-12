@@ -36,12 +36,12 @@
       --canvas: #07090d;
       --ink: #f3f7fa;
       --muted: #94a3b8;
-      --line: #202833;
+      --line: #2b333c;
       --surface: rgb(13 17 23 / 0.78);
       --surface-soft: #111821;
       --nav-glass: rgb(7 9 13 / 0.68);
-      --signal: #62e7f5;
-      --signal-soft: #163b42;
+      --signal: #c4edf1;
+      --signal-soft: #253b40;
       --green: #55d68b;
       --green-soft: #142a20;
       --red: #ff6b78;
@@ -55,12 +55,12 @@
         --canvas: #07090d;
         --ink: #f3f7fa;
         --muted: #94a3b8;
-        --line: #202833;
+        --line: #2b333c;
         --surface: rgb(13 17 23 / 0.78);
         --surface-soft: #111821;
         --nav-glass: rgb(7 9 13 / 0.68);
-        --signal: #62e7f5;
-        --signal-soft: #163b42;
+        --signal: #c4edf1;
+        --signal-soft: #253b40;
         --green: #55d68b;
         --green-soft: #142a20;
         --red: #ff6b78;
@@ -83,7 +83,7 @@
     }
 
     main {
-      width: min(1180px, calc(100% - 32px));
+      width: calc(100% - 32px);
       margin: 64px auto 96px;
     }
 
@@ -407,7 +407,7 @@
       background-image: linear-gradient(110deg, rgb(148 163 184 / 0.06), transparent 65%);
     }
     .report-nav-inner {
-      width: min(1180px, calc(100% - 32px));
+      width: calc(100% - 32px);
       min-height: 68px;
       margin-inline: auto;
       display: flex;
@@ -441,7 +441,10 @@
       .report-nav { background-color: var(--nav-glass); backdrop-filter: blur(20px) saturate(135%); }
     }
     @media (min-width: 640px) {
-      main, .report-nav-inner { width: min(1180px, calc(100% - 64px)); }
+      main, .report-nav-inner { width: calc(100% - 48px); }
+    }
+    @media (min-width: 1024px) {
+      main, .report-nav-inner { width: min(80%, 1440px); }
     }
     @media (max-width: 620px) {
       main { width: calc(100% - 32px); margin-top: 32px; }

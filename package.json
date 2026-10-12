@@ -12,8 +12,10 @@
     "lint": "eslint . --max-warnings=0",
     "typecheck": "tsc --noEmit",
     "verify:site": "node scripts/verify-site.mjs",
+    "test:browser": "playwright test",
+    "test:verification": "node --test tests/verification/*.test.mjs",
     "check": "npm run lint && npm run typecheck && npm run build",
-    "verify": "npm run check && npm run verify:site && npm audit --omit=dev --audit-level=high"
+    "verify": "npm run check && npm run verify:site && npm run test:verification && npm run test:browser && npm audit --omit=dev --audit-level=high"
   },
   "dependencies": {
     "geist": "^1.7.2",
@@ -23,6 +25,7 @@
     "react-dom": "19.3.0"
   },
   "devDependencies": {
+    "@playwright/test": "^1.64.0",
     "@tailwindcss/turbopack": "^4.3.3",
     "@types/node": "^24.19.1",
     "@types/react": "^19.3.0",

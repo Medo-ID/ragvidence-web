@@ -1,6 +1,5 @@
 import { ArrowRight, MonitorPlay } from "lucide-react";
 import Link from "next/link";
-import { CliDemo } from "./cli-demo";
 import { SectionHeading } from "./section-heading";
 
 type WalkthroughVideo = {
@@ -19,7 +18,7 @@ export function ProductWalkthrough({ video }: { video?: WalkthroughVideo }) {
       <figure className="glass-panel mx-auto mt-14 max-w-5xl border border-line sm:mt-16">
         <div className="flex flex-wrap items-center justify-between gap-3 border-b border-line px-5 py-4 sm:px-7">
           <span className="inline-flex items-center gap-3 text-sm text-ink"><MonitorPlay size={18} className="text-signal" aria-hidden="true" />RAGvidence / first experiment</span>
-          <span className="font-mono text-xs text-muted">{video ? "Step-by-step walkthrough" : "Recording coming soon"}</span>
+          <span className="font-mono text-xs text-muted">{video ? "Step-by-step walkthrough" : "Your first run"}</span>
         </div>
 
         {video ? (
@@ -29,19 +28,28 @@ export function ProductWalkthrough({ video }: { video?: WalkthroughVideo }) {
             <p>Your browser cannot play this video. <a href={video.src}>Download the walkthrough</a> or follow the <Link href="/docs/first-tutorial">written tutorial</Link>.</p>
           </video>
         ) : (
-          <div className="grid items-center gap-10 p-5 sm:p-8 lg:grid-cols-[0.7fr_1.3fr] lg:gap-12 lg:p-10">
+          <div className="grid grid-cols-1 items-start gap-10 p-5 sm:p-8 lg:grid-cols-[0.8fr_1.2fr] lg:gap-12 lg:p-10">
             <div>
               <p className="eyebrow">Your terminal. Your evidence.</p>
               <h3 className="mt-5 text-balance text-2xl font-semibold tracking-tight text-ink sm:text-3xl">One workflow, from command to clarity.</h3>
-              <p className="mt-5 text-sm leading-7 text-muted">The recorded walkthrough is on its way. In the meantime, explore each step in this interactive preview.</p>
-              <ol className="mt-8 space-y-5 border-t border-line pt-7">
-                {["Install the Free CLI", "Check your environment", "Run a controlled comparison", "Open the evidence report"].map((step, index) => (
-                  <li key={step} className="flex gap-4 text-sm leading-6 text-muted"><span className="font-mono text-xs leading-6 text-signal">0{index + 1}</span>{step}</li>
-                ))}
-              </ol>
+              <p className="mt-5 text-sm leading-7 text-muted">Start with the bundled example. It keeps the questions and retrieval depth fixed so you can inspect what a single change to the searchable text recovered.</p>
               <Link href="/docs/first-tutorial" className="mt-8 inline-flex min-h-11 items-center gap-2 text-sm text-signal hover:text-ink">Follow along in the docs<ArrowRight size={15} aria-hidden="true" /></Link>
             </div>
-            <div className="min-w-0"><CliDemo /></div>
+            <ol className="grid min-w-0 grid-cols-1 gap-4 sm:grid-cols-2">
+              {[
+                ["Install", "Install the Free CLI with uv. The installation guide covers uv and Python setup.", "uv tool install --python 3.12 \"ragvidence[semantic]\""],
+                ["Check", "Resolve required failures before running an experiment.", "ragvi health"],
+                ["Run", "Compare body text with heading context on ten labeled questions.", "ragvi tutorial"],
+                ["Inspect", "Open the generated report. Review changed questions and the ranked evidence.", "workspaces/first-run/reports/tutorial.html"],
+              ].map(([title, text, command], index) => (
+                <li key={title} className="min-w-0 border border-line bg-white/2.5 p-5">
+                  <p className="font-mono text-xs text-muted">0{index + 1}</p>
+                  <h3 className="mt-3 text-base font-semibold text-ink">{title}</h3>
+                  <p className="mt-3 text-sm leading-6 text-muted">{text}</p>
+                  <div className="mt-4 overflow-x-auto"><code className="whitespace-nowrap font-mono text-xs leading-6 text-signal">{command}</code></div>
+                </li>
+              ))}
+            </ol>
           </div>
         )}
 

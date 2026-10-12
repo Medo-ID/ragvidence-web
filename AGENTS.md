@@ -115,14 +115,17 @@ are no accounts, forms, analytics, or checkout.
 3. Run `npm run lint` and `npm run typecheck` for code/config changes.
 4. Run `npm run build` for production verification. `npm run check` combines
    lint, typecheck, and build; Next.js builds do not automatically run ESLint.
-5. Run `npm run verify:site` for route/content/navigation/header changes.
-   It reuses a reachable URL or starts `next dev`; a pass alone does not prove
-   the freshly built production app works. For a production smoke check, start
-   the successful build separately with `npm run start -- --port 3001`, then run
+5. Run `npm run verify:site` for route/content/navigation/header changes after a
+   successful build. It starts its own `next start` on port 3001 and stops it after
+   checking; an occupied port fails instead of reusing an unknown server. Explicit
+   `RAGVIDENCE_SITE_URL` targets must already be reachable. For an additional
+   production smoke check, start the build separately with `npm run start -- --port 3001`, then run
    `RAGVIDENCE_SITE_URL=http://127.0.0.1:3001 npm run verify:site` while it is running.
    Stop servers you started after checking them.
-6. Use `npm run verify` for the existing full gate, plus the explicit production
-   smoke check above before deployment. Check `npm audit` and `npm outdated`
+6. Use `npm run verify` for the full gate (including Chromium tests against a
+   dedicated production server on port 3002), plus the explicit production smoke
+   check above before deployment. Install Chromium with
+   `npx playwright install --with-deps chromium` when needed. Check `npm audit` and `npm outdated`
    when dependencies change; the existing verify gate audits production only.
 7. Verify interactive and responsive changes in a browser, including keyboard
    operation, clipboard failures, docs search, mobile menus, and console errors.

@@ -3,22 +3,24 @@
 import { Search } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useMemo, useState } from "react";
-import { docGroups, docs } from "@/lib/docs";
+import { useMemo, useRef, useState } from "react";
+import type { DocNavigation } from "@/lib/docs";
 
-function Navigation({ query, close }: { query: string; close?: () => void }) {
+type NavigationProps = { pages: DocNavigation[]; groups: string[] };
+
+function Navigation({ query, pages, groups, close }: NavigationProps & { query: string; close?: () => void }) {
   const pathname = usePathname();
   const matches = useMemo(() => {
     const value = query.trim().toLowerCase();
-    if (!value) return docs;
-    return docs.filter((doc) => `${doc.title} ${doc.description} ${doc.group}`.toLowerCase().includes(value));
-  }, [query]);
+    if (!value) return pages;
+    return pages.filter((doc) => `${doc.title} ${doc.description} ${doc.group}`.toLowerCase().includes(value));
+  }, [query, pages]);
 
-  if (!matches.length) return <p className="px-3 py-5 text-sm text-muted">No documentation pages match “{query}”.</p>;
+  if (!matches.length) return <p role="status" className="px-3 py-5 text-sm text-muted">No documentation pages match “{query}”.</p>;
 
   return (
     <nav aria-label="Documentation">
-      {docGroups.map((group) => {
+      {groups.map((group) => {
         const pages = matches.filter((doc) => doc.group === group);
         if (!pages.length) return null;
         return (
@@ -43,8 +45,16 @@ function Navigation({ query, close }: { query: string; close?: () => void }) {
   );
 }
 
-export function DocsSidebar() {
+export function DocsSidebar({ pages, groups }: NavigationProps) {
   const [query, setQuery] = useState("");
+  const mobileRef = useRef<HTMLDetailsElement>(null);
+
+  function close() {
+    if (mobileRef.current) {
+      mobileRef.current.open = false;
+      mobileRef.current.querySelector("summary")?.focus();
+    }
+  }
 
   const search = (
     <label className="mb-6 flex items-center gap-2 rounded-none border border-line bg-canvas px-3 py-2.5 focus-within:border-signal/40">
@@ -57,11 +67,11 @@ export function DocsSidebar() {
   return (
     <>
       <aside className="no-print sticky top-24 hidden h-[calc(100dvh-7rem)] w-64 shrink-0 overflow-y-auto border-r border-line/80 pr-5 lg:block">
-        {search}<Navigation query={query} />
+        {search}<Navigation query={query} pages={pages} groups={groups} />
       </aside>
-      <details className="no-print w-full rounded-none border border-line bg-panel p-4 lg:hidden">
+      <details ref={mobileRef} className="glass-panel no-print w-full border border-line p-4 lg:hidden">
         <summary className="cursor-pointer text-sm font-semibold text-ink">Browse documentation</summary>
-        <div className="mt-5">{search}<Navigation query={query} /></div>
+        <div className="mt-5">{search}<Navigation query={query} pages={pages} groups={groups} close={close} /></div>
       </details>
     </>
   );

@@ -9,7 +9,7 @@ const steps = [
   {
     label: "Install",
     title: "One command. Your own machine.",
-    command: 'uv tool install "ragvidence[semantic]"',
+    command: 'uv tool install --python 3.12 "ragvidence[semantic]"',
     description: "Install the Free CLI in an isolated tool environment. The semantic extra adds local embedding support.",
     detail: "No account or API key is needed for the bundled BM25 tutorial.",
     href: "/docs/installation",
@@ -93,18 +93,18 @@ export function CliDemo() {
 
       <div className="grid grid-cols-4 border-b border-line" aria-label="Tutorial steps">
         {steps.map((item, index) => (
-          <button key={item.label} type="button" aria-pressed={active === index} aria-controls="cli-demo-stage" onClick={() => selectStep(index)} className={`min-h-14 border-r border-line px-2 py-3 text-sm transition-colors last:border-r-0 sm:px-4 ${active === index ? "bg-signal/8 text-signal shadow-[inset_0_-2px_0_#62e7f5]" : "text-muted hover:bg-panel-raised hover:text-ink"}`}>
+          <button key={item.label} type="button" aria-pressed={active === index} aria-controls="cli-demo-stage" onClick={() => selectStep(index)} className={`min-h-14 border-r border-line px-2 py-3 text-sm transition-colors last:border-r-0 sm:px-4 ${active === index ? "bg-signal/8 text-signal shadow-[inset_0_-2px_0_#c4edf1]" : "text-muted hover:bg-panel-raised hover:text-ink"}`}>
             <span className="mr-2 font-mono text-xs opacity-65" aria-hidden="true">0{index + 1}</span>{item.label}
           </button>
         ))}
       </div>
 
-      <div id="cli-demo-stage" role="region" aria-labelledby="cli-demo-title" className="px-5 py-6 sm:px-7 sm:py-7">
+      <div id="cli-demo-stage" role="region" aria-labelledby="cli-demo-title" className="px-5 py-5 sm:px-6 sm:py-6">
         <div key={active} className="demo-stage">
           <div className="mb-5 flex items-start justify-between gap-4">
             <div>
               <p className="mb-2 font-mono text-xs text-signal">STEP 0{active + 1} / 04</p>
-              <h2 id="cli-demo-title" className="text-xl font-semibold tracking-tight text-ink sm:text-2xl">{step.title}</h2>
+              <h2 id="cli-demo-title" className="text-lg font-semibold tracking-tight text-ink sm:text-xl">{step.title}</h2>
             </div>
             <FileSearch size={22} className="mt-1 shrink-0 text-muted" aria-hidden="true" />
           </div>
@@ -121,13 +121,12 @@ export function CliDemo() {
 
           <p className="mt-5 text-sm leading-6 text-muted">{step.description}</p>
 
-          <div className="mt-5 min-h-44">
+          <div className="mt-5 min-h-32">
             {active < 2 ? (
-              <div className="space-y-3 border-l-2 border-signal/40 bg-canvas/50 p-4 text-sm text-muted">
+              <div className="space-y-2 border-l-2 border-signal/40 bg-canvas/50 p-4 text-sm text-muted">
                 {(active === 0 ? ["Free edition with lexical and semantic retrieval", "Isolated installation with uv", "Local workspaces and portable reports"] : ["Required runtime and dependencies", "Workspace permissions and bundled data", "Optional semantic support and privacy defaults"]).map((item) => (
                   <p key={item} className="flex items-center gap-3"><Check size={15} className="shrink-0 text-signal" aria-hidden="true" />{item}</p>
                 ))}
-                <p className="border-t border-line pt-3 text-xs leading-5">{active === 0 ? "Requires Python 3.12 and uv." : "These are the checks performed; your own health results may differ."}</p>
               </div>
             ) : (
               <div className="border border-line bg-canvas/75 p-4 text-ink">
@@ -141,13 +140,13 @@ export function CliDemo() {
             )}
           </div>
 
-          <p className="mt-4 text-xs leading-5 text-muted">{step.detail}</p>
-          <Link href={step.href} className="mt-4 inline-flex min-h-11 items-center gap-2 text-sm font-medium text-signal hover:text-ink">{step.link}<ArrowRight size={15} aria-hidden="true" /></Link>
+          <p className="mt-3 text-xs leading-5 text-muted">{step.detail}</p>
         </div>
       </div>
 
       <div className="flex flex-wrap items-center justify-between gap-3 border-t border-line bg-canvas/50 px-5 py-3">
-        <button type="button" onClick={togglePlayback} disabled={reducedMotion} title={reducedMotion ? "Automatic playback is disabled with reduced motion." : undefined} className="inline-flex min-h-11 items-center gap-2 px-2 text-sm text-ink hover:text-signal disabled:cursor-default disabled:text-muted">
+        <Link href={step.href} className="inline-flex min-h-11 items-center gap-2 text-xs font-medium text-signal hover:text-ink">{step.link}<ArrowRight size={13} aria-hidden="true" /></Link>
+        <button type="button" onClick={togglePlayback} disabled={reducedMotion} title={reducedMotion ? "Automatic playback is disabled with reduced motion." : undefined} className="inline-flex min-h-11 items-center gap-2 text-xs text-ink hover:text-signal disabled:cursor-default disabled:text-muted">
           {isPlaying ? <Pause size={15} aria-hidden="true" /> : active === steps.length - 1 ? <RotateCcw size={15} aria-hidden="true" /> : <Play size={15} aria-hidden="true" />}
           {reducedMotion ? "Explore at your pace" : isPlaying ? "Pause walkthrough" : active === steps.length - 1 ? "Replay walkthrough" : "Play walkthrough"}
         </button>

@@ -3,6 +3,7 @@ export type DocBlock =
   | { type: "h2"; id: string; text: string }
   | { type: "h3"; id: string; text: string }
   | { type: "list"; items: string[]; ordered?: boolean }
+  | { type: "links"; items: { label: string; href: string }[] }
   | { type: "code"; code: string; label?: string }
   | { type: "note"; title: string; text: string; tone?: "info" | "warning" | "success" }
   | { type: "table"; headers: string[]; rows: string[][] };
@@ -14,6 +15,8 @@ export type DocPage = {
   group: string;
   blocks: DocBlock[];
 };
+
+export type DocNavigation = Pick<DocPage, "slug" | "title" | "description" | "group">;
 
 export const docs: DocPage[] = [
   {
@@ -39,14 +42,25 @@ export const docs: DocPage[] = [
     group: "Start here",
     blocks: [
       { type: "p", text: "RAGvidence requires Python 3.12. The recommended installation uses uv, which installs the CLI in an isolated tool environment and exposes ragvi on your PATH." },
+      { type: "h2", id: "prerequisites", text: "First, install uv" },
+      { type: "p", text: "If uv is not installed, choose the setup for your operating system below. You do not need to install Python separately: uv can download Python 3.12 when the tool installation requests it." },
+      { type: "code", label: "macOS / Linux", code: "curl -LsSf https://astral.sh/uv/install.sh | sh" },
+      { type: "code", label: "Windows · PowerShell", code: "winget install --id=astral-sh.uv -e" },
+      { type: "p", text: "Open a new terminal after setup, then confirm uv is available. If the command is still missing, follow the installer's PATH instructions." },
+      { type: "code", label: "Terminal", code: "uv --version" },
+      { type: "links", items: [{ label: "Official uv setup and alternative installation methods", href: "https://docs.astral.sh/uv/getting-started/installation/" }, { label: "How uv installs and manages Python", href: "https://docs.astral.sh/uv/guides/install-python/" }] },
       { type: "h2", id: "recommended", text: "Recommended: full Free edition" },
-      { type: "code", label: "Terminal", code: "uv tool install \"ragvidence[semantic]\"\nragvi --version\nragvi health" },
+      { type: "code", label: "Terminal", code: "uv tool install --python 3.12 \"ragvidence[semantic]\"\nragvi --version\nragvi health" },
+      { type: "p", text: "Version 0.1.0 supports Python 3.12; selecting it explicitly avoids using an incompatible Python 3.13 or newer interpreter. After installation, continue with ragvi tutorial." },
       { type: "p", text: "The semantic extra adds FastEmbed for local embeddings. The first semantic run downloads the selected embedding model; later inference is local." },
       { type: "h2", id: "minimal", text: "Minimal offline installation" },
-      { type: "code", label: "Terminal", code: "uv tool install ragvidence\nragvi health" },
+      { type: "code", label: "Terminal", code: "uv tool install --python 3.12 ragvidence\nragvi health" },
       { type: "p", text: "The minimal install supports BM25, imported runs, all evaluation metrics, comparisons, diagnoses, and report formats. It does not install the local semantic model runtime." },
       { type: "h2", id: "upgrade", text: "Upgrade or add the semantic extra" },
-      { type: "code", label: "Terminal", code: "uv tool install --reinstall \"ragvidence[semantic]\"" },
+      { type: "code", label: "Terminal", code: "uv tool upgrade ragvidence\n# To add local semantic support:\nuv tool install --reinstall --python 3.12 \"ragvidence[semantic]\"" },
+      { type: "h2", id: "uninstall", text: "Uninstall the CLI" },
+      { type: "code", label: "Terminal", code: "uv tool uninstall ragvidence" },
+      { type: "p", text: "Uninstalling removes the tool environment and ragvi command. Your workspaces and exported reports remain in the directories where you created them." },
       { type: "h2", id: "health", text: "Read the health result" },
       { type: "table", headers: ["Status", "Meaning", "Action"], rows: [["PASS", "The required check succeeded.", "None."], ["WARN", "An optional capability is unavailable.", "Follow the displayed guide only if you need it."], ["FAIL", "A required dependency or workspace check failed.", "Use the troubleshooting page before continuing."]] },
       { type: "note", title: "Command not found?", text: "Open a new terminal after installation or run uv tool update-shell, then follow the PATH instructions it prints.", tone: "info" },
@@ -154,7 +168,7 @@ export const docs: DocPage[] = [
     group: "Workflows",
     blocks: [
       { type: "h2", id: "local", text: "Local FastEmbed" },
-      { type: "code", label: "Terminal", code: "uv tool install --reinstall \"ragvidence[semantic]\"\nragvi benchmark workspaces/customer-support --strategies semantic --k 4" },
+      { type: "code", label: "Terminal", code: "uv tool install --reinstall --python 3.12 \"ragvidence[semantic]\"\nragvi benchmark workspaces/customer-support --strategies semantic --k 4" },
       { type: "p", text: "The first run downloads the model. Embeddings are cached inside the workspace and reused only while the model and searchable text still match." },
       { type: "h2", id: "ollama", text: "Ollama embeddings" },
       { type: "code", label: ".env", code: "RAGVIDENCE_EMBEDDING_PROVIDER=ollama\nRAGVIDENCE_EMBEDDING_MODEL=your-embedding-model\nRAGVIDENCE_EMBEDDING_BASE_URL=http://localhost:11434" },
@@ -277,7 +291,7 @@ export const docs: DocPage[] = [
       { type: "h2", id: "health", text: "Start every diagnosis with health" },
       { type: "code", label: "Terminal", code: "ragvi health" },
       { type: "h2", id: "semantic", text: "Semantic extra is missing" },
-      { type: "code", label: "Terminal", code: "uv tool install --reinstall \"ragvidence[semantic]\"" },
+      { type: "code", label: "Terminal", code: "uv tool install --reinstall --python 3.12 \"ragvidence[semantic]\"" },
       { type: "h2", id: "validation", text: "Dataset validation fails" },
       { type: "list", items: ["Use unique source_unit_id and question_id values.", "Confirm every required evidence ID exists in a source unit.", "Confirm imported source IDs match the workspace exactly.", "Validate JSONL one object per line; do not wrap it in an array."] },
       { type: "h2", id: "restore", text: "Restore a broken workspace" },

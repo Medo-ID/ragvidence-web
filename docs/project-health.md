@@ -1,5 +1,9 @@
 # Project health baseline
 
+Current implementation follow-up: [implementation-pass.md](implementation-pass.md)
+records the October 12 changes, resolved findings, and the final build restriction.
+The tables below remain the historical October 8 audit.
+
 Checked on October 8, 2026, against the working tree, including pre-existing edits
 to the package files, root layout, and landing page. This audit adds documentation;
 it does not upgrade dependencies or change application behavior.
