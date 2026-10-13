@@ -139,7 +139,8 @@ The [pre-deployment SEO audit](docs/seo-audit.md) records the corrected route
 metadata, canonical documentation URLs, factual site/breadcrumb structured data,
 indexing exclusions for brand-review HTML, and before/after local measurements.
 Deployment, Search Console indexing, and field Core Web Vitals still need live
-checks; mobile homepage layout shift remains a measured follow-up.
+checks. The [local layout-stability fix](docs/layout-stability.md) resolves the
+reproduced mobile font-loading jump and records cross-browser QA.
 
 1. Push this repository to `Medo-ID/ragvidence-web` on GitHub.
 2. In Vercel, choose **Add New → Project** and import that repository.

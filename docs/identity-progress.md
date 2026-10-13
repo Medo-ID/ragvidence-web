@@ -228,3 +228,13 @@ JSON-LD, keeps brand-review HTML out of indexing, and updates the social image
 with the selected mark and locally packaged Geist. See [seo-audit.md](seo-audit.md)
 for rendered verification, screenshots, test history, and pending launch checks.
 User heading/video edits remain byte-for-byte preserved and excluded.
+
+## User follow-up — Complete local work before hosting
+
+Layout diagnosis `bdf2a2a` traces the mobile jump to an unavailable adjusted Arial
+fallback. Local DejaVu faces now match Geist's normal/semibold metrics, preserving
+the original font priority and loaded design. [layout-stability.md](layout-stability.md)
+records the near-zero mobile CLS, unchanged client JS, +123B compressed CSS,
+clean install, 55 scoped tests, and six-size Chromium/Firefox visual review.
+User heading/video files remain byte-for-byte preserved and excluded. No hosting
+or Search Console action was taken; standard build confirmation remains pending.

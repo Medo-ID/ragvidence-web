@@ -1,5 +1,9 @@
 # SEO audit before deployment
 
+Follow-up: the local font-induced mobile layout shift is now fixed and verified
+in [layout-stability.md](layout-stability.md). Hosting/indexing and field checks
+remain pending; the baseline numbers and earlier findings below are historical.
+
 October 13, 2026. Audited the local production build at `6362e53`, including the
 user's existing heading and video edits. The public site is not hosted yet.
 This is a technical/content audit, not proof of Google indexing, keyword demand,

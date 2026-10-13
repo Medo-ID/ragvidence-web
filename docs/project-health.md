@@ -1,8 +1,13 @@
 # Project health baseline
 
+October 13 local layout follow-up: [layout-stability.md](layout-stability.md)
+records the adjusted font fallback, mobile CLS reduction from 0.139 to 0.000018,
+clean install, production gate and six-size Chromium/Firefox review. Live field
+vitals, hosting and standard Turbopack confirmation remain pending.
+
 October 13 SEO follow-up: [seo-audit.md](seo-audit.md) records the local production
 crawl and metadata/canonical/structured-data fixes before hosting. Live indexing,
-deployment redirects, field Core Web Vitals, and mobile layout-shift investigation
+deployment redirects and field Core Web Vitals
 remain pending. This does not replace the standard Turbopack confirmation below.
 
 October 13 identity refinement: [identity-progress.md](identity-progress.md) records

@@ -1,5 +1,31 @@
 @import "tailwindcss";
 
+/* Local Linux fallbacks, measured against Geist 1.7.2; see layout-stability.md.
+   Geist and its existing adjusted Arial fallback retain first priority. */
+@font-face {
+  font-family: "RAGvidence DejaVu Fallback";
+  src: local("DejaVu Sans"), local("DejaVuSans");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  size-adjust: 92.80%;
+  ascent-override: 108.30%;
+  descent-override: 31.79%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: "RAGvidence DejaVu Fallback";
+  src: local("DejaVu Sans Bold"), local("DejaVuSans-Bold");
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  size-adjust: 86.37%;
+  ascent-override: 116.37%;
+  descent-override: 34.16%;
+  line-gap-override: 0%;
+}
+
 @theme inline {
   --color-canvas: #050809;
   --color-panel: #090d0f;
@@ -15,7 +41,7 @@
   --color-success: #55d68b;
   --color-danger: #ff6b78;
   --color-warning: #e8b65d;
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-geist-sans), "RAGvidence DejaVu Fallback", Arial, Helvetica, sans-serif;
   --font-mono: var(--font-geist-mono);
   --radius-sm: 6px;
   --radius-md: 9px;

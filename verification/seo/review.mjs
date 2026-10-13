@@ -6,7 +6,10 @@ import { docs } from "../../src/lib/docs.ts";
 
 const stage = process.argv[2];
 if (!["baseline", "final"].includes(stage)) throw new Error("Use baseline or final");
-const directory = `verification/seo/${stage}`, origin = "http://127.0.0.1:3003";
+const milestone = process.argv[4];
+if (milestone && !/^[-a-z0-9]+$/.test(milestone)) throw new Error("Invalid milestone name");
+const directory = milestone ? `verification/seo/${milestone}/${stage}` : `verification/seo/${stage}`;
+const origin = "http://127.0.0.1:3003";
 await mkdir(directory, { recursive: true });
 const server = spawn(process.execPath, ["node_modules/next/dist/bin/next", "start", "--hostname", "127.0.0.1", "--port", "3003"], { stdio: ["ignore", "pipe", "pipe"] });
 let log = "", browser;
@@ -52,8 +55,17 @@ try {
         const context = await browser.newContext({ viewport: { width, height } });
         await context.addInitScript(() => {
           window.__seoLcp = 0; window.__seoCls = 0;
+          let first = Number.NEGATIVE_INFINITY, last = Number.NEGATIVE_INFINITY, session = 0;
           new PerformanceObserver(list => { window.__seoLcp = list.getEntries().at(-1)?.startTime ?? 0; }).observe({ type: "largest-contentful-paint", buffered: true });
-          new PerformanceObserver(list => { for (const entry of list.getEntries()) if (!entry.hadRecentInput) window.__seoCls += entry.value; }).observe({ type: "layout-shift", buffered: true });
+          new PerformanceObserver(list => {
+            for (const entry of list.getEntries()) {
+              if (entry.hadRecentInput) continue;
+              if (entry.startTime - last < 1000 && entry.startTime - first < 5000) session += entry.value;
+              else { first = entry.startTime; session = entry.value; }
+              last = entry.startTime;
+              window.__seoCls = Math.max(window.__seoCls, session);
+            }
+          }).observe({ type: "layout-shift", buffered: true });
         });
         const page = await context.newPage(), cdp = await context.newCDPSession(page);
         page.on("pageerror", error => results.errors.push(error.message));

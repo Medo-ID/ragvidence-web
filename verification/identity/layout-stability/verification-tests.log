@@ -1,0 +1,21 @@
+
+> ragvidence-web@0.1.0 test:verification
+> node --test tests/verification/*.test.mjs
+
+(node:257021) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///home/medo-id/projects/ragvidence-web/src/lib/seo.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /home/medo-id/projects/ragvidence-web/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ structured data cannot close its script element while retaining exact text (1.562513ms)
+✔ an unavailable explicit URL fails without falling back to a local server (135.424262ms)
+✔ cancelling verification with SIGINT stops its production server (171.893044ms)
+✔ cancelling verification with SIGTERM stops its production server (158.814121ms)
+✔ the default gate refuses to reuse an occupied production port (616.018233ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1236.225903

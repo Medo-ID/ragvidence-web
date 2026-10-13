@@ -1,0 +1,1710 @@
+{
+  "stage": "final",
+  "scope": "Local production build; no live deployment, rankings, field Core Web Vitals, or Google indexing verification.",
+  "pages": [
+    {
+      "route": "/",
+      "status": 200,
+      "xRobotsTag": null,
+      "title": "RAGvidence — Local RAG retrieval evaluation CLI",
+      "description": [
+        "Evaluate BM25 and semantic RAG retrieval locally. Compare evidence coverage, diagnose regressions, and share self-contained HTML reports. No account or telemetry."
+      ],
+      "canonical": [
+        "https://ragvidence.medo-id.com/"
+      ],
+      "ogTitle": [
+        "RAGvidence — Local RAG retrieval evaluation CLI"
+      ],
+      "ogDescription": [
+        "Evaluate BM25 and semantic RAG retrieval locally. Compare evidence coverage, diagnose regressions, and share self-contained HTML reports. No account or telemetry."
+      ],
+      "ogUrl": [
+        "https://ragvidence.medo-id.com"
+      ],
+      "ogImage": [
+        "https://ragvidence.medo-id.com/opengraph-image?174e1842ddb09644"
+      ],
+      "twitterTitle": [
+        "RAGvidence — Local RAG retrieval evaluation CLI"
+      ],
+      "twitterDescription": [
+        "Evaluate BM25 and semantic RAG retrieval locally. Compare evidence coverage, diagnose regressions, and share self-contained HTML reports. No account or telemetry."
+      ],
+      "twitterImage": [
+        "https://ragvidence.medo-id.com/opengraph-image"
+      ],
+      "robots": [],
+      "lang": "en",
+      "h1": [
+        "See whether your RAG change helped."
+      ],
+      "mainTextLength": 7982,
+      "jsonLd": [
+        {
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "@id": "https://ragvidence.medo-id.com/#website",
+          "name": "RAGvidence",
+          "url": "https://ragvidence.medo-id.com/",
+          "description": "Evaluate BM25 and semantic RAG retrieval locally. Compare evidence coverage, diagnose regressions, and share self-contained HTML reports. No account or telemetry.",
+          "inLanguage": "en"
+        }
+      ]
+    },
+    {
+      "route": "/docs",
+      "status": 200,
+      "xRobotsTag": null,
+      "title": "Documentation · RAGvidence",
+      "description": [
+        "Install RAGvidence, run controlled retrieval experiments, evaluate evidence, and interpret reports."
+      ],
+      "canonical": [
+        "https://ragvidence.medo-id.com/docs"
+      ],
+      "ogTitle": [
+        "Documentation · RAGvidence"
+      ],
+      "ogDescription": [
+        "Install RAGvidence, run controlled retrieval experiments, evaluate evidence, and interpret reports."
+      ],
+      "ogUrl": [
+        "https://ragvidence.medo-id.com/docs"
+      ],
+      "ogImage": [
+        "https://ragvidence.medo-id.com/opengraph-image"
+      ],
+      "twitterTitle": [
+        "Documentation · RAGvidence"
+      ],
+      "twitterDescription": [
+        "Install RAGvidence, run controlled retrieval experiments, evaluate evidence, and interpret reports."
+      ],
+      "twitterImage": [
+        "https://ragvidence.medo-id.com/opengraph-image"
+      ],
+      "robots": [],
+      "lang": "en",
+      "h1": [
+        "What RAGvidence does"
+      ],
+      "mainTextLength": 2677,
+      "jsonLd": [
+        {
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "@id": "https://ragvidence.medo-id.com/#website",
+          "name": "RAGvidence",
+          "url": "https://ragvidence.medo-id.com/",
+          "description": "Evaluate BM25 and semantic RAG retrieval locally. Compare evidence coverage, diagnose regressions, and share self-contained HTML reports. No account or telemetry.",
+          "inLanguage": "en"
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "RAGvidence",
+              "item": "https://ragvidence.medo-id.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Documentation",
+              "item": "https://ragvidence.medo-id.com/docs"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/docs/overview",
+      "status": 200,
+      "xRobotsTag": null,
+      "title": "Documentation · RAGvidence",
+      "description": [
+        "Install RAGvidence, run controlled retrieval experiments, evaluate evidence, and interpret reports."
+      ],
+      "canonical": [
+        "https://ragvidence.medo-id.com/docs"
+      ],
+      "ogTitle": [
+        "Documentation · RAGvidence"
+      ],
+      "ogDescription": [
+        "Install RAGvidence, run controlled retrieval experiments, evaluate evidence, and interpret reports."
+      ],
+      "ogUrl": [
+        "https://ragvidence.medo-id.com/docs"
+      ],
+      "ogImage": [
+        "https://ragvidence.medo-id.com/opengraph-image"
+      ],
+      "twitterTitle": [
+        "Documentation · RAGvidence"
+      ],
+      "twitterDescription": [
+        "Install RAGvidence, run controlled retrieval experiments, evaluate evidence, and interpret reports."
+      ],
+      "twitterImage": [
+        "https://ragvidence.medo-id.com/opengraph-image"
+      ],
+      "robots": [],
+      "lang": "en",
+      "h1": [
+        "What RAGvidence does"
+      ],
+      "mainTextLength": 2677,
+      "jsonLd": [
+        {
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "@id": "https://ragvidence.medo-id.com/#website",
+          "name": "RAGvidence",
+          "url": "https://ragvidence.medo-id.com/",
+          "description": "Evaluate BM25 and semantic RAG retrieval locally. Compare evidence coverage, diagnose regressions, and share self-contained HTML reports. No account or telemetry.",
+          "inLanguage": "en"
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "RAGvidence",
+              "item": "https://ragvidence.medo-id.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Documentation",
+              "item": "https://ragvidence.medo-id.com/docs"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/docs/installation",
+      "status": 200,
+      "xRobotsTag": null,
+      "title": "Installation · RAGvidence",
+      "description": [
+        "Install the CLI, choose optional semantic support, and confirm your environment is healthy."
+      ],
+      "canonical": [
+        "https://ragvidence.medo-id.com/docs/installation"
+      ],
+      "ogTitle": [
+        "Installation · RAGvidence"
+      ],
+      "ogDescription": [
+        "Install the CLI, choose optional semantic support, and confirm your environment is healthy."
+      ],
+      "ogUrl": [
+        "https://ragvidence.medo-id.com/docs/installation"
+      ],
+      "ogImage": [
+        "https://ragvidence.medo-id.com/opengraph-image"
+      ],
+      "twitterTitle": [
+        "Installation · RAGvidence"
+      ],
+      "twitterDescription": [
+        "Install the CLI, choose optional semantic support, and confirm your environment is healthy."
+      ],
+      "twitterImage": [
+        "https://ragvidence.medo-id.com/opengraph-image"
+      ],
+      "robots": [],
+      "lang": "en",
+      "h1": [
+        "Installation"
+      ],
+      "mainTextLength": 3915,
+      "jsonLd": [
+        {
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "@id": "https://ragvidence.medo-id.com/#website",
+          "name": "RAGvidence",
+          "url": "https://ragvidence.medo-id.com/",
+          "description": "Evaluate BM25 and semantic RAG retrieval locally. Compare evidence coverage, diagnose regressions, and share self-contained HTML reports. No account or telemetry.",
+          "inLanguage": "en"
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Documentation",
+              "item": "https://ragvidence.medo-id.com/docs"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Installation",
+              "item": "https://ragvidence.medo-id.com/docs/installation"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/docs/first-tutorial",
+      "status": 200,
+      "xRobotsTag": null,
+      "title": "First tutorial · RAGvidence",
+      "description": [
+        "Generate a complete controlled comparison and learn what changed."
+      ],
+      "canonical": [
+        "https://ragvidence.medo-id.com/docs/first-tutorial"
+      ],
+      "ogTitle": [
+        "First tutorial · RAGvidence"
+      ],
+      "ogDescription": [
+        "Generate a complete controlled comparison and learn what changed."
+      ],
+      "ogUrl": [
+        "https://ragvidence.medo-id.com/docs/first-tutorial"
+      ],
+      "ogImage": [
+        "https://ragvidence.medo-id.com/opengraph-image"
+      ],
+      "twitterTitle": [
+        "First tutorial · RAGvidence"
+      ],
+      "twitterDescription": [
+        "Generate a complete controlled comparison and learn what changed."
+      ],
+      "twitterImage": [
+        "https://ragvidence.medo-id.com/opengraph-image"
+      ],
+      "robots": [],
+      "lang": "en",
+      "h1": [
+        "First tutorial"
+      ],
+      "mainTextLength": 2774,
+      "jsonLd": [
+        {
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "@id": "https://ragvidence.medo-id.com/#website",
+          "name": "RAGvidence",
+          "url": "https://ragvidence.medo-id.com/",
+          "description": "Evaluate BM25 and semantic RAG retrieval locally. Compare evidence coverage, diagnose regressions, and share self-contained HTML reports. No account or telemetry.",
+          "inLanguage": "en"
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Documentation",
+              "item": "https://ragvidence.medo-id.com/docs"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "First tutorial",
+              "item": "https://ragvidence.medo-id.com/docs/first-tutorial"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/docs/first-report",
+      "status": 200,
+      "xRobotsTag": null,
+      "title": "Read your first report · RAGvidence",
+      "description": [
+        "Understand summaries, changed questions, ranked hits, diagnoses, and limitations."
+      ],
+      "canonical": [
+        "https://ragvidence.medo-id.com/docs/first-report"
+      ],
+      "ogTitle": [
+        "Read your first report · RAGvidence"
+      ],
+      "ogDescription": [
+        "Understand summaries, changed questions, ranked hits, diagnoses, and limitations."
+      ],
+      "ogUrl": [
+        "https://ragvidence.medo-id.com/docs/first-report"
+      ],
+      "ogImage": [
+        "https://ragvidence.medo-id.com/opengraph-image"
+      ],
+      "twitterTitle": [
+        "Read your first report · RAGvidence"
+      ],
+      "twitterDescription": [
+        "Understand summaries, changed questions, ranked hits, diagnoses, and limitations."
+      ],
+      "twitterImage": [
+        "https://ragvidence.medo-id.com/opengraph-image"
+      ],
+      "robots": [],
+      "lang": "en",
+      "h1": [
+        "Read your first report"
+      ],
+      "mainTextLength": 2768,
+      "jsonLd": [
+        {
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "@id": "https://ragvidence.medo-id.com/#website",
+          "name": "RAGvidence",
+          "url": "https://ragvidence.medo-id.com/",
+          "description": "Evaluate BM25 and semantic RAG retrieval locally. Compare evidence coverage, diagnose regressions, and share self-contained HTML reports. No account or telemetry.",
+          "inLanguage": "en"
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Documentation",
+              "item": "https://ragvidence.medo-id.com/docs"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Read your first report",
+              "item": "https://ragvidence.medo-id.com/docs/first-report"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/docs/evidence-labels",
+      "status": 200,
+      "xRobotsTag": null,
+      "title": "Questions and evidence labels · RAGvidence",
+      "description": [
+        "Design answerable questions and map them to the complete evidence needed for an answer."
+      ],
+      "canonical": [
+        "https://ragvidence.medo-id.com/docs/evidence-labels"
+      ],
+      "ogTitle": [
+        "Questions and evidence labels · RAGvidence"
+      ],
+      "ogDescription": [
+        "Design answerable questions and map them to the complete evidence needed for an answer."
+      ],
+      "ogUrl": [
+        "https://ragvidence.medo-id.com/docs/evidence-labels"
+      ],
+      "ogImage": [
+        "https://ragvidence.medo-id.com/opengraph-image"
+      ],
+      "twitterTitle": [
+        "Questions and evidence labels · RAGvidence"
+      ],
+      "twitterDescription": [
+        "Design answerable questions and map them to the complete evidence needed for an answer."
+      ],
+      "twitterImage": [
+        "https://ragvidence.medo-id.com/opengraph-image"
+      ],
+      "robots": [],
+      "lang": "en",
+      "h1": [
+        "Questions and evidence labels"
+      ],
+      "mainTextLength": 2976,
+      "jsonLd": [
+        {
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "@id": "https://ragvidence.medo-id.com/#website",
+          "name": "RAGvidence",
+          "url": "https://ragvidence.medo-id.com/",
+          "description": "Evaluate BM25 and semantic RAG retrieval locally. Compare evidence coverage, diagnose regressions, and share self-contained HTML reports. No account or telemetry.",
+          "inLanguage": "en"
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Documentation",
+              "item": "https://ragvidence.medo-id.com/docs"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Questions and evidence labels",
+              "item": "https://ragvidence.medo-id.com/docs/evidence-labels"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/docs/retrieval-depth",
+      "status": 200,
+      "xRobotsTag": null,
+      "title": "Retrieval depth k · RAGvidence",
+      "description": [
+        "Choose k based on the context your application actually sends to generation."
+      ],
+      "canonical": [
+        "https://ragvidence.medo-id.com/docs/retrieval-depth"
+      ],
+      "ogTitle": [
+        "Retrieval depth k · RAGvidence"
+      ],
+      "ogDescription": [
+        "Choose k based on the context your application actually sends to generation."
+      ],
+      "ogUrl": [
+        "https://ragvidence.medo-id.com/docs/retrieval-depth"
+      ],
+      "ogImage": [
+        "https://ragvidence.medo-id.com/opengraph-image"
+      ],
+      "twitterTitle": [
+        "Retrieval depth k · RAGvidence"
+      ],
+      "twitterDescription": [
+        "Choose k based on the context your application actually sends to generation."
+      ],
+      "twitterImage": [
+        "https://ragvidence.medo-id.com/opengraph-image"
+      ],
+      "robots": [],
+      "lang": "en",
+      "h1": [
+        "Retrieval depth k"
+      ],
+      "mainTextLength": 2097,
+      "jsonLd": [
+        {
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "@id": "https://ragvidence.medo-id.com/#website",
+          "name": "RAGvidence",
+          "url": "https://ragvidence.medo-id.com/",
+          "description": "Evaluate BM25 and semantic RAG retrieval locally. Compare evidence coverage, diagnose regressions, and share self-contained HTML reports. No account or telemetry.",
+          "inLanguage": "en"
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Documentation",
+              "item": "https://ragvidence.medo-id.com/docs"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Retrieval depth k",
+              "item": "https://ragvidence.medo-id.com/docs/retrieval-depth"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/docs/controlled-experiments",
+      "status": 200,
+      "xRobotsTag": null,
+      "title": "Controlled experiments · RAGvidence",
+      "description": [
+        "Change one variable, freeze the evaluation slice, and protect held-out questions."
+      ],
+      "canonical": [
+        "https://ragvidence.medo-id.com/docs/controlled-experiments"
+      ],
+      "ogTitle": [
+        "Controlled experiments · RAGvidence"
+      ],
+      "ogDescription": [
+        "Change one variable, freeze the evaluation slice, and protect held-out questions."
+      ],
+      "ogUrl": [
+        "https://ragvidence.medo-id.com/docs/controlled-experiments"
+      ],
+      "ogImage": [
+        "https://ragvidence.medo-id.com/opengraph-image"
+      ],
+      "twitterTitle": [
+        "Controlled experiments · RAGvidence"
+      ],
+      "twitterDescription": [
+        "Change one variable, freeze the evaluation slice, and protect held-out questions."
+      ],
+      "twitterImage": [
+        "https://ragvidence.medo-id.com/opengraph-image"
+      ],
+      "robots": [],
+      "lang": "en",
+      "h1": [
+        "Controlled experiments"
+      ],
+      "mainTextLength": 2325,
+      "jsonLd": [
+        {
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "@id": "https://ragvidence.medo-id.com/#website",
+          "name": "RAGvidence",
+          "url": "https://ragvidence.medo-id.com/",
+          "description": "Evaluate BM25 and semantic RAG retrieval locally. Compare evidence coverage, diagnose regressions, and share self-contained HTML reports. No account or telemetry.",
+          "inLanguage": "en"
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Documentation",
+              "item": "https://ragvidence.medo-id.com/docs"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Controlled experiments",
+              "item": "https://ragvidence.medo-id.com/docs/controlled-experiments"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/docs/bm25-workflow",
+      "status": 200,
+      "xRobotsTag": null,
+      "title": "BM25 workflow · RAGvidence",
+      "description": [
+        "Run a strong lexical baseline and compare searchable representations."
+      ],
+      "canonical": [
+        "https://ragvidence.medo-id.com/docs/bm25-workflow"
+      ],
+      "ogTitle": [
+        "BM25 workflow · RAGvidence"
+      ],
+      "ogDescription": [
+        "Run a strong lexical baseline and compare searchable representations."
+      ],
+      "ogUrl": [
+        "https://ragvidence.medo-id.com/docs/bm25-workflow"
+      ],
+      "ogImage": [
+        "https://ragvidence.medo-id.com/opengraph-image"
+      ],
+      "twitterTitle": [
+        "BM25 workflow · RAGvidence"
+      ],
+      "twitterDescription": [
+        "Run a strong lexical baseline and compare searchable representations."
+      ],
+      "twitterImage": [
+        "https://ragvidence.medo-id.com/opengraph-image"
+      ],
+      "robots": [],
+      "lang": "en",
+      "h1": [
+        "BM25 workflow"
+      ],
+      "mainTextLength": 2386,
+      "jsonLd": [
+        {
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "@id": "https://ragvidence.medo-id.com/#website",
+          "name": "RAGvidence",
+          "url": "https://ragvidence.medo-id.com/",
+          "description": "Evaluate BM25 and semantic RAG retrieval locally. Compare evidence coverage, diagnose regressions, and share self-contained HTML reports. No account or telemetry.",
+          "inLanguage": "en"
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Documentation",
+              "item": "https://ragvidence.medo-id.com/docs"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "BM25 workflow",
+              "item": "https://ragvidence.medo-id.com/docs/bm25-workflow"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/docs/semantic-workflow",
+      "status": 200,
+      "xRobotsTag": null,
+      "title": "Semantic workflow · RAGvidence",
+      "description": [
+        "Evaluate local, Ollama, or OpenAI-compatible embeddings without surrendering provider choice."
+      ],
+      "canonical": [
+        "https://ragvidence.medo-id.com/docs/semantic-workflow"
+      ],
+      "ogTitle": [
+        "Semantic workflow · RAGvidence"
+      ],
+      "ogDescription": [
+        "Evaluate local, Ollama, or OpenAI-compatible embeddings without surrendering provider choice."
+      ],
+      "ogUrl": [
+        "https://ragvidence.medo-id.com/docs/semantic-workflow"
+      ],
+      "ogImage": [
+        "https://ragvidence.medo-id.com/opengraph-image"
+      ],
+      "twitterTitle": [
+        "Semantic workflow · RAGvidence"
+      ],
+      "twitterDescription": [
+        "Evaluate local, Ollama, or OpenAI-compatible embeddings without surrendering provider choice."
+      ],
+      "twitterImage": [
+        "https://ragvidence.medo-id.com/opengraph-image"
+      ],
+      "robots": [],
+      "lang": "en",
+      "h1": [
+        "Semantic workflow"
+      ],
+      "mainTextLength": 2686,
+      "jsonLd": [
+        {
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "@id": "https://ragvidence.medo-id.com/#website",
+          "name": "RAGvidence",
+          "url": "https://ragvidence.medo-id.com/",
+          "description": "Evaluate BM25 and semantic RAG retrieval locally. Compare evidence coverage, diagnose regressions, and share self-contained HTML reports. No account or telemetry.",
+          "inLanguage": "en"
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Documentation",
+              "item": "https://ragvidence.medo-id.com/docs"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Semantic workflow",
+              "item": "https://ragvidence.medo-id.com/docs/semantic-workflow"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/docs/import-retriever",
+      "status": 200,
+      "xRobotsTag": null,
+      "title": "Import an existing retriever · RAGvidence",
+      "description": [
+        "Evaluate LangChain, LlamaIndex, vector databases, or a production service without rebuilding them."
+      ],
+      "canonical": [
+        "https://ragvidence.medo-id.com/docs/import-retriever"
+      ],
+      "ogTitle": [
+        "Import an existing retriever · RAGvidence"
+      ],
+      "ogDescription": [
+        "Evaluate LangChain, LlamaIndex, vector databases, or a production service without rebuilding them."
+      ],
+      "ogUrl": [
+        "https://ragvidence.medo-id.com/docs/import-retriever"
+      ],
+      "ogImage": [
+        "https://ragvidence.medo-id.com/opengraph-image"
+      ],
+      "twitterTitle": [
+        "Import an existing retriever · RAGvidence"
+      ],
+      "twitterDescription": [
+        "Evaluate LangChain, LlamaIndex, vector databases, or a production service without rebuilding them."
+      ],
+      "twitterImage": [
+        "https://ragvidence.medo-id.com/opengraph-image"
+      ],
+      "robots": [],
+      "lang": "en",
+      "h1": [
+        "Import an existing retriever"
+      ],
+      "mainTextLength": 2300,
+      "jsonLd": [
+        {
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "@id": "https://ragvidence.medo-id.com/#website",
+          "name": "RAGvidence",
+          "url": "https://ragvidence.medo-id.com/",
+          "description": "Evaluate BM25 and semantic RAG retrieval locally. Compare evidence coverage, diagnose regressions, and share self-contained HTML reports. No account or telemetry.",
+          "inLanguage": "en"
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Documentation",
+              "item": "https://ragvidence.medo-id.com/docs"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Import an existing retriever",
+              "item": "https://ragvidence.medo-id.com/docs/import-retriever"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/docs/bring-your-own-data",
+      "status": 200,
+      "xRobotsTag": null,
+      "title": "Bring your own data · RAGvidence",
+      "description": [
+        "Create a reviewed workspace from a small, representative corpus slice."
+      ],
+      "canonical": [
+        "https://ragvidence.medo-id.com/docs/bring-your-own-data"
+      ],
+      "ogTitle": [
+        "Bring your own data · RAGvidence"
+      ],
+      "ogDescription": [
+        "Create a reviewed workspace from a small, representative corpus slice."
+      ],
+      "ogUrl": [
+        "https://ragvidence.medo-id.com/docs/bring-your-own-data"
+      ],
+      "ogImage": [
+        "https://ragvidence.medo-id.com/opengraph-image"
+      ],
+      "twitterTitle": [
+        "Bring your own data · RAGvidence"
+      ],
+      "twitterDescription": [
+        "Create a reviewed workspace from a small, representative corpus slice."
+      ],
+      "twitterImage": [
+        "https://ragvidence.medo-id.com/opengraph-image"
+      ],
+      "robots": [],
+      "lang": "en",
+      "h1": [
+        "Bring your own data"
+      ],
+      "mainTextLength": 2540,
+      "jsonLd": [
+        {
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "@id": "https://ragvidence.medo-id.com/#website",
+          "name": "RAGvidence",
+          "url": "https://ragvidence.medo-id.com/",
+          "description": "Evaluate BM25 and semantic RAG retrieval locally. Compare evidence coverage, diagnose regressions, and share self-contained HTML reports. No account or telemetry.",
+          "inLanguage": "en"
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Documentation",
+              "item": "https://ragvidence.medo-id.com/docs"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Bring your own data",
+              "item": "https://ragvidence.medo-id.com/docs/bring-your-own-data"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/docs/metrics",
+      "status": 200,
+      "xRobotsTag": null,
+      "title": "Metrics reference · RAGvidence",
+      "description": [
+        "Use each retrieval metric for the question it actually answers."
+      ],
+      "canonical": [
+        "https://ragvidence.medo-id.com/docs/metrics"
+      ],
+      "ogTitle": [
+        "Metrics reference · RAGvidence"
+      ],
+      "ogDescription": [
+        "Use each retrieval metric for the question it actually answers."
+      ],
+      "ogUrl": [
+        "https://ragvidence.medo-id.com/docs/metrics"
+      ],
+      "ogImage": [
+        "https://ragvidence.medo-id.com/opengraph-image"
+      ],
+      "twitterTitle": [
+        "Metrics reference · RAGvidence"
+      ],
+      "twitterDescription": [
+        "Use each retrieval metric for the question it actually answers."
+      ],
+      "twitterImage": [
+        "https://ragvidence.medo-id.com/opengraph-image"
+      ],
+      "robots": [],
+      "lang": "en",
+      "h1": [
+        "Metrics reference"
+      ],
+      "mainTextLength": 2592,
+      "jsonLd": [
+        {
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "@id": "https://ragvidence.medo-id.com/#website",
+          "name": "RAGvidence",
+          "url": "https://ragvidence.medo-id.com/",
+          "description": "Evaluate BM25 and semantic RAG retrieval locally. Compare evidence coverage, diagnose regressions, and share self-contained HTML reports. No account or telemetry.",
+          "inLanguage": "en"
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Documentation",
+              "item": "https://ragvidence.medo-id.com/docs"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Metrics reference",
+              "item": "https://ragvidence.medo-id.com/docs/metrics"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/docs/compare-diagnose",
+      "status": 200,
+      "xRobotsTag": null,
+      "title": "Compare and diagnose · RAGvidence",
+      "description": [
+        "Find improvements and regressions, then turn patterns into a next experiment."
+      ],
+      "canonical": [
+        "https://ragvidence.medo-id.com/docs/compare-diagnose"
+      ],
+      "ogTitle": [
+        "Compare and diagnose · RAGvidence"
+      ],
+      "ogDescription": [
+        "Find improvements and regressions, then turn patterns into a next experiment."
+      ],
+      "ogUrl": [
+        "https://ragvidence.medo-id.com/docs/compare-diagnose"
+      ],
+      "ogImage": [
+        "https://ragvidence.medo-id.com/opengraph-image"
+      ],
+      "twitterTitle": [
+        "Compare and diagnose · RAGvidence"
+      ],
+      "twitterDescription": [
+        "Find improvements and regressions, then turn patterns into a next experiment."
+      ],
+      "twitterImage": [
+        "https://ragvidence.medo-id.com/opengraph-image"
+      ],
+      "robots": [],
+      "lang": "en",
+      "h1": [
+        "Compare and diagnose"
+      ],
+      "mainTextLength": 2429,
+      "jsonLd": [
+        {
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "@id": "https://ragvidence.medo-id.com/#website",
+          "name": "RAGvidence",
+          "url": "https://ragvidence.medo-id.com/",
+          "description": "Evaluate BM25 and semantic RAG retrieval locally. Compare evidence coverage, diagnose regressions, and share self-contained HTML reports. No account or telemetry.",
+          "inLanguage": "en"
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Documentation",
+              "item": "https://ragvidence.medo-id.com/docs"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Compare and diagnose",
+              "item": "https://ragvidence.medo-id.com/docs/compare-diagnose"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/docs/reports",
+      "status": 200,
+      "xRobotsTag": null,
+      "title": "Reports and sharing · RAGvidence",
+      "description": [
+        "Export JSON, Markdown, or a portable HTML report without losing reproducibility context."
+      ],
+      "canonical": [
+        "https://ragvidence.medo-id.com/docs/reports"
+      ],
+      "ogTitle": [
+        "Reports and sharing · RAGvidence"
+      ],
+      "ogDescription": [
+        "Export JSON, Markdown, or a portable HTML report without losing reproducibility context."
+      ],
+      "ogUrl": [
+        "https://ragvidence.medo-id.com/docs/reports"
+      ],
+      "ogImage": [
+        "https://ragvidence.medo-id.com/opengraph-image"
+      ],
+      "twitterTitle": [
+        "Reports and sharing · RAGvidence"
+      ],
+      "twitterDescription": [
+        "Export JSON, Markdown, or a portable HTML report without losing reproducibility context."
+      ],
+      "twitterImage": [
+        "https://ragvidence.medo-id.com/opengraph-image"
+      ],
+      "robots": [],
+      "lang": "en",
+      "h1": [
+        "Reports and sharing"
+      ],
+      "mainTextLength": 2431,
+      "jsonLd": [
+        {
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "@id": "https://ragvidence.medo-id.com/#website",
+          "name": "RAGvidence",
+          "url": "https://ragvidence.medo-id.com/",
+          "description": "Evaluate BM25 and semantic RAG retrieval locally. Compare evidence coverage, diagnose regressions, and share self-contained HTML reports. No account or telemetry.",
+          "inLanguage": "en"
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Documentation",
+              "item": "https://ragvidence.medo-id.com/docs"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Reports and sharing",
+              "item": "https://ragvidence.medo-id.com/docs/reports"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/docs/commands",
+      "status": 200,
+      "xRobotsTag": null,
+      "title": "Command reference · RAGvidence",
+      "description": [
+        "A compact map of the current ragvi command surface."
+      ],
+      "canonical": [
+        "https://ragvidence.medo-id.com/docs/commands"
+      ],
+      "ogTitle": [
+        "Command reference · RAGvidence"
+      ],
+      "ogDescription": [
+        "A compact map of the current ragvi command surface."
+      ],
+      "ogUrl": [
+        "https://ragvidence.medo-id.com/docs/commands"
+      ],
+      "ogImage": [
+        "https://ragvidence.medo-id.com/opengraph-image"
+      ],
+      "twitterTitle": [
+        "Command reference · RAGvidence"
+      ],
+      "twitterDescription": [
+        "A compact map of the current ragvi command surface."
+      ],
+      "twitterImage": [
+        "https://ragvidence.medo-id.com/opengraph-image"
+      ],
+      "robots": [],
+      "lang": "en",
+      "h1": [
+        "Command reference"
+      ],
+      "mainTextLength": 2396,
+      "jsonLd": [
+        {
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "@id": "https://ragvidence.medo-id.com/#website",
+          "name": "RAGvidence",
+          "url": "https://ragvidence.medo-id.com/",
+          "description": "Evaluate BM25 and semantic RAG retrieval locally. Compare evidence coverage, diagnose regressions, and share self-contained HTML reports. No account or telemetry.",
+          "inLanguage": "en"
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Documentation",
+              "item": "https://ragvidence.medo-id.com/docs"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Command reference",
+              "item": "https://ragvidence.medo-id.com/docs/commands"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/docs/privacy-providers",
+      "status": 200,
+      "xRobotsTag": null,
+      "title": "Privacy and providers · RAGvidence",
+      "description": [
+        "Know exactly when data stays local and when a provider receives it."
+      ],
+      "canonical": [
+        "https://ragvidence.medo-id.com/docs/privacy-providers"
+      ],
+      "ogTitle": [
+        "Privacy and providers · RAGvidence"
+      ],
+      "ogDescription": [
+        "Know exactly when data stays local and when a provider receives it."
+      ],
+      "ogUrl": [
+        "https://ragvidence.medo-id.com/docs/privacy-providers"
+      ],
+      "ogImage": [
+        "https://ragvidence.medo-id.com/opengraph-image"
+      ],
+      "twitterTitle": [
+        "Privacy and providers · RAGvidence"
+      ],
+      "twitterDescription": [
+        "Know exactly when data stays local and when a provider receives it."
+      ],
+      "twitterImage": [
+        "https://ragvidence.medo-id.com/opengraph-image"
+      ],
+      "robots": [],
+      "lang": "en",
+      "h1": [
+        "Privacy and providers"
+      ],
+      "mainTextLength": 2152,
+      "jsonLd": [
+        {
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "@id": "https://ragvidence.medo-id.com/#website",
+          "name": "RAGvidence",
+          "url": "https://ragvidence.medo-id.com/",
+          "description": "Evaluate BM25 and semantic RAG retrieval locally. Compare evidence coverage, diagnose regressions, and share self-contained HTML reports. No account or telemetry.",
+          "inLanguage": "en"
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Documentation",
+              "item": "https://ragvidence.medo-id.com/docs"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Privacy and providers",
+              "item": "https://ragvidence.medo-id.com/docs/privacy-providers"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/docs/troubleshooting",
+      "status": 200,
+      "xRobotsTag": null,
+      "title": "Troubleshooting and recovery · RAGvidence",
+      "description": [
+        "Resolve command, dependency, validation, model, and workspace problems safely."
+      ],
+      "canonical": [
+        "https://ragvidence.medo-id.com/docs/troubleshooting"
+      ],
+      "ogTitle": [
+        "Troubleshooting and recovery · RAGvidence"
+      ],
+      "ogDescription": [
+        "Resolve command, dependency, validation, model, and workspace problems safely."
+      ],
+      "ogUrl": [
+        "https://ragvidence.medo-id.com/docs/troubleshooting"
+      ],
+      "ogImage": [
+        "https://ragvidence.medo-id.com/opengraph-image"
+      ],
+      "twitterTitle": [
+        "Troubleshooting and recovery · RAGvidence"
+      ],
+      "twitterDescription": [
+        "Resolve command, dependency, validation, model, and workspace problems safely."
+      ],
+      "twitterImage": [
+        "https://ragvidence.medo-id.com/opengraph-image"
+      ],
+      "robots": [],
+      "lang": "en",
+      "h1": [
+        "Troubleshooting and recovery"
+      ],
+      "mainTextLength": 2661,
+      "jsonLd": [
+        {
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "@id": "https://ragvidence.medo-id.com/#website",
+          "name": "RAGvidence",
+          "url": "https://ragvidence.medo-id.com/",
+          "description": "Evaluate BM25 and semantic RAG retrieval locally. Compare evidence coverage, diagnose regressions, and share self-contained HTML reports. No account or telemetry.",
+          "inLanguage": "en"
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Documentation",
+              "item": "https://ragvidence.medo-id.com/docs"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Troubleshooting and recovery",
+              "item": "https://ragvidence.medo-id.com/docs/troubleshooting"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "route": "/releases",
+      "status": 200,
+      "xRobotsTag": null,
+      "title": "Releases · RAGvidence",
+      "description": [
+        "RAGvidence CLI releases, included workflows, installation requirements, and the shipped software license."
+      ],
+      "canonical": [
+        "https://ragvidence.medo-id.com/releases"
+      ],
+      "ogTitle": [
+        "Releases · RAGvidence"
+      ],
+      "ogDescription": [
+        "RAGvidence CLI releases, included workflows, installation requirements, and the shipped software license."
+      ],
+      "ogUrl": [
+        "https://ragvidence.medo-id.com/releases"
+      ],
+      "ogImage": [
+        "https://ragvidence.medo-id.com/opengraph-image"
+      ],
+      "twitterTitle": [
+        "Releases · RAGvidence"
+      ],
+      "twitterDescription": [
+        "RAGvidence CLI releases, included workflows, installation requirements, and the shipped software license."
+      ],
+      "twitterImage": [
+        "https://ragvidence.medo-id.com/opengraph-image"
+      ],
+      "robots": [],
+      "lang": "en",
+      "h1": [
+        "What ships with RAGvidence."
+      ],
+      "mainTextLength": 989,
+      "jsonLd": [
+        {
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "@id": "https://ragvidence.medo-id.com/#website",
+          "name": "RAGvidence",
+          "url": "https://ragvidence.medo-id.com/",
+          "description": "Evaluate BM25 and semantic RAG retrieval locally. Compare evidence coverage, diagnose regressions, and share self-contained HTML reports. No account or telemetry.",
+          "inLanguage": "en"
+        }
+      ]
+    },
+    {
+      "route": "/privacy",
+      "status": 200,
+      "xRobotsTag": null,
+      "title": "Privacy · RAGvidence",
+      "description": [
+        "How the RAGvidence website and CLI handle data."
+      ],
+      "canonical": [
+        "https://ragvidence.medo-id.com/privacy"
+      ],
+      "ogTitle": [
+        "Privacy · RAGvidence"
+      ],
+      "ogDescription": [
+        "How the RAGvidence website and CLI handle data."
+      ],
+      "ogUrl": [
+        "https://ragvidence.medo-id.com/privacy"
+      ],
+      "ogImage": [
+        "https://ragvidence.medo-id.com/opengraph-image"
+      ],
+      "twitterTitle": [
+        "Privacy · RAGvidence"
+      ],
+      "twitterDescription": [
+        "How the RAGvidence website and CLI handle data."
+      ],
+      "twitterImage": [
+        "https://ragvidence.medo-id.com/opengraph-image"
+      ],
+      "robots": [],
+      "lang": "en",
+      "h1": [
+        "Privacy, without vague boundaries."
+      ],
+      "mainTextLength": 1963,
+      "jsonLd": [
+        {
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "@id": "https://ragvidence.medo-id.com/#website",
+          "name": "RAGvidence",
+          "url": "https://ragvidence.medo-id.com/",
+          "description": "Evaluate BM25 and semantic RAG retrieval locally. Compare evidence coverage, diagnose regressions, and share self-contained HTML reports. No account or telemetry.",
+          "inLanguage": "en"
+        }
+      ]
+    },
+    {
+      "route": "/terms",
+      "status": 200,
+      "xRobotsTag": null,
+      "title": "Terms · RAGvidence",
+      "description": [
+        "Terms for using the RAGvidence website and software materials."
+      ],
+      "canonical": [
+        "https://ragvidence.medo-id.com/terms"
+      ],
+      "ogTitle": [
+        "Terms · RAGvidence"
+      ],
+      "ogDescription": [
+        "Terms for using the RAGvidence website and software materials."
+      ],
+      "ogUrl": [
+        "https://ragvidence.medo-id.com/terms"
+      ],
+      "ogImage": [
+        "https://ragvidence.medo-id.com/opengraph-image"
+      ],
+      "twitterTitle": [
+        "Terms · RAGvidence"
+      ],
+      "twitterDescription": [
+        "Terms for using the RAGvidence website and software materials."
+      ],
+      "twitterImage": [
+        "https://ragvidence.medo-id.com/opengraph-image"
+      ],
+      "robots": [],
+      "lang": "en",
+      "h1": [
+        "Terms of use"
+      ],
+      "mainTextLength": 2475,
+      "jsonLd": [
+        {
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "@id": "https://ragvidence.medo-id.com/#website",
+          "name": "RAGvidence",
+          "url": "https://ragvidence.medo-id.com/",
+          "description": "Evaluate BM25 and semantic RAG retrieval locally. Compare evidence coverage, diagnose regressions, and share self-contained HTML reports. No account or telemetry.",
+          "inLanguage": "en"
+        }
+      ]
+    },
+    {
+      "route": "/security",
+      "status": 200,
+      "xRobotsTag": null,
+      "title": "Security · RAGvidence",
+      "description": [
+        "Security boundaries and responsible vulnerability reporting for RAGvidence."
+      ],
+      "canonical": [
+        "https://ragvidence.medo-id.com/security"
+      ],
+      "ogTitle": [
+        "Security · RAGvidence"
+      ],
+      "ogDescription": [
+        "Security boundaries and responsible vulnerability reporting for RAGvidence."
+      ],
+      "ogUrl": [
+        "https://ragvidence.medo-id.com/security"
+      ],
+      "ogImage": [
+        "https://ragvidence.medo-id.com/opengraph-image"
+      ],
+      "twitterTitle": [
+        "Security · RAGvidence"
+      ],
+      "twitterDescription": [
+        "Security boundaries and responsible vulnerability reporting for RAGvidence."
+      ],
+      "twitterImage": [
+        "https://ragvidence.medo-id.com/opengraph-image"
+      ],
+      "robots": [],
+      "lang": "en",
+      "h1": [
+        "Security and responsible reporting"
+      ],
+      "mainTextLength": 1380,
+      "jsonLd": [
+        {
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "@id": "https://ragvidence.medo-id.com/#website",
+          "name": "RAGvidence",
+          "url": "https://ragvidence.medo-id.com/",
+          "description": "Evaluate BM25 and semantic RAG retrieval locally. Compare evidence coverage, diagnose regressions, and share self-contained HTML reports. No account or telemetry.",
+          "inLanguage": "en"
+        }
+      ]
+    }
+  ],
+  "files": [
+    {
+      "route": "/robots.txt",
+      "status": 200,
+      "xRobotsTag": null,
+      "body": "User-Agent: *\nAllow: /\n\nHost: https://ragvidence.medo-id.com\nSitemap: https://ragvidence.medo-id.com/sitemap.xml\n"
+    },
+    {
+      "route": "/sitemap.xml",
+      "status": 200,
+      "xRobotsTag": null,
+      "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n<url>\n<loc>https://ragvidence.medo-id.com/</loc>\n</url>\n<url>\n<loc>https://ragvidence.medo-id.com/docs</loc>\n</url>\n<url>\n<loc>https://ragvidence.medo-id.com/releases</loc>\n</url>\n<url>\n<loc>https://ragvidence.medo-id.com/privacy</loc>\n</url>\n<url>\n<loc>https://ragvidence.medo-id.com/terms</loc>\n</url>\n<url>\n<loc>https://ragvidence.medo-id.com/security</loc>\n</url>\n<url>\n<loc>https://ragvidence.medo-id.com/docs/installation</loc>\n</url>\n<url>\n<loc>https://ragvidence.medo-id.com/docs/first-tutorial</loc>\n</url>\n<url>\n<loc>https://ragvidence.medo-id.com/docs/first-report</loc>\n</url>\n<url>\n<loc>https://ragvidence.medo-id.com/docs/evidence-labels</loc>\n</url>\n<url>\n<loc>https://ragvidence.medo-id.com/docs/retrieval-depth</loc>\n</url>\n<url>\n<loc>https://ragvidence.medo-id.com/docs/controlled-experiments</loc>\n</url>\n<url>\n<loc>https://ragvidence.medo-id.com/docs/bm25-workflow</loc>\n</url>\n<url>\n<loc>https://ragvidence.medo-id.com/docs/semantic-workflow</loc>\n</url>\n<url>\n<loc>https://ragvidence.medo-id.com/docs/import-retriever</loc>\n</url>\n<url>\n<loc>https://ragvidence.medo-id.com/docs/bring-your-own-data</loc>\n</url>\n<url>\n<loc>https://ragvidence.medo-id.com/docs/metrics</loc>\n</url>\n<url>\n<loc>https://ragvidence.medo-id.com/docs/compare-diagnose</loc>\n</url>\n<url>\n<loc>https://ragvidence.medo-id.com/docs/reports</loc>\n</url>\n<url>\n<loc>https://ragvidence.medo-id.com/docs/commands</loc>\n</url>\n<url>\n<loc>https://ragvidence.medo-id.com/docs/privacy-providers</loc>\n</url>\n<url>\n<loc>https://ragvidence.medo-id.com/docs/troubleshooting</loc>\n</url>\n</urlset>\n"
+    },
+    {
+      "route": "/brand/concepts.html",
+      "status": 200,
+      "xRobotsTag": "noindex"
+    },
+    {
+      "route": "/brand/brand-sheet.html",
+      "status": 200,
+      "xRobotsTag": "noindex"
+    },
+    {
+      "route": "/brand/a-evidence-convergence/tab-preview.html",
+      "status": 200,
+      "xRobotsTag": "noindex"
+    },
+    {
+      "route": "/not-a-real-seo-page",
+      "status": 404,
+      "xRobotsTag": null
+    }
+  ],
+  "errors": [],
+  "external": [],
+  "performance": [
+    {
+      "profile": "mobile-lab",
+      "route": "/",
+      "sample": 0,
+      "cpu": 4,
+      "latency": 50,
+      "throughput": 200000,
+      "mediaBytesReceived": 598968,
+      "ttfbMs": 6.4000000059604645,
+      "domContentLoadedMs": 407.5,
+      "lcpMs": 660,
+      "cls": 0.000017623489692850218,
+      "clientJavaScriptBytes": 157525,
+      "cssBytes": 8172,
+      "overflow": false
+    },
+    {
+      "profile": "mobile-lab",
+      "route": "/",
+      "sample": 1,
+      "cpu": 4,
+      "latency": 50,
+      "throughput": 200000,
+      "mediaBytesReceived": 600468,
+      "ttfbMs": 5.899999998509884,
+      "domContentLoadedMs": 414.8999999985099,
+      "lcpMs": 708,
+      "cls": 0.000017623489692850218,
+      "clientJavaScriptBytes": 157525,
+      "cssBytes": 8172,
+      "overflow": false
+    },
+    {
+      "profile": "mobile-lab",
+      "route": "/",
+      "sample": 2,
+      "cpu": 4,
+      "latency": 50,
+      "throughput": 200000,
+      "mediaBytesReceived": 600468,
+      "ttfbMs": 5.899999998509884,
+      "domContentLoadedMs": 414.79999999701977,
+      "lcpMs": 644,
+      "cls": 0.000017623489692850218,
+      "clientJavaScriptBytes": 157525,
+      "cssBytes": 8172,
+      "overflow": false
+    },
+    {
+      "profile": "mobile-lab",
+      "route": "/docs/semantic-workflow",
+      "sample": 0,
+      "cpu": 4,
+      "latency": 50,
+      "throughput": 200000,
+      "mediaBytesReceived": 0,
+      "ttfbMs": 4.600000001490116,
+      "domContentLoadedMs": 377.3999999985099,
+      "lcpMs": 556,
+      "cls": 0,
+      "clientJavaScriptBytes": 157525,
+      "cssBytes": 8172,
+      "overflow": false
+    },
+    {
+      "profile": "mobile-lab",
+      "route": "/docs/semantic-workflow",
+      "sample": 1,
+      "cpu": 4,
+      "latency": 50,
+      "throughput": 200000,
+      "mediaBytesReceived": 0,
+      "ttfbMs": 4.5,
+      "domContentLoadedMs": 383.5,
+      "lcpMs": 564,
+      "cls": 0,
+      "clientJavaScriptBytes": 157525,
+      "cssBytes": 8172,
+      "overflow": false
+    },
+    {
+      "profile": "mobile-lab",
+      "route": "/docs/semantic-workflow",
+      "sample": 2,
+      "cpu": 4,
+      "latency": 50,
+      "throughput": 200000,
+      "mediaBytesReceived": 0,
+      "ttfbMs": 4.600000001490116,
+      "domContentLoadedMs": 383.30000000447035,
+      "lcpMs": 564,
+      "cls": 0,
+      "clientJavaScriptBytes": 157525,
+      "cssBytes": 8172,
+      "overflow": false
+    },
+    {
+      "profile": "desktop-lab",
+      "route": "/",
+      "sample": 0,
+      "cpu": 1,
+      "latency": 0,
+      "throughput": 10000000,
+      "mediaBytesReceived": 3240320,
+      "ttfbMs": 6.299999997019768,
+      "domContentLoadedMs": 70.5,
+      "lcpMs": 184,
+      "cls": 0,
+      "clientJavaScriptBytes": 159587,
+      "cssBytes": 8172,
+      "overflow": false
+    },
+    {
+      "profile": "desktop-lab",
+      "route": "/",
+      "sample": 1,
+      "cpu": 1,
+      "latency": 0,
+      "throughput": 10000000,
+      "mediaBytesReceived": 3243924,
+      "ttfbMs": 5.4000000059604645,
+      "domContentLoadedMs": 81.60000000149012,
+      "lcpMs": 144,
+      "cls": 0,
+      "clientJavaScriptBytes": 159587,
+      "cssBytes": 8172,
+      "overflow": false
+    },
+    {
+      "profile": "desktop-lab",
+      "route": "/",
+      "sample": 2,
+      "cpu": 1,
+      "latency": 0,
+      "throughput": 10000000,
+      "mediaBytesReceived": 3242540,
+      "ttfbMs": 5.600000001490116,
+      "domContentLoadedMs": 80.39999999850988,
+      "lcpMs": 140,
+      "cls": 0,
+      "clientJavaScriptBytes": 159587,
+      "cssBytes": 8172,
+      "overflow": false
+    },
+    {
+      "profile": "desktop-lab",
+      "route": "/docs/semantic-workflow",
+      "sample": 0,
+      "cpu": 1,
+      "latency": 0,
+      "throughput": 10000000,
+      "mediaBytesReceived": 0,
+      "ttfbMs": 4.0999999940395355,
+      "domContentLoadedMs": 56.69999999552965,
+      "lcpMs": 144,
+      "cls": 0,
+      "clientJavaScriptBytes": 157525,
+      "cssBytes": 8172,
+      "overflow": false
+    },
+    {
+      "profile": "desktop-lab",
+      "route": "/docs/semantic-workflow",
+      "sample": 1,
+      "cpu": 1,
+      "latency": 0,
+      "throughput": 10000000,
+      "mediaBytesReceived": 0,
+      "ttfbMs": 4.799999997019768,
+      "domContentLoadedMs": 52.29999999701977,
+      "lcpMs": 152,
+      "cls": 0,
+      "clientJavaScriptBytes": 157525,
+      "cssBytes": 8172,
+      "overflow": false
+    },
+    {
+      "profile": "desktop-lab",
+      "route": "/docs/semantic-workflow",
+      "sample": 2,
+      "cpu": 1,
+      "latency": 0,
+      "throughput": 10000000,
+      "mediaBytesReceived": 0,
+      "ttfbMs": 4.200000002980232,
+      "domContentLoadedMs": 55.899999998509884,
+      "lcpMs": 96,
+      "cls": 0,
+      "clientJavaScriptBytes": 157525,
+      "cssBytes": 8172,
+      "overflow": false
+    }
+  ]
+}

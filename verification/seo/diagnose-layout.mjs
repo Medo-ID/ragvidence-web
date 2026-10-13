@@ -24,7 +24,7 @@ try {
       const context = await browser.newContext({ viewport: { width, height } });
       await context.addInitScript(() => {
         window.__layoutEvidence = { cls: 0, totalShiftScore: 0, shifts: [], fontEvents: [], lcpMs: 0 };
-        let first = 0, last = 0, session = 0;
+        let first = Number.NEGATIVE_INFINITY, last = Number.NEGATIVE_INFINITY, session = 0;
         const box = rect => ({ x: rect.x, y: rect.y, width: rect.width, height: rect.height });
         new PerformanceObserver(list => {
           for (const entry of list.getEntries()) {
