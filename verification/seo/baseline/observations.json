@@ -1,0 +1,1156 @@
+{
+  "stage": "baseline",
+  "scope": "Local production build; no live deployment, rankings, field Core Web Vitals, or Google indexing verification.",
+  "pages": [
+    {
+      "route": "/",
+      "status": 200,
+      "xRobotsTag": null,
+      "title": "RAGvidence — Evidence-first RAG diagnostics",
+      "description": [
+        "A local, evidence-first CLI for testing RAG retrieval changes, finding regressions, and sharing reproducible HTML reports."
+      ],
+      "canonical": [
+        "https://ragvidence.medo-id.com/"
+      ],
+      "ogTitle": [
+        "RAGvidence — See whether your retriever found enough evidence"
+      ],
+      "ogDescription": [
+        "Compare retrieval changes locally, catch regressions, and share the evidence behind every result."
+      ],
+      "ogUrl": [
+        "https://ragvidence.medo-id.com"
+      ],
+      "ogImage": [
+        "https://ragvidence.medo-id.com/opengraph-image?82530851a5eed9e9"
+      ],
+      "twitterTitle": [
+        "RAGvidence — Evidence-first RAG diagnostics"
+      ],
+      "twitterDescription": [
+        "A local CLI for evidence-level RAG evaluation and reproducible reports."
+      ],
+      "twitterImage": [
+        "https://ragvidence.medo-id.com/opengraph-image?82530851a5eed9e9"
+      ],
+      "robots": [],
+      "lang": "en",
+      "h1": [
+        "See whether your RAG change helped."
+      ],
+      "mainTextLength": 7982,
+      "jsonLd": []
+    },
+    {
+      "route": "/docs",
+      "status": 200,
+      "xRobotsTag": null,
+      "title": "Documentation · RAGvidence",
+      "description": [
+        "Install RAGvidence, run controlled retrieval experiments, evaluate evidence, and interpret reports."
+      ],
+      "canonical": [
+        "https://ragvidence.medo-id.com/docs"
+      ],
+      "ogTitle": [
+        "RAGvidence — See whether your retriever found enough evidence"
+      ],
+      "ogDescription": [
+        "Compare retrieval changes locally, catch regressions, and share the evidence behind every result."
+      ],
+      "ogUrl": [
+        "https://ragvidence.medo-id.com"
+      ],
+      "ogImage": [
+        "https://ragvidence.medo-id.com/opengraph-image?82530851a5eed9e9"
+      ],
+      "twitterTitle": [
+        "RAGvidence — Evidence-first RAG diagnostics"
+      ],
+      "twitterDescription": [
+        "A local CLI for evidence-level RAG evaluation and reproducible reports."
+      ],
+      "twitterImage": [
+        "https://ragvidence.medo-id.com/opengraph-image?82530851a5eed9e9"
+      ],
+      "robots": [],
+      "lang": "en",
+      "h1": [
+        "What RAGvidence does"
+      ],
+      "mainTextLength": 2402,
+      "jsonLd": []
+    },
+    {
+      "route": "/docs/overview",
+      "status": 200,
+      "xRobotsTag": null,
+      "title": "What RAGvidence does",
+      "description": [
+        "Understand the problem, the evaluation boundary, and the workflow before running an experiment."
+      ],
+      "canonical": [
+        "https://ragvidence.medo-id.com/docs/overview"
+      ],
+      "ogTitle": [
+        "RAGvidence — See whether your retriever found enough evidence"
+      ],
+      "ogDescription": [
+        "Compare retrieval changes locally, catch regressions, and share the evidence behind every result."
+      ],
+      "ogUrl": [
+        "https://ragvidence.medo-id.com"
+      ],
+      "ogImage": [
+        "https://ragvidence.medo-id.com/opengraph-image?82530851a5eed9e9"
+      ],
+      "twitterTitle": [
+        "RAGvidence — Evidence-first RAG diagnostics"
+      ],
+      "twitterDescription": [
+        "A local CLI for evidence-level RAG evaluation and reproducible reports."
+      ],
+      "twitterImage": [
+        "https://ragvidence.medo-id.com/opengraph-image?82530851a5eed9e9"
+      ],
+      "robots": [],
+      "lang": "en",
+      "h1": [
+        "What RAGvidence does"
+      ],
+      "mainTextLength": 2402,
+      "jsonLd": []
+    },
+    {
+      "route": "/docs/installation",
+      "status": 200,
+      "xRobotsTag": null,
+      "title": "Installation",
+      "description": [
+        "Install the CLI, choose optional semantic support, and confirm your environment is healthy."
+      ],
+      "canonical": [
+        "https://ragvidence.medo-id.com/docs/installation"
+      ],
+      "ogTitle": [
+        "RAGvidence — See whether your retriever found enough evidence"
+      ],
+      "ogDescription": [
+        "Compare retrieval changes locally, catch regressions, and share the evidence behind every result."
+      ],
+      "ogUrl": [
+        "https://ragvidence.medo-id.com"
+      ],
+      "ogImage": [
+        "https://ragvidence.medo-id.com/opengraph-image?82530851a5eed9e9"
+      ],
+      "twitterTitle": [
+        "RAGvidence — Evidence-first RAG diagnostics"
+      ],
+      "twitterDescription": [
+        "A local CLI for evidence-level RAG evaluation and reproducible reports."
+      ],
+      "twitterImage": [
+        "https://ragvidence.medo-id.com/opengraph-image?82530851a5eed9e9"
+      ],
+      "robots": [],
+      "lang": "en",
+      "h1": [
+        "Installation"
+      ],
+      "mainTextLength": 3621,
+      "jsonLd": []
+    },
+    {
+      "route": "/docs/first-tutorial",
+      "status": 200,
+      "xRobotsTag": null,
+      "title": "First tutorial",
+      "description": [
+        "Generate a complete controlled comparison and learn what changed."
+      ],
+      "canonical": [
+        "https://ragvidence.medo-id.com/docs/first-tutorial"
+      ],
+      "ogTitle": [
+        "RAGvidence — See whether your retriever found enough evidence"
+      ],
+      "ogDescription": [
+        "Compare retrieval changes locally, catch regressions, and share the evidence behind every result."
+      ],
+      "ogUrl": [
+        "https://ragvidence.medo-id.com"
+      ],
+      "ogImage": [
+        "https://ragvidence.medo-id.com/opengraph-image?82530851a5eed9e9"
+      ],
+      "twitterTitle": [
+        "RAGvidence — Evidence-first RAG diagnostics"
+      ],
+      "twitterDescription": [
+        "A local CLI for evidence-level RAG evaluation and reproducible reports."
+      ],
+      "twitterImage": [
+        "https://ragvidence.medo-id.com/opengraph-image?82530851a5eed9e9"
+      ],
+      "robots": [],
+      "lang": "en",
+      "h1": [
+        "First tutorial"
+      ],
+      "mainTextLength": 2476,
+      "jsonLd": []
+    },
+    {
+      "route": "/docs/first-report",
+      "status": 200,
+      "xRobotsTag": null,
+      "title": "Read your first report",
+      "description": [
+        "Understand summaries, changed questions, ranked hits, diagnoses, and limitations."
+      ],
+      "canonical": [
+        "https://ragvidence.medo-id.com/docs/first-report"
+      ],
+      "ogTitle": [
+        "RAGvidence — See whether your retriever found enough evidence"
+      ],
+      "ogDescription": [
+        "Compare retrieval changes locally, catch regressions, and share the evidence behind every result."
+      ],
+      "ogUrl": [
+        "https://ragvidence.medo-id.com"
+      ],
+      "ogImage": [
+        "https://ragvidence.medo-id.com/opengraph-image?82530851a5eed9e9"
+      ],
+      "twitterTitle": [
+        "RAGvidence — Evidence-first RAG diagnostics"
+      ],
+      "twitterDescription": [
+        "A local CLI for evidence-level RAG evaluation and reproducible reports."
+      ],
+      "twitterImage": [
+        "https://ragvidence.medo-id.com/opengraph-image?82530851a5eed9e9"
+      ],
+      "robots": [],
+      "lang": "en",
+      "h1": [
+        "Read your first report"
+      ],
+      "mainTextLength": 2464,
+      "jsonLd": []
+    },
+    {
+      "route": "/docs/evidence-labels",
+      "status": 200,
+      "xRobotsTag": null,
+      "title": "Questions and evidence labels",
+      "description": [
+        "Design answerable questions and map them to the complete evidence needed for an answer."
+      ],
+      "canonical": [
+        "https://ragvidence.medo-id.com/docs/evidence-labels"
+      ],
+      "ogTitle": [
+        "RAGvidence — See whether your retriever found enough evidence"
+      ],
+      "ogDescription": [
+        "Compare retrieval changes locally, catch regressions, and share the evidence behind every result."
+      ],
+      "ogUrl": [
+        "https://ragvidence.medo-id.com"
+      ],
+      "ogImage": [
+        "https://ragvidence.medo-id.com/opengraph-image?82530851a5eed9e9"
+      ],
+      "twitterTitle": [
+        "RAGvidence — Evidence-first RAG diagnostics"
+      ],
+      "twitterDescription": [
+        "A local CLI for evidence-level RAG evaluation and reproducible reports."
+      ],
+      "twitterImage": [
+        "https://ragvidence.medo-id.com/opengraph-image?82530851a5eed9e9"
+      ],
+      "robots": [],
+      "lang": "en",
+      "h1": [
+        "Questions and evidence labels"
+      ],
+      "mainTextLength": 2662,
+      "jsonLd": []
+    },
+    {
+      "route": "/docs/retrieval-depth",
+      "status": 200,
+      "xRobotsTag": null,
+      "title": "Retrieval depth k",
+      "description": [
+        "Choose k based on the context your application actually sends to generation."
+      ],
+      "canonical": [
+        "https://ragvidence.medo-id.com/docs/retrieval-depth"
+      ],
+      "ogTitle": [
+        "RAGvidence — See whether your retriever found enough evidence"
+      ],
+      "ogDescription": [
+        "Compare retrieval changes locally, catch regressions, and share the evidence behind every result."
+      ],
+      "ogUrl": [
+        "https://ragvidence.medo-id.com"
+      ],
+      "ogImage": [
+        "https://ragvidence.medo-id.com/opengraph-image?82530851a5eed9e9"
+      ],
+      "twitterTitle": [
+        "RAGvidence — Evidence-first RAG diagnostics"
+      ],
+      "twitterDescription": [
+        "A local CLI for evidence-level RAG evaluation and reproducible reports."
+      ],
+      "twitterImage": [
+        "https://ragvidence.medo-id.com/opengraph-image?82530851a5eed9e9"
+      ],
+      "robots": [],
+      "lang": "en",
+      "h1": [
+        "Retrieval depth k"
+      ],
+      "mainTextLength": 1795,
+      "jsonLd": []
+    },
+    {
+      "route": "/docs/controlled-experiments",
+      "status": 200,
+      "xRobotsTag": null,
+      "title": "Controlled experiments",
+      "description": [
+        "Change one variable, freeze the evaluation slice, and protect held-out questions."
+      ],
+      "canonical": [
+        "https://ragvidence.medo-id.com/docs/controlled-experiments"
+      ],
+      "ogTitle": [
+        "RAGvidence — See whether your retriever found enough evidence"
+      ],
+      "ogDescription": [
+        "Compare retrieval changes locally, catch regressions, and share the evidence behind every result."
+      ],
+      "ogUrl": [
+        "https://ragvidence.medo-id.com"
+      ],
+      "ogImage": [
+        "https://ragvidence.medo-id.com/opengraph-image?82530851a5eed9e9"
+      ],
+      "twitterTitle": [
+        "RAGvidence — Evidence-first RAG diagnostics"
+      ],
+      "twitterDescription": [
+        "A local CLI for evidence-level RAG evaluation and reproducible reports."
+      ],
+      "twitterImage": [
+        "https://ragvidence.medo-id.com/opengraph-image?82530851a5eed9e9"
+      ],
+      "robots": [],
+      "lang": "en",
+      "h1": [
+        "Controlled experiments"
+      ],
+      "mainTextLength": 2011,
+      "jsonLd": []
+    },
+    {
+      "route": "/docs/bm25-workflow",
+      "status": 200,
+      "xRobotsTag": null,
+      "title": "BM25 workflow",
+      "description": [
+        "Run a strong lexical baseline and compare searchable representations."
+      ],
+      "canonical": [
+        "https://ragvidence.medo-id.com/docs/bm25-workflow"
+      ],
+      "ogTitle": [
+        "RAGvidence — See whether your retriever found enough evidence"
+      ],
+      "ogDescription": [
+        "Compare retrieval changes locally, catch regressions, and share the evidence behind every result."
+      ],
+      "ogUrl": [
+        "https://ragvidence.medo-id.com"
+      ],
+      "ogImage": [
+        "https://ragvidence.medo-id.com/opengraph-image?82530851a5eed9e9"
+      ],
+      "twitterTitle": [
+        "RAGvidence — Evidence-first RAG diagnostics"
+      ],
+      "twitterDescription": [
+        "A local CLI for evidence-level RAG evaluation and reproducible reports."
+      ],
+      "twitterImage": [
+        "https://ragvidence.medo-id.com/opengraph-image?82530851a5eed9e9"
+      ],
+      "robots": [],
+      "lang": "en",
+      "h1": [
+        "BM25 workflow"
+      ],
+      "mainTextLength": 2090,
+      "jsonLd": []
+    },
+    {
+      "route": "/docs/semantic-workflow",
+      "status": 200,
+      "xRobotsTag": null,
+      "title": "Semantic workflow",
+      "description": [
+        "Evaluate local, Ollama, or OpenAI-compatible embeddings without surrendering provider choice."
+      ],
+      "canonical": [
+        "https://ragvidence.medo-id.com/docs/semantic-workflow"
+      ],
+      "ogTitle": [
+        "RAGvidence — See whether your retriever found enough evidence"
+      ],
+      "ogDescription": [
+        "Compare retrieval changes locally, catch regressions, and share the evidence behind every result."
+      ],
+      "ogUrl": [
+        "https://ragvidence.medo-id.com"
+      ],
+      "ogImage": [
+        "https://ragvidence.medo-id.com/opengraph-image?82530851a5eed9e9"
+      ],
+      "twitterTitle": [
+        "RAGvidence — Evidence-first RAG diagnostics"
+      ],
+      "twitterDescription": [
+        "A local CLI for evidence-level RAG evaluation and reproducible reports."
+      ],
+      "twitterImage": [
+        "https://ragvidence.medo-id.com/opengraph-image?82530851a5eed9e9"
+      ],
+      "robots": [],
+      "lang": "en",
+      "h1": [
+        "Semantic workflow"
+      ],
+      "mainTextLength": 2382,
+      "jsonLd": []
+    },
+    {
+      "route": "/docs/import-retriever",
+      "status": 200,
+      "xRobotsTag": null,
+      "title": "Import an existing retriever",
+      "description": [
+        "Evaluate LangChain, LlamaIndex, vector databases, or a production service without rebuilding them."
+      ],
+      "canonical": [
+        "https://ragvidence.medo-id.com/docs/import-retriever"
+      ],
+      "ogTitle": [
+        "RAGvidence — See whether your retriever found enough evidence"
+      ],
+      "ogDescription": [
+        "Compare retrieval changes locally, catch regressions, and share the evidence behind every result."
+      ],
+      "ogUrl": [
+        "https://ragvidence.medo-id.com"
+      ],
+      "ogImage": [
+        "https://ragvidence.medo-id.com/opengraph-image?82530851a5eed9e9"
+      ],
+      "twitterTitle": [
+        "RAGvidence — Evidence-first RAG diagnostics"
+      ],
+      "twitterDescription": [
+        "A local CLI for evidence-level RAG evaluation and reproducible reports."
+      ],
+      "twitterImage": [
+        "https://ragvidence.medo-id.com/opengraph-image?82530851a5eed9e9"
+      ],
+      "robots": [],
+      "lang": "en",
+      "h1": [
+        "Import an existing retriever"
+      ],
+      "mainTextLength": 1986,
+      "jsonLd": []
+    },
+    {
+      "route": "/docs/bring-your-own-data",
+      "status": 200,
+      "xRobotsTag": null,
+      "title": "Bring your own data",
+      "description": [
+        "Create a reviewed workspace from a small, representative corpus slice."
+      ],
+      "canonical": [
+        "https://ragvidence.medo-id.com/docs/bring-your-own-data"
+      ],
+      "ogTitle": [
+        "RAGvidence — See whether your retriever found enough evidence"
+      ],
+      "ogDescription": [
+        "Compare retrieval changes locally, catch regressions, and share the evidence behind every result."
+      ],
+      "ogUrl": [
+        "https://ragvidence.medo-id.com"
+      ],
+      "ogImage": [
+        "https://ragvidence.medo-id.com/opengraph-image?82530851a5eed9e9"
+      ],
+      "twitterTitle": [
+        "RAGvidence — Evidence-first RAG diagnostics"
+      ],
+      "twitterDescription": [
+        "A local CLI for evidence-level RAG evaluation and reproducible reports."
+      ],
+      "twitterImage": [
+        "https://ragvidence.medo-id.com/opengraph-image?82530851a5eed9e9"
+      ],
+      "robots": [],
+      "lang": "en",
+      "h1": [
+        "Bring your own data"
+      ],
+      "mainTextLength": 2232,
+      "jsonLd": []
+    },
+    {
+      "route": "/docs/metrics",
+      "status": 200,
+      "xRobotsTag": null,
+      "title": "Metrics reference",
+      "description": [
+        "Use each retrieval metric for the question it actually answers."
+      ],
+      "canonical": [
+        "https://ragvidence.medo-id.com/docs/metrics"
+      ],
+      "ogTitle": [
+        "RAGvidence — See whether your retriever found enough evidence"
+      ],
+      "ogDescription": [
+        "Compare retrieval changes locally, catch regressions, and share the evidence behind every result."
+      ],
+      "ogUrl": [
+        "https://ragvidence.medo-id.com"
+      ],
+      "ogImage": [
+        "https://ragvidence.medo-id.com/opengraph-image?82530851a5eed9e9"
+      ],
+      "twitterTitle": [
+        "RAGvidence — Evidence-first RAG diagnostics"
+      ],
+      "twitterDescription": [
+        "A local CLI for evidence-level RAG evaluation and reproducible reports."
+      ],
+      "twitterImage": [
+        "https://ragvidence.medo-id.com/opengraph-image?82530851a5eed9e9"
+      ],
+      "robots": [],
+      "lang": "en",
+      "h1": [
+        "Metrics reference"
+      ],
+      "mainTextLength": 2298,
+      "jsonLd": []
+    },
+    {
+      "route": "/docs/compare-diagnose",
+      "status": 200,
+      "xRobotsTag": null,
+      "title": "Compare and diagnose",
+      "description": [
+        "Find improvements and regressions, then turn patterns into a next experiment."
+      ],
+      "canonical": [
+        "https://ragvidence.medo-id.com/docs/compare-diagnose"
+      ],
+      "ogTitle": [
+        "RAGvidence — See whether your retriever found enough evidence"
+      ],
+      "ogDescription": [
+        "Compare retrieval changes locally, catch regressions, and share the evidence behind every result."
+      ],
+      "ogUrl": [
+        "https://ragvidence.medo-id.com"
+      ],
+      "ogImage": [
+        "https://ragvidence.medo-id.com/opengraph-image?82530851a5eed9e9"
+      ],
+      "twitterTitle": [
+        "RAGvidence — Evidence-first RAG diagnostics"
+      ],
+      "twitterDescription": [
+        "A local CLI for evidence-level RAG evaluation and reproducible reports."
+      ],
+      "twitterImage": [
+        "https://ragvidence.medo-id.com/opengraph-image?82530851a5eed9e9"
+      ],
+      "robots": [],
+      "lang": "en",
+      "h1": [
+        "Compare and diagnose"
+      ],
+      "mainTextLength": 2123,
+      "jsonLd": []
+    },
+    {
+      "route": "/docs/reports",
+      "status": 200,
+      "xRobotsTag": null,
+      "title": "Reports and sharing",
+      "description": [
+        "Export JSON, Markdown, or a portable HTML report without losing reproducibility context."
+      ],
+      "canonical": [
+        "https://ragvidence.medo-id.com/docs/reports"
+      ],
+      "ogTitle": [
+        "RAGvidence — See whether your retriever found enough evidence"
+      ],
+      "ogDescription": [
+        "Compare retrieval changes locally, catch regressions, and share the evidence behind every result."
+      ],
+      "ogUrl": [
+        "https://ragvidence.medo-id.com"
+      ],
+      "ogImage": [
+        "https://ragvidence.medo-id.com/opengraph-image?82530851a5eed9e9"
+      ],
+      "twitterTitle": [
+        "RAGvidence — Evidence-first RAG diagnostics"
+      ],
+      "twitterDescription": [
+        "A local CLI for evidence-level RAG evaluation and reproducible reports."
+      ],
+      "twitterImage": [
+        "https://ragvidence.medo-id.com/opengraph-image?82530851a5eed9e9"
+      ],
+      "robots": [],
+      "lang": "en",
+      "h1": [
+        "Reports and sharing"
+      ],
+      "mainTextLength": 2135,
+      "jsonLd": []
+    },
+    {
+      "route": "/docs/commands",
+      "status": 200,
+      "xRobotsTag": null,
+      "title": "Command reference",
+      "description": [
+        "A compact map of the current ragvi command surface."
+      ],
+      "canonical": [
+        "https://ragvidence.medo-id.com/docs/commands"
+      ],
+      "ogTitle": [
+        "RAGvidence — See whether your retriever found enough evidence"
+      ],
+      "ogDescription": [
+        "Compare retrieval changes locally, catch regressions, and share the evidence behind every result."
+      ],
+      "ogUrl": [
+        "https://ragvidence.medo-id.com"
+      ],
+      "ogImage": [
+        "https://ragvidence.medo-id.com/opengraph-image?82530851a5eed9e9"
+      ],
+      "twitterTitle": [
+        "RAGvidence — Evidence-first RAG diagnostics"
+      ],
+      "twitterDescription": [
+        "A local CLI for evidence-level RAG evaluation and reproducible reports."
+      ],
+      "twitterImage": [
+        "https://ragvidence.medo-id.com/opengraph-image?82530851a5eed9e9"
+      ],
+      "robots": [],
+      "lang": "en",
+      "h1": [
+        "Command reference"
+      ],
+      "mainTextLength": 2101,
+      "jsonLd": []
+    },
+    {
+      "route": "/docs/privacy-providers",
+      "status": 200,
+      "xRobotsTag": null,
+      "title": "Privacy and providers",
+      "description": [
+        "Know exactly when data stays local and when a provider receives it."
+      ],
+      "canonical": [
+        "https://ragvidence.medo-id.com/docs/privacy-providers"
+      ],
+      "ogTitle": [
+        "RAGvidence — See whether your retriever found enough evidence"
+      ],
+      "ogDescription": [
+        "Compare retrieval changes locally, catch regressions, and share the evidence behind every result."
+      ],
+      "ogUrl": [
+        "https://ragvidence.medo-id.com"
+      ],
+      "ogImage": [
+        "https://ragvidence.medo-id.com/opengraph-image?82530851a5eed9e9"
+      ],
+      "twitterTitle": [
+        "RAGvidence — Evidence-first RAG diagnostics"
+      ],
+      "twitterDescription": [
+        "A local CLI for evidence-level RAG evaluation and reproducible reports."
+      ],
+      "twitterImage": [
+        "https://ragvidence.medo-id.com/opengraph-image?82530851a5eed9e9"
+      ],
+      "robots": [],
+      "lang": "en",
+      "h1": [
+        "Privacy and providers"
+      ],
+      "mainTextLength": 1844,
+      "jsonLd": []
+    },
+    {
+      "route": "/docs/troubleshooting",
+      "status": 200,
+      "xRobotsTag": null,
+      "title": "Troubleshooting and recovery",
+      "description": [
+        "Resolve command, dependency, validation, model, and workspace problems safely."
+      ],
+      "canonical": [
+        "https://ragvidence.medo-id.com/docs/troubleshooting"
+      ],
+      "ogTitle": [
+        "RAGvidence — See whether your retriever found enough evidence"
+      ],
+      "ogDescription": [
+        "Compare retrieval changes locally, catch regressions, and share the evidence behind every result."
+      ],
+      "ogUrl": [
+        "https://ragvidence.medo-id.com"
+      ],
+      "ogImage": [
+        "https://ragvidence.medo-id.com/opengraph-image?82530851a5eed9e9"
+      ],
+      "twitterTitle": [
+        "RAGvidence — Evidence-first RAG diagnostics"
+      ],
+      "twitterDescription": [
+        "A local CLI for evidence-level RAG evaluation and reproducible reports."
+      ],
+      "twitterImage": [
+        "https://ragvidence.medo-id.com/opengraph-image?82530851a5eed9e9"
+      ],
+      "robots": [],
+      "lang": "en",
+      "h1": [
+        "Troubleshooting and recovery"
+      ],
+      "mainTextLength": 2348,
+      "jsonLd": []
+    },
+    {
+      "route": "/releases",
+      "status": 200,
+      "xRobotsTag": null,
+      "title": "Releases · RAGvidence",
+      "description": [
+        "RAGvidence CLI releases, included workflows, installation requirements, and the shipped software license."
+      ],
+      "canonical": [
+        "https://ragvidence.medo-id.com/releases"
+      ],
+      "ogTitle": [
+        "RAGvidence — See whether your retriever found enough evidence"
+      ],
+      "ogDescription": [
+        "Compare retrieval changes locally, catch regressions, and share the evidence behind every result."
+      ],
+      "ogUrl": [
+        "https://ragvidence.medo-id.com"
+      ],
+      "ogImage": [
+        "https://ragvidence.medo-id.com/opengraph-image?82530851a5eed9e9"
+      ],
+      "twitterTitle": [
+        "RAGvidence — Evidence-first RAG diagnostics"
+      ],
+      "twitterDescription": [
+        "A local CLI for evidence-level RAG evaluation and reproducible reports."
+      ],
+      "twitterImage": [
+        "https://ragvidence.medo-id.com/opengraph-image?82530851a5eed9e9"
+      ],
+      "robots": [],
+      "lang": "en",
+      "h1": [
+        "What ships with RAGvidence."
+      ],
+      "mainTextLength": 989,
+      "jsonLd": []
+    },
+    {
+      "route": "/privacy",
+      "status": 200,
+      "xRobotsTag": null,
+      "title": "Privacy · RAGvidence",
+      "description": [
+        "How the RAGvidence website and CLI handle data."
+      ],
+      "canonical": [
+        "https://ragvidence.medo-id.com/privacy"
+      ],
+      "ogTitle": [
+        "RAGvidence — See whether your retriever found enough evidence"
+      ],
+      "ogDescription": [
+        "Compare retrieval changes locally, catch regressions, and share the evidence behind every result."
+      ],
+      "ogUrl": [
+        "https://ragvidence.medo-id.com"
+      ],
+      "ogImage": [
+        "https://ragvidence.medo-id.com/opengraph-image?82530851a5eed9e9"
+      ],
+      "twitterTitle": [
+        "RAGvidence — Evidence-first RAG diagnostics"
+      ],
+      "twitterDescription": [
+        "A local CLI for evidence-level RAG evaluation and reproducible reports."
+      ],
+      "twitterImage": [
+        "https://ragvidence.medo-id.com/opengraph-image?82530851a5eed9e9"
+      ],
+      "robots": [],
+      "lang": "en",
+      "h1": [
+        "Privacy, without vague boundaries."
+      ],
+      "mainTextLength": 1963,
+      "jsonLd": []
+    },
+    {
+      "route": "/terms",
+      "status": 200,
+      "xRobotsTag": null,
+      "title": "Terms · RAGvidence",
+      "description": [
+        "Terms for using the RAGvidence website and software materials."
+      ],
+      "canonical": [
+        "https://ragvidence.medo-id.com/terms"
+      ],
+      "ogTitle": [
+        "RAGvidence — See whether your retriever found enough evidence"
+      ],
+      "ogDescription": [
+        "Compare retrieval changes locally, catch regressions, and share the evidence behind every result."
+      ],
+      "ogUrl": [
+        "https://ragvidence.medo-id.com"
+      ],
+      "ogImage": [
+        "https://ragvidence.medo-id.com/opengraph-image?82530851a5eed9e9"
+      ],
+      "twitterTitle": [
+        "RAGvidence — Evidence-first RAG diagnostics"
+      ],
+      "twitterDescription": [
+        "A local CLI for evidence-level RAG evaluation and reproducible reports."
+      ],
+      "twitterImage": [
+        "https://ragvidence.medo-id.com/opengraph-image?82530851a5eed9e9"
+      ],
+      "robots": [],
+      "lang": "en",
+      "h1": [
+        "Terms of use"
+      ],
+      "mainTextLength": 2475,
+      "jsonLd": []
+    },
+    {
+      "route": "/security",
+      "status": 200,
+      "xRobotsTag": null,
+      "title": "Security · RAGvidence",
+      "description": [
+        "Security boundaries and responsible vulnerability reporting for RAGvidence."
+      ],
+      "canonical": [
+        "https://ragvidence.medo-id.com/security"
+      ],
+      "ogTitle": [
+        "RAGvidence — See whether your retriever found enough evidence"
+      ],
+      "ogDescription": [
+        "Compare retrieval changes locally, catch regressions, and share the evidence behind every result."
+      ],
+      "ogUrl": [
+        "https://ragvidence.medo-id.com"
+      ],
+      "ogImage": [
+        "https://ragvidence.medo-id.com/opengraph-image?82530851a5eed9e9"
+      ],
+      "twitterTitle": [
+        "RAGvidence — Evidence-first RAG diagnostics"
+      ],
+      "twitterDescription": [
+        "A local CLI for evidence-level RAG evaluation and reproducible reports."
+      ],
+      "twitterImage": [
+        "https://ragvidence.medo-id.com/opengraph-image?82530851a5eed9e9"
+      ],
+      "robots": [],
+      "lang": "en",
+      "h1": [
+        "Security and responsible reporting"
+      ],
+      "mainTextLength": 1380,
+      "jsonLd": []
+    }
+  ],
+  "files": [
+    {
+      "route": "/robots.txt",
+      "status": 200,
+      "xRobotsTag": null,
+      "body": "User-Agent: *\nAllow: /\n\nHost: https://ragvidence.medo-id.com\nSitemap: https://ragvidence.medo-id.com/sitemap.xml\n"
+    },
+    {
+      "route": "/sitemap.xml",
+      "status": 200,
+      "xRobotsTag": null,
+      "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n<url>\n<loc>https://ragvidence.medo-id.com</loc>\n<changefreq>monthly</changefreq>\n<priority>1</priority>\n</url>\n<url>\n<loc>https://ragvidence.medo-id.com/docs</loc>\n<changefreq>monthly</changefreq>\n<priority>0.7</priority>\n</url>\n<url>\n<loc>https://ragvidence.medo-id.com/releases</loc>\n<changefreq>monthly</changefreq>\n<priority>0.7</priority>\n</url>\n<url>\n<loc>https://ragvidence.medo-id.com/privacy</loc>\n<changefreq>monthly</changefreq>\n<priority>0.7</priority>\n</url>\n<url>\n<loc>https://ragvidence.medo-id.com/terms</loc>\n<changefreq>monthly</changefreq>\n<priority>0.7</priority>\n</url>\n<url>\n<loc>https://ragvidence.medo-id.com/security</loc>\n<changefreq>monthly</changefreq>\n<priority>0.7</priority>\n</url>\n<url>\n<loc>https://ragvidence.medo-id.com/docs/overview</loc>\n<changefreq>monthly</changefreq>\n<priority>0.6</priority>\n</url>\n<url>\n<loc>https://ragvidence.medo-id.com/docs/installation</loc>\n<changefreq>monthly</changefreq>\n<priority>0.6</priority>\n</url>\n<url>\n<loc>https://ragvidence.medo-id.com/docs/first-tutorial</loc>\n<changefreq>monthly</changefreq>\n<priority>0.6</priority>\n</url>\n<url>\n<loc>https://ragvidence.medo-id.com/docs/first-report</loc>\n<changefreq>monthly</changefreq>\n<priority>0.6</priority>\n</url>\n<url>\n<loc>https://ragvidence.medo-id.com/docs/evidence-labels</loc>\n<changefreq>monthly</changefreq>\n<priority>0.6</priority>\n</url>\n<url>\n<loc>https://ragvidence.medo-id.com/docs/retrieval-depth</loc>\n<changefreq>monthly</changefreq>\n<priority>0.6</priority>\n</url>\n<url>\n<loc>https://ragvidence.medo-id.com/docs/controlled-experiments</loc>\n<changefreq>monthly</changefreq>\n<priority>0.6</priority>\n</url>\n<url>\n<loc>https://ragvidence.medo-id.com/docs/bm25-workflow</loc>\n<changefreq>monthly</changefreq>\n<priority>0.6</priority>\n</url>\n<url>\n<loc>https://ragvidence.medo-id.com/docs/semantic-workflow</loc>\n<changefreq>monthly</changefreq>\n<priority>0.6</priority>\n</url>\n<url>\n<loc>https://ragvidence.medo-id.com/docs/import-retriever</loc>\n<changefreq>monthly</changefreq>\n<priority>0.6</priority>\n</url>\n<url>\n<loc>https://ragvidence.medo-id.com/docs/bring-your-own-data</loc>\n<changefreq>monthly</changefreq>\n<priority>0.6</priority>\n</url>\n<url>\n<loc>https://ragvidence.medo-id.com/docs/metrics</loc>\n<changefreq>monthly</changefreq>\n<priority>0.6</priority>\n</url>\n<url>\n<loc>https://ragvidence.medo-id.com/docs/compare-diagnose</loc>\n<changefreq>monthly</changefreq>\n<priority>0.6</priority>\n</url>\n<url>\n<loc>https://ragvidence.medo-id.com/docs/reports</loc>\n<changefreq>monthly</changefreq>\n<priority>0.6</priority>\n</url>\n<url>\n<loc>https://ragvidence.medo-id.com/docs/commands</loc>\n<changefreq>monthly</changefreq>\n<priority>0.6</priority>\n</url>\n<url>\n<loc>https://ragvidence.medo-id.com/docs/privacy-providers</loc>\n<changefreq>monthly</changefreq>\n<priority>0.6</priority>\n</url>\n<url>\n<loc>https://ragvidence.medo-id.com/docs/troubleshooting</loc>\n<changefreq>monthly</changefreq>\n<priority>0.6</priority>\n</url>\n</urlset>\n"
+    },
+    {
+      "route": "/brand/concepts.html",
+      "status": 200,
+      "xRobotsTag": null
+    },
+    {
+      "route": "/brand/brand-sheet.html",
+      "status": 200,
+      "xRobotsTag": null
+    },
+    {
+      "route": "/brand/a-evidence-convergence/tab-preview.html",
+      "status": 200,
+      "xRobotsTag": null
+    },
+    {
+      "route": "/not-a-real-seo-page",
+      "status": 404,
+      "xRobotsTag": null
+    }
+  ],
+  "errors": [],
+  "external": [],
+  "performance": [
+    {
+      "profile": "mobile-lab",
+      "route": "/",
+      "sample": 0,
+      "cpu": 4,
+      "latency": 50,
+      "throughput": 200000,
+      "mediaBytesReceived": 599884,
+      "ttfbMs": 7.299999997019768,
+      "domContentLoadedMs": 414.79999999701977,
+      "lcpMs": 748,
+      "cls": 0.13909033996633108,
+      "clientJavaScriptBytes": 157523,
+      "cssBytes": 8049,
+      "overflow": false
+    },
+    {
+      "profile": "mobile-lab",
+      "route": "/",
+      "sample": 1,
+      "cpu": 4,
+      "latency": 50,
+      "throughput": 200000,
+      "mediaBytesReceived": 598384,
+      "ttfbMs": 6.399999998509884,
+      "domContentLoadedMs": 410.6000000014901,
+      "lcpMs": 628,
+      "cls": 0.13909033996633108,
+      "clientJavaScriptBytes": 157523,
+      "cssBytes": 8049,
+      "overflow": false
+    },
+    {
+      "profile": "mobile-lab",
+      "route": "/",
+      "sample": 2,
+      "cpu": 4,
+      "latency": 50,
+      "throughput": 200000,
+      "mediaBytesReceived": 598384,
+      "ttfbMs": 6.399999998509884,
+      "domContentLoadedMs": 408.8999999985099,
+      "lcpMs": 628,
+      "cls": 0.13909033996633108,
+      "clientJavaScriptBytes": 157523,
+      "cssBytes": 8049,
+      "overflow": false
+    },
+    {
+      "profile": "mobile-lab",
+      "route": "/docs/semantic-workflow",
+      "sample": 0,
+      "cpu": 4,
+      "latency": 50,
+      "throughput": 200000,
+      "mediaBytesReceived": 0,
+      "ttfbMs": 5,
+      "domContentLoadedMs": 385.40000000596046,
+      "lcpMs": 564,
+      "cls": 0.031536694870009485,
+      "clientJavaScriptBytes": 157523,
+      "cssBytes": 8049,
+      "overflow": false
+    },
+    {
+      "profile": "mobile-lab",
+      "route": "/docs/semantic-workflow",
+      "sample": 1,
+      "cpu": 4,
+      "latency": 50,
+      "throughput": 200000,
+      "mediaBytesReceived": 0,
+      "ttfbMs": 5.600000001490116,
+      "domContentLoadedMs": 393.3999999985099,
+      "lcpMs": 560,
+      "cls": 0.031536694870009485,
+      "clientJavaScriptBytes": 157523,
+      "cssBytes": 8049,
+      "overflow": false
+    },
+    {
+      "profile": "mobile-lab",
+      "route": "/docs/semantic-workflow",
+      "sample": 2,
+      "cpu": 4,
+      "latency": 50,
+      "throughput": 200000,
+      "mediaBytesReceived": 0,
+      "ttfbMs": 5.200000002980232,
+      "domContentLoadedMs": 382.90000000596046,
+      "lcpMs": 556,
+      "cls": 0.031536694870009485,
+      "clientJavaScriptBytes": 157523,
+      "cssBytes": 8049,
+      "overflow": false
+    },
+    {
+      "profile": "desktop-lab",
+      "route": "/",
+      "sample": 0,
+      "cpu": 1,
+      "latency": 0,
+      "throughput": 10000000,
+      "mediaBytesReceived": 3246868,
+      "ttfbMs": 7.200000002980232,
+      "domContentLoadedMs": 139.10000000149012,
+      "lcpMs": 164,
+      "cls": 0,
+      "clientJavaScriptBytes": 159585,
+      "cssBytes": 8049,
+      "overflow": false
+    },
+    {
+      "profile": "desktop-lab",
+      "route": "/",
+      "sample": 1,
+      "cpu": 1,
+      "latency": 0,
+      "throughput": 10000000,
+      "mediaBytesReceived": 3236540,
+      "ttfbMs": 5.600000001490116,
+      "domContentLoadedMs": 93.79999999701977,
+      "lcpMs": 200,
+      "cls": 0,
+      "clientJavaScriptBytes": 159585,
+      "cssBytes": 8049,
+      "overflow": false
+    },
+    {
+      "profile": "desktop-lab",
+      "route": "/",
+      "sample": 2,
+      "cpu": 1,
+      "latency": 0,
+      "throughput": 10000000,
+      "mediaBytesReceived": 3241040,
+      "ttfbMs": 6.399999998509884,
+      "domContentLoadedMs": 169.19999999552965,
+      "lcpMs": 200,
+      "cls": 0,
+      "clientJavaScriptBytes": 159585,
+      "cssBytes": 8049,
+      "overflow": false
+    },
+    {
+      "profile": "desktop-lab",
+      "route": "/docs/semantic-workflow",
+      "sample": 0,
+      "cpu": 1,
+      "latency": 0,
+      "throughput": 10000000,
+      "mediaBytesReceived": 0,
+      "ttfbMs": 4.799999997019768,
+      "domContentLoadedMs": 65.89999999850988,
+      "lcpMs": 152,
+      "cls": 0,
+      "clientJavaScriptBytes": 157523,
+      "cssBytes": 8049,
+      "overflow": false
+    },
+    {
+      "profile": "desktop-lab",
+      "route": "/docs/semantic-workflow",
+      "sample": 1,
+      "cpu": 1,
+      "latency": 0,
+      "throughput": 10000000,
+      "mediaBytesReceived": 0,
+      "ttfbMs": 4.5,
+      "domContentLoadedMs": 59.69999999552965,
+      "lcpMs": 172,
+      "cls": 0,
+      "clientJavaScriptBytes": 157523,
+      "cssBytes": 8049,
+      "overflow": false
+    },
+    {
+      "profile": "desktop-lab",
+      "route": "/docs/semantic-workflow",
+      "sample": 2,
+      "cpu": 1,
+      "latency": 0,
+      "throughput": 10000000,
+      "mediaBytesReceived": 0,
+      "ttfbMs": 4.5,
+      "domContentLoadedMs": 59.70000000298023,
+      "lcpMs": 100,
+      "cls": 0,
+      "clientJavaScriptBytes": 157523,
+      "cssBytes": 8049,
+      "overflow": false
+    }
+  ]
+}
