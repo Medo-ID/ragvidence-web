@@ -126,12 +126,12 @@ for (const failure of ["http", "invalid-index"]) {
   });
 }
 
-test("silent native video pauses offscreen and exposes no controls", async ({ page }) => {
+test("silent native video starts on scroll and pauses offscreen without native controls", async ({ page }) => {
   await page.goto("/");
   const video = page.locator("#walkthrough video");
   await expect(video).toHaveAttribute("preload", "metadata");
   await expect(video).not.toHaveAttribute("controls", "");
-  await expect(page.locator("#walkthrough button")).toHaveCount(0);
+  await expect(page.locator("#walkthrough button")).toHaveCount(1);
   await video.scrollIntoViewIfNeeded();
   await expect.poll(() => video.evaluate((el: HTMLVideoElement) => el.currentTime)).toBeGreaterThan(0);
   const metadata = await video.evaluate((el: HTMLVideoElement) => ({ width: el.videoWidth, height: el.videoHeight, duration: el.duration, muted: el.muted, loop: el.loop, tracks: el.textTracks.length }));
@@ -139,6 +139,46 @@ test("silent native video pauses offscreen and exposes no controls", async ({ pa
   expect(metadata.duration).toBeCloseTo(48, 1);
   await page.locator("#install").scrollIntoViewIfNeeded();
   await expect.poll(() => video.evaluate((el: HTMLVideoElement) => el.paused)).toBe(true);
+});
+
+test("cold fragment navigation retries playback once delayed media is ready", async ({ page }) => {
+  await page.route(/walkthrough\.(webm|mp4)$/, async route => {
+    await new Promise(resolve => setTimeout(resolve, 700));
+    await route.continue();
+  });
+  await page.goto("/#walkthrough");
+  const video = page.locator("#walkthrough video");
+  await video.scrollIntoViewIfNeeded();
+  await expect.poll(() => video.evaluate((el: HTMLVideoElement) => !el.paused && el.currentTime > 0), { timeout: 10000 }).toBe(true);
+});
+
+test("clicking anywhere toggles playback and manual pause survives scrolling", async ({ page }) => {
+  await page.goto("/");
+  const video = page.locator("#walkthrough video");
+  await video.scrollIntoViewIfNeeded();
+  const toggle = page.locator("#walkthrough button");
+  await expect(toggle).toHaveAccessibleName("Pause workflow video");
+  await toggle.click({ position: { x: 12, y: 12 } });
+  await expect(toggle).toHaveAccessibleName("Play workflow video");
+  const time = await video.evaluate((el: HTMLVideoElement) => el.currentTime);
+  await page.locator("#install").scrollIntoViewIfNeeded();
+  await video.scrollIntoViewIfNeeded();
+  expect(await video.evaluate((el: HTMLVideoElement) => el.currentTime)).toBeCloseTo(time, 1);
+  await page.keyboard.press("Tab");
+  await toggle.focus();
+  expect(await toggle.evaluate(el => getComputedStyle(el).outlineWidth)).toBe("2px");
+  await page.keyboard.press("Space");
+  await expect(toggle).toHaveAccessibleName("Pause workflow video");
+  await page.keyboard.press("Enter");
+  await expect.poll(() => video.evaluate((el: HTMLVideoElement) => el.paused)).toBe(true);
+});
+
+test("a tall video can autoplay in a short viewport", async ({ page }) => {
+  await page.setViewportSize({ width: 1920, height: 400 });
+  await page.goto("/");
+  const video = page.locator("#walkthrough video");
+  await video.scrollIntoViewIfNeeded();
+  await expect.poll(() => video.evaluate((el: HTMLVideoElement) => !el.paused && el.currentTime > 0)).toBe(true);
 });
 
 test("reduced motion shows the poster without loading or autoplaying video", async ({ page }) => {
@@ -152,6 +192,9 @@ test("reduced motion shows the poster without loading or autoplaying video", asy
   await expect(video).toHaveAttribute("poster", "/media/walkthrough-poster.webp");
   await expect(video.locator("source")).toHaveCount(0);
   expect(mediaRequests).toHaveLength(0);
+  await page.getByRole("button", { name: "Play workflow video", exact: true }).click();
+  await expect.poll(() => video.evaluate((el: HTMLVideoElement) => !el.paused && el.currentTime > 0)).toBe(true);
+  await expect(video.locator("source")).toHaveCount(2);
 });
 
 test("site actions retain high contrast and report surfaces stay opaque", async ({ page }) => {

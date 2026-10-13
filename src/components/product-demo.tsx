@@ -13,27 +13,81 @@ function serverSnapshot() { return true; }
 export function ProductDemo() {
   const reducedMotion = useSyncExternalStore(subscribeToMotion, motionSnapshot, serverSnapshot);
   const video = useRef<HTMLVideoElement>(null);
+  const intent = useRef<"auto" | "play" | "pause">("auto");
+  const inView = useRef(false);
+  const [requestedMedia, setRequestedMedia] = useState(false);
+  const [playing, setPlaying] = useState(false);
   const [failed, setFailed] = useState(false);
+  const loadMedia = !reducedMotion || requestedMedia;
   useEffect(() => {
     const element = video.current;
     if (!element) return;
-    if (reducedMotion) { element.pause(); element.load(); }
-    if (!("IntersectionObserver" in window)) { element.pause(); return; }
-    let cancelled = false;
-    const observer = new IntersectionObserver(([entry]) => {
-      if (!reducedMotion && entry.intersectionRatio >= 0.4) {
-        element.play().catch(() => { if (!cancelled) element.pause(); });
+    // React may insert sources after hydration. Explicitly restart media selection;
+    // visibility can arrive before the first playable frame, so retry on canplay.
+    element.muted = true;
+    element.load();
+    function syncPlayback() {
+      if (!element) return;
+      const wantsPlayback = intent.current === "play" || (!reducedMotion && intent.current === "auto");
+      if (loadMedia && wantsPlayback && inView.current && document.visibilityState === "visible") {
+        if (element.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) void element.play().catch(() => {});
       } else element.pause();
-    }, { threshold: [0, 0.4] });
-    observer.observe(element);
-    return () => { cancelled = true; observer.disconnect(); element.pause(); };
-  }, [reducedMotion]);
+    }
+    element.addEventListener("canplay", syncPlayback);
+    document.addEventListener("visibilitychange", syncPlayback);
+    const observer = typeof IntersectionObserver === "undefined" ? null : new IntersectionObserver(([entry]) => {
+      // A wide video can be taller than a short viewport. Measure useful visible
+      // height instead of demanding an impossible fraction of its total area.
+      inView.current = entry.isIntersecting && entry.intersectionRect.height >= Math.min(entry.boundingClientRect.height * 0.4, window.innerHeight * 0.4);
+      syncPlayback();
+    }, { threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.8, 1] });
+    function measureFallback() {
+      if (!element) return;
+      const box = element.getBoundingClientRect();
+      const visibleHeight = Math.min(box.bottom, window.innerHeight) - Math.max(box.top, 0);
+      inView.current = visibleHeight >= Math.min(box.height * 0.4, window.innerHeight * 0.4);
+      syncPlayback();
+    }
+    if (observer) observer.observe(element);
+    else {
+      measureFallback();
+      window.addEventListener("scroll", measureFallback, { passive: true });
+      window.addEventListener("resize", measureFallback);
+    }
+    return () => {
+      observer?.disconnect();
+      window.removeEventListener("scroll", measureFallback);
+      window.removeEventListener("resize", measureFallback);
+      element.removeEventListener("canplay", syncPlayback);
+      document.removeEventListener("visibilitychange", syncPlayback);
+      element.pause();
+    };
+  }, [reducedMotion, loadMedia]);
+
+  function togglePlayback() {
+    const element = video.current;
+    if (!element) return;
+    if (!element.paused) {
+      intent.current = "pause";
+      element.pause();
+    } else {
+      intent.current = "play";
+      if (!loadMedia) setRequestedMedia(true);
+      element.muted = true;
+      if (loadMedia) void element.play().catch(() => {});
+    }
+  }
 
   return (
     <div className="surface showcase">
-      <video ref={video} autoPlay={!reducedMotion} muted loop playsInline preload="metadata" controls={false} poster="/media/walkthrough-poster.webp" width={1920} height={1080} className="aspect-video w-full" aria-label="Silent tutorial walkthrough: run the CLI, understand 60% to 90%, and inspect recovered evidence" onError={() => { if (!reducedMotion) setFailed(true); }}>
-        {!reducedMotion && <><source src="/media/walkthrough.webm" type="video/webm" /><source src="/media/walkthrough.mp4" type="video/mp4" /></>}
-      </video>
+      <div className="relative">
+        <video ref={video} muted loop playsInline preload="metadata" controls={false} poster="/media/walkthrough-poster.webp" width={1920} height={1080} className="block aspect-video w-full" aria-label="Silent RAGvidence workflow walkthrough" onPlaying={() => { setPlaying(true); setFailed(false); }} onPause={() => setPlaying(false)} onError={() => { if (loadMedia) setFailed(true); }}>
+          {loadMedia && <><source src="/media/walkthrough.webm" type="video/webm" /><source src="/media/walkthrough.mp4" type="video/mp4" /></>}
+        </video>
+        <button type="button" onClick={togglePlayback} aria-label={playing ? "Pause workflow video" : "Play workflow video"} className="absolute inset-0 cursor-pointer rounded-none focus-visible:-outline-offset-4">
+          {!playing && <span aria-hidden="true" className="absolute bottom-4 left-4 rounded-sm border border-line bg-panel px-3 py-2 text-sm text-ink">Click to play</span>}
+        </button>
+      </div>
       {failed && <p role="status" className="p-4 text-sm text-muted">The walkthrough could not play. Follow the written tutorial below or <a href="/media/walkthrough.mp4" className="text-signal-ink underline">download the MP4</a>.</p>}
     </div>
   );

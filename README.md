@@ -76,8 +76,11 @@ ranked evidence. Native captures use two purposeful 118% zooms and clean cuts;
 the preceding 720p recording is never used as input. H.264 MP4 and VP9 WebM use
 CRF 20; provenance records wheel/report hashes, commands, actual results, and sizes.
 
-The native video has no controls or chapter buttons. It pauses when less than 40%
-visible. Reduced motion displays the poster with no video sources or autoplay.
+The native video has no player chrome or chapter buttons. Click anywhere inside
+it, or focus it and press Space/Enter, to pause or resume. A manual pause persists
+when scrolling away and back. It automatically starts when enough of it is visible
+and pauses offscreen or in a hidden tab. Reduced motion displays the poster without
+loading media until the user explicitly plays it.
 No audio, narration, captions, browser chrome, personal paths, or remote report
 assets are included. The written tutorial remains available below it.
 
