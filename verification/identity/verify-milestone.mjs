@@ -5,6 +5,7 @@ import { stripVTControlCharacters } from "node:util";
 const milestone = process.argv[2];
 const runtimeEnv = { ...process.env };
 if (process.argv[3]) runtimeEnv.LD_LIBRARY_PATH = process.argv[3];
+const browserScope = process.argv[4];
 if (!/^[-a-z0-9]+$/.test(milestone ?? "")) throw new Error("Provide a milestone name");
 const directory = `verification/identity/${milestone}`;
 await mkdir(directory, { recursive: true });
@@ -14,7 +15,7 @@ const checks = [
   ["webpack-build", ["run", "build", "--", "--webpack"]],
   ["routes", ["run", "verify:site"]],
   ["verification-tests", ["run", "test:verification"]],
-  ["browser", ["run", "test:browser"]],
+  ["browser", ["run", "test:browser", ...(browserScope ? ["--", "--grep", browserScope] : [])]],
   ["production-audit", ["audit", "--omit=dev", "--audit-level=high"]],
 ];
 const results = [];
@@ -28,7 +29,7 @@ for (const [name, args] of checks) {
   const transcript = stripVTControlCharacters(log).replaceAll("\r", "").split("\n").map(line => line.trimEnd()).join("\n").trimEnd();
   await writeFile(`${directory}/${name}.log`, transcript + "\n");
   results.push({ name, code });
-  await writeFile(`${directory}/checks.json`, JSON.stringify({ results, standardTurbopack: "User confirmation pending" }, null, 2) + "\n");
+  await writeFile(`${directory}/checks.json`, JSON.stringify({ results, browserScope: browserScope ?? "Full suite", standardTurbopack: "User confirmation pending" }, null, 2) + "\n");
   if (code !== 0) { console.error(log); process.exit(code ?? 1); }
 }
 console.log(`${milestone}: available checks passed`);

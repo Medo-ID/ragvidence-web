@@ -115,7 +115,7 @@ export function DocsSidebar({ pages, groups }: NavigationProps) {
 
   return (
     <>
-      <aside className="surface no-print sticky top-24 hidden h-[calc(100dvh-7rem)] w-full shrink-0 overflow-y-auto border border-line p-4 xl:block">
+      <aside className="no-print sticky top-24 hidden h-[calc(100dvh-7rem)] w-full shrink-0 overflow-y-auto border-r border-line bg-canvas py-4 pr-4 xl:block">
         {search}{feedback}<Navigation query={query} pages={pages} groups={groups} index={index} loading={searchStatus === "loading"} />
       </aside>
       <details ref={mobileRef} data-docs-browser className="surface no-print w-full border border-line p-4 xl:hidden">

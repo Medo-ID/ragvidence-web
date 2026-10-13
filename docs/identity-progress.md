@@ -178,3 +178,14 @@ autoplay/muted/loop/inline attributes and sources exist before hydration, with n
 viewport gating. Native source queries preserve reduced motion. Supabase's rendered
 video pattern was inspected as requested. The gate passes 48 Chromium tests and
 16 focused checks across Chromium/Firefox, plus six-size visual review.
+
+## User follow-up — Final styling touches
+
+Thin native teal scrollbars, a single desktop docs divider, unfilled current-section
+styling, and a more transparent navbar are recorded in
+[finishing-touches.md](finishing-touches.md), including before/after screenshots.
+Lint, types, Webpack, routes, verifier tests, scoped Chromium/Firefox checks, and
+production audit passed. Both engines were reviewed at all six requested sizes.
+The user's subsequent autoplay fix and heading edit remain untouched and uncommitted.
+This styling milestone does not certify the full video regression suite or the
+standard Turbopack build, which still awaits user confirmation.

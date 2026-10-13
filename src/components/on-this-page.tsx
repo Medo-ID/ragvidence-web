@@ -31,7 +31,7 @@ export function OnThisPage({ headings }: { headings: Heading[] }) {
   if (!headings.length) return null;
   const links = (
     <ul className="space-y-1">
-      {headings.map(heading => <li key={heading.id}><a href={`#${heading.id}`} aria-current={active === heading.id ? "location" : undefined} className={`block min-h-11 rounded-md border-l-2 py-2 text-sm leading-6 ${heading.type === "h3" ? "pl-5" : "pl-3"} ${active === heading.id ? "border-signal-ink bg-signal-soft font-medium text-ink" : "border-transparent text-muted hover:text-ink"}`}>{heading.text}</a></li>)}
+      {headings.map(heading => <li key={heading.id}><a href={`#${heading.id}`} aria-current={active === heading.id ? "location" : undefined} className={`block min-h-11 border-l py-2 text-sm leading-6 ${heading.type === "h3" ? "pl-5" : "pl-3"} ${active === heading.id ? "border-signal-ink font-medium text-signal-ink" : "border-transparent text-muted hover:text-ink"}`}>{heading.text}</a></li>)}
     </ul>
   );
   return (

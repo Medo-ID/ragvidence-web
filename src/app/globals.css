@@ -30,9 +30,25 @@
   --abyssal-teal-soft: rgb(6 63 71 / 0.22);
   --abyssal-teal-border: #174e56;
   --border-subtle: #162427;
+  --scrollbar-thumb: #397982;
 }
 
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) transparent;
+}
+
+@supports not (scrollbar-width: thin) {
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track, ::-webkit-scrollbar-corner { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: var(--scrollbar-thumb); border-radius: var(--radius-sm); }
+  ::-webkit-scrollbar-thumb:hover { background: #5899a1; }
+}
+
+@media (forced-colors: active) {
+  * { scrollbar-width: auto; scrollbar-color: auto; }
+}
 
 html {
   scroll-behavior: smooth;
@@ -78,7 +94,7 @@ a, button { -webkit-tap-highlight-color: transparent; outline-offset: 4px; }
 /* Most surfaces are opaque; only the sticky header uses backdrop blur. */
 .site-nav { background: var(--color-panel); }
 @supports (backdrop-filter: blur(1px)) {
-  .site-nav { background: rgb(9 13 15 / 0.94); backdrop-filter: blur(8px); }
+  .site-nav { background: rgb(9 13 15 / 0.8); backdrop-filter: blur(8px); }
 }
 .surface { border: 1px solid var(--color-line); background: var(--color-panel); }
 .surface-raised { background: var(--color-panel-raised); }
