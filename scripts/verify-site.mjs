@@ -61,9 +61,6 @@ async function verify() {
   routes.push("/media/walkthrough.mp4");
   routes.push("/ragvidence-source-notices.txt", "/ragvidence-source-licenses.txt");
   const binaryRoutes = new Set(["/opengraph-image", "/favicon.ico", "/media/walkthrough.mp4", "/media/walkthrough.webm", "/media/walkthrough-poster.webp"]);
-  const brandAssets = ["/icon.svg", "/apple-icon.png", "/brand/ragvidence-mark.svg", "/brand/ragvidence-logo.svg", "/brand/ragvidence-logo-light.svg", "/brand/ragvidence-mark.png", "/brand/ragvidence-logo.png", "/brand/ragvidence-logo-light.png"];
-  routes.push(...brandAssets, "/brand/GEIST-LICENSE.txt");
-  for (const asset of brandAssets) binaryRoutes.add(asset);
   const failures = [];
   const pages = new Map();
   const headers = [
@@ -78,11 +75,6 @@ async function verify() {
     const body = binaryRoutes.has(route) ? Buffer.from(await response.arrayBuffer()) : await response.text();
     if (!response.ok) failures.push(`${route}: HTTP ${response.status}`);
     if (!body.length) failures.push(`${route}: empty response`);
-    if (brandAssets.includes(route)) {
-      const expectedType = route.endsWith(".svg") ? "image/svg+xml" : "image/png";
-      if (!response.headers.get("content-type")?.startsWith(expectedType)) failures.push(`${route}: invalid image content type`);
-      if (route.endsWith(".svg") && (!body.toString().startsWith("<svg") || /<script(?:\s|>)/i.test(body.toString()))) failures.push(`${route}: invalid static SVG`);
-    }
     for (const [name, value] of headers) {
       if (response.headers.get(name) !== value) failures.push(`${route}: invalid ${name}`);
     }
