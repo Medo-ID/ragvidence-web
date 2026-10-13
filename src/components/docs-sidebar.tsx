@@ -115,11 +115,11 @@ export function DocsSidebar({ pages, groups }: NavigationProps) {
 
   return (
     <>
-      <aside className="surface no-print sticky top-24 hidden h-[calc(100dvh-7rem)] w-64 shrink-0 overflow-y-auto border border-line p-4 lg:block">
+      <aside className="surface no-print sticky top-24 hidden h-[calc(100dvh-7rem)] w-full shrink-0 overflow-y-auto border border-line p-4 xl:block">
         {search}{feedback}<Navigation query={query} pages={pages} groups={groups} index={index} loading={searchStatus === "loading"} />
       </aside>
-      <details ref={mobileRef} className="surface no-print w-full border border-line p-4 lg:hidden">
-        <summary className="cursor-pointer text-sm font-semibold text-ink">Browse documentation</summary>
+      <details ref={mobileRef} data-docs-browser className="surface no-print w-full border border-line p-4 xl:hidden">
+        <summary className="min-h-11 cursor-pointer py-2 text-sm font-semibold text-ink">Browse documentation</summary>
         <div className="mt-5">{search}{feedback}<Navigation query={query} pages={pages} groups={groups} index={index} loading={searchStatus === "loading"} close={close} /></div>
       </details>
     </>

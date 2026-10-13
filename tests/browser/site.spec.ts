@@ -4,7 +4,7 @@ test("mobile docs selection closes the browser and reveals the article", async (
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("/docs/installation");
   await page.getByText("Browse documentation", { exact: true }).click();
-  const navigation = page.locator("details");
+  const navigation = page.locator("details[data-docs-browser]");
   await navigation.getByRole("textbox", { name: "Search documentation" }).fill("tutorial");
   await navigation.getByRole("link", { name: "First tutorial", exact: true }).click();
   const heading = page.getByRole("heading", { name: "First tutorial", level: 1, exact: true });
@@ -266,7 +266,7 @@ test("installation and mobile navigation remain accessible without JavaScript", 
   await page.locator("header").getByRole("link", { name: "Install Free", exact: true }).click();
   await expect(page.getByRole("heading", { level: 1, name: "Installation", exact: true })).toBeVisible();
   await page.getByText("Browse documentation", { exact: true }).click();
-  await page.locator("details").getByRole("link", { name: "First tutorial", exact: true }).click();
+  await page.locator("details[data-docs-browser]").getByRole("link", { name: "First tutorial", exact: true }).click();
   await expect(page.getByRole("heading", { level: 1, name: "First tutorial", exact: true })).toBeVisible();
   await context.close();
 });

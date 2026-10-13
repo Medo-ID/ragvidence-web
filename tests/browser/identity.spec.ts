@@ -1,5 +1,27 @@
 import { expect, test } from "@playwright/test";
 
+test("docs rails track headings and compact navigation works by keyboard", async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 800 });
+  await page.goto("/docs/semantic-workflow");
+  const toc = page.locator(".on-this-page nav:visible");
+  await expect(toc).toBeVisible();
+  await expect(page.locator(".docs-shell > aside:visible")).toBeVisible();
+  expect((await page.locator(".doc-content").boundingBox())!.width).toBeGreaterThan(650);
+  await toc.getByRole("link", { name: "Ollama embeddings", exact: true }).click();
+  await expect(toc.getByRole("link", { name: "Ollama embeddings", exact: true })).toHaveAttribute("aria-current", "location");
+  expect((await page.locator("#ollama").boundingBox())!.y).toBeGreaterThan(68);
+  for (const width of [390, 768, 1024]) {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto("/docs/semantic-workflow");
+    const summary = page.locator(".on-this-page summary");
+    await summary.focus();
+    await page.keyboard.press("Enter");
+    await expect(page.locator(".on-this-page details")).toHaveAttribute("open", "");
+    await expect(page.locator(".on-this-page nav:visible")).toBeVisible();
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  }
+});
+
 for (const [width, height] of [[360, 800], [390, 844], [768, 1024], [1280, 800], [1440, 900], [1920, 1080]]) {
   test(`production installation is readable above the fold at ${width}px`, async ({ page }) => {
     await page.setViewportSize({ width, height });

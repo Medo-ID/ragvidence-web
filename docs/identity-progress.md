@@ -57,3 +57,13 @@ use compact rows, workflow steps use separators, and proof emphasizes +30 percen
 points with recovered/regressed/unresolved counts. Free says Available now; Plus
 says Future Plus direction with no checkout. All available checks and 33 browser
 tests passed. Reviewed hero, proof, and plans on desktop/mobile.
+
+## Milestone 6 — Documentation
+
+Desktop at 1280px+ has sticky left navigation, a comfortable main article, and
+a sticky right h2/h3 rail with current-section tracking. Below 1280px both navigation
+and the table of contents use keyboard-accessible disclosures without an empty rail.
+Heading offsets account for the site header. Long desktop navigation retains one
+bounded scroller; article and compact disclosures scroll with the page. All available
+checks and 34 browser tests passed, including rail width, section tracking, anchors,
+keyboard disclosures, search, and route transitions. Reviewed desktop and mobile.
