@@ -86,7 +86,7 @@ export function CliDemo() {
 
   return (
     <div id="demo" className="surface showcase scroll-mt-24 border border-line text-left">
-      <div className="flex flex-wrap items-center justify-between gap-3 px-5 py-7 sm:px-6 sm:py-8">
+      <div className="flex flex-wrap items-center justify-between gap-3 px-5 py-4 sm:px-6 sm:py-5">
         <div className="flex items-center gap-3 text-sm font-medium text-ink"><Terminal size={17} className="text-signal-ink" aria-hidden="true" />From command to evidence</div>
         <span className="font-mono text-xs text-muted">Guided tutorial preview</span>
       </div>
@@ -146,7 +146,7 @@ export function CliDemo() {
         ))}
       </div>
 
-      <div className="no-print grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3 px-5 py-7 sm:px-6 sm:py-8">
+      <div className="no-print grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3 px-5 py-4 sm:px-6 sm:py-5">
         <Link href={step.href} className="col-span-2 inline-flex min-h-11 items-center gap-2 text-xs font-medium text-signal-ink hover:text-ink">{step.link}<ArrowRight size={13} aria-hidden="true" /></Link>
         <button type="button" onClick={togglePlayback} disabled={reducedMotion} aria-label={reducedMotion ? "Explore at your pace" : isPlaying ? "Pause walkthrough" : active === steps.length - 1 ? "Replay walkthrough" : "Play walkthrough"} title={reducedMotion ? "Automatic playback is disabled with reduced motion." : undefined} className="inline-flex min-h-11 items-center gap-2 whitespace-nowrap text-xs text-ink hover:text-signal-ink disabled:cursor-default disabled:text-muted">
           {isPlaying ? <Pause size={15} aria-hidden="true" /> : active === steps.length - 1 ? <RotateCcw size={15} aria-hidden="true" /> : <Play size={15} aria-hidden="true" />}

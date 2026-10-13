@@ -46,7 +46,7 @@ export function SiteHeader() {
               {link.label}
             </Link>
           ))}
-          <Link href="/docs/installation" className="ml-3 inline-flex min-h-10 items-center rounded-sm border border-ink bg-ink px-4 text-sm font-semibold text-canvas transition-colors hover:bg-white">Install Free</Link>
+          <Link href="/docs/installation" className="ml-3 inline-flex min-h-10 items-center rounded-sm button-primary px-4 text-sm font-semibold transition-colors">Install Free</Link>
         </div>
         <button ref={toggleRef} type="button" aria-expanded={open} aria-controls="mobile-navigation" aria-label={open ? "Close navigation" : "Open navigation"} onClick={() => setOpen((value) => !value)} className="grid size-11 place-items-center border border-line text-muted hover:bg-white/5 hover:text-ink xl:hidden">
           {open ? <X size={20} /> : <Menu size={20} />}
@@ -57,7 +57,7 @@ export function SiteHeader() {
           {links.map((link) => (
             <Link key={link.href} href={link.href} onClick={() => setOpen(false)} className="block rounded-md px-3 py-3 text-sm text-muted hover:bg-white/4 hover:text-ink">{link.label}</Link>
           ))}
-          <Link href="/docs/installation" onClick={() => setOpen(false)} className="mt-2 block rounded-sm border border-ink bg-ink px-3 py-3 text-sm font-semibold text-canvas hover:bg-white">Install Free</Link>
+          <Link href="/docs/installation" onClick={() => setOpen(false)} className="mt-2 block rounded-sm button-primary px-3 py-3 text-sm font-semibold ">Install Free</Link>
         </div>
       </div>
       <noscript>

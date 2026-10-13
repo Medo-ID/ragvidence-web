@@ -50,14 +50,6 @@ a, button { -webkit-tap-highlight-color: transparent; outline-offset: 4px; }
 :focus-visible { outline: 2px solid var(--color-signal-ink); }
 .search-field:focus-within { outline: 2px solid var(--color-signal-ink); outline-offset: 4px; }
 
-.site-grid {
-  background-image:
-    linear-gradient(rgb(255 255 255 / 0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgb(255 255 255 / 0.025) 1px, transparent 1px);
-  background-size: 44px 44px;
-  mask-image: linear-gradient(to bottom, black 10%, transparent 92%);
-}
-
 .shell { width: calc(100% - 2rem); margin-inline: auto; }
 
 @media (min-width: 640px) {
@@ -70,7 +62,9 @@ a, button { -webkit-tap-highlight-color: transparent; outline-offset: 4px; }
 
 .product-section { padding-block: clamp(4rem, 6.5vw, 6.5rem); }
 .home-sections > section + section { border-top: 1px solid rgb(255 255 255 / 0.08); }
-.hero-section { padding-block: clamp(3rem, 5vw, 5rem); }
+.hero-section { padding-block: clamp(2rem, 3vw, 3rem); }
+.button-primary { background: var(--abyssal-teal); color: var(--color-ink); border: 1px solid var(--abyssal-teal-border); border-radius: var(--radius-sm); }
+.button-primary:hover { background: var(--abyssal-teal-light); }
 
 /* Most surfaces are opaque; only the sticky header uses backdrop blur. */
 .site-nav { background: var(--color-panel); }

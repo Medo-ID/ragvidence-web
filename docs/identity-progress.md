@@ -47,3 +47,13 @@ product narrative text is larger, and secondary labels remain 12–14px. Search
 focus has a visible 2px pale-teal outline. Self-hosted Geist fonts are retained.
 All available checks passed, including 27 browser tests and rendered AA contrast
 checks for essential website text. Reviewed desktop/mobile text and code scrolling.
+
+## Milestone 5 — Landing
+
+Installation is wrapped and visible above the fold at all six target sizes. The
+hero explains local retrieval diagnosis and the HTML deliverable; teal provides
+one primary CTA. Removed decorative grid and reduced showcase padding. Capabilities
+use compact rows, workflow steps use separators, and proof emphasizes +30 percentage
+points with recovered/regressed/unresolved counts. Free says Available now; Plus
+says Future Plus direction with no checkout. All available checks and 33 browser
+tests passed. Reviewed hero, proof, and plans on desktop/mobile.

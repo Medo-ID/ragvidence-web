@@ -1,5 +1,17 @@
 import { expect, test } from "@playwright/test";
 
+for (const [width, height] of [[360, 800], [390, 844], [768, 1024], [1280, 800], [1440, 900], [1920, 1080]]) {
+  test(`production installation is readable above the fold at ${width}px`, async ({ page }) => {
+    await page.setViewportSize({ width, height });
+    await page.goto("/");
+    const command = page.locator("#hero-install-command code");
+    await expect(command).toHaveText('uv tool install --python 3.12 "ragvidence[semantic]"');
+    const box = await command.boundingBox();
+    expect(box!.y + box!.height).toBeLessThan(height);
+    expect(await command.evaluate(el => el.scrollWidth <= el.clientWidth)).toBe(true);
+  });
+}
+
 test("essential website text meets AA contrast and docs search has visible focus", async ({ page }) => {
   for (const route of ["/", "/docs/semantic-workflow"]) {
     await page.goto(route);
