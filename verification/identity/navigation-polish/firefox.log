@@ -1,0 +1,28 @@
+
+> ragvidence-web@0.1.0 test:browser
+> playwright test --config verification/identity/firefox.config.ts --project firefox --grep responsive navigation|docs rails|essential website|mobile docs|mobile menu|search |full-text search|printed documentation
+
+[WebServer] (node:199244) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 15 tests using 1 worker
+
+(node:199284) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 [firefox] › tests/browser/identity.spec.ts:6:7 › responsive navigation and reading widths are usable at 360px (1.9s)
+  ✓   2 [firefox] › tests/browser/identity.spec.ts:6:7 › responsive navigation and reading widths are usable at 390px (707ms)
+  ✓   3 [firefox] › tests/browser/identity.spec.ts:6:7 › responsive navigation and reading widths are usable at 768px (756ms)
+  ✓   4 [firefox] › tests/browser/identity.spec.ts:6:7 › responsive navigation and reading widths are usable at 1280px (683ms)
+  ✓   5 [firefox] › tests/browser/identity.spec.ts:6:7 › responsive navigation and reading widths are usable at 1440px (654ms)
+  ✓   6 [firefox] › tests/browser/identity.spec.ts:6:7 › responsive navigation and reading widths are usable at 1920px (695ms)
+  ✓   7 [firefox] › tests/browser/identity.spec.ts:58:5 › docs rails track headings and compact navigation works by keyboard (2.3s)
+  ✓   8 [firefox] › tests/browser/identity.spec.ts:92:5 › essential website text meets AA contrast and docs search has visible focus (1.1s)
+  ✓   9 [firefox] › tests/browser/site.spec.ts:3:5 › mobile docs selection closes the browser and reveals the article (870ms)
+  ✓  10 [firefox] › tests/browser/site.spec.ts:19:5 › mobile menu dismisses on Escape, brand click, and route navigation (2.4s)
+  ✓  11 [firefox] › tests/browser/site.spec.ts:76:5 › search filters pages and announces an empty result (908ms)
+  ✓  12 [firefox] › tests/browser/site.spec.ts:87:5 › full-text search loads on demand, keeps queries local, and finds article content (860ms)
+  ✓  13 [firefox] › tests/browser/site.spec.ts:107:7 › search recovers from http failure while metadata remains usable (811ms)
+  ✓  14 [firefox] › tests/browser/site.spec.ts:107:7 › search recovers from invalid-index failure while metadata remains usable (912ms)
+  ✓  15 [firefox] › tests/browser/site.spec.ts:291:5 › printed documentation keeps headings, links, and commands readable (835ms)
+
+  15 passed (18.9s)

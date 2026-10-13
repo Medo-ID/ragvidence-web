@@ -189,3 +189,13 @@ production audit passed. Both engines were reviewed at all six requested sizes.
 The user's subsequent autoplay fix and heading edit remain untouched and uncommitted.
 This styling milestone does not certify the full video regression suite or the
 standard Turbopack build, which still awaits user confirmation.
+
+## User follow-up — Documentation hierarchy and custom scrollbars
+
+Categories use 36px separation with compact desktop links and preserved mobile
+touch targets. Custom CSS scrollbar geometry and a 60% navbar tint address the
+follow-up in [navigation-polish.md](navigation-polish.md). Lint, types, Webpack,
+routes, verifier tests, 39 scoped Chromium tests, 15 Firefox docs tests, and the
+production audit passed. Six-size screenshots and native scrollbar drag/keyboard
+checks are recorded. User heading/video edits remain untouched and excluded from
+the commit; standard Turbopack confirmation remains pending.

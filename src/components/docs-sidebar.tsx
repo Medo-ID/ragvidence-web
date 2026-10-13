@@ -26,19 +26,19 @@ function Navigation({ query, pages, groups, index, loading, close }: NavigationP
   if (!matches.length) return <p role="status" className="px-3 py-5 text-sm text-muted">No documentation pages match “{query}”.</p>;
 
   return (
-    <nav aria-label="Documentation">
+    <nav aria-label="Documentation" className="docs-navigation space-y-9">
       {groups.map((group) => {
         const pages = matches.filter((doc) => doc.group === group);
         if (!pages.length) return null;
         return (
-          <div key={group} className="mb-6">
+          <div key={group}>
             <h2 className="px-3 font-mono text-xs font-semibold uppercase tracking-[0.15em] text-muted">{group}</h2>
-            <ul className="mt-2 space-y-0.5">
+            <ul className="mt-2">
               {pages.map((doc) => {
                 const active = pathname === `/docs/${doc.slug}` || (pathname === "/docs" && doc.slug === "overview");
                 return (
                   <li key={doc.slug}>
-                    <Link href={`/docs/${doc.slug}`} onClick={close} aria-current={active ? "page" : undefined} className={`flex min-h-11 items-center rounded-md px-3 py-2 text-sm transition-colors ${active ? "surface-selected font-medium text-ink" : "text-muted hover:bg-white/[0.035] hover:text-ink"}`}>
+                    <Link href={`/docs/${doc.slug}`} onClick={close} aria-current={active ? "page" : undefined} className={`flex min-h-11 items-center rounded-md px-3 py-2 text-sm leading-5 transition-colors xl:min-h-9 xl:py-1.5 ${active ? "surface-selected font-medium text-ink" : "text-muted hover:bg-white/[0.035] hover:text-ink"}`}>
                       {doc.title}
                     </Link>
                   </li>

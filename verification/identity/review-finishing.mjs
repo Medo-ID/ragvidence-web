@@ -4,8 +4,10 @@ import { once } from "node:events";
 import { mkdir, writeFile } from "node:fs/promises";
 
 const stage = process.argv[2], engine = process.argv[4] ?? "chromium";
+const milestone = process.argv[5] ?? "finishing-touches";
 if (!/^(before|after)$/.test(stage ?? "") || !["chromium", "firefox"].includes(engine)) throw new Error("Provide before/after and an optional browser engine");
-const directory = `verification/identity/finishing-touches/${stage}-${engine}`;
+if (!/^[-a-z0-9]+$/.test(milestone)) throw new Error("Invalid milestone name");
+const directory = `verification/identity/${milestone}/${stage}-${engine}`;
 await mkdir(directory, { recursive: true });
 const server = spawn(process.execPath, ["node_modules/next/dist/bin/next", "start", "--hostname", "127.0.0.1", "--port", "3003"], { stdio: ["ignore", "pipe", "pipe"] });
 let log = "", browser;
@@ -29,6 +31,22 @@ try {
     const sidebar = page.locator(".docs-shell > aside:visible");
     if (width >= 1280) {
       await sidebar.screenshot({ path: `${directory}/sidebar-${width}.png` });
+      if (stage === "after" && milestone === "navigation-polish") {
+        if (engine === "chromium") {
+          const box = await sidebar.boundingBox();
+          await page.mouse.move(box.x + box.width - 5, box.y + 20);
+          await sidebar.screenshot({ path: `${directory}/scrollbar-hover-${width}.png` });
+          await page.mouse.down();
+          await page.mouse.move(box.x + box.width - 5, box.y + 180, { steps: 12 });
+          await page.mouse.up();
+          await expect.poll(() => sidebar.evaluate(el => el.scrollTop)).toBeGreaterThan(0);
+        }
+        await sidebar.getByRole("link").last().focus();
+        await expect.poll(() => sidebar.evaluate(el => el.scrollTop)).toBeGreaterThan(0);
+        await sidebar.screenshot({ path: `${directory}/navigation-bottom-${width}.png` });
+        await sidebar.evaluate(el => { el.scrollTop = 0; });
+        await page.mouse.move(500, 100);
+      }
       const toc = page.locator(".on-this-page nav:visible");
       await toc.getByRole("link", { name: "Ollama embeddings", exact: true }).click();
       await expect(toc.getByRole("link", { name: "Ollama embeddings", exact: true })).toHaveAttribute("aria-current", "location");
@@ -43,7 +61,10 @@ try {
     results.views.push(await page.evaluate(({ width, height }) => {
       const sidebar = document.querySelector(".docs-shell > aside"), selected = document.querySelector('.on-this-page nav a[aria-current="location"]');
       const css = getComputedStyle(sidebar), active = getComputedStyle(selected);
-      return { width, height, overflow: document.documentElement.scrollWidth > innerWidth, scrollbar: { width: getComputedStyle(document.documentElement).scrollbarWidth, color: getComputedStyle(document.documentElement).scrollbarColor }, sidebar: { borders: [css.borderTopWidth, css.borderRightWidth, css.borderBottomWidth, css.borderLeftWidth], radius: css.borderRadius, background: css.backgroundColor }, active: { background: active.backgroundColor, radius: active.borderRadius, borderWidth: active.borderLeftWidth, color: active.color } };
+      const navigation = sidebar.querySelector('nav[aria-label="Documentation"]');
+      const row = getComputedStyle(navigation.querySelector("a"));
+      const bar = getComputedStyle(sidebar, "::-webkit-scrollbar"), thumb = getComputedStyle(sidebar, "::-webkit-scrollbar-thumb");
+      return { width, height, overflow: document.documentElement.scrollWidth > innerWidth, scrollbar: { width: getComputedStyle(document.documentElement).scrollbarWidth, color: getComputedStyle(document.documentElement).scrollbarColor, customWidth: bar.width, thumbBorder: thumb.borderLeftWidth }, sidebar: { borders: [css.borderTopWidth, css.borderRightWidth, css.borderBottomWidth, css.borderLeftWidth], radius: css.borderRadius, background: css.backgroundColor, groupGap: getComputedStyle(navigation.firstElementChild).marginBottom, rowMinimum: row.minHeight, rowPadding: row.paddingTop }, active: { background: active.backgroundColor, radius: active.borderRadius, borderWidth: active.borderLeftWidth, color: active.color } };
     }, { width, height }));
   }
   await page.setViewportSize({ width: 1440, height: 900 });

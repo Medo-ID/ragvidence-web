@@ -1,0 +1,226 @@
+{
+  "stage": "after",
+  "engine": "chromium",
+  "views": [
+    {
+      "width": 360,
+      "height": 800,
+      "overflow": false,
+      "scrollbar": {
+        "width": "auto",
+        "color": "auto",
+        "customWidth": "8px",
+        "thumbBorder": "2px"
+      },
+      "sidebar": {
+        "borders": [
+          "0px",
+          "1px",
+          "0px",
+          "0px"
+        ],
+        "radius": "0px",
+        "background": "rgb(5, 8, 9)",
+        "groupGap": "36px",
+        "rowMinimum": "44px",
+        "rowPadding": "8px"
+      },
+      "active": {
+        "background": "rgba(0, 0, 0, 0)",
+        "radius": "0px",
+        "borderWidth": "1px",
+        "color": "rgb(139, 212, 219)"
+      }
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "overflow": false,
+      "scrollbar": {
+        "width": "auto",
+        "color": "auto",
+        "customWidth": "8px",
+        "thumbBorder": "2px"
+      },
+      "sidebar": {
+        "borders": [
+          "0px",
+          "1px",
+          "0px",
+          "0px"
+        ],
+        "radius": "0px",
+        "background": "rgb(5, 8, 9)",
+        "groupGap": "36px",
+        "rowMinimum": "44px",
+        "rowPadding": "8px"
+      },
+      "active": {
+        "background": "rgba(0, 0, 0, 0)",
+        "radius": "0px",
+        "borderWidth": "1px",
+        "color": "rgb(139, 212, 219)"
+      }
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "overflow": false,
+      "scrollbar": {
+        "width": "auto",
+        "color": "auto",
+        "customWidth": "8px",
+        "thumbBorder": "2px"
+      },
+      "sidebar": {
+        "borders": [
+          "0px",
+          "1px",
+          "0px",
+          "0px"
+        ],
+        "radius": "0px",
+        "background": "rgb(5, 8, 9)",
+        "groupGap": "36px",
+        "rowMinimum": "44px",
+        "rowPadding": "8px"
+      },
+      "active": {
+        "background": "rgba(0, 0, 0, 0)",
+        "radius": "0px",
+        "borderWidth": "1px",
+        "color": "rgb(139, 212, 219)"
+      }
+    },
+    {
+      "width": 1280,
+      "height": 800,
+      "overflow": false,
+      "scrollbar": {
+        "width": "auto",
+        "color": "auto",
+        "customWidth": "8px",
+        "thumbBorder": "2px"
+      },
+      "sidebar": {
+        "borders": [
+          "0px",
+          "1px",
+          "0px",
+          "0px"
+        ],
+        "radius": "0px",
+        "background": "rgb(5, 8, 9)",
+        "groupGap": "36px",
+        "rowMinimum": "36px",
+        "rowPadding": "6px"
+      },
+      "active": {
+        "background": "rgba(0, 0, 0, 0)",
+        "radius": "0px",
+        "borderWidth": "1px",
+        "color": "rgb(139, 212, 219)"
+      }
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "overflow": false,
+      "scrollbar": {
+        "width": "auto",
+        "color": "auto",
+        "customWidth": "8px",
+        "thumbBorder": "2px"
+      },
+      "sidebar": {
+        "borders": [
+          "0px",
+          "1px",
+          "0px",
+          "0px"
+        ],
+        "radius": "0px",
+        "background": "rgb(5, 8, 9)",
+        "groupGap": "36px",
+        "rowMinimum": "36px",
+        "rowPadding": "6px"
+      },
+      "active": {
+        "background": "rgba(0, 0, 0, 0)",
+        "radius": "0px",
+        "borderWidth": "1px",
+        "color": "rgb(139, 212, 219)"
+      }
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "overflow": false,
+      "scrollbar": {
+        "width": "auto",
+        "color": "auto",
+        "customWidth": "8px",
+        "thumbBorder": "2px"
+      },
+      "sidebar": {
+        "borders": [
+          "0px",
+          "1px",
+          "0px",
+          "0px"
+        ],
+        "radius": "0px",
+        "background": "rgb(5, 8, 9)",
+        "groupGap": "36px",
+        "rowMinimum": "36px",
+        "rowPadding": "6px"
+      },
+      "active": {
+        "background": "rgba(0, 0, 0, 0)",
+        "radius": "0px",
+        "borderWidth": "1px",
+        "color": "rgb(139, 212, 219)"
+      }
+    }
+  ],
+  "errors": [],
+  "external": [],
+  "headerContrast": {
+    "background": "rgba(9, 13, 15, 0.6)",
+    "backdrop": "blur(6px)",
+    "againstWhiteContent": [
+      {
+        "text": "RAGvidence.",
+        "contrast": 4.722932661783302
+      },
+      {
+        "text": "Walkthrough",
+        "contrast": 4.722932661783302
+      },
+      {
+        "text": "How it works",
+        "contrast": 4.722932661783302
+      },
+      {
+        "text": "Proof",
+        "contrast": 4.722932661783302
+      },
+      {
+        "text": "Plans",
+        "contrast": 4.722932661783302
+      },
+      {
+        "text": "Docs",
+        "contrast": 4.722932661783302
+      },
+      {
+        "text": "Install Free",
+        "contrast": 10.651445775648993
+      }
+    ]
+  },
+  "forcedColors": {
+    "width": "auto",
+    "color": "auto"
+  }
+}
