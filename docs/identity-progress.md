@@ -32,3 +32,10 @@ Removed gradients, glows, and panel blur/shadows. Added raised, teal, selected,
 success, danger, and warning primitives; header blur is limited to 8px. All available
 checks passed, including 26 browser tests. Reviewed desktop/mobile layouts and
 confirmed no panel blur, overflow, console errors, or external requests.
+
+## Milestone 3 — Shape
+
+Applied 6/9/12/16px tokens to controls, navigation, copy buttons, code shells,
+cards, disclosures, and the hero showcase. Tables round at their outer wrapper.
+All available checks and 26 browser tests passed. Desktop/mobile visual review
+confirmed consistent edges without adding shadows or blur.

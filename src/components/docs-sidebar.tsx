@@ -38,7 +38,7 @@ function Navigation({ query, pages, groups, index, loading, close }: NavigationP
                 const active = pathname === `/docs/${doc.slug}` || (pathname === "/docs" && doc.slug === "overview");
                 return (
                   <li key={doc.slug}>
-                    <Link href={`/docs/${doc.slug}`} onClick={close} aria-current={active ? "page" : undefined} className={`block rounded-none px-3 py-2 text-sm transition-colors ${active ? "surface-selected font-medium text-ink" : "text-muted hover:bg-white/[0.035] hover:text-ink"}`}>
+                    <Link href={`/docs/${doc.slug}`} onClick={close} aria-current={active ? "page" : undefined} className={`block rounded-md px-3 py-2 text-sm transition-colors ${active ? "surface-selected font-medium text-ink" : "text-muted hover:bg-white/[0.035] hover:text-ink"}`}>
                       {doc.title}
                     </Link>
                   </li>
@@ -98,7 +98,7 @@ export function DocsSidebar({ pages, groups }: NavigationProps) {
   }
 
   const search = (
-    <label className="mb-6 flex items-center gap-2 rounded-none border border-line bg-canvas px-3 py-2.5 focus-within:border-signal/40">
+    <label className="mb-6 flex items-center gap-2 rounded-md border border-line bg-canvas px-3 py-2.5 focus-within:border-signal/40">
       <Search size={15} className="shrink-0 text-muted" />
       <span className="sr-only">Search documentation</span>
       <input value={query} onChange={(event) => updateQuery(event.target.value)} placeholder="Search docs" className="min-w-0 flex-1 bg-transparent text-sm text-ink outline-none placeholder:text-muted/70" />

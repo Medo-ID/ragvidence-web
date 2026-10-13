@@ -85,7 +85,7 @@ export function CliDemo() {
   }
 
   return (
-    <div id="demo" className="surface scroll-mt-24 border border-line text-left">
+    <div id="demo" className="surface showcase scroll-mt-24 border border-line text-left">
       <div className="flex flex-wrap items-center justify-between gap-3 px-5 py-7 sm:px-6 sm:py-8">
         <div className="flex items-center gap-3 text-sm font-medium text-ink"><Terminal size={17} className="text-signal-ink" aria-hidden="true" />From command to evidence</div>
         <span className="font-mono text-xs text-muted">Guided tutorial preview</span>
@@ -110,7 +110,7 @@ export function CliDemo() {
               <FileSearch size={22} className="mt-1 shrink-0 text-muted" aria-hidden="true" />
             </div>
 
-            <div className="border border-line bg-canvas">
+            <div className="code-shell border border-line bg-canvas">
               <div className="flex items-center justify-between gap-3 border-b border-line px-4 py-2">
                 <span className="font-mono text-xs text-muted">{index === 3 ? "Generated report" : "Terminal"}</span>
                 <CopyCommand command={step.command} label={index === 3 ? "Copy path" : "Copy"} />

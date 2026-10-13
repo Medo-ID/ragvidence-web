@@ -42,11 +42,11 @@ export function SiteHeader() {
         <Brand onClick={() => setOpen(false)} />
         <div className="hidden items-center gap-1 xl:flex">
           {links.map((link) => (
-            <Link key={link.href} href={link.href} aria-current={pathname.startsWith("/docs") && link.href === "/docs" ? "page" : undefined} className={`inline-flex min-h-11 items-center px-3 text-sm transition-colors hover:bg-white/4 hover:text-ink ${pathname.startsWith("/docs") && link.href === "/docs" ? "text-ink" : "text-muted"}`}>
+            <Link key={link.href} href={link.href} aria-current={pathname.startsWith("/docs") && link.href === "/docs" ? "page" : undefined} className={`inline-flex min-h-11 items-center rounded-md px-3 text-sm transition-colors hover:bg-white/4 hover:text-ink ${pathname.startsWith("/docs") && link.href === "/docs" ? "text-ink" : "text-muted"}`}>
               {link.label}
             </Link>
           ))}
-          <Link href="/docs/installation" className="ml-3 inline-flex min-h-10 items-center border border-ink bg-ink px-4 text-sm font-semibold text-canvas transition-colors hover:bg-white">Install Free</Link>
+          <Link href="/docs/installation" className="ml-3 inline-flex min-h-10 items-center rounded-sm border border-ink bg-ink px-4 text-sm font-semibold text-canvas transition-colors hover:bg-white">Install Free</Link>
         </div>
         <button ref={toggleRef} type="button" aria-expanded={open} aria-controls="mobile-navigation" aria-label={open ? "Close navigation" : "Open navigation"} onClick={() => setOpen((value) => !value)} className="grid size-11 place-items-center border border-line text-muted hover:bg-white/5 hover:text-ink xl:hidden">
           {open ? <X size={20} /> : <Menu size={20} />}
@@ -55,9 +55,9 @@ export function SiteHeader() {
       <div id="mobile-navigation" hidden={!open} className="surface border-t border-line xl:hidden">
         <div className="shell py-3">
           {links.map((link) => (
-            <Link key={link.href} href={link.href} onClick={() => setOpen(false)} className="block px-3 py-3 text-sm text-muted hover:bg-white/4 hover:text-ink">{link.label}</Link>
+            <Link key={link.href} href={link.href} onClick={() => setOpen(false)} className="block rounded-md px-3 py-3 text-sm text-muted hover:bg-white/4 hover:text-ink">{link.label}</Link>
           ))}
-          <Link href="/docs/installation" onClick={() => setOpen(false)} className="mt-2 block border border-ink bg-ink px-3 py-3 text-sm font-semibold text-canvas hover:bg-white">Install Free</Link>
+          <Link href="/docs/installation" onClick={() => setOpen(false)} className="mt-2 block rounded-sm border border-ink bg-ink px-3 py-3 text-sm font-semibold text-canvas hover:bg-white">Install Free</Link>
         </div>
       </div>
       <noscript>

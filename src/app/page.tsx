@@ -23,8 +23,8 @@ export default function Home() {
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
-              <Link href="/docs/installation" className="inline-flex min-h-11 items-center gap-2 border border-ink bg-ink px-5 text-sm font-semibold text-canvas transition-colors hover:bg-white">Install Free<ArrowRight size={16} aria-hidden="true" /></Link>
-              <a href="/sample-report.html" className="surface inline-flex min-h-11 items-center gap-2 border border-line px-5 text-sm font-medium text-ink transition-colors hover:border-signal/40">View sample report<FileSearch size={16} aria-hidden="true" /></a>
+              <Link href="/docs/installation" className="inline-flex min-h-11 items-center gap-2 rounded-sm border border-ink bg-ink px-5 text-sm font-semibold text-canvas transition-colors hover:bg-white">Install Free<ArrowRight size={16} aria-hidden="true" /></Link>
+              <a href="/sample-report.html" className="surface inline-flex min-h-11 items-center gap-2 rounded-sm border border-line px-5 text-sm font-medium text-ink transition-colors hover:border-signal/40">View sample report<FileSearch size={16} aria-hidden="true" /></a>
             </div>
 
             <div className="mt-10 border-t border-line pt-6">

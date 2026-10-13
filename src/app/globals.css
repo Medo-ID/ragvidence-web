@@ -17,6 +17,10 @@
   --color-warning: #e8b65d;
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --radius-sm: 6px;
+  --radius-md: 9px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
 }
 
 :root {
@@ -79,6 +83,14 @@ a, button { -webkit-tap-highlight-color: transparent; outline-offset: 4px; }
 .surface-success { background: #0c2117; border-color: #225438; }
 .surface-danger { background: #291317; border-color: #6d343d; }
 .surface-warning { background: #241c10; border-color: #69532f; }
+
+@layer components {
+  .surface { border-radius: var(--radius-lg); }
+  .showcase { border-radius: var(--radius-xl); overflow: hidden; }
+  button { border-radius: var(--radius-sm); }
+  .copy-control { border-radius: var(--radius-md); }
+  .code-shell { border-radius: var(--radius-lg); overflow: hidden; }
+}
 
 .eyebrow {
   font-family: var(--font-geist-mono), monospace;

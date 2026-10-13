@@ -28,7 +28,7 @@ export function DocRenderer({ blocks }: { blocks: DocBlock[] }) {
           const tone = block.tone ?? "info";
           const Icon = tone === "warning" ? AlertTriangle : tone === "success" ? CheckCircle2 : Info;
           const style = tone === "warning" ? "surface-warning text-warning" : tone === "success" ? "surface-success text-success" : "surface-teal text-signal-ink";
-          return <aside key={index} className={`my-7 rounded-none border p-4 ${style}`}><div className="flex gap-3"><Icon size={18} className="mt-0.5 shrink-0" /><div><strong className="text-sm text-ink">{block.title}</strong><p className="mt-1 text-sm leading-6 text-muted">{block.text}</p></div></div></aside>;
+          return <aside key={index} className={`my-7 rounded-lg border p-4 ${style}`}><div className="flex gap-3"><Icon size={18} className="mt-0.5 shrink-0" /><div><strong className="text-sm text-ink">{block.title}</strong><p className="mt-1 text-sm leading-6 text-muted">{block.text}</p></div></div></aside>;
         }
         if (block.type === "table") {
           return (
