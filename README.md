@@ -64,7 +64,7 @@ The production dependency audit is clean. A full development-tree audit may stil
 - `src/app/docs` — documentation routes
 - `src/app/releases` — verified CLI release history and distribution links
 - `src/app/privacy`, `terms`, `security` — trust pages
-- `public/sample-report.html` — opaque, readable presentation of the bundled v0.1.0 tutorial report; recorded results and provenance are preserved, with offline Auto/Light/Dark appearance controls
+- `public/sample-report.html` — exact generated tutorial report from the verified CLI source build; embedded fonts, escaped content, offline disclosures, and complete print output
 - `public/ragvidence-0.1.0-license.txt` — verbatim LICENSE.md from the production PyPI wheel
 
 ## Product demo

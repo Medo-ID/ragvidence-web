@@ -1,4 +1,27 @@
 import { expect, test } from "@playwright/test";
+import { resolve } from "node:path";
+import { pathToFileURL } from "node:url";
+
+test("report works offline without scripts and prints closed ranked evidence", async ({ browser }) => {
+  const context = await browser.newContext({ javaScriptEnabled: false, viewport: { width: 390, height: 844 } });
+  const page = await context.newPage();
+  const remote: string[] = [];
+  page.on("request", request => { if (!/^(file:|data:)/.test(request.url())) remote.push(request.url()); });
+  await page.goto(pathToFileURL(resolve("public/sample-report.html")).href);
+  await expect(page.locator("script, img, link")).toHaveCount(0);
+  await expect(page.locator(".result")).toHaveText("60% → 90%");
+  const question = page.locator("#improvements .question-card").first();
+  await question.locator("summary").focus();
+  await page.keyboard.press("Enter");
+  await expect(question).toHaveAttribute("open", "");
+  await expect(question).toContainText("Required evidence gained: E-ORION-42-RESET");
+  await page.keyboard.press("Enter");
+  await expect(question).not.toHaveAttribute("open", "");
+  await page.emulateMedia({ media: "print" });
+  expect(await question.locator(".investigation").evaluate(el => el.getBoundingClientRect().height)).toBeGreaterThan(100);
+  expect(remote).toHaveLength(0);
+  await context.close();
+});
 
 test("env and JSONL copy exact raw content without terminal prompts", async ({ page }) => {
   await page.addInitScript(() => Object.defineProperty(navigator, "clipboard", { value: { writeText: async (text: string) => { document.documentElement.dataset.copied = text; } } }));

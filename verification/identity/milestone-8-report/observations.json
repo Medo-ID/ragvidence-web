@@ -1,0 +1,93 @@
+{
+  "file": "/tmp/ragvidence-report-final8/first-run/reports/tutorial.html",
+  "javaScriptEnabled": false,
+  "views": [
+    {
+      "width": 360,
+      "height": 800,
+      "overflow": false,
+      "question": "DEV-01\nRequired: E-ORION-42-RESET\nFail → Pass\nSplit: dev\nPass · Sufficient evidence\nCoverage: 0% → 100%\nFirst relevant rank: N/A → 1\n\nRequired evidence gained: E-ORION-42-RESET\n\nRequired evidence lost: None\n\nStill missing: None\n\nBaseline\n\nFail · Insu"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "overflow": false,
+      "question": "DEV-01\nRequired: E-ORION-42-RESET\nFail → Pass\nSplit: dev\nPass · Sufficient evidence\nCoverage: 0% → 100%\nFirst relevant rank: N/A → 1\n\nRequired evidence gained: E-ORION-42-RESET\n\nRequired evidence lost: None\n\nStill missing: None\n\nBaseline\n\nFail · Insu"
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "overflow": false,
+      "question": "DEV-01\nRequired: E-ORION-42-RESET\nFail → Pass\nSplit: dev\nPass · Sufficient evidence\nCoverage: 0% → 100%\nFirst relevant rank: N/A → 1\n\nRequired evidence gained: E-ORION-42-RESET\n\nRequired evidence lost: None\n\nStill missing: None\n\nBaseline\n\nFail · Insu"
+    },
+    {
+      "width": 1280,
+      "height": 800,
+      "overflow": false,
+      "question": "DEV-01 Required: E-ORION-42-RESET\nFail → Pass\nSplit: dev\nPass · Sufficient evidence\nCoverage: 0% → 100%\nFirst relevant rank: N/A → 1\n\nRequired evidence gained: E-ORION-42-RESET\n\nRequired evidence lost: None\n\nStill missing: None\n\nBaseline\n\nFail · Insu"
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "overflow": false,
+      "question": "DEV-01 Required: E-ORION-42-RESET\nFail → Pass\nSplit: dev\nPass · Sufficient evidence\nCoverage: 0% → 100%\nFirst relevant rank: N/A → 1\n\nRequired evidence gained: E-ORION-42-RESET\n\nRequired evidence lost: None\n\nStill missing: None\n\nBaseline\n\nFail · Insu"
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "overflow": false,
+      "question": "DEV-01 Required: E-ORION-42-RESET\nFail → Pass\nSplit: dev\nPass · Sufficient evidence\nCoverage: 0% → 100%\nFirst relevant rank: N/A → 1\n\nRequired evidence gained: E-ORION-42-RESET\n\nRequired evidence lost: None\n\nStill missing: None\n\nBaseline\n\nFail · Insu"
+    }
+  ],
+  "requests": [],
+  "print": [
+    {
+      "height": 1548.875,
+      "visibility": "visible"
+    },
+    {
+      "height": 1576.0625,
+      "visibility": "visible"
+    },
+    {
+      "height": 1576.0625,
+      "visibility": "visible"
+    },
+    {
+      "height": 1548.875,
+      "visibility": "visible"
+    },
+    {
+      "height": 1576.0625,
+      "visibility": "visible"
+    },
+    {
+      "height": 1521.6875,
+      "visibility": "visible"
+    },
+    {
+      "height": 1576.0625,
+      "visibility": "visible"
+    },
+    {
+      "height": 1548.875,
+      "visibility": "visible"
+    },
+    {
+      "height": 1548.875,
+      "visibility": "visible"
+    },
+    {
+      "height": 1494.5,
+      "visibility": "visible"
+    },
+    {
+      "height": 1548.875,
+      "visibility": "visible"
+    },
+    {
+      "height": 1548.875,
+      "visibility": "visible"
+    }
+  ]
+}

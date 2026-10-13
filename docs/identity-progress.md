@@ -77,3 +77,20 @@ horizontal keyboard scrolling for long examples. Copy uses exact raw content and
 retains success/failure announcements and retry. Non-shell values have no prompt.
 All available checks and 35 browser tests passed, including .env/JSONL exact-copy
 checks. Reviewed desktop/mobile terminals and documentation.
+
+## Milestone 8 — Real report and synchronized sample
+
+The CLI source now has an outcome-first summary, unified run comparison, prioritized
+change groups, explicit diagnosis boundaries, and collapsed paired ranked evidence.
+Embedded Geist fonts/OFL license make the artifact self-contained. Escaping remains
+enabled and the schema/metrics are unchanged. CLI checks passed with 53 tests and
+installed-wheel verification. All six file:// layouts work without JavaScript or
+remote requests. Actual PDF text contains all 12 questions and 48 ranked evidence
+items; summary and recovered-question PDF pages were visually inspected. Full print
+is verbose (28 pages); density will be assessed during Milestone 9 QA.
+
+Copied exact generated output into the website; SHA-256
+`ebbd4ad2c585c1b75412476ee08bd00c82deb7b094247db518f13740383871dc`.
+All website checks and 36 browser tests passed. The HTTP verifier now distinguishes
+remote attributes/CSS URLs from harmless URL text in dataset prose/font licensing;
+offline browser checks confirm zero remote requests.

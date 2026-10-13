@@ -171,9 +171,7 @@ test("site actions retain high contrast and report surfaces stay opaque", async 
   await page.goto("/");
   for (const blur of await page.locator(".surface").evaluateAll(elements => elements.map(element => getComputedStyle(element).backdropFilter))) expect(blur).toBe("none");
   await page.goto("/sample-report.html");
-  for (const theme of ["light", "dark"]) {
-    await page.locator("label").filter({ has: page.locator("#theme-" + theme) }).click();
-    const styles = await page.locator(".hero, .report-nav, section, .metric-card").evaluateAll(elements => elements.map(element => {
+    const styles = await page.locator(".hero, section, .run-summary").evaluateAll(elements => elements.map(element => {
       const css = getComputedStyle(element);
       const channels = css.backgroundColor.match(/[\d.]+/g)?.map(Number) ?? [];
       return { blur: css.backdropFilter, image: css.backgroundImage, alpha: channels[3] ?? 1 };
@@ -183,7 +181,7 @@ test("site actions retain high contrast and report surfaces stay opaque", async 
       expect(style.image).toBe("none");
       expect(style.alpha).toBe(1);
     }
-    const samples = await page.locator(".hero-copy, .metric-card .metric-label, .metric-card .metric-value").evaluateAll(elements => elements.map(element => {
+    const samples = await page.locator(".hero-copy, .rate, .run-summary .config, .summary-metrics, .hit-meta").evaluateAll(elements => elements.map(element => {
       const foreground = getComputedStyle(element).color.match(/[\d.]+/g)!.slice(0, 3).map(Number);
       let ancestor: Element | null = element;
       let background: number[] = [];
@@ -197,7 +195,6 @@ test("site actions retain high contrast and report surfaces stay opaque", async 
       return { text: element.textContent, contrast: (Math.max(f, b) + 0.05) / (Math.min(f, b) + 0.05) };
     }));
     for (const sample of samples) expect(sample.contrast, sample.text ?? "").toBeGreaterThanOrEqual(4.5);
-  }
 });
 
 test("unknown docs show not-found content and noindex", async ({ page }) => {

@@ -99,7 +99,10 @@ async function verify() {
     if (!home.includes(phrase)) failures.push(`/: missing ${phrase}`);
   }
   if (!(pages.get("/docs/first-tutorial") ?? "").includes("Why the report lists 12 questions")) failures.push("Tutorial docs do not explain the score denominator.");
-  if (/<script|https?:\/\//i.test(pages.get("/sample-report.html") ?? "")) failures.push("Sample report contains scripts or remote assets.");
+  const sampleReport = pages.get("/sample-report.html") ?? "";
+  // Plain dataset text and the embedded font license can contain URL strings.
+  // Reject executable tags and remote asset/navigation attributes, not escaped prose.
+  if (/<script(?:\s|>)/i.test(sampleReport) || /(?:src|href)\s*=\s*["']\s*(?:https?:)?\/\//i.test(sampleReport) || /url\(\s*["']?\s*(?:https?:)?\/\//i.test(sampleReport)) failures.push("Sample report contains scripts or remote assets.");
 
   const internalLinks = new Map();
   for (const [route, html] of pages) {
