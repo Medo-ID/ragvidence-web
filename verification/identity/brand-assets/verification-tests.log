@@ -1,0 +1,16 @@
+
+> ragvidence-web@0.1.0 test:verification
+> node --test tests/verification/*.test.mjs
+
+✔ an unavailable explicit URL fails without falling back to a local server (175.813867ms)
+✔ cancelling verification with SIGINT stops its production server (211.156841ms)
+✔ cancelling verification with SIGTERM stops its production server (191.92783ms)
+✔ the default gate refuses to reuse an occupied production port (620.864986ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1400.219874

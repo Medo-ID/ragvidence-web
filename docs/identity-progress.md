@@ -199,3 +199,14 @@ routes, verifier tests, 39 scoped Chromium tests, 15 Firefox docs tests, and the
 production audit passed. Six-size screenshots and native scrollbar drag/keyboard
 checks are recorded. User heading/video edits remain untouched and excluded from
 the commit; standard Turbopack confirmation remains pending.
+
+## User follow-up — Logo and favicon
+
+A geometric Abyssal Teal R mark now accompanies the Geist wordmark in the shared
+header/footer component. [brand-assets.md](brand-assets.md) lists transparent
+light/dark SVG and PNG exports, native 16/32/48px ICO frames, SVG favicon, and
+180px Apple icon, with regeneration instructions and visual evidence. Lint, types,
+Webpack, 45 routes/125 links, four verifier tests, 39 scoped browser tests, and
+production audit passed. Six-size Chromium/Firefox review covers logo loading,
+focus, navigation, and generated icon metadata. SEO is deferred; user edits and
+baseline are preserved. Standard Turbopack confirmation remains pending.

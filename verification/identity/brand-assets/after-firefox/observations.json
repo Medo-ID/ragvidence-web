@@ -1,0 +1,117 @@
+{
+  "engine": "firefox",
+  "views": [
+    {
+      "width": 360,
+      "height": 800,
+      "overflow": false,
+      "brandWidth": 153.8000030517578,
+      "brandHeight": 44,
+      "focusOutline": "2px"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "overflow": false,
+      "brandWidth": 153.8000030517578,
+      "brandHeight": 44,
+      "focusOutline": "2px"
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "overflow": false,
+      "brandWidth": 153.8000030517578,
+      "brandHeight": 44,
+      "focusOutline": "2px"
+    },
+    {
+      "width": 1280,
+      "height": 800,
+      "overflow": false,
+      "brandWidth": 153.79998779296875,
+      "brandHeight": 44,
+      "focusOutline": "2px"
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "overflow": false,
+      "brandWidth": 153.79998779296875,
+      "brandHeight": 44,
+      "focusOutline": "2px"
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "overflow": false,
+      "brandWidth": 153.79998779296875,
+      "brandHeight": 44,
+      "focusOutline": "2px"
+    }
+  ],
+  "icons": [
+    {
+      "route": "/",
+      "links": [
+        {
+          "href": "/favicon.ico?ab32c8b63aa7105d",
+          "type": "image/x-icon",
+          "sizes": "16x16"
+        },
+        {
+          "href": "/icon.svg?a0eec54751931dca",
+          "type": "image/svg+xml",
+          "sizes": "any"
+        },
+        {
+          "href": "/apple-icon.png?33fd395c7b64f38f",
+          "type": "image/png",
+          "sizes": "180x180"
+        }
+      ]
+    },
+    {
+      "route": "/docs/installation",
+      "links": [
+        {
+          "href": "/favicon.ico?ab32c8b63aa7105d",
+          "type": "image/x-icon",
+          "sizes": "16x16"
+        },
+        {
+          "href": "/icon.svg?a0eec54751931dca",
+          "type": "image/svg+xml",
+          "sizes": "any"
+        },
+        {
+          "href": "/apple-icon.png?33fd395c7b64f38f",
+          "type": "image/png",
+          "sizes": "180x180"
+        }
+      ]
+    },
+    {
+      "route": "/privacy",
+      "links": [
+        {
+          "href": "/favicon.ico?ab32c8b63aa7105d",
+          "type": "image/x-icon",
+          "sizes": "16x16"
+        },
+        {
+          "href": "/icon.svg?a0eec54751931dca",
+          "type": "image/svg+xml",
+          "sizes": "any"
+        },
+        {
+          "href": "/apple-icon.png?33fd395c7b64f38f",
+          "type": "image/png",
+          "sizes": "180x180"
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "external": []
+}
