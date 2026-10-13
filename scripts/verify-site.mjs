@@ -59,6 +59,7 @@ async function verify() {
 
   const routes = ["/", "/docs", ...docs.map(({ slug }) => `/docs/${slug}`), "/releases", "/privacy", "/terms", "/security", "/sample-report.html", "/ragvidence-0.1.0-license.txt", "/robots.txt", "/sitemap.xml", "/opengraph-image", "/favicon.ico", "/docs/search-index.json", "/media/walkthrough.webm", "/media/walkthrough-poster.webp", "/media/walkthrough-provenance.json"];
   routes.push("/media/walkthrough.mp4");
+  routes.push("/ragvidence-source-notices.txt", "/ragvidence-source-licenses.txt");
   const binaryRoutes = new Set(["/opengraph-image", "/favicon.ico", "/media/walkthrough.mp4", "/media/walkthrough.webm", "/media/walkthrough-poster.webp"]);
   const failures = [];
   const pages = new Map();

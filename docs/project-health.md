@@ -1,7 +1,15 @@
 # Project health baseline
 
-Current visual system: [neutral-design-pass.md](neutral-design-pass.md) records
-the charcoal redesign, opaque reporting HTML, and silent 60fps product demo.
+October 13 identity refinement: [identity-progress.md](identity-progress.md) records
+separate milestone commits, passing Webpack production gates, responsive/browser
+checks, regenerated CLI report, and native 1080p60 media. The original baseline
+commit is `2c91723`. Standard Turbopack and deployment confirmation remain pending
+with the user. The known development-only braces advisory is temporarily accepted;
+production audits remain clean. Do not treat earlier visual guidance below as current.
+
+Current visual system and delivery: [identity-delivery.md](identity-delivery.md).
+Historical visual record: [neutral-design-pass.md](neutral-design-pass.md) records
+the earlier charcoal redesign, opaque reporting HTML, and silent 60fps product demo.
 Earlier verification: [follow-up-verification.md](follow-up-verification.md)
 records the successful October 12 production gate in a fresh checkout and remaining
 release checks. [implementation-pass.md](implementation-pass.md) describes the UI changes.

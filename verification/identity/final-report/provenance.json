@@ -1,0 +1,54 @@
+{
+  "cliCommit": "735acee",
+  "generatedVia": "Fresh installed final wheel, ragvi tutorial",
+  "hashes": [
+    {
+      "path": "/tmp/ragvidence-final-delivery/first-run/reports/tutorial.html",
+      "sha256": "8b82b8c9ad7927ebb98a3b76a0a8346d387f19e11cef6d874922658f4ef7c93c"
+    },
+    {
+      "path": "public/sample-report.html",
+      "sha256": "8b82b8c9ad7927ebb98a3b76a0a8346d387f19e11cef6d874922658f4ef7c93c"
+    },
+    {
+      "path": "verification/identity/final-report/generated-tutorial.html",
+      "sha256": "8b82b8c9ad7927ebb98a3b76a0a8346d387f19e11cef6d874922658f4ef7c93c"
+    }
+  ],
+  "evaluationChecks": [
+    {
+      "run": "bm25-body",
+      "summary": {
+        "successful": 6,
+        "answerable": 10,
+        "sufficient_evidence_rate": 0.6
+      },
+      "allQuestionResultsIdentical": true
+    },
+    {
+      "run": "bm25-heading_context",
+      "summary": {
+        "successful": 9,
+        "answerable": 10,
+        "sufficient_evidence_rate": 0.9
+      },
+      "allQuestionResultsIdentical": true
+    }
+  ],
+  "sourceLicensesIdentical": true,
+  "cliVerification": {
+    "frozenSync": "passed",
+    "ruff": "passed",
+    "pytest": {
+      "status": "passed",
+      "count": 53
+    },
+    "ragviVerify": {
+      "status": "passed",
+      "fixtures": 7
+    },
+    "wheelAndSdist": "passed",
+    "installedVerify": "passed",
+    "installedTutorial": "passed"
+  }
+}

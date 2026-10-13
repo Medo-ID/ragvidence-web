@@ -125,3 +125,34 @@ formats. WebP poster and hashes/provenance are included.
 Native video has no controls, pauses below 40% visibility, and shows only the
 poster/no video requests under reduced motion. All available checks and 42 browser
 tests passed. Reviewed the embedded showcase and its desktop/mobile surroundings.
+
+## Milestone 11 — Final synchronization
+
+Built and installed the final CLI wheel, verified it, and generated a fresh tutorial.
+Baseline and candidate evaluation summaries and every question's metrics, IDs,
+ranks, scores, and previews match the original baseline. The final tutorial remains
+60% → 90%, three recovered, zero regressions, six stable passes, and one unresolved
+failure. Two unanswerable questions are presented separately as N/A.
+
+Inspected the generated file at all six viewports with JavaScript disabled before
+copying it unchanged to the website. The generated artifact, recorded delivery copy,
+and public sample share SHA-256
+`8b82b8c9ad7927ebb98a3b76a0a8346d387f19e11cef6d874922658f4ef7c93c`.
+Print verification confirms 18 pages, all 12 questions, and all 48 ranked hits.
+
+CLI frozen sync, Ruff, all 53 tests, seven verification fixtures, wheel/sdist build,
+and installed-package tutorial passed. Website checks passed in the working tree
+and an isolated clean snapshot: npm ci, lint, TypeScript before build, Webpack
+production build, four verifier tests, 42 browser tests, routes, and production audit.
+Explicit production smoke verification passed 36 routes and 123 internal links or
+fragments. All 15 unique README destinations resolve against the local production
+site. Public license/notices copies match the CLI sources.
+
+Reviewed final screenshots, documentation disclosures/rails, evidence, grayscale,
+and actual printed pages. The source README now uses final public routes. Published
+PyPI description updates require a release; GitHub changes require a push, and live
+website verification requires deployment. No release, push, or deployment was done.
+Standard Turbopack remains pending the user's confirmation, as agreed.
+
+See [identity-delivery.md](identity-delivery.md) for commits, artifacts, findings,
+performance measurements, limitations, and a continuation prompt.

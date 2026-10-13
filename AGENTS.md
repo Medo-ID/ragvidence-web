@@ -76,9 +76,14 @@ are no accounts, forms, analytics, or checkout.
 
 ## Tailwind and visual work
 
-- Use sharp, square edges for panels, cards, badges, and controls. Avoid large
-  corner radii and pill-shaped containers. Navigation uses a full-width border
-  and background with aligned inner content. The brand is a text-only wordmark.
+- Use the 6/9/12/16px radius tokens for small controls, navigation/copy controls,
+  cards/code/disclosures, and showcases. Avoid pills and independently rounded
+  nested children. Navigation uses a full-width border and aligned inner content;
+  the brand is a text-only wordmark. Abyssal Teal #063f47 is the identity color;
+  pale teal is used for readable text/focus. Preserve separate semantic colors.
+- Most surfaces are solid and near-black. Reserve teal translucency for important
+  regions; blur belongs only to the sticky header. Reuse CodeBlock for commands,
+  structured data, configuration, and output; copy raw content without prompts.
 - Keep the CSS-first v4 setup: `@import "tailwindcss"` and `@theme inline` tokens.
   Use existing colors (`canvas`, `panel`, `line`, `ink`, `muted`, `signal`, etc.) and
   shared helpers (`shell`, `surface`, `eyebrow`) to maintain the visual language.
@@ -134,6 +139,14 @@ are no accounts, forms, analytics, or checkout.
 8. Run `git diff --check` and review the final diff. Report changes, evidence,
    unresolved issues, and environment limitations accurately. Do not call a
    blocked build or unperformed browser check a pass.
+
+In this restricted execution environment the user authorizes `npm run build --
+--webpack` plus the available gate in `verification/identity/verify-milestone.mjs`.
+Webpack uses the existing Tailwind compiler through a verification-only hook;
+the normal Turbopack command/configuration stays in place. Standard build and
+deployment verification remain pending until the user confirms them locally or
+on Vercel. The development-only braces advisory is temporarily accepted; production
+audits must pass and the dependency path/remediation remain tracked in the health notes.
 
 Measure performance before and after optimization: production client JavaScript,
 CSS size, and representative mobile/desktop loading and interaction metrics. Prefer

@@ -1,0 +1,81 @@
+{
+  "routes": [
+    {
+      "href": "https://ragvidence.medo-id.com/docs/installation",
+      "status": 200,
+      "fragment": null
+    },
+    {
+      "href": "https://ragvidence.medo-id.com/docs/first-tutorial",
+      "status": 200,
+      "fragment": null
+    },
+    {
+      "href": "https://ragvidence.medo-id.com/docs/bring-your-own-data",
+      "status": 200,
+      "fragment": null
+    },
+    {
+      "href": "https://ragvidence.medo-id.com/docs/semantic-workflow",
+      "status": 200,
+      "fragment": null
+    },
+    {
+      "href": "https://ragvidence.medo-id.com/docs/import-retriever",
+      "status": 200,
+      "fragment": null
+    },
+    {
+      "href": "https://ragvidence.medo-id.com/docs/commands",
+      "status": 200,
+      "fragment": null
+    },
+    {
+      "href": "https://ragvidence.medo-id.com/docs/metrics",
+      "status": 200,
+      "fragment": null
+    },
+    {
+      "href": "https://ragvidence.medo-id.com/docs/troubleshooting",
+      "status": 200,
+      "fragment": null
+    },
+    {
+      "href": "https://ragvidence.medo-id.com/docs/privacy-providers",
+      "status": 200,
+      "fragment": null
+    },
+    {
+      "href": "https://ragvidence.medo-id.com/#plans",
+      "status": 200,
+      "fragment": "#plans"
+    },
+    {
+      "href": "https://ragvidence.medo-id.com/ragvidence-0.1.0-license.txt",
+      "status": 200,
+      "fragment": null
+    },
+    {
+      "href": "https://ragvidence.medo-id.com/security",
+      "status": 200,
+      "fragment": null
+    },
+    {
+      "href": "https://ragvidence.medo-id.com/releases",
+      "status": 200,
+      "fragment": null
+    },
+    {
+      "href": "https://ragvidence.medo-id.com/ragvidence-source-notices.txt",
+      "status": 200,
+      "fragment": null
+    },
+    {
+      "href": "https://ragvidence.medo-id.com/ragvidence-source-licenses.txt",
+      "status": 200,
+      "fragment": null
+    }
+  ],
+  "publishedPyPI": "Metadata correct; long-description source fixes await a new release",
+  "liveDomain": "Unreachable in this environment; deployment validation pending"
+}

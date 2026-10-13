@@ -1,0 +1,136 @@
+{
+  "milestone": "milestone-11",
+  "build": "Webpack; standard Turbopack confirmation pending",
+  "views": [
+    {
+      "route": "/",
+      "width": 360,
+      "height": 800,
+      "overflow": false,
+      "font": "GeistSans, \"GeistSans Fallback\""
+    },
+    {
+      "route": "/docs/semantic-workflow",
+      "width": 360,
+      "height": 800,
+      "overflow": false,
+      "font": "GeistSans, \"GeistSans Fallback\""
+    },
+    {
+      "route": "/sample-report.html",
+      "width": 360,
+      "height": 800,
+      "overflow": false,
+      "font": "Geist, system-ui, sans-serif"
+    },
+    {
+      "route": "/",
+      "width": 390,
+      "height": 844,
+      "overflow": false,
+      "font": "GeistSans, \"GeistSans Fallback\""
+    },
+    {
+      "route": "/docs/semantic-workflow",
+      "width": 390,
+      "height": 844,
+      "overflow": false,
+      "font": "GeistSans, \"GeistSans Fallback\""
+    },
+    {
+      "route": "/sample-report.html",
+      "width": 390,
+      "height": 844,
+      "overflow": false,
+      "font": "Geist, system-ui, sans-serif"
+    },
+    {
+      "route": "/",
+      "width": 768,
+      "height": 1024,
+      "overflow": false,
+      "font": "GeistSans, \"GeistSans Fallback\""
+    },
+    {
+      "route": "/docs/semantic-workflow",
+      "width": 768,
+      "height": 1024,
+      "overflow": false,
+      "font": "GeistSans, \"GeistSans Fallback\""
+    },
+    {
+      "route": "/sample-report.html",
+      "width": 768,
+      "height": 1024,
+      "overflow": false,
+      "font": "Geist, system-ui, sans-serif"
+    },
+    {
+      "route": "/",
+      "width": 1280,
+      "height": 800,
+      "overflow": false,
+      "font": "GeistSans, \"GeistSans Fallback\""
+    },
+    {
+      "route": "/docs/semantic-workflow",
+      "width": 1280,
+      "height": 800,
+      "overflow": false,
+      "font": "GeistSans, \"GeistSans Fallback\""
+    },
+    {
+      "route": "/sample-report.html",
+      "width": 1280,
+      "height": 800,
+      "overflow": false,
+      "font": "Geist, system-ui, sans-serif"
+    },
+    {
+      "route": "/",
+      "width": 1440,
+      "height": 900,
+      "overflow": false,
+      "font": "GeistSans, \"GeistSans Fallback\""
+    },
+    {
+      "route": "/docs/semantic-workflow",
+      "width": 1440,
+      "height": 900,
+      "overflow": false,
+      "font": "GeistSans, \"GeistSans Fallback\""
+    },
+    {
+      "route": "/sample-report.html",
+      "width": 1440,
+      "height": 900,
+      "overflow": false,
+      "font": "Geist, system-ui, sans-serif"
+    },
+    {
+      "route": "/",
+      "width": 1920,
+      "height": 1080,
+      "overflow": false,
+      "font": "GeistSans, \"GeistSans Fallback\""
+    },
+    {
+      "route": "/docs/semantic-workflow",
+      "width": 1920,
+      "height": 1080,
+      "overflow": false,
+      "font": "GeistSans, \"GeistSans Fallback\""
+    },
+    {
+      "route": "/sample-report.html",
+      "width": 1920,
+      "height": 1080,
+      "overflow": false,
+      "font": "Geist, system-ui, sans-serif"
+    }
+  ],
+  "errors": [],
+  "external": [],
+  "cssBytes": 34763,
+  "utilitiesCompiled": true
+}
