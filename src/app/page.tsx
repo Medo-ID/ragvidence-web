@@ -16,7 +16,7 @@ export default function Home() {
             </div>
             <h1 className="mt-7 max-w-xl text-balance text-[2.65rem] font-semibold leading-[1.08] tracking-[-0.05em] text-ink sm:text-6xl lg:text-[3.2rem] xl:text-6xl">
               See whether your RAG change{" "}
-              <span className="text-signal">helped.</span>
+              <span className="text-signal-ink">helped.</span>
             </h1>
             <p className="mt-7 max-w-lg text-pretty text-base leading-7 text-muted sm:text-lg sm:leading-8">
               Compare retrieval changes locally. Find missing evidence, catch regressions, and share a report your team can inspect.

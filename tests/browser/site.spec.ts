@@ -167,11 +167,10 @@ test("reduced motion keeps the demo still until explicitly played", async ({ pag
   await expect.poll(() => video.evaluate((element: HTMLVideoElement) => element.paused)).toBe(true);
 });
 
-test("site actions stay neutral and glass remains confined to the website", async ({ page }) => {
+test("site actions retain high contrast and report surfaces stay opaque", async ({ page }) => {
   await page.goto("/");
   const button = page.locator("#install").getByRole("link", { name: "Install Free", exact: true });
   const channels = await button.evaluate(element => getComputedStyle(element).backgroundColor.match(/[\d.]+/g)!.slice(0, 3).map(Number));
-  expect(Math.max(...channels) - Math.min(...channels)).toBeLessThan(1);
   expect(channels[0]).toBeGreaterThan(220);
   expect(await page.locator("#demo").evaluate(element => getComputedStyle(element).backdropFilter)).toContain("blur(36px)");
   await page.goto("/sample-report.html");
