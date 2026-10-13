@@ -1,0 +1,54 @@
+
+> ragvidence-web@0.1.0 test:browser
+> playwright test
+
+[WebServer] (node:36101) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 27 tests using 8 workers
+
+(node:36137) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:36129) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:36130) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:36131) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:36143) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:36155) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:36164) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:36149) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   4 [chromium] › tests/browser/site.spec.ts:76:5 › search filters pages and announces an empty result (1.4s)
+  ✓   7 [chromium] › tests/browser/site.spec.ts:38:5 › copy failure provides feedback and retry copies the real command (1.4s)
+  ✓   2 [chromium] › tests/browser/site.spec.ts:87:5 › full-text search loads on demand, keeps queries local, and finds article content (1.7s)
+  ✓   8 [chromium] › tests/browser/site.spec.ts:107:7 › search recovers from http failure while metadata remains usable (1.7s)
+  ✓   1 [chromium] › tests/browser/identity.spec.ts:3:5 › essential website text meets AA contrast and docs search has visible focus (2.0s)
+  ✓   6 [chromium] › tests/browser/site.spec.ts:3:5 › mobile docs selection closes the browser and reveals the article (2.1s)
+  ✓   5 [chromium] › tests/browser/site.spec.ts:19:5 › mobile menu dismisses on Escape, brand click, and route navigation (2.4s)
+  ✓   3 [chromium] › tests/browser/site.spec.ts:59:5 › preview steps, bounds, playback, and reduced motion remain usable (2.6s)
+  ✓   9 [chromium] › tests/browser/site.spec.ts:107:7 › search recovers from invalid-index failure while metadata remains usable (1.3s)
+  ✓  11 [chromium] › tests/browser/site.spec.ts:157:5 › reduced motion keeps the demo still until explicitly played (1.6s)
+  ✓  14 [chromium] › tests/browser/site.spec.ts:212:5 › printed documentation keeps headings, links, and commands readable (1.3s)
+  ✓  13 [chromium] › tests/browser/site.spec.ts:206:5 › unknown docs show not-found content and noindex (1.4s)
+  ✓  12 [chromium] › tests/browser/site.spec.ts:170:5 › site actions retain high contrast and report surfaces stay opaque (2.6s)
+  ✓  10 [chromium] › tests/browser/site.spec.ts:129:5 › silent product demo starts only in view, supports keyboard chapters, and can be paused (3.0s)
+  ✓  16 [chromium] › tests/browser/site.spec.ts:245:7 › homepage and long docs fit at 320px (2.7s)
+  ✓  15 [chromium] › tests/browser/site.spec.ts:230:7 › tutorial selection keeps hero geometry stable at 320px (3.0s)
+  ✓  17 [chromium] › tests/browser/site.spec.ts:230:7 › tutorial selection keeps hero geometry stable at 390px (3.0s)
+  ✓  18 [chromium] › tests/browser/site.spec.ts:245:7 › homepage and long docs fit at 390px (2.6s)
+  ✓  20 [chromium] › tests/browser/site.spec.ts:245:7 › homepage and long docs fit at 768px (2.9s)
+  ✓  19 [chromium] › tests/browser/site.spec.ts:230:7 › tutorial selection keeps hero geometry stable at 768px (3.0s)
+  ✓  21 [chromium] › tests/browser/site.spec.ts:230:7 › tutorial selection keeps hero geometry stable at 1024px (3.1s)
+  ✓  22 [chromium] › tests/browser/site.spec.ts:245:7 › homepage and long docs fit at 1024px (3.3s)
+  ✓  27 [chromium] › tests/browser/site.spec.ts:265:5 › installation and mobile navigation remain accessible without JavaScript (1.4s)
+  ✓  23 [chromium] › tests/browser/site.spec.ts:230:7 › tutorial selection keeps hero geometry stable at 1440px (2.7s)
+  ✓  24 [chromium] › tests/browser/site.spec.ts:245:7 › homepage and long docs fit at 1440px (2.9s)
+  ✓  25 [chromium] › tests/browser/site.spec.ts:230:7 › tutorial selection keeps hero geometry stable at 1920px (2.7s)
+  ✓  26 [chromium] › tests/browser/site.spec.ts:245:7 › homepage and long docs fit at 1920px (2.7s)
+
+  27 passed (10.3s)

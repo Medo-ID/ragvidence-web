@@ -39,3 +39,11 @@ Applied 6/9/12/16px tokens to controls, navigation, copy buttons, code shells,
 cards, disclosures, and the hero showcase. Tables round at their outer wrapper.
 All available checks and 26 browser tests passed. Desktop/mobile visual review
 confirmed consistent edges without adding shadows or blur.
+
+## Milestone 4 — Readability
+
+Documentation prose/list text and commands use 16px with comfortable line height;
+product narrative text is larger, and secondary labels remain 12–14px. Search
+focus has a visible 2px pale-teal outline. Self-hosted Geist fonts are retained.
+All available checks passed, including 27 browser tests and rendered AA contrast
+checks for essential website text. Reviewed desktop/mobile text and code scrolling.

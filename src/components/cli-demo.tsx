@@ -116,11 +116,11 @@ export function CliDemo() {
                 <CopyCommand command={step.command} label={index === 3 ? "Copy path" : "Copy"} />
               </div>
               <div className="overflow-x-auto p-4">
-                <code className="block whitespace-pre font-mono text-xs leading-6 text-ink sm:text-sm">{index !== 3 && <span className="mr-3 select-none text-signal-ink" aria-hidden="true">$</span>}{step.command}</code>
+                <code className="block whitespace-pre font-mono text-base leading-7 text-ink">{index !== 3 && <span className="mr-3 select-none text-signal-ink" aria-hidden="true">$</span>}{step.command}</code>
               </div>
             </div>
 
-            <p className="mt-5 text-sm leading-6 text-muted">{step.description}</p>
+            <p className="mt-5 text-base leading-7 text-muted">{step.description}</p>
 
             <div className="mt-5 min-h-32">
               {index < 2 ? (

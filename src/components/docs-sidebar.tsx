@@ -32,7 +32,7 @@ function Navigation({ query, pages, groups, index, loading, close }: NavigationP
         if (!pages.length) return null;
         return (
           <div key={group} className="mb-6">
-            <h2 className="px-3 font-mono text-[10px] font-semibold uppercase tracking-[0.15em] text-muted">{group}</h2>
+            <h2 className="px-3 font-mono text-xs font-semibold uppercase tracking-[0.15em] text-muted">{group}</h2>
             <ul className="mt-2 space-y-0.5">
               {pages.map((doc) => {
                 const active = pathname === `/docs/${doc.slug}` || (pathname === "/docs" && doc.slug === "overview");
@@ -98,7 +98,7 @@ export function DocsSidebar({ pages, groups }: NavigationProps) {
   }
 
   const search = (
-    <label className="mb-6 flex items-center gap-2 rounded-md border border-line bg-canvas px-3 py-2.5 focus-within:border-signal/40">
+    <label className="search-field mb-6 flex items-center gap-2 rounded-md border border-line bg-canvas px-3 py-2.5 focus-within:border-signal-ink">
       <Search size={15} className="shrink-0 text-muted" />
       <span className="sr-only">Search documentation</span>
       <input value={query} onChange={(event) => updateQuery(event.target.value)} placeholder="Search docs" className="min-w-0 flex-1 bg-transparent text-sm text-ink outline-none placeholder:text-muted/70" />
