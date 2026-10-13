@@ -87,6 +87,9 @@ a, button { -webkit-tap-highlight-color: transparent; outline-offset: 4px; }
 .surface-success { background: #0c2117; border-color: #225438; }
 .surface-danger { background: #291317; border-color: #6d343d; }
 .surface-warning { background: #241c10; border-color: #69532f; }
+.terminal { background: #050b0d; border: 1px solid var(--abyssal-teal-border); border-radius: var(--radius-lg); overflow: hidden; }
+.terminal-header { display: flex; align-items: center; justify-content: space-between; gap: 1rem; border-bottom: 1px solid var(--border-subtle); padding: 0.5rem 1rem; }
+.terminal-content { max-width: 100%; overflow-x: auto; padding: 1rem; font-family: var(--font-geist-mono), monospace; font-size: 1rem; line-height: 1.75; color: var(--color-ink); }
 
 @layer components {
   .surface { border-radius: var(--radius-lg); }

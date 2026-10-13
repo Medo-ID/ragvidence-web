@@ -1,6 +1,6 @@
 import { AlertTriangle, CheckCircle2, Info } from "lucide-react";
 import type { DocBlock } from "@/lib/docs";
-import { CopyCommand } from "./copy-command";
+import { CodeBlock } from "./code-block";
 
 export function DocRenderer({ blocks }: { blocks: DocBlock[] }) {
   return (
@@ -17,12 +17,8 @@ export function DocRenderer({ blocks }: { blocks: DocBlock[] }) {
           return <ul key={index} className="my-5 space-y-3 text-base leading-7">{block.items.map(({ label, href }) => <li key={href}><a href={href} className="text-signal-ink underline underline-offset-4 hover:text-ink">{label}</a></li>)}</ul>;
         }
         if (block.type === "code") {
-          return (
-            <div key={index} className="surface my-6 overflow-hidden border border-line">
-              <div className="flex items-center justify-between border-b border-line px-4 py-2.5"><span className="font-mono text-xs uppercase tracking-wider text-muted">{block.label ?? "Code"}</span><CopyCommand command={block.code} /></div>
-              <pre className="overflow-x-auto p-4 font-mono text-base leading-7 text-ink"><code>{block.code}</code></pre>
-            </div>
-          );
+          const label = block.label?.endsWith(".jsonl") ? `JSONL · ${block.label}` : block.label ?? "Config";
+          return <CodeBlock key={index} className="my-6" label={label} content={block.code} />;
         }
         if (block.type === "note") {
           const tone = block.tone ?? "info";

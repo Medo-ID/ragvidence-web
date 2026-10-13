@@ -3,7 +3,7 @@
 import { ArrowRight, Check, ChevronLeft, ChevronRight, FileSearch, Pause, Play, RotateCcw, Terminal } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState, useSyncExternalStore } from "react";
-import { CopyCommand } from "./copy-command";
+import { CodeBlock } from "./code-block";
 
 const steps = [
   {
@@ -110,15 +110,7 @@ export function CliDemo() {
               <FileSearch size={22} className="mt-1 shrink-0 text-muted" aria-hidden="true" />
             </div>
 
-            <div className="code-shell border border-line bg-canvas">
-              <div className="flex items-center justify-between gap-3 border-b border-line px-4 py-2">
-                <span className="font-mono text-xs text-muted">{index === 3 ? "Generated report" : "Terminal"}</span>
-                <CopyCommand command={step.command} label={index === 3 ? "Copy path" : "Copy"} />
-              </div>
-              <div className="overflow-x-auto p-4">
-                <code className="block whitespace-pre font-mono text-base leading-7 text-ink">{index !== 3 && <span className="mr-3 select-none text-signal-ink" aria-hidden="true">$</span>}{step.command}</code>
-              </div>
-            </div>
+            <CodeBlock label={index === 3 ? "Output" : "Terminal"} content={step.command} prompt={index < 3} wrap />
 
             <p className="mt-5 text-base leading-7 text-muted">{step.description}</p>
 

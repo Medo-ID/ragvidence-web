@@ -2,7 +2,7 @@ import { ArrowRight, Database, FileSearch, Globe2, LockKeyhole, ShieldCheck } fr
 import Link from "next/link";
 import { CliDemo } from "@/components/cli-demo";
 import { ProductSections } from "@/components/product-sections";
-import { CopyCommand } from "@/components/copy-command";
+import { CodeBlock } from "@/components/code-block";
 
 const installCommand = 'uv tool install --python 3.12 "ragvidence[semantic]"';
 
@@ -24,10 +24,7 @@ export default function Home() {
               Diagnose RAG retrieval locally. Compare one controlled change, catch missing evidence and regressions, and receive a self-contained HTML report.
             </p>
 
-            <div id="hero-install-command" className="code-shell mt-6 border border-line bg-panel">
-              <div className="flex items-center justify-between gap-3 border-b border-line px-4 py-2"><span className="font-mono text-xs text-muted">Install · Python 3.12</span><CopyCommand command={installCommand} /></div>
-              <pre className="whitespace-pre-wrap break-words p-4 font-mono text-base leading-7 text-ink"><code>{installCommand}</code></pre>
-            </div>
+            <div id="hero-install-command" className="mt-6"><CodeBlock label="Terminal" content={installCommand} wrap /></div>
 
             <div className="mt-6 flex flex-wrap gap-3">
               <Link href="/docs/installation" className="inline-flex min-h-11 items-center gap-2 rounded-sm button-primary px-5 text-sm font-semibold transition-colors">Install Free<ArrowRight size={16} aria-hidden="true" /></Link>

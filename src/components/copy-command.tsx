@@ -3,7 +3,7 @@
 import { Check, Copy, TriangleAlert } from "lucide-react";
 import { useEffect, useState } from "react";
 
-export function CopyCommand({ command, label = "Copy" }: { command: string; label?: string }) {
+export function CopyCommand({ command, label = "Copy", contentLabel = "command" }: { command: string; label?: string; contentLabel?: string }) {
   const [status, setStatus] = useState<"idle" | "copied" | "error">("idle");
 
   useEffect(() => {
@@ -24,11 +24,11 @@ export function CopyCommand({ command, label = "Copy" }: { command: string; labe
 
   return (
     <span className="no-print inline-flex shrink-0 items-center">
-      <button type="button" onClick={copy} aria-label={`Copy command: ${command}`} title={status === "error" ? "Clipboard unavailable. Select the command and copy it manually, or try again." : undefined} className="copy-control inline-flex min-h-11 items-center gap-2 border border-line bg-white/2.5 px-3 text-sm font-medium text-muted transition-colors hover:border-signal/30 hover:text-ink">
+      <button type="button" onClick={copy} aria-label={contentLabel === "command" ? `Copy command: ${command}` : `Copy ${contentLabel} content`} title={status === "error" ? "Clipboard unavailable. Select the content and copy it manually, or try again." : undefined} className="copy-control inline-flex min-h-11 items-center gap-2 border border-line bg-panel-raised px-3 text-sm font-medium text-muted transition-colors hover:border-signal-ink hover:text-ink">
         {status === "copied" ? <Check size={14} className="text-success" aria-hidden="true" /> : status === "error" ? <TriangleAlert size={14} className="text-danger" aria-hidden="true" /> : <Copy size={14} aria-hidden="true" />}
         {status === "copied" ? "Copied" : status === "error" ? "Copy failed" : label}
       </button>
-      <span role="status" aria-live="polite" aria-atomic="true" className="sr-only">{status === "copied" ? "Command copied to clipboard." : status === "error" ? "Clipboard unavailable. Select the command and copy it manually, or try again." : ""}</span>
+      <span role="status" aria-live="polite" aria-atomic="true" className="sr-only">{status === "copied" ? "Content copied to clipboard." : status === "error" ? "Clipboard unavailable. Select the content and copy it manually, or try again." : ""}</span>
     </span>
   );
 }

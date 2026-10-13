@@ -67,3 +67,13 @@ Heading offsets account for the site header. Long desktop navigation retains one
 bounded scroller; article and compact disclosures scroll with the page. All available
 checks and 34 browser tests passed, including rail width, section tracking, anchors,
 keyboard disclosures, search, and route transitions. Reviewed desktop and mobile.
+
+## Milestone 7 — Terminal system
+
+One CodeBlock foundation now renders hero commands, docs examples, install values,
+report paths, and tutorial commands. Consistent dark background, teal border, 12px
+radius, label/header/copy position, Geist Mono, wrapping for installation, and
+horizontal keyboard scrolling for long examples. Copy uses exact raw content and
+retains success/failure announcements and retry. Non-shell values have no prompt.
+All available checks and 35 browser tests passed, including .env/JSONL exact-copy
+checks. Reviewed desktop/mobile terminals and documentation.

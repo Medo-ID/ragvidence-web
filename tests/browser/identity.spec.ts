@@ -1,5 +1,18 @@
 import { expect, test } from "@playwright/test";
 
+test("env and JSONL copy exact raw content without terminal prompts", async ({ page }) => {
+  await page.addInitScript(() => Object.defineProperty(navigator, "clipboard", { value: { writeText: async (text: string) => { document.documentElement.dataset.copied = text; } } }));
+  for (const [route, label] of [["/docs/semantic-workflow", ".env"], ["/docs/evidence-labels", "JSONL"]]) {
+    await page.goto(route);
+    const block = page.locator(".terminal").filter({ has: page.getByText(new RegExp(label === ".env" ? "^\\.env$" : "^JSONL")) }).first();
+    const raw = await block.locator("code").textContent();
+    expect(raw).not.toMatch(/^\$ /);
+    await block.getByRole("button", { name: /^Copy / }).click();
+    await expect(page.locator("html")).toHaveAttribute("data-copied", raw!);
+    await expect(block.getByRole("button")).toHaveText("Copied");
+  }
+});
+
 test("docs rails track headings and compact navigation works by keyboard", async ({ page }) => {
   await page.setViewportSize({ width: 1280, height: 800 });
   await page.goto("/docs/semantic-workflow");

@@ -235,7 +235,7 @@ for (const width of [320, 390, 768, 1024, 1440, 1920]) {
       await expect(page.locator("#demo").getByRole("heading", { level: 2 })).toBeVisible();
       expect(Math.abs((await page.locator("#install").boundingBox())!.height - initialHero!.height)).toBeLessThan(0.5);
       expect(Math.abs((await page.locator("#demo").boundingBox())!.height - initialDemo!.height)).toBeLessThan(0.5);
-      await expect(page.locator("#demo").getByRole("button", { name: /Copy command/ })).toHaveCount(1);
+      await expect(page.locator("#demo").getByRole("button", { name: /^Copy / })).toHaveCount(1);
     }
   });
 
