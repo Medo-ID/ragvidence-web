@@ -84,6 +84,10 @@ it, or focus it and press Space/Enter, to pause or resume. A manual pause persis
 when scrolling away and back. It automatically starts when enough of it is visible
 and pauses offscreen or in a hidden tab. Reduced motion displays the poster without
 loading media until the user explicitly plays it.
+On first visit and reload, visibility enables native muted autoplay and calls
+`play()` to request frames even when metadata preload stops at `HAVE_METADATA`.
+The initial state does not ask for a click; the play hint is reserved for manual
+pause, autoplay rejection, or reduced motion.
 No audio, narration, captions, browser chrome, personal paths, or remote report
 assets are included. The own-data guide is linked below it; the original 60% → 90%
 tutorial remains in the hero and public sample report.

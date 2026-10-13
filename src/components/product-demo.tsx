@@ -17,6 +17,7 @@ export function ProductDemo() {
   const inView = useRef(false);
   const [requestedMedia, setRequestedMedia] = useState(false);
   const [playing, setPlaying] = useState(false);
+  const [showPlayHint, setShowPlayHint] = useState(false);
   const [failed, setFailed] = useState(false);
   const loadMedia = !reducedMotion || requestedMedia;
   useEffect(() => {
@@ -29,8 +30,14 @@ export function ProductDemo() {
     function syncPlayback() {
       if (!element) return;
       const wantsPlayback = intent.current === "play" || (!reducedMotion && intent.current === "auto");
-      if (loadMedia && wantsPlayback && inView.current && document.visibilityState === "visible") {
-        if (element.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) void element.play().catch(() => {});
+      const shouldPlay = loadMedia && wantsPlayback && inView.current && document.visibilityState === "visible";
+      element.autoplay = shouldPlay;
+      if (shouldPlay) {
+        // play() requests frames when metadata preload has stopped at
+        // HAVE_METADATA. Waiting for canplay first would deadlock loading.
+        void element.play().catch(() => {
+          if (inView.current && element.paused) setShowPlayHint(true);
+        });
       } else element.pause();
     }
     element.addEventListener("canplay", syncPlayback);
@@ -69,23 +76,26 @@ export function ProductDemo() {
     if (!element) return;
     if (!element.paused) {
       intent.current = "pause";
+      element.autoplay = false;
+      setShowPlayHint(true);
       element.pause();
     } else {
       intent.current = "play";
+      element.autoplay = true;
       if (!loadMedia) setRequestedMedia(true);
       element.muted = true;
-      if (loadMedia) void element.play().catch(() => {});
+      if (loadMedia) void element.play().catch(() => setShowPlayHint(true));
     }
   }
 
   return (
     <div className="surface showcase">
       <div className="relative">
-        <video ref={video} muted loop playsInline preload="metadata" controls={false} poster="/media/walkthrough-poster.webp" width={1920} height={1080} className="block aspect-video w-full" aria-label="Silent own-data workflow: label sources and questions, benchmark BM25 and semantic retrieval, evaluate, and inspect a report" onPlaying={() => { setPlaying(true); setFailed(false); }} onPause={() => setPlaying(false)} onError={() => { if (loadMedia) setFailed(true); }}>
+        <video ref={video} muted loop playsInline preload="metadata" controls={false} poster="/media/walkthrough-poster.webp" width={1920} height={1080} className="block aspect-video w-full" aria-label="Silent own-data workflow: label sources and questions, benchmark BM25 and semantic retrieval, evaluate, and inspect a report" onPlaying={() => { setPlaying(true); setShowPlayHint(false); setFailed(false); }} onPause={() => setPlaying(false)} onError={() => { if (loadMedia) setFailed(true); }}>
           {loadMedia && <><source src="/media/walkthrough.webm" type="video/webm" /><source src="/media/walkthrough.mp4" type="video/mp4" /></>}
         </video>
         <button type="button" onClick={togglePlayback} aria-label={playing ? "Pause workflow video" : "Play workflow video"} className="absolute inset-0 cursor-pointer rounded-none focus-visible:-outline-offset-4">
-          {!playing && <span aria-hidden="true" className="absolute bottom-4 left-4 rounded-sm border border-line bg-panel px-3 py-2 text-sm text-ink">Click to play</span>}
+          {!playing && (showPlayHint || reducedMotion || failed) && <span aria-hidden="true" className="absolute bottom-4 left-4 rounded-sm border border-line bg-panel px-3 py-2 text-sm text-ink">Click to play</span>}
         </button>
       </div>
       {failed && <p role="status" className="p-4 text-sm text-muted">The walkthrough could not play. Follow the own-data guide below or <a href="/media/walkthrough.mp4" className="text-signal-ink underline">download the MP4</a>.</p>}

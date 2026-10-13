@@ -1,0 +1,20 @@
+Running 12 tests using 1 worker
+
+(node:155843) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 [chromium] › tests/browser/site.spec.ts:129:5 › silent native video starts on scroll and pauses offscreen without native controls (738ms)
+  ✓   2 [chromium] › tests/browser/site.spec.ts:144:5 › cold fragment navigation retries playback once delayed media is ready (1.3s)
+  ✓   3 [chromium] › tests/browser/site.spec.ts:155:5 › metadata-only readiness starts on first visit and reload without a click (1.2s)
+  ✓   4 [chromium] › tests/browser/site.spec.ts:180:5 › clicking anywhere toggles playback and manual pause survives scrolling (733ms)
+  ✓   5 [chromium] › tests/browser/site.spec.ts:201:5 › a tall video can autoplay in a short viewport (534ms)
+  ✓   6 [chromium] › tests/browser/site.spec.ts:209:5 › reduced motion shows the poster without loading or autoplaying video (515ms)
+(node:156108) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   7 [firefox] › tests/browser/site.spec.ts:129:5 › silent native video starts on scroll and pauses offscreen without native controls (1.8s)
+  ✓   8 [firefox] › tests/browser/site.spec.ts:144:5 › cold fragment navigation retries playback once delayed media is ready (1.7s)
+  ✓   9 [firefox] › tests/browser/site.spec.ts:155:5 › metadata-only readiness starts on first visit and reload without a click (1.4s)
+  ✓  10 [firefox] › tests/browser/site.spec.ts:180:5 › clicking anywhere toggles playback and manual pause survives scrolling (1.0s)
+  ✓  11 [firefox] › tests/browser/site.spec.ts:201:5 › a tall video can autoplay in a short viewport (775ms)
+  ✓  12 [firefox] › tests/browser/site.spec.ts:209:5 › reduced motion shows the poster without loading or autoplaying video (898ms)
+
+  12 passed (15.4s)

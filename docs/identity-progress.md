@@ -166,3 +166,9 @@ commit `0b2996a` and the replacement video milestone. Current media is a genuine
 1920×1080 at 60fps. The 60% → 90% tutorial proof and sample report remain unchanged.
 All available gates pass, with 45 browser tests and full-frame decode checks.
 The mock workspace is removed after export; final Turbopack confirmation is pending.
+
+The later first-click autoplay report was reproduced with metadata-only readiness.
+Visibility now requests playback without waiting for frame readiness and enables
+native muted autoplay. The initial play hint is removed during automatic startup.
+The gate passes 46 Chromium tests; focused playback checks also pass in Firefox.
+See the latest section of walkthrough-follow-up.md for evidence and limitations.

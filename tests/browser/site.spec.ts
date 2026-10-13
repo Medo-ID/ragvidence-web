@@ -152,6 +152,31 @@ test("cold fragment navigation retries playback once delayed media is ready", as
   await expect.poll(() => video.evaluate((el: HTMLVideoElement) => !el.paused && el.currentTime > 0), { timeout: 10000 }).toBe(true);
 });
 
+test("metadata-only readiness starts on first visit and reload without a click", async ({ page }) => {
+  // Some browsers stop metadata preloading at HAVE_METADATA. Calling play()
+  // must start loading frames rather than waiting for canplay first.
+  await page.addInitScript(() => {
+    const readReadyState = Object.getOwnPropertyDescriptor(HTMLMediaElement.prototype, "readyState")?.get;
+    if (!readReadyState) throw new Error("Missing media readyState getter");
+    Object.defineProperty(HTMLMediaElement.prototype, "readyState", {
+      configurable: true,
+      get(this: HTMLMediaElement) {
+        const state: number = readReadyState.call(this);
+        return this.paused && state >= HTMLMediaElement.HAVE_METADATA ? HTMLMediaElement.HAVE_METADATA : state;
+      },
+    });
+  });
+  await page.goto("/");
+  for (const reload of [false, true]) {
+    if (reload) await page.reload();
+    const video = page.locator("#walkthrough video");
+    await video.scrollIntoViewIfNeeded();
+    await expect.poll(() => video.evaluate((el: HTMLVideoElement) => !el.paused && el.currentTime > 0.1)).toBe(true);
+    expect(await video.evaluate((el: HTMLVideoElement) => el.autoplay)).toBe(true);
+    await expect(page.getByRole("button", { name: "Pause workflow video", exact: true })).toBeVisible();
+  }
+});
+
 test("clicking anywhere toggles playback and manual pause survives scrolling", async ({ page }) => {
   await page.goto("/");
   const video = page.locator("#walkthrough video");

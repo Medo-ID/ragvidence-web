@@ -100,6 +100,42 @@ after export and verification. Only media, screenshots, hashes, and verification
 records remain in the website repository. No release, deployment, or GitHub push
 was performed.
 
+## Metadata-only autoplay correction
+
+The user reported that Brave and Zen still required a first click. The previous
+implementation preloaded metadata but refused to call `play()` until
+`HAVE_CURRENT_DATA`. A browser stopping at `HAVE_METADATA` therefore had no trigger
+to load frames. The new regression test emulates this metadata-only readiness and
+failed against the previous production build before the fix.
+
+Visibility now enables native muted autoplay and immediately calls `play()`;
+its promise waits for loading rather than preventing loading. Native autoplay is
+disabled for manual pause, offscreen video, and hidden tabs. The initial overlay
+does not display “Click to play.” That hint appears for a manual pause, rejected
+playback, or reduced motion. Explicit play and keyboard toggling remain available.
+
+Files: `src/components/product-demo.tsx`, `tests/browser/site.spec.ts`, the visual
+review helper, a focused second-engine Playwright config, README, this record, and
+`verification/identity/autoplay-metadata/`. Media and CLI source are unchanged.
+
+The complete gate passed lint, TypeScript, Webpack production build, routes/anchors/
+headers, four verifier tests, 46 Chromium tests, and a clean production audit.
+Six focused playback tests passed in each of Chromium and Firefox (12 total),
+covering first visit/reload without clicks, delayed loading, pause retention,
+keyboard focus/toggling, short viewports, and reduced motion. These verify the
+engines used by Brave and Zen, not their branded builds or personal browser
+settings. Six-size visual review and restored-scroll reload autoplay passed without
+console errors, overflow, or external requests. Browser execution used the existing
+temporary shared libraries; no runtime project dependency or security setting changed.
+
+Evidence: [gate](../verification/identity/autoplay-metadata/checks.json),
+[before: stalled metadata](../verification/identity/autoplay-metadata/before-stalled.png),
+[after: automatic playback](../verification/identity/autoplay-metadata/video-1440-autoplay.png),
+[reload playback](../verification/identity/autoplay-metadata/reloaded-playing.png),
+[six-size observations](../verification/identity/autoplay-metadata/visual-observations.json),
+[Chromium/Firefox checks](../verification/identity/autoplay-metadata/firefox.log).
+Standard Turbopack build confirmation remains pending with the user.
+
 ## Continuation prompt
 
 ```text
@@ -107,6 +143,8 @@ Continue in /home/medo-id/projects/ragvidence-web. Read AGENTS.md,
 docs/walkthrough-follow-up.md and docs/identity-progress.md, then inspect git status.
 The video follow-up has two separate commits: playback reliability/click toggling
 and the replacement 36-second own-data workflow (native 1920×1080, 60fps).
+The subsequent metadata-only autoplay correction removes the first-click loading
+deadlock; 46 Chromium tests and focused checks in both browser engines pass.
 All available Webpack/browser/production-audit gates and codec checks passed.
 Keep the original tutorial/sample report, CLI metrics, baseline 2c91723, and privacy
 boundaries intact. Normal Turbopack verification still awaits my local/Vercel result.

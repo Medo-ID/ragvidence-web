@@ -3,7 +3,7 @@ import { spawn } from "node:child_process";
 import { once } from "node:events";
 import { mkdir, writeFile } from "node:fs/promises";
 
-const directory = "verification/identity/own-data-video";
+const directory = process.argv[3] ?? "verification/identity/own-data-video";
 await mkdir(directory, { recursive: true });
 const server = spawn(process.execPath, ["node_modules/next/dist/bin/next", "start", "--hostname", "127.0.0.1", "--port", "3003"], { stdio: ["ignore", "pipe", "pipe"] });
 let log = "", browser;
@@ -26,6 +26,7 @@ try {
     const video = page.locator("#walkthrough video"), toggle = page.locator("#walkthrough button");
     await video.scrollIntoViewIfNeeded();
     await expect.poll(() => video.evaluate(el => !el.paused && el.currentTime > 0.2)).toBe(true);
+    await page.locator("#walkthrough .showcase").screenshot({ path: `${directory}/video-${width}-autoplay.png` });
     await toggle.click({ position: { x: 12, y: 12 } });
     await expect(toggle).toHaveAccessibleName("Play workflow video");
     await video.evaluate(el => new Promise(resolve => { el.addEventListener("seeked", resolve, { once: true }); el.currentTime = 5; }));
@@ -41,6 +42,11 @@ try {
     await expect(toggle).toHaveAccessibleName("Pause workflow video");
     results.views.push({ width, height, autoplay: true, cornerClickPause: true, centerClickResume: true, offscreenPauseAndReturnResume: true, overflow: await page.evaluate(() => document.documentElement.scrollWidth > innerWidth) });
   }
+  await page.reload({ waitUntil: "networkidle" });
+  await page.locator("#walkthrough video").scrollIntoViewIfNeeded();
+  await expect.poll(() => page.locator("#walkthrough video").evaluate(el => !el.paused && el.currentTime > 0.2)).toBe(true);
+  await page.locator("#walkthrough .showcase").screenshot({ path: `${directory}/reloaded-playing.png` });
+  results.reloadAutoplayWithoutClick = true;
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("http://127.0.0.1:3003/", { waitUntil: "networkidle" });
   const video = page.locator("#walkthrough video"); await video.scrollIntoViewIfNeeded();
