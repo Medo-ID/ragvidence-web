@@ -1,0 +1,55 @@
+{
+  "sample": "aaabcdeeeefghiijklmnnoopqrrssttuvwxyz      ",
+  "fonts": [
+    {
+      "weight": 400,
+      "primary": "node_modules/geist/dist/fonts/geist-sans/Geist-Regular.ttf",
+      "fallback": "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
+      "primaryMetrics": {
+        "unitsPerEm": 1000,
+        "averageWidth": 484.9767441860465,
+        "ascent": 1005,
+        "descent": -295,
+        "lineGap": 0
+      },
+      "fallbackMetrics": {
+        "unitsPerEm": 2048,
+        "averageWidth": 1070.3023255813953,
+        "ascent": 1901,
+        "descent": -483,
+        "lineGap": 0
+      },
+      "overrides": {
+        "sizeAdjust": "92.80%",
+        "ascentOverride": "108.30%",
+        "descentOverride": "31.79%",
+        "lineGapOverride": "0.00%"
+      }
+    },
+    {
+      "weight": 600,
+      "primary": "node_modules/geist/dist/fonts/geist-sans/Geist-SemiBold.ttf",
+      "fallback": "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf",
+      "primaryMetrics": {
+        "unitsPerEm": 1000,
+        "averageWidth": 508.5581395348837,
+        "ascent": 1005,
+        "descent": -295,
+        "lineGap": 0
+      },
+      "fallbackMetrics": {
+        "unitsPerEm": 2048,
+        "averageWidth": 1205.953488372093,
+        "ascent": 1901,
+        "descent": -483,
+        "lineGap": 0
+      },
+      "overrides": {
+        "sizeAdjust": "86.37%",
+        "ascentOverride": "116.37%",
+        "descentOverride": "34.16%",
+        "lineGapOverride": "0.00%"
+      }
+    }
+  ]
+}

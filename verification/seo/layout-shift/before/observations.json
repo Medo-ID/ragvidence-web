@@ -1,0 +1,616 @@
+{
+  "stage": "before",
+  "scope": "Local cold contexts with layout-shift source attribution. Delayed-font cases intentionally hold WOFF2 requests through the fallback screenshot. CLS uses the maximum session window; totalShiftScore is recorded separately.",
+  "samples": [
+    {
+      "profile": "mobile-natural",
+      "route": "/",
+      "width": 390,
+      "height": 844,
+      "fallbackFonts": [
+        {
+          "familyName": "DejaVu Sans",
+          "postScriptName": "DejaVuSans-Bold",
+          "isCustomFont": false,
+          "glyphCount": 33
+        }
+      ],
+      "finalFonts": [
+        {
+          "familyName": "Geist",
+          "postScriptName": "Geist-Regular",
+          "isCustomFont": true,
+          "glyphCount": 34
+        }
+      ],
+      "cls": 0.13909033996633108,
+      "totalShiftScore": 0.13909033996633108,
+      "shifts": [
+        {
+          "time": 2182,
+          "value": 0.13909033996633108,
+          "sources": [
+            {
+              "tag": "DIV",
+              "id": "",
+              "className": "mt-6 border-t border-line pt-5",
+              "text": "60% → 90%evidence sufficiencyReproducible bundled tutorial data · v0.1.0 · 10 answerable questions ·",
+              "previous": {
+                "x": 16,
+                "y": 724.40625,
+                "width": 358,
+                "height": 105
+              },
+              "current": {
+                "x": 16,
+                "y": 626.9375,
+                "width": 358,
+                "height": 105
+              }
+            },
+            {
+              "tag": "DIV",
+              "id": "hero-install-command",
+              "className": "mt-6",
+              "text": "TerminalCopyuv tool install --python 3.12 \"ragvidence[semantic]\"",
+              "previous": {
+                "x": 16,
+                "y": 425.40625,
+                "width": 358,
+                "height": 151
+              },
+              "current": {
+                "x": 16,
+                "y": 383.9375,
+                "width": 358,
+                "height": 151
+              }
+            },
+            {
+              "tag": "P",
+              "id": "",
+              "className": "mt-5 max-w-lg text-pretty text-base leading-7 text-muted sm:text-lg sm:leading-8",
+              "text": "Diagnose RAG retrieval locally. Compare one controlled change, catch missing evidence and regression",
+              "previous": {
+                "x": 16,
+                "y": 289.40625,
+                "width": 358,
+                "height": 112
+              },
+              "current": {
+                "x": 16,
+                "y": 247.9375,
+                "width": 358,
+                "height": 112
+              }
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "className": "mt-6 flex flex-wrap gap-3",
+              "text": "Install FreeView sample report",
+              "previous": {
+                "x": 16,
+                "y": 600.40625,
+                "width": 358,
+                "height": 100
+              },
+              "current": {
+                "x": 16,
+                "y": 558.9375,
+                "width": 358,
+                "height": 44
+              }
+            },
+            {
+              "tag": "#text",
+              "text": "helped.",
+              "previous": {
+                "x": 16,
+                "y": 225.9375,
+                "width": 358,
+                "height": 50
+              },
+              "current": {
+                "x": 16,
+                "y": 181.46875,
+                "width": 358,
+                "height": 50
+              }
+            }
+          ]
+        }
+      ],
+      "fontEvents": [
+        {
+          "event": "loading",
+          "time": 518
+        },
+        {
+          "event": "loadingdone",
+          "time": 2242.1999999955297
+        },
+        {
+          "event": "loadingerror",
+          "time": 2242.1999999955297
+        }
+      ],
+      "lcpMs": 688,
+      "fontStatus": "loaded",
+      "fontFamily": "GeistSans, \"GeistSans Fallback\"",
+      "overflow": false
+    },
+    {
+      "profile": "mobile-natural",
+      "route": "/docs/semantic-workflow",
+      "width": 390,
+      "height": 844,
+      "fallbackFonts": [],
+      "finalFonts": [
+        {
+          "familyName": "Geist",
+          "postScriptName": "Geist-Regular",
+          "isCustomFont": true,
+          "glyphCount": 17
+        }
+      ],
+      "cls": 0.031536694870009485,
+      "totalShiftScore": 0.031536694870009485,
+      "shifts": [
+        {
+          "time": 1738.6000000014901,
+          "value": 0.031536694870009485,
+          "sources": [
+            {
+              "tag": "DIV",
+              "id": "",
+              "className": "doc-content min-w-0",
+              "text": "Local FastEmbedTerminalCopyuv tool install --reinstall --python 3.12 \"ragvidence[semantic]\"\nragvi be",
+              "previous": {
+                "x": 15,
+                "y": 635,
+                "width": 359,
+                "height": 209
+              },
+              "current": {
+                "x": 16,
+                "y": 595,
+                "width": 358,
+                "height": 249
+              }
+            },
+            {
+              "tag": "P",
+              "id": "",
+              "className": "mt-5 text-lg leading-8 text-muted",
+              "text": "Evaluate local, Ollama, or OpenAI-compatible embeddings without surrendering provider choice.",
+              "previous": {
+                "x": 16,
+                "y": 347,
+                "width": 358,
+                "height": 96
+              },
+              "current": {
+                "x": 16,
+                "y": 307,
+                "width": 358,
+                "height": 96
+              }
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "className": "on-this-page no-print",
+              "text": "On this pageLocal FastEmbedOllama embeddingsOpenAI-compatible embeddingsCompare without confoundingO",
+              "previous": {
+                "x": 16,
+                "y": 525,
+                "width": 358,
+                "height": 78
+              },
+              "current": {
+                "x": 16,
+                "y": 485,
+                "width": 358,
+                "height": 78
+              }
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "className": "mt-6 flex items-center gap-3 text-xs text-muted",
+              "text": "v0.1.0Current Free release",
+              "previous": {
+                "x": 16,
+                "y": 467,
+                "width": 358,
+                "height": 26
+              },
+              "current": {
+                "x": 16,
+                "y": 427,
+                "width": 358,
+                "height": 26
+              }
+            },
+            {
+              "tag": "#text",
+              "text": "Semantic workflow",
+              "previous": {
+                "x": 16,
+                "y": 246,
+                "width": 358,
+                "height": 47
+              },
+              "current": {
+                "x": 16,
+                "y": 243,
+                "width": 358,
+                "height": 47
+              }
+            }
+          ]
+        }
+      ],
+      "fontEvents": [
+        {
+          "event": "loading",
+          "time": 422.30000000447035
+        },
+        {
+          "event": "loadingdone",
+          "time": 1986.6000000014901
+        },
+        {
+          "event": "loadingerror",
+          "time": 1986.6000000014901
+        }
+      ],
+      "lcpMs": 568,
+      "fontStatus": "loaded",
+      "fontFamily": "GeistSans, \"GeistSans Fallback\"",
+      "overflow": false
+    },
+    {
+      "profile": "mobile-held-fonts",
+      "route": "/",
+      "width": 390,
+      "height": 844,
+      "fallbackFonts": [],
+      "finalFonts": [
+        {
+          "familyName": "Geist",
+          "postScriptName": "Geist-Regular",
+          "isCustomFont": true,
+          "glyphCount": 34
+        }
+      ],
+      "cls": 0.13909033996633108,
+      "totalShiftScore": 0.13909033996633108,
+      "shifts": [
+        {
+          "time": 2668.7999999970198,
+          "value": 0.13909033996633108,
+          "sources": [
+            {
+              "tag": "DIV",
+              "id": "",
+              "className": "mt-6 border-t border-line pt-5",
+              "text": "60% → 90%evidence sufficiencyReproducible bundled tutorial data · v0.1.0 · 10 answerable questions ·",
+              "previous": {
+                "x": 16,
+                "y": 724.40625,
+                "width": 358,
+                "height": 105
+              },
+              "current": {
+                "x": 16,
+                "y": 626.9375,
+                "width": 358,
+                "height": 105
+              }
+            },
+            {
+              "tag": "DIV",
+              "id": "hero-install-command",
+              "className": "mt-6",
+              "text": "TerminalCopyuv tool install --python 3.12 \"ragvidence[semantic]\"",
+              "previous": {
+                "x": 16,
+                "y": 425.40625,
+                "width": 358,
+                "height": 151
+              },
+              "current": {
+                "x": 16,
+                "y": 383.9375,
+                "width": 358,
+                "height": 151
+              }
+            },
+            {
+              "tag": "P",
+              "id": "",
+              "className": "mt-5 max-w-lg text-pretty text-base leading-7 text-muted sm:text-lg sm:leading-8",
+              "text": "Diagnose RAG retrieval locally. Compare one controlled change, catch missing evidence and regression",
+              "previous": {
+                "x": 16,
+                "y": 289.40625,
+                "width": 358,
+                "height": 112
+              },
+              "current": {
+                "x": 16,
+                "y": 247.9375,
+                "width": 358,
+                "height": 112
+              }
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "className": "mt-6 flex flex-wrap gap-3",
+              "text": "Install FreeView sample report",
+              "previous": {
+                "x": 16,
+                "y": 600.40625,
+                "width": 358,
+                "height": 100
+              },
+              "current": {
+                "x": 16,
+                "y": 558.9375,
+                "width": 358,
+                "height": 44
+              }
+            },
+            {
+              "tag": "#text",
+              "text": "helped.",
+              "previous": {
+                "x": 16,
+                "y": 225.9375,
+                "width": 358,
+                "height": 50
+              },
+              "current": {
+                "x": 16,
+                "y": 181.46875,
+                "width": 358,
+                "height": 50
+              }
+            }
+          ]
+        }
+      ],
+      "fontEvents": [
+        {
+          "event": "loading",
+          "time": 471.79999999701977
+        },
+        {
+          "event": "loadingdone",
+          "time": 2723.7999999970198
+        },
+        {
+          "event": "loadingerror",
+          "time": 2723.7999999970198
+        }
+      ],
+      "lcpMs": 616,
+      "fontStatus": "loaded",
+      "fontFamily": "GeistSans, \"GeistSans Fallback\"",
+      "overflow": false
+    },
+    {
+      "profile": "mobile-held-fonts",
+      "route": "/docs/semantic-workflow",
+      "width": 390,
+      "height": 844,
+      "fallbackFonts": [],
+      "finalFonts": [
+        {
+          "familyName": "Geist",
+          "postScriptName": "Geist-Regular",
+          "isCustomFont": true,
+          "glyphCount": 17
+        }
+      ],
+      "cls": 0.031536694870009485,
+      "totalShiftScore": 0.031536694870009485,
+      "shifts": [
+        {
+          "time": 1785.8999999985099,
+          "value": 0.031536694870009485,
+          "sources": [
+            {
+              "tag": "DIV",
+              "id": "",
+              "className": "doc-content min-w-0",
+              "text": "Local FastEmbedTerminalCopyuv tool install --reinstall --python 3.12 \"ragvidence[semantic]\"\nragvi be",
+              "previous": {
+                "x": 15,
+                "y": 635,
+                "width": 359,
+                "height": 209
+              },
+              "current": {
+                "x": 16,
+                "y": 595,
+                "width": 358,
+                "height": 249
+              }
+            },
+            {
+              "tag": "P",
+              "id": "",
+              "className": "mt-5 text-lg leading-8 text-muted",
+              "text": "Evaluate local, Ollama, or OpenAI-compatible embeddings without surrendering provider choice.",
+              "previous": {
+                "x": 16,
+                "y": 347,
+                "width": 358,
+                "height": 96
+              },
+              "current": {
+                "x": 16,
+                "y": 307,
+                "width": 358,
+                "height": 96
+              }
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "className": "on-this-page no-print",
+              "text": "On this pageLocal FastEmbedOllama embeddingsOpenAI-compatible embeddingsCompare without confoundingO",
+              "previous": {
+                "x": 16,
+                "y": 525,
+                "width": 358,
+                "height": 78
+              },
+              "current": {
+                "x": 16,
+                "y": 485,
+                "width": 358,
+                "height": 78
+              }
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "className": "mt-6 flex items-center gap-3 text-xs text-muted",
+              "text": "v0.1.0Current Free release",
+              "previous": {
+                "x": 16,
+                "y": 467,
+                "width": 358,
+                "height": 26
+              },
+              "current": {
+                "x": 16,
+                "y": 427,
+                "width": 358,
+                "height": 26
+              }
+            },
+            {
+              "tag": "#text",
+              "text": "Semantic workflow",
+              "previous": {
+                "x": 16,
+                "y": 246,
+                "width": 358,
+                "height": 47
+              },
+              "current": {
+                "x": 16,
+                "y": 243,
+                "width": 358,
+                "height": 47
+              }
+            }
+          ]
+        }
+      ],
+      "fontEvents": [
+        {
+          "event": "loading",
+          "time": 361.5
+        },
+        {
+          "event": "loadingdone",
+          "time": 1811.7999999970198
+        },
+        {
+          "event": "loadingerror",
+          "time": 1811.7999999970198
+        }
+      ],
+      "lcpMs": 492,
+      "fontStatus": "loaded",
+      "fontFamily": "GeistSans, \"GeistSans Fallback\"",
+      "overflow": false
+    },
+    {
+      "profile": "desktop-natural",
+      "route": "/",
+      "width": 1440,
+      "height": 900,
+      "fallbackFonts": [
+        {
+          "familyName": "Geist",
+          "postScriptName": "Geist-Regular",
+          "isCustomFont": true,
+          "glyphCount": 33
+        }
+      ],
+      "finalFonts": [
+        {
+          "familyName": "Geist",
+          "postScriptName": "Geist-Regular",
+          "isCustomFont": true,
+          "glyphCount": 33
+        }
+      ],
+      "cls": 0,
+      "totalShiftScore": 0,
+      "shifts": [],
+      "fontEvents": [
+        {
+          "event": "loading",
+          "time": 102.29999999701977
+        },
+        {
+          "event": "loadingdone",
+          "time": 163.10000000149012
+        }
+      ],
+      "lcpMs": 188,
+      "fontStatus": "loaded",
+      "fontFamily": "GeistSans, \"GeistSans Fallback\"",
+      "overflow": false
+    },
+    {
+      "profile": "desktop-natural",
+      "route": "/docs/semantic-workflow",
+      "width": 1440,
+      "height": 900,
+      "fallbackFonts": [
+        {
+          "familyName": "Geist",
+          "postScriptName": "Geist-Regular",
+          "isCustomFont": true,
+          "glyphCount": 17
+        }
+      ],
+      "finalFonts": [
+        {
+          "familyName": "Geist",
+          "postScriptName": "Geist-Regular",
+          "isCustomFont": true,
+          "glyphCount": 17
+        }
+      ],
+      "cls": 0,
+      "totalShiftScore": 0,
+      "shifts": [],
+      "fontEvents": [
+        {
+          "event": "loading",
+          "time": 73.39999999850988
+        },
+        {
+          "event": "loadingdone",
+          "time": 79.29999999701977
+        }
+      ],
+      "lcpMs": 100,
+      "fontStatus": "loaded",
+      "fontFamily": "GeistSans, \"GeistSans Fallback\"",
+      "overflow": false
+    }
+  ],
+  "errors": []
+}
