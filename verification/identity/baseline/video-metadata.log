@@ -1,0 +1,13 @@
+[libvpx-vp9 @ 0x17457680] v1.14.1
+Input #0, matroska,webm, from '/home/medo-id/projects/walkthrough.webm':
+  Metadata:
+    ENCODER         : Lavf61.1.100
+  Duration: 00:00:24.00, start: 0.000000, bitrate: 979 kb/s
+  Stream #0:0: Video: vp9 (libvpx-vp9) (Profile 0), yuv420p(tv, progressive), 1280x720, SAR 1:1 DAR 16:9, 60 fps, 60 tbr, 1k tbn
+      Metadata:
+        ENCODER         : Lavc61.3.100 libvpx-vp9
+        DURATION        : 00:00:24.000000000
+[AVFormatContext @ 0x1745a440] Requested output format 'null' is not known.
+[out#0 @ 0x1745a300] Error initializing the muxer for pipe:: Invalid argument
+Error opening output file -.
+Error opening output files: Invalid argument
