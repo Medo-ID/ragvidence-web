@@ -13,7 +13,7 @@ export function DocPage({ doc }: { doc: DocPageType }) {
       <p className="mt-5 text-lg leading-8 text-muted">{doc.description}</p>
       <div className="mt-6 flex items-center gap-3 text-xs text-muted"><span className="rounded-none border border-line px-2.5 py-1 font-mono">v0.1.0</span><span>Current Free release</span></div>
       {headings.length > 0 && (
-        <nav aria-label="On this page" className="glass-panel mt-8 border border-line p-5">
+        <nav aria-label="On this page" className="surface mt-8 border border-line p-5">
           <p className="font-mono text-xs text-muted">ON THIS PAGE</p>
           <ul className="mt-3 grid gap-x-5 gap-y-2 sm:grid-cols-2">
             {headings.map((heading) => <li key={heading.id}><a href={`#${heading.id}`} className="inline-block py-1 text-sm leading-6 text-signal-ink hover:text-ink">{heading.text}</a></li>)}

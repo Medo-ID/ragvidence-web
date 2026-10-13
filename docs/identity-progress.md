@@ -24,3 +24,11 @@ canvas, and separate semantic colors. Updated Lucide to 1.56.0 and Node 24 types
 checks passed, including 26 browser tests and a clean production audit. Reviewed
 desktop/mobile screenshots; no page overflow, script errors, or external requests.
 Card translucency is addressed separately in Milestone 2.
+
+## Milestone 2 — Surfaces
+
+Ordinary surfaces, documentation navigation, tables, and code wrappers are solid.
+Removed gradients, glows, and panel blur/shadows. Added raised, teal, selected,
+success, danger, and warning primitives; header blur is limited to 8px. All available
+checks passed, including 26 browser tests. Reviewed desktop/mobile layouts and
+confirmed no panel blur, overflow, console errors, or external requests.

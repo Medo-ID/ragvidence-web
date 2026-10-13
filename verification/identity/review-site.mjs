@@ -18,7 +18,7 @@ try {
     await new Promise(resolve => setTimeout(resolve, 250));
   }
   if (!log.includes("Ready in")) throw new Error(log);
-  browser = await chromium.launch();
+  browser = await chromium.launch({ env: { ...process.env, ...(process.argv[3] ? { LD_LIBRARY_PATH: process.argv[3] } : {}) } });
   const page = await browser.newPage();
   page.on("pageerror", error => observations.errors.push(error.message));
   page.on("request", request => { if (!request.url().startsWith("http://127.0.0.1:3003") && !request.url().startsWith("data:")) observations.external.push(request.url()); });

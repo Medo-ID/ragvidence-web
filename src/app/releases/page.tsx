@@ -16,7 +16,7 @@ export default function ReleasesPage() {
         <h1 className="mt-5 text-4xl font-semibold tracking-tight text-ink sm:text-5xl">What ships with RAGvidence.</h1>
         <p className="mt-5 text-base leading-7 text-muted">Released capabilities, requirements, and the license distributed with each version. Documentation currently covers the Free v0.1.0 release.</p>
       </div>
-      <article className="glass-panel mt-12 max-w-4xl border border-line p-6 sm:p-10">
+      <article className="surface mt-12 max-w-4xl border border-line p-6 sm:p-10">
         <div className="flex flex-wrap items-center justify-between gap-4 border-b border-line pb-6">
           <h2 className="font-mono text-2xl font-semibold text-ink">v0.1.0</h2>
           <time dateTime="2026-10-08" className="text-sm text-muted">October 8, 2026</time>

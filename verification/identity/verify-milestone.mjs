@@ -3,6 +3,8 @@ import { mkdir, writeFile } from "node:fs/promises";
 import { stripVTControlCharacters } from "node:util";
 
 const milestone = process.argv[2];
+const runtimeEnv = { ...process.env };
+if (process.argv[3]) runtimeEnv.LD_LIBRARY_PATH = process.argv[3];
 if (!/^[-a-z0-9]+$/.test(milestone ?? "")) throw new Error("Provide a milestone name");
 const directory = `verification/identity/${milestone}`;
 await mkdir(directory, { recursive: true });
@@ -18,7 +20,7 @@ const checks = [
 const results = [];
 for (const [name, args] of checks) {
   console.log(`${milestone}: ${name}`);
-  const child = spawn("npm", args, { env: process.env, stdio: ["ignore", "pipe", "pipe"] });
+  const child = spawn("npm", args, { env: runtimeEnv, stdio: ["ignore", "pipe", "pipe"] });
   let log = "";
   child.stdout.on("data", chunk => { log += chunk; });
   child.stderr.on("data", chunk => { log += chunk; });

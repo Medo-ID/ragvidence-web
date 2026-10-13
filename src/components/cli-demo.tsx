@@ -85,7 +85,7 @@ export function CliDemo() {
   }
 
   return (
-    <div id="demo" className="glass-panel scroll-mt-24 border border-line text-left">
+    <div id="demo" className="surface scroll-mt-24 border border-line text-left">
       <div className="flex flex-wrap items-center justify-between gap-3 px-5 py-7 sm:px-6 sm:py-8">
         <div className="flex items-center gap-3 text-sm font-medium text-ink"><Terminal size={17} className="text-signal-ink" aria-hidden="true" />From command to evidence</div>
         <span className="font-mono text-xs text-muted">Guided tutorial preview</span>
@@ -93,7 +93,7 @@ export function CliDemo() {
 
       <div className="no-print grid grid-cols-4 border-b border-line" aria-label="Tutorial steps">
         {steps.map((item, index) => (
-          <button key={item.label} type="button" aria-pressed={active === index} aria-controls="cli-demo-stage" onClick={() => selectStep(index)} className={`min-h-14 border-r border-line px-2 py-3 text-sm transition-colors last:border-r-0 sm:px-4 ${active === index ? "bg-white/5 text-ink shadow-[inset_0_-2px_0_#ededed]" : "text-muted hover:bg-panel-raised hover:text-ink"}`}>
+          <button key={item.label} type="button" aria-pressed={active === index} aria-controls="cli-demo-stage" onClick={() => selectStep(index)} className={`min-h-14 border-r border-line px-2 py-3 text-sm transition-colors last:border-r-0 sm:px-4 ${active === index ? "surface-selected text-ink" : "text-muted hover:bg-panel-raised hover:text-ink"}`}>
             <span className="mr-2 font-mono text-xs opacity-65" aria-hidden="true">0{index + 1}</span>{item.label}
           </button>
         ))}

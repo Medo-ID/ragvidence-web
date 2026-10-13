@@ -18,7 +18,7 @@ export function DocRenderer({ blocks }: { blocks: DocBlock[] }) {
         }
         if (block.type === "code") {
           return (
-            <div key={index} className="glass-panel my-6 overflow-hidden border border-line">
+            <div key={index} className="surface my-6 overflow-hidden border border-line">
               <div className="flex items-center justify-between border-b border-line px-4 py-2.5"><span className="font-mono text-[10px] uppercase tracking-wider text-muted">{block.label ?? "Code"}</span><CopyCommand command={block.code} /></div>
               <pre className="overflow-x-auto p-4 font-mono text-[0.82rem] leading-6 text-ink"><code>{block.code}</code></pre>
             </div>
@@ -27,12 +27,12 @@ export function DocRenderer({ blocks }: { blocks: DocBlock[] }) {
         if (block.type === "note") {
           const tone = block.tone ?? "info";
           const Icon = tone === "warning" ? AlertTriangle : tone === "success" ? CheckCircle2 : Info;
-          const style = tone === "warning" ? "border-amber-400/20 bg-amber-400/[0.055] text-amber-200" : tone === "success" ? "border-success/20 bg-success/[0.055] text-success" : "border-signal/20 bg-signal/[0.055] text-signal-ink";
+          const style = tone === "warning" ? "surface-warning text-warning" : tone === "success" ? "surface-success text-success" : "surface-teal text-signal-ink";
           return <aside key={index} className={`my-7 rounded-none border p-4 ${style}`}><div className="flex gap-3"><Icon size={18} className="mt-0.5 shrink-0" /><div><strong className="text-sm text-ink">{block.title}</strong><p className="mt-1 text-sm leading-6 text-muted">{block.text}</p></div></div></aside>;
         }
         if (block.type === "table") {
           return (
-            <div key={index} className="glass-panel my-7 overflow-x-auto border border-line">
+            <div key={index} className="surface my-7 overflow-x-auto border border-line">
               <table className="w-full min-w-[34rem] border-collapse text-left text-sm">
                 <thead className="bg-panel"><tr>{block.headers.map((header) => <th key={header} className="border-b border-line px-4 py-3 font-semibold text-ink">{header}</th>)}</tr></thead>
                 <tbody>{block.rows.map((row, rowIndex) => <tr key={rowIndex} className="border-b border-line/70 last:border-0">{row.map((cell, cellIndex) => <td key={cellIndex} className="px-4 py-3.5 align-top leading-6 text-muted">{cell}</td>)}</tr>)}</tbody>

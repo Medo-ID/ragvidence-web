@@ -37,7 +37,7 @@ export function SiteHeader() {
   }, [open]);
 
   return (
-    <header className="glass-nav no-print sticky top-0 z-50 border-b border-line/80">
+    <header className="site-nav no-print sticky top-0 z-50 border-b border-line/80">
       <nav aria-label="Primary navigation" className="shell flex h-17 items-center justify-between gap-6">
         <Brand onClick={() => setOpen(false)} />
         <div className="hidden items-center gap-1 xl:flex">
@@ -52,7 +52,7 @@ export function SiteHeader() {
           {open ? <X size={20} /> : <Menu size={20} />}
         </button>
       </nav>
-      <div id="mobile-navigation" hidden={!open} className="glass-panel border-t border-line xl:hidden">
+      <div id="mobile-navigation" hidden={!open} className="surface border-t border-line xl:hidden">
         <div className="shell py-3">
           {links.map((link) => (
             <Link key={link.href} href={link.href} onClick={() => setOpen(false)} className="block px-3 py-3 text-sm text-muted hover:bg-white/4 hover:text-ink">{link.label}</Link>

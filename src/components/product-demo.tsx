@@ -62,7 +62,7 @@ export function ProductDemo() {
           }} className={`inline-flex min-h-11 items-center gap-2 border px-4 text-xs transition-colors sm:text-sm ${active === index ? "border-muted bg-white/8 text-ink" : "border-transparent text-muted hover:border-line hover:text-ink"}`}><Icon size={15} aria-hidden="true" />{title}</button>
         ))}
       </div>
-      <div className="glass-panel border border-line p-2 sm:p-3">
+      <div className="surface border border-line p-2 sm:p-3">
         <div className="flex items-center justify-between gap-4 px-2 pb-4 pt-2 text-xs text-muted">
           <div className="flex gap-1.5" aria-hidden="true"><span className="size-2 border border-muted/50" /><span className="size-2 border border-muted/50" /><span className="size-2 border border-muted/50" /></div>
           <span className="font-mono">ragvi / tutorial.html</span>

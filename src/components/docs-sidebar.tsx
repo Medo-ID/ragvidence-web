@@ -38,7 +38,7 @@ function Navigation({ query, pages, groups, index, loading, close }: NavigationP
                 const active = pathname === `/docs/${doc.slug}` || (pathname === "/docs" && doc.slug === "overview");
                 return (
                   <li key={doc.slug}>
-                    <Link href={`/docs/${doc.slug}`} onClick={close} aria-current={active ? "page" : undefined} className={`block rounded-none px-3 py-2 text-sm transition-colors ${active ? "bg-signal/10 font-medium text-signal-ink" : "text-muted hover:bg-white/[0.035] hover:text-ink"}`}>
+                    <Link href={`/docs/${doc.slug}`} onClick={close} aria-current={active ? "page" : undefined} className={`block rounded-none px-3 py-2 text-sm transition-colors ${active ? "surface-selected font-medium text-ink" : "text-muted hover:bg-white/[0.035] hover:text-ink"}`}>
                       {doc.title}
                     </Link>
                   </li>
@@ -115,10 +115,10 @@ export function DocsSidebar({ pages, groups }: NavigationProps) {
 
   return (
     <>
-      <aside className="glass-panel no-print sticky top-24 hidden h-[calc(100dvh-7rem)] w-64 shrink-0 overflow-y-auto border border-line p-4 lg:block">
+      <aside className="surface no-print sticky top-24 hidden h-[calc(100dvh-7rem)] w-64 shrink-0 overflow-y-auto border border-line p-4 lg:block">
         {search}{feedback}<Navigation query={query} pages={pages} groups={groups} index={index} loading={searchStatus === "loading"} />
       </aside>
-      <details ref={mobileRef} className="glass-panel no-print w-full border border-line p-4 lg:hidden">
+      <details ref={mobileRef} className="surface no-print w-full border border-line p-4 lg:hidden">
         <summary className="cursor-pointer text-sm font-semibold text-ink">Browse documentation</summary>
         <div className="mt-5">{search}{feedback}<Navigation query={query} pages={pages} groups={groups} index={index} loading={searchStatus === "loading"} close={close} /></div>
       </details>
