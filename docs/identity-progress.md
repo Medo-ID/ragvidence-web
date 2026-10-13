@@ -210,3 +210,11 @@ and editable source. [logo-exploration.md](logo-exploration.md) records the full
 comparison, recommendation A, asset packs, brand sheet, actual Chrome tab captures,
 responsive/print validation, and available gates. The heading/video edits remain
 untouched; SEO and normal Turbopack confirmation remain deferred.
+
+## User follow-up — Apply concept A to the website
+
+Concept A is now visible in the shared header/footer wordmark and the browser and
+Apple touch icons. [logo-adoption.md](logo-adoption.md) records the applied files,
+production gate, six-size visual review, and exact served-icon comparisons.
+The exploration remains a separate design record. User heading/video edits are
+preserved and excluded; standard Turbopack confirmation remains pending.

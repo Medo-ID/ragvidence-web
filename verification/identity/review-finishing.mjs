@@ -1,7 +1,7 @@
 import { chromium, firefox, expect } from "@playwright/test";
 import { spawn } from "node:child_process";
 import { once } from "node:events";
-import { mkdir, writeFile } from "node:fs/promises";
+import { mkdir, readFile, writeFile } from "node:fs/promises";
 
 const stage = process.argv[2], engine = process.argv[4] ?? "chromium";
 const milestone = process.argv[5] ?? "finishing-touches";
@@ -28,6 +28,17 @@ try {
     await page.setViewportSize({ width, height });
     await page.goto("http://127.0.0.1:3003/docs/semantic-workflow", { waitUntil: "networkidle" });
     await page.screenshot({ path: `${directory}/docs-${width}.png` });
+    if (milestone === "logo-adoption") {
+      const brand = page.locator("header").getByRole("link", { name: "RAGvidence home" });
+      await expect(brand).toHaveText("RAGvidence");
+      await expect(brand.locator("img")).toBeVisible();
+      if (!await brand.locator("img").evaluate(image => image.complete && image.naturalWidth > 0)) throw new Error("Brand mark did not load");
+      await page.keyboard.press("Tab");
+      await brand.focus();
+      await brand.screenshot({ path: `${directory}/brand-focus-${width}.png` });
+      const focus = await brand.evaluate(el => ({ visible: el.matches(":focus-visible"), outline: getComputedStyle(el).outlineStyle, width: getComputedStyle(el).outlineWidth }));
+      if (!focus.visible || focus.outline === "none" || focus.width === "0px") throw new Error("Brand keyboard focus is not visible");
+    }
     const sidebar = page.locator(".docs-shell > aside:visible");
     if (width >= 1280) {
       await sidebar.screenshot({ path: `${directory}/sidebar-${width}.png` });
@@ -66,6 +77,29 @@ try {
       const bar = getComputedStyle(sidebar, "::-webkit-scrollbar"), thumb = getComputedStyle(sidebar, "::-webkit-scrollbar-thumb");
       return { width, height, overflow: document.documentElement.scrollWidth > innerWidth, scrollbar: { width: getComputedStyle(document.documentElement).scrollbarWidth, color: getComputedStyle(document.documentElement).scrollbarColor, customWidth: bar.width, thumbBorder: thumb.borderLeftWidth }, sidebar: { borders: [css.borderTopWidth, css.borderRightWidth, css.borderBottomWidth, css.borderLeftWidth], radius: css.borderRadius, background: css.backgroundColor, groupGap: getComputedStyle(navigation.firstElementChild).marginBottom, rowMinimum: row.minHeight, rowPadding: row.paddingTop }, active: { background: active.backgroundColor, radius: active.borderRadius, borderWidth: active.borderLeftWidth, color: active.color } };
     }, { width, height }));
+    if (milestone === "logo-adoption") {
+      await page.goto("http://127.0.0.1:3003/", { waitUntil: "networkidle" });
+      await page.screenshot({ path: `${directory}/landing-${width}.png` });
+      if (await page.evaluate(() => document.documentElement.scrollWidth > innerWidth)) throw new Error(`Homepage overflow at ${width}px`);
+      await expect(page.locator("footer").getByRole("link", { name: "RAGvidence home" }).locator("img")).toHaveAttribute("src", "/brand/a-evidence-convergence/mark-dark.svg");
+    }
+  }
+  if (milestone === "logo-adoption") {
+    results.icons = [];
+    for (const [rel, pathname, source] of [
+      ["icon", "/favicon.ico", "favicon.ico"],
+      ["icon", "/icon.svg", "favicon.svg"],
+      ["apple-touch-icon", "/apple-icon.png", "apple-touch-icon.png"],
+    ]) {
+      const link = page.locator(`head link[rel="${rel}"]`);
+      const links = await link.evaluateAll(elements => elements.map(el => el.getAttribute("href")));
+      const href = links.find(value => new URL(value, "http://127.0.0.1:3003").pathname === pathname);
+      if (!href) throw new Error(`Missing icon metadata for ${pathname}`);
+      const response = await page.request.get(new URL(href, page.url()).href);
+      const actual = await response.body(), expected = await readFile(`public/brand/a-evidence-convergence/${source}`);
+      if (!response.ok() || !actual.equals(expected)) throw new Error(`Served icon differs from concept A: ${pathname}`);
+      results.icons.push({ pathname, href, matchesConceptA: true, bytes: actual.length });
+    }
   }
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto("http://127.0.0.1:3003/", { waitUntil: "networkidle" });

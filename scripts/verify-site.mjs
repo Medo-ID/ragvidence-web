@@ -57,10 +57,10 @@ async function verify() {
   if (!explicitUrl) await startProduction();
   else if (!(await request()).ok) throw new Error(`Site is unavailable at ${baseUrl}.`);
 
-  const routes = ["/", "/docs", ...docs.map(({ slug }) => `/docs/${slug}`), "/releases", "/privacy", "/terms", "/security", "/sample-report.html", "/ragvidence-0.1.0-license.txt", "/robots.txt", "/sitemap.xml", "/opengraph-image", "/favicon.ico", "/docs/search-index.json", "/media/walkthrough.webm", "/media/walkthrough-poster.webp", "/media/walkthrough-provenance.json"];
+  const routes = ["/", "/docs", ...docs.map(({ slug }) => `/docs/${slug}`), "/releases", "/privacy", "/terms", "/security", "/sample-report.html", "/ragvidence-0.1.0-license.txt", "/robots.txt", "/sitemap.xml", "/opengraph-image", "/favicon.ico", "/icon.svg", "/apple-icon.png", "/brand/a-evidence-convergence/mark-dark.svg", "/docs/search-index.json", "/media/walkthrough.webm", "/media/walkthrough-poster.webp", "/media/walkthrough-provenance.json"];
   routes.push("/media/walkthrough.mp4");
   routes.push("/ragvidence-source-notices.txt", "/ragvidence-source-licenses.txt");
-  const binaryRoutes = new Set(["/opengraph-image", "/favicon.ico", "/media/walkthrough.mp4", "/media/walkthrough.webm", "/media/walkthrough-poster.webp"]);
+  const binaryRoutes = new Set(["/opengraph-image", "/favicon.ico", "/apple-icon.png", "/media/walkthrough.mp4", "/media/walkthrough.webm", "/media/walkthrough-poster.webp"]);
   const failures = [];
   const pages = new Map();
   const headers = [
@@ -80,7 +80,9 @@ async function verify() {
     }
     if (typeof body !== "string") continue;
     pages.set(route, body);
-    if (!/\.(txt|xml|json|vtt)$/.test(route)) {
+    if (route.endsWith(".svg")) {
+      if (!body.includes("<svg")) failures.push(`${route}: not an SVG image`);
+    } else if (!/\.(txt|xml|json|vtt)$/.test(route)) {
       if (!body.includes("<html")) failures.push(`${route}: not an HTML document`);
       if (notFound(body)) failures.push(`${route}: unexpectedly rendered not-found content`);
     }

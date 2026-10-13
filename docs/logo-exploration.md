@@ -4,7 +4,8 @@ October 13, 2026. The rejected monogram commit `13c316b` was reverted by
 `3240267`, preserving history and the user's existing heading/video edits.
 The website has its previous text wordmark and favicon again. This milestone
 delivers three complete design systems and a recommendation for review; no new
-concept is adopted in application code.
+concept was adopted in application code at this exploration milestone. The
+subsequent [website adoption](logo-adoption.md) applies concept A.
 
 ## Three distinct directions
 

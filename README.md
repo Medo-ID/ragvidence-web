@@ -69,6 +69,11 @@ The production dependency audit is clean. A full development-tree audit may stil
 
 ## Product demo
 
+Website branding uses the evidence-convergence mark (concept A) beside the exact
+`RAGvidence` wordmark, with matching SVG/ICO and Apple touch icons. See
+[logo-adoption.md](docs/logo-adoption.md) for verification and screenshots, and
+[logo-exploration.md](docs/logo-exploration.md) for editable artwork and alternatives.
+
 The homepage includes a 36-second, native 1920×1080, 60fps silent walkthrough
 of an own-data workflow using temporary synthetic shop policies. It shows labeled
 source/question files, validation, BM25 and local semantic benchmarks, evaluation,

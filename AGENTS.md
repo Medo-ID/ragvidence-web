@@ -79,7 +79,8 @@ are no accounts, forms, analytics, or checkout.
 - Use the 6/9/12/16px radius tokens for small controls, navigation/copy controls,
   cards/code/disclosures, and showcases. Avoid pills and independently rounded
   nested children. Navigation uses a full-width border and aligned inner content;
-  the brand is a text-only wordmark. Abyssal Teal #063f47 is the identity color;
+  the brand uses concept A's evidence-convergence mark with the RAGvidence wordmark.
+  Abyssal Teal #063f47 is the identity color;
   pale teal is used for readable text/focus. Preserve separate semantic colors.
 - Most surfaces are solid and near-black. Reserve teal translucency for important
   regions; blur belongs only to the sticky header. Reuse CodeBlock for commands,

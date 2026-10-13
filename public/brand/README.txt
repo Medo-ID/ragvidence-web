@@ -30,5 +30,7 @@ Use light variants on off-white and dark variants on near-black. The favicon/app
 assets intentionally use a solid Abyssal Teal field; logo/mark PNGs are transparent.
 The verification motif is brand meaning, not a product pass/fail badge.
 
-No concept is adopted in the website yet. The rejected R monogram was reverted;
-existing website, CLI, report, privacy, and evaluation behavior remain unchanged.
+The website now uses concept A in its header, footer, and app/browser icons.
+The comparison pages and tab-strip proof preserve the three-concept exploration.
+The rejected R monogram was reverted. CLI/report content, privacy, and evaluation
+behavior remain unchanged.
