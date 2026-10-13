@@ -135,6 +135,12 @@ The website does not collect user input, host user data, or provide checkout yet
 
 ## Deploy to Vercel
 
+The [pre-deployment SEO audit](docs/seo-audit.md) records the corrected route
+metadata, canonical documentation URLs, factual site/breadcrumb structured data,
+indexing exclusions for brand-review HTML, and before/after local measurements.
+Deployment, Search Console indexing, and field Core Web Vitals still need live
+checks; mobile homepage layout shift remains a measured follow-up.
+
 1. Push this repository to `Medo-ID/ragvidence-web` on GitHub.
 2. In Vercel, choose **Add New → Project** and import that repository.
 3. Keep the detected framework as **Next.js**. No environment variables are required.

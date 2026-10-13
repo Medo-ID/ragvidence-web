@@ -73,6 +73,11 @@ are no accounts, forms, analytics, or checkout.
 - Preserve route metadata, canonical URLs, sitemap coverage, and security headers.
   Use `next/link` for internal page navigation and appropriate anchors for files,
   mail links, and external destinations.
+- Use `pageMetadata` from `src/lib/seo.ts` for complete route-specific search and
+  social metadata. Use `docPath` for the preferred overview URL (`/docs`). Keep
+  the sitemap canonical-only. Safely serialize factual JSON-LD; do not invent
+  reviews, ratings, or search-volume claims. Keep review HTML indexing exclusions
+  separate from crawl access and from public logo/favicon assets.
 
 ## Tailwind and visual work
 

@@ -1,7 +1,7 @@
-import type { Metadata } from "next";
 import { TrustPage } from "@/components/trust-page";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = { title: "Terms", description: "Terms for using the RAGvidence website and software materials.", alternates: { canonical: "/terms" } };
+export const metadata = pageMetadata({ title: "Terms", description: "Terms for using the RAGvidence website and software materials.", path: "/terms" });
 
 export default function TermsPage() {
   return (

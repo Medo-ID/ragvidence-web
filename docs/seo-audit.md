@@ -89,6 +89,72 @@ change current metric definitions to make explanations easier.
 The SEO review harness and captured evidence are under `verification/seo/`.
 Protected `src/app/page.tsx` and `src/components/product-demo.tsx` will be preserved.
 
+## Applied improvements and final verification
+
+The implementation follows the proposed file list. Every HTML destination now
+has a complete branded title, description, canonical, Open Graph title/URL and
+Twitter title/description. `/docs/overview` retains its content and URL for
+compatibility but agrees with `/docs` as canonical; sidebar, previous/next and
+landing links prefer `/docs`. The sitemap contains 22 unique preferred URLs.
+It omits the duplicate alias, unused priority/changefreq values and invented
+modification dates.
+
+The shared server layout emits one factual WebSite identity node per HTML page,
+including the homepage required by Google's site-name guidance. Documentation
+adds a two-step BreadcrumbList using real navigable URLs. JSON-LD is inert,
+escaped against script termination, and tested with malicious-looking text.
+No SoftwareApplication rating/review markup, FAQ rich-result claim, analytics,
+or customer data collection is introduced. Reports remain unchanged and script-free.
+
+Five brand-review HTML pages receive `X-Robots-Tag: noindex`; robots still permits
+crawling so the exclusion can be read. Product pages, logo/favicon assets and
+the generated public report remain accessible. All existing security headers
+were verified. The 1200×630 social image now uses concept A and local Geist
+SemiBold. Its 127,872-byte font is explicitly included in the route's deployment
+trace; no remote font fetch is needed. [Trace evidence](../verification/seo/font-trace.json).
+
+[Final gate](../verification/identity/seo-foundations/checks.json) passes lint,
+TypeScript, Webpack production build, 39 routes/124 internal links and fragments,
+five verifier/security tests, 43 scoped Chromium tests, and production audit
+with zero vulnerabilities. New browser checks inspect rendered metadata with
+JavaScript disabled, canonical/sitemap agreement, inert structured data and
+indexing exclusions. [Final observations](../verification/seo/final/observations.json)
+crawl all 23 HTML routes and record screenshots and the same 12 lab samples.
+Mobile and desktop landing/docs screenshots and the social image were visually
+reviewed. No browser exceptions, unexpected external requests or measured
+horizontal overflow were found.
+
+The first new browser run failed on the root canonical's optional trailing
+slash: Next.js emitted the same root URL without `/`, while the assertion
+compared raw strings. URL-normalized comparisons preserve the scheme, host and
+path checks; the corrected run passes. [Initial failure](../verification/seo/canonical-test-first-run.log).
+Deployment inspection then found the social font absent from the route trace;
+an explicit, narrowly scoped include fixed it, followed by another full available
+gate. Normal Turbopack selection and all existing security headers were preserved.
+
+| Page / profile | Baseline → final median LCP | Baseline → final median CLS | JS delta | CSS delta |
+| --- | ---: | ---: | ---: | ---: |
+| Home / mobile | 628 → 632ms | 0.139 → 0.139 | +2B | 0B |
+| Semantic docs / mobile | 560 → 540ms | 0.032 → 0.032 | +2B | 0B |
+| Home / desktop | 200 → 148ms | 0 → 0 | +2B | 0B |
+| Semantic docs / desktop | 152 → 160ms | 0 → 0 | +2B | 0B |
+
+These small sample differences are ordinary lab variation, not a demonstrated
+speed improvement. The homepage mobile layout shift remains unresolved. No video
+or hero content change was made. The deployment-trace-only addition followed the
+final visual/lab capture and does not change rendered content or client assets.
+
+[Final mobile](../verification/seo/final/landing-390.png) ·
+[Final desktop](../verification/seo/final/landing-1440.png) ·
+[Final documentation](../verification/seo/final/docs-1440.png) ·
+[Final social image](../verification/seo/final/opengraph.png).
+
+The protected `page.tsx` SHA-256 remains
+`940e142b46b2e335983da8782b867779c3a35266f02133fae9981a6815cf7e71`;
+`product-demo.tsx` remains
+`14b2112ba11d7bbbb449b4643e2140d70072d96c2384c0a5427485a20dc939cf`.
+Neither file is included in the SEO implementation commit.
+
 ## Deployment checks still needed
 
 1. Deploy a Vercel preview, verify its build and routes, then connect the production

@@ -1,0 +1,8 @@
+{
+  "route": "/opengraph-image",
+  "font": "Geist-SemiBold.ttf",
+  "included": [
+    "../../../../node_modules/geist/dist/fonts/geist-sans/Geist-SemiBold.ttf"
+  ],
+  "bytes": 127872
+}

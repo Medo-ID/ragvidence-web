@@ -30,7 +30,7 @@ export function ProductSections() {
             <SectionHeading eyebrow="The retrieval toolkit" title="Everything you need to inspect a change.">
               A fluent answer can hide missing evidence. Test the retrieval job directly, from the first ranked hit to the complete experiment.
             </SectionHeading>
-            <Link href="/docs/overview" className="inline-flex min-h-11 shrink-0 items-center gap-2 text-sm text-ink">Explore the workflow <ArrowRight size={15} aria-hidden="true" /></Link>
+            <Link href="/docs" className="inline-flex min-h-11 shrink-0 items-center gap-2 text-sm text-ink">Explore the workflow <ArrowRight size={15} aria-hidden="true" /></Link>
           </div>
           <div className="mt-10 grid gap-8 lg:grid-cols-2">
             <article className="surface surface-teal flex flex-col p-7 sm:p-9">

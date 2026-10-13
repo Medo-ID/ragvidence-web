@@ -1,7 +1,7 @@
-import type { Metadata } from "next";
 import { TrustPage } from "@/components/trust-page";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = { title: "Privacy", description: "How the RAGvidence website and CLI handle data.", alternates: { canonical: "/privacy" } };
+export const metadata = pageMetadata({ title: "Privacy", description: "How the RAGvidence website and CLI handle data.", path: "/privacy" });
 
 export default function PrivacyPage() {
   return (

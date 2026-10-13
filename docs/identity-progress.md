@@ -218,3 +218,13 @@ Apple touch icons. [logo-adoption.md](logo-adoption.md) records the applied file
 production gate, six-size visual review, and exact served-icon comparisons.
 The exploration remains a separate design record. User heading/video edits are
 preserved and excluded; standard Turbopack confirmation remains pending.
+
+## User follow-up — SEO audit and pre-deployment fixes
+
+Baseline audit `0d5fea8` records the source/rendered findings and local lab data.
+The focused SEO implementation gives every route complete search/social metadata,
+prefers `/docs` over the retained overview alias, emits factual site/breadcrumb
+JSON-LD, keeps brand-review HTML out of indexing, and updates the social image
+with the selected mark and locally packaged Geist. See [seo-audit.md](seo-audit.md)
+for rendered verification, screenshots, test history, and pending launch checks.
+User heading/video edits remain byte-for-byte preserved and excluded.

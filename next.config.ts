@@ -4,6 +4,9 @@ const nextConfig: NextConfig = {
   cacheComponents: true,
   partialPrefetching: true,
   poweredByHeader: false,
+  outputFileTracingIncludes: {
+    "/opengraph-image": ["./node_modules/geist/dist/fonts/geist-sans/Geist-SemiBold.ttf"],
+  },
   // Explicit --webpack verification uses the same CSS compiler as Turbopack.
   // This hook is ignored by the normal Turbopack build.
   webpack(config) {
@@ -33,6 +36,11 @@ const nextConfig: NextConfig = {
           { key: "Cross-Origin-Opener-Policy", value: "same-origin" },
         ],
       },
+      // Review HTML is public for sharing, but should not compete with product pages.
+      ...["/brand/concepts.html", "/brand/brand-sheet.html", "/brand/:concept/tab-preview.html"].map(source => ({
+        source,
+        headers: [{ key: "X-Robots-Tag", value: "noindex" }],
+      })),
     ];
   },
   turbopack: {

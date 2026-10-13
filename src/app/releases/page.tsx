@@ -1,12 +1,12 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, ExternalLink } from "lucide-react";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Releases",
   description: "RAGvidence CLI releases, included workflows, installation requirements, and the shipped software license.",
-  alternates: { canonical: "/releases" },
-};
+  path: "/releases",
+});
 
 export default function ReleasesPage() {
   return (

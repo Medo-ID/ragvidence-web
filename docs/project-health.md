@@ -1,5 +1,10 @@
 # Project health baseline
 
+October 13 SEO follow-up: [seo-audit.md](seo-audit.md) records the local production
+crawl and metadata/canonical/structured-data fixes before hosting. Live indexing,
+deployment redirects, field Core Web Vitals, and mobile layout-shift investigation
+remain pending. This does not replace the standard Turbopack confirmation below.
+
 October 13 identity refinement: [identity-progress.md](identity-progress.md) records
 separate milestone commits, passing Webpack production gates, responsive/browser
 checks, regenerated CLI report, and native 1080p60 media. The original baseline

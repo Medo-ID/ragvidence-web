@@ -133,7 +133,8 @@ async function verify() {
     if (path === "/no-such-page" && response.status !== 404) failures.push(`${path}: expected HTTP 404`);
   }
   for (const { slug } of docs) {
-    if (!(pages.get("/sitemap.xml") ?? "").includes(`/docs/${slug}</loc>`)) failures.push(`Sitemap missing /docs/${slug}`);
+    const preferredPath = slug === "overview" ? "/docs" : `/docs/${slug}`;
+    if (!(pages.get("/sitemap.xml") ?? "").includes(`${preferredPath}</loc>`)) failures.push(`Sitemap missing ${preferredPath}`);
   }
   if (failures.length) throw new Error(`Site verification failed (${failures.length}):\n${failures.map((failure) => `- ${failure}`).join("\n")}`);
   console.log(`Verified ${routes.length} routes, ${internalLinks.size} internal links/fragments, all security headers, and not-found behavior at ${baseUrl}.`);

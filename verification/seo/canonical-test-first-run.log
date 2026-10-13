@@ -1,0 +1,114 @@
+
+> ragvidence-web@0.1.0 test:browser
+> playwright test --grep SEO:|responsive navigation|report works offline|env and JSONL|docs rails|production installation|essential website|mobile docs|mobile menu|copy failure|search |full-text search|site actions|unknown docs|printed documentation|tutorial selection|homepage and long docs|installation and mobile
+
+[WebServer] (node:238599) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 43 tests using 8 workers
+
+(node:238628) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:238629) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:238641) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:238653) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:238635) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:238647) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:238661) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:238655) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   3 [chromium] › tests/browser/identity.spec.ts:6:7 › responsive navigation and reading widths are usable at 1440px (1.5s)
+  ✓   6 [chromium] › tests/browser/identity.spec.ts:6:7 › responsive navigation and reading widths are usable at 390px (1.5s)
+  ✓   1 [chromium] › tests/browser/identity.spec.ts:6:7 › responsive navigation and reading widths are usable at 360px (1.7s)
+  ✓   7 [chromium] › tests/browser/identity.spec.ts:6:7 › responsive navigation and reading widths are usable at 1920px (1.8s)
+  ✓   8 [chromium] › tests/browser/identity.spec.ts:6:7 › responsive navigation and reading widths are usable at 768px (1.8s)
+  ✓   4 [chromium] › tests/browser/identity.spec.ts:6:7 › responsive navigation and reading widths are usable at 1280px (1.9s)
+  ✓   5 [chromium] › tests/browser/identity.spec.ts:24:5 › report works offline without scripts and prints closed ranked evidence (2.5s)
+  ✓   2 [chromium] › tests/browser/identity.spec.ts:45:5 › env and JSONL copy exact raw content without terminal prompts (2.6s)
+  ✓  10 [chromium] › tests/browser/identity.spec.ts:81:7 › production installation is readable above the fold at 360px (1.5s)
+  ✓  11 [chromium] › tests/browser/identity.spec.ts:81:7 › production installation is readable above the fold at 390px (1.7s)
+  ✓  13 [chromium] › tests/browser/identity.spec.ts:81:7 › production installation is readable above the fold at 1280px (1.9s)
+  ✓  12 [chromium] › tests/browser/identity.spec.ts:81:7 › production installation is readable above the fold at 768px (2.0s)
+  ✓  14 [chromium] › tests/browser/identity.spec.ts:81:7 › production installation is readable above the fold at 1440px (2.2s)
+  ✓  15 [chromium] › tests/browser/identity.spec.ts:81:7 › production installation is readable above the fold at 1920px (2.0s)
+  ✓  18 [chromium] › tests/browser/seo.spec.ts:35:5 › SEO: overview alias agrees with preferred canonical and sitemap (1.0s)
+  ✓  20 [chromium] › tests/browser/seo.spec.ts:61:5 › SEO: review HTML is noindex while public product assets remain usable (695ms)
+  ✓  19 [chromium] › tests/browser/seo.spec.ts:48:5 › SEO: site identity and article breadcrumbs are crawlable inert data (1.4s)
+  ✓  16 [chromium] › tests/browser/identity.spec.ts:92:5 › essential website text meets AA contrast and docs search has visible focus (2.8s)
+  ✓  21 [chromium] › tests/browser/site.spec.ts:3:5 › mobile docs selection closes the browser and reveals the article (1.8s)
+  ✓   9 [chromium] › tests/browser/identity.spec.ts:58:5 › docs rails track headings and compact navigation works by keyboard (4.5s)
+  ✓  24 [chromium] › tests/browser/site.spec.ts:76:5 › search filters pages and announces an empty result (1.4s)
+  ✓  23 [chromium] › tests/browser/site.spec.ts:38:5 › copy failure provides feedback and retry copies the real command (1.7s)
+  ✓  25 [chromium] › tests/browser/site.spec.ts:87:5 › full-text search loads on demand, keeps queries local, and finds article content (1.3s)
+  ✓  22 [chromium] › tests/browser/site.spec.ts:19:5 › mobile menu dismisses on Escape, brand click, and route navigation (2.0s)
+  ✓  26 [chromium] › tests/browser/site.spec.ts:107:7 › search recovers from http failure while metadata remains usable (1.3s)
+  ✓  28 [chromium] › tests/browser/site.spec.ts:285:5 › unknown docs show not-found content and noindex (1.4s)
+  ✓  30 [chromium] › tests/browser/site.spec.ts:291:5 › printed documentation keeps headings, links, and commands readable (1.3s)
+  ✓  27 [chromium] › tests/browser/site.spec.ts:107:7 › search recovers from invalid-index failure while metadata remains usable (1.7s)
+  ✓  29 [chromium] › tests/browser/site.spec.ts:255:5 › site actions retain high contrast and report surfaces stay opaque (2.4s)
+  ✓  31 [chromium] › tests/browser/site.spec.ts:309:7 › tutorial selection keeps hero geometry stable at 320px (3.4s)
+  ✓  32 [chromium] › tests/browser/site.spec.ts:324:7 › homepage and long docs fit at 320px (3.5s)
+  ✘  17 [chromium] › tests/browser/seo.spec.ts:7:5 › SEO: server-rendered page metadata describes each destination (6.6s)
+  ✓  33 [chromium] › tests/browser/site.spec.ts:309:7 › tutorial selection keeps hero geometry stable at 390px (3.8s)
+  ✓  35 [chromium] › tests/browser/site.spec.ts:309:7 › tutorial selection keeps hero geometry stable at 768px (3.9s)
+  ✓  34 [chromium] › tests/browser/site.spec.ts:324:7 › homepage and long docs fit at 390px (4.0s)
+  ✓  36 [chromium] › tests/browser/site.spec.ts:324:7 › homepage and long docs fit at 768px (4.1s)
+(node:240317) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  37 [chromium] › tests/browser/site.spec.ts:309:7 › tutorial selection keeps hero geometry stable at 1024px (4.2s)
+  ✓  42 [chromium] › tests/browser/site.spec.ts:344:5 › installation and mobile navigation remain accessible without JavaScript (2.3s)
+  ✓  38 [chromium] › tests/browser/site.spec.ts:324:7 › homepage and long docs fit at 1024px (4.0s)
+  ✓  39 [chromium] › tests/browser/site.spec.ts:309:7 › tutorial selection keeps hero geometry stable at 1440px (3.9s)
+  ✓  40 [chromium] › tests/browser/site.spec.ts:309:7 › tutorial selection keeps hero geometry stable at 1920px (3.6s)
+  ✓  41 [chromium] › tests/browser/site.spec.ts:324:7 › homepage and long docs fit at 1920px (3.4s)
+  ✓  43 [chromium] › tests/browser/site.spec.ts:324:7 › homepage and long docs fit at 1440px (2.6s)
+
+
+  1) [chromium] › tests/browser/seo.spec.ts:7:5 › SEO: server-rendered page metadata describes each destination
+
+    Error: expect(locator).toHaveAttribute(expected) failed
+
+    Locator:  locator('link[rel="canonical"]')
+    Expected: "https://ragvidence.medo-id.com/"
+    Received: "https://ragvidence.medo-id.com"
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveAttribute" locator('link[rel="canonical"]') with timeout 5000ms
+      - waiting for locator('link[rel="canonical"]')
+        12 × locator resolved to <link rel="canonical" href="https://ragvidence.medo-id.com"/>
+           - unexpected value "https://ragvidence.medo-id.com"
+
+
+      13 |     const title = await page.title();
+      14 |     expect(title).toContain("RAGvidence");
+    > 15 |     await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", canonical);
+         |                                                         ^
+      16 |     await expect(page.locator('meta[property="og:url"]')).toHaveAttribute("content", canonical);
+      17 |     await expect(page.locator('meta[property="og:title"]')).toHaveAttribute("content", title);
+      18 |     await expect(page.locator('meta[name="twitter:title"]')).toHaveAttribute("content", title);
+        at /home/medo-id/projects/ragvidence-web/tests/browser/seo.spec.ts:15:57
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/seo-SEO-server-rendered-pa-9b05f--describes-each-destination-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/seo-SEO-server-rendered-pa-9b05f--describes-each-destination-chromium/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/seo-SEO-server-rendered-pa-9b05f--describes-each-destination-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/seo-SEO-server-rendered-pa-9b05f--describes-each-destination-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    [chromium] › tests/browser/seo.spec.ts:7:5 › SEO: server-rendered page metadata describes each destination
+  42 passed (17.6s)

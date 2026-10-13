@@ -1,12 +1,12 @@
-import type { Metadata } from "next";
 import { DocsSidebar } from "@/components/docs-sidebar";
 import { docs, docGroups } from "@/lib/docs";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Documentation",
   description: "Install RAGvidence, run controlled retrieval experiments, evaluate evidence, and interpret reports.",
-  alternates: { canonical: "/docs" },
-};
+  path: "/docs",
+});
 
 export default function DocsLayout({ children }: { children: React.ReactNode }) {
   return (
