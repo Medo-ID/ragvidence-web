@@ -199,3 +199,14 @@ routes, verifier tests, 39 scoped Chromium tests, 15 Firefox docs tests, and the
 production audit passed. Six-size screenshots and native scrollbar drag/keyboard
 checks are recorded. User heading/video edits remain untouched and excluded from
 the commit; standard Turbopack confirmation remains pending.
+
+## User follow-up — Revised logo brief and three concepts
+
+The rejected monogram commit `13c316b` was reverted by `3240267`. The restored
+website remains on its text wordmark while three full design systems are reviewed:
+evidence convergence, evidence search, and a connected V. Each includes dark/light
+and monochrome vector/PNG logos, dedicated native-size favicons, Apple/app icons,
+and editable source. [logo-exploration.md](logo-exploration.md) records the full
+comparison, recommendation A, asset packs, brand sheet, actual Chrome tab captures,
+responsive/print validation, and available gates. The heading/video edits remain
+untouched; SEO and normal Turbopack confirmation remain deferred.

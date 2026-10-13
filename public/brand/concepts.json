@@ -1,0 +1,42 @@
+{
+  "concepts": [
+    {
+      "id": "a-evidence-convergence",
+      "letter": "A",
+      "title": "Evidence convergence",
+      "meaning": "Three evidence fragments converge on one verified match.",
+      "construction": "Three horizontal fragments, three traceable paths, one result node with a check cut into its negative space.",
+      "small": "At 16px, two fragments replace three and the result node is enlarged; the check remains a transparent cutout.",
+      "strength": "The most direct explanation of evidence-level retrieval and verification. The asymmetric fragments-to-result silhouette stands on its own.",
+      "tradeoff": "The 16px version needs its dedicated optical drawing; shrinking the full mark loses the check."
+    },
+    {
+      "id": "b-evidence-search",
+      "letter": "B",
+      "title": "Evidence search",
+      "meaning": "Retrieval reveals the verified fragment among document chunks.",
+      "construction": "Two document fragments enter a circular search aperture; a visible check occupies the lens and the diagonal handle completes the retrieval silhouette.",
+      "small": "The lens, handle, and check are snapped to a dedicated 16px drawing with shorter fragment tabs.",
+      "strength": "The clearest search metaphor. Immediately understandable to a new user beside a terminal or documentation page.",
+      "tradeoff": "The magnifier is more familiar and less distinctive; the lens and check compete at the smallest size."
+    },
+    {
+      "id": "c-connected-v",
+      "letter": "C",
+      "title": "Connected V",
+      "meaning": "Retrieved chunks connect into a verification path.",
+      "construction": "Two separate chunks form the descending arm; a short joining path and continuous ascending arm resolve into a V.",
+      "small": "The hairline connection is removed at 16px, retaining the separated chunk and bold V silhouette.",
+      "strength": "The strongest letter-like silhouette and the simplest small-size drawing. V suggests validation without forcing an R monogram.",
+      "tradeoff": "Its retrieval meaning is more abstract; without context it can read as a general verification mark."
+    }
+  ],
+  "colors": {
+    "primary": "#063f47",
+    "accent": "#8bd4db",
+    "interactive": "#35b7c7",
+    "canvas": "#050809",
+    "paper": "#f2f6f5"
+  },
+  "adopted": null
+}
