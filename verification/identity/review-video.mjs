@@ -24,6 +24,7 @@ try {
     await page.setViewportSize({ width, height });
     await page.goto("http://127.0.0.1:3003/", { waitUntil: "networkidle" });
     const video = page.locator("#walkthrough video"), toggle = page.locator("#walkthrough button");
+    await expect.poll(() => video.evaluate(el => !el.paused && el.currentTime > 0.2)).toBe(true);
     await video.scrollIntoViewIfNeeded();
     await expect.poll(() => video.evaluate(el => !el.paused && el.currentTime > 0.2)).toBe(true);
     await page.locator("#walkthrough .showcase").screenshot({ path: `${directory}/video-${width}-autoplay.png` });
@@ -37,10 +38,10 @@ try {
     const resumed = await video.evaluate(el => el.currentTime);
     await expect.poll(() => video.evaluate(el => el.currentTime)).toBeGreaterThan(resumed);
     await page.locator("#install").scrollIntoViewIfNeeded();
-    await expect.poll(() => video.evaluate(el => el.paused)).toBe(true);
+    expect(await video.evaluate(el => el.paused)).toBe(false);
     await video.scrollIntoViewIfNeeded();
     await expect(toggle).toHaveAccessibleName("Pause workflow video");
-    results.views.push({ width, height, autoplay: true, cornerClickPause: true, centerClickResume: true, offscreenPauseAndReturnResume: true, overflow: await page.evaluate(() => document.documentElement.scrollWidth > innerWidth) });
+    results.views.push({ width, height, pageLoadAutoplayWithoutScroll: true, cornerClickPause: true, centerClickResume: true, playbackContinuesOffscreen: true, overflow: await page.evaluate(() => document.documentElement.scrollWidth > innerWidth) });
   }
   await page.reload({ waitUntil: "networkidle" });
   await page.locator("#walkthrough video").scrollIntoViewIfNeeded();
@@ -50,7 +51,7 @@ try {
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("http://127.0.0.1:3003/", { waitUntil: "networkidle" });
   const video = page.locator("#walkthrough video"); await video.scrollIntoViewIfNeeded();
-  await expect(video.locator("source")).toHaveCount(0);
+  await expect.poll(() => video.evaluate(el => el.paused && el.currentTime === 0)).toBe(true);
   await page.locator("#walkthrough .showcase").screenshot({ path: `${directory}/reduced-motion-poster.png` });
   if (results.errors.length || results.external.length || results.views.some(view => view.overflow)) throw new Error(JSON.stringify(results));
 } finally {

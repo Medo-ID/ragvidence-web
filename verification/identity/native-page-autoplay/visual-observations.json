@@ -1,0 +1,61 @@
+{
+  "views": [
+    {
+      "width": 360,
+      "height": 800,
+      "pageLoadAutoplayWithoutScroll": true,
+      "cornerClickPause": true,
+      "centerClickResume": true,
+      "playbackContinuesOffscreen": true,
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "pageLoadAutoplayWithoutScroll": true,
+      "cornerClickPause": true,
+      "centerClickResume": true,
+      "playbackContinuesOffscreen": true,
+      "overflow": false
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "pageLoadAutoplayWithoutScroll": true,
+      "cornerClickPause": true,
+      "centerClickResume": true,
+      "playbackContinuesOffscreen": true,
+      "overflow": false
+    },
+    {
+      "width": 1280,
+      "height": 800,
+      "pageLoadAutoplayWithoutScroll": true,
+      "cornerClickPause": true,
+      "centerClickResume": true,
+      "playbackContinuesOffscreen": true,
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "pageLoadAutoplayWithoutScroll": true,
+      "cornerClickPause": true,
+      "centerClickResume": true,
+      "playbackContinuesOffscreen": true,
+      "overflow": false
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "pageLoadAutoplayWithoutScroll": true,
+      "cornerClickPause": true,
+      "centerClickResume": true,
+      "playbackContinuesOffscreen": true,
+      "overflow": false
+    }
+  ],
+  "errors": [],
+  "external": [],
+  "reloadAutoplayWithoutClick": true
+}

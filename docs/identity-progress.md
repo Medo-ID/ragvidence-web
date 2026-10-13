@@ -172,3 +172,9 @@ Visibility now requests playback without waiting for frame readiness and enables
 native muted autoplay. The initial play hint is removed during automatic startup.
 The gate passes 46 Chromium tests; focused playback checks also pass in Firefox.
 See the latest section of walkthrough-follow-up.md for evidence and limitations.
+
+The final page-load revision follows the user's requested native autoplay approach:
+autoplay/muted/loop/inline attributes and sources exist before hydration, with no
+viewport gating. Native source queries preserve reduced motion. Supabase's rendered
+video pattern was inspected as requested. The gate passes 48 Chromium tests and
+16 focused checks across Chromium/Firefox, plus six-size visual review.

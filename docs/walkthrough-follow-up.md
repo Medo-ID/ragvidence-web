@@ -136,6 +136,55 @@ Evidence: [gate](../verification/identity/autoplay-metadata/checks.json),
 [Chromium/Firefox checks](../verification/identity/autoplay-metadata/firefox.log).
 Standard Turbopack build confirmation remains pending with the user.
 
+## Native page-load autoplay
+
+The user reported continued first-click behavior in Brave and Zen and requested
+simple page-load playback, with Supabase as a working reference. The final startup
+uses literal `autoPlay`, `muted`, `loop`, `playsInline`, and `preload="auto"`, with
+both source tags in the initial HTML. Removed viewport/visibility-based playback
+gating and initial source deferral. Native playback can start before hydration;
+the client requests playback on mount and retains accessible pause/resume.
+
+Inspected Supabase's public HTML and live dashboard video DOM. Its initial HTML
+had no videos; the rendered video had native autoplay, loop, inline playback, and
+its muted property set to true. Its WebM response reported 4,141,602 bytes and
+range support; RAGvidence's unchanged WebM is 3,520,383 bytes. This identifies the
+native startup pattern, not a measured cause for every browser-profile difference.
+No Supabase assets, player libraries, services, or telemetry were added.
+[Reference](https://supabase.com/),
+[recorded comparison](../verification/identity/native-page-autoplay/supabase-comparison.json).
+
+Reduced-motion source queries let the browser choose the poster before JavaScript
+without video requests. Explicit play removes the query. This uses the native
+[source media attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/source).
+The reduced-motion hint now names the preference, so intentional non-autoplay is
+distinguishable from a loading failure. No initial click is requested otherwise.
+
+The first gate failed one newly added JavaScript-disabled test: it expected native
+offscreen playback before scrolling. Inspection confirmed that the browser had
+already loaded the frames (readyState 4, muted true) and started natively when the
+video became visible. The test now checks that entering view starts playback with
+no JavaScript, hydration, or click. With JavaScript enabled, the separate test
+checks startup at page load without any scrolling. The complete rerun passed.
+
+Results: lint, TypeScript, Webpack production build, route/link/header checks,
+four verifier tests, 48 Chromium tests, and clean production audit. Eight focused
+tests passed in each of Chromium and Firefox (16 total), including first load,
+reload, no hydration, reduced motion, and click/keyboard toggling. All six visual
+sizes passed with zero overflow, console errors, or external requests.
+[Gate](../verification/identity/native-page-autoplay/checks.json),
+[browser engines](../verification/identity/native-page-autoplay/firefox.log),
+[visual observations](../verification/identity/native-page-autoplay/visual-observations.json),
+[desktop](../verification/identity/native-page-autoplay/video-1440-autoplay.png),
+[mobile](../verification/identity/native-page-autoplay/video-390-autoplay.png).
+
+Files: `src/components/product-demo.tsx`, browser tests, visual review helper,
+README/verification notes, and `verification/identity/native-page-autoplay/`.
+Preserved the user's video formatting; their separate heading tracking edit in
+`src/app/page.tsx` remains outside this commit. CLI, media, tutorial report, privacy,
+security configuration, and default build command are unchanged. Standard
+Turbopack confirmation and actual Brave/Zen profile verification remain with the user.
+
 ## Continuation prompt
 
 ```text
@@ -145,6 +194,9 @@ The video follow-up has two separate commits: playback reliability/click togglin
 and the replacement 36-second own-data workflow (native 1920×1080, 60fps).
 The subsequent metadata-only autoplay correction removes the first-click loading
 deadlock; 46 Chromium tests and focused checks in both browser engines pass.
+The latest native page-load revision puts autoplay and sources in initial HTML,
+removes viewport gates, and passes 48 Chromium plus focused Firefox checks.
+Preserve the user's remaining heading-tracking edit in src/app/page.tsx.
 All available Webpack/browser/production-audit gates and codec checks passed.
 Keep the original tutorial/sample report, CLI metrics, baseline 2c91723, and privacy
 boundaries intact. Normal Turbopack verification still awaits my local/Vercel result.

@@ -1,0 +1,24 @@
+Running 16 tests using 1 worker
+
+(node:172671) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 [chromium] › tests/browser/site.spec.ts:129:5 › silent native video autoplays on page load without scrolling or native controls (510ms)
+  ✓   2 [chromium] › tests/browser/site.spec.ts:142:5 › native autoplay works before hydration with JavaScript disabled (823ms)
+  ✓   3 [chromium] › tests/browser/site.spec.ts:159:5 › cold fragment navigation retries playback once delayed media is ready (1.0s)
+  ✓   4 [chromium] › tests/browser/site.spec.ts:170:5 › metadata-only readiness starts on first visit and reload without a click (810ms)
+  ✓   5 [chromium] › tests/browser/site.spec.ts:195:5 › clicking anywhere toggles playback and manual pause survives scrolling (686ms)
+  ✓   6 [chromium] › tests/browser/site.spec.ts:216:5 › a tall video can autoplay in a short viewport (417ms)
+  ✓   7 [chromium] › tests/browser/site.spec.ts:224:5 › reduced motion shows the poster without loading or autoplaying video (545ms)
+  ✓   8 [chromium] › tests/browser/site.spec.ts:241:5 › native source queries preserve the reduced-motion poster before hydration (359ms)
+(node:172994) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   9 [firefox] › tests/browser/site.spec.ts:129:5 › silent native video autoplays on page load without scrolling or native controls (1.7s)
+  ✓  10 [firefox] › tests/browser/site.spec.ts:142:5 › native autoplay works before hydration with JavaScript disabled (1.1s)
+  ✓  11 [firefox] › tests/browser/site.spec.ts:159:5 › cold fragment navigation retries playback once delayed media is ready (1.3s)
+  ✓  12 [firefox] › tests/browser/site.spec.ts:170:5 › metadata-only readiness starts on first visit and reload without a click (1.2s)
+  ✓  13 [firefox] › tests/browser/site.spec.ts:195:5 › clicking anywhere toggles playback and manual pause survives scrolling (1.2s)
+  ✓  14 [firefox] › tests/browser/site.spec.ts:216:5 › a tall video can autoplay in a short viewport (743ms)
+  ✓  15 [firefox] › tests/browser/site.spec.ts:224:5 › reduced motion shows the poster without loading or autoplaying video (933ms)
+  ✓  16 [firefox] › tests/browser/site.spec.ts:241:5 › native source queries preserve the reduced-motion poster before hydration (563ms)
+
+  16 passed (17.3s)

@@ -126,19 +126,34 @@ for (const failure of ["http", "invalid-index"]) {
   });
 }
 
-test("silent native video starts on scroll and pauses offscreen without native controls", async ({ page }) => {
+test("silent native video autoplays on page load without scrolling or native controls", async ({ page }) => {
   await page.goto("/");
   const video = page.locator("#walkthrough video");
-  await expect(video).toHaveAttribute("preload", "metadata");
+  await expect(video).toHaveAttribute("autoplay", "");
+  await expect(video).toHaveAttribute("preload", "auto");
   await expect(video).not.toHaveAttribute("controls", "");
   await expect(page.locator("#walkthrough button")).toHaveCount(1);
-  await video.scrollIntoViewIfNeeded();
-  await expect.poll(() => video.evaluate((el: HTMLVideoElement) => el.currentTime)).toBeGreaterThan(0);
+  await expect.poll(() => video.evaluate((el: HTMLVideoElement) => !el.paused && el.currentTime > 0.1)).toBe(true);
   const metadata = await video.evaluate((el: HTMLVideoElement) => ({ width: el.videoWidth, height: el.videoHeight, duration: el.duration, muted: el.muted, loop: el.loop, tracks: el.textTracks.length }));
   expect(metadata).toMatchObject({ width: 1920, height: 1080, muted: true, loop: true, tracks: 0 });
   expect(metadata.duration).toBeCloseTo(36, 1);
-  await page.locator("#install").scrollIntoViewIfNeeded();
-  await expect.poll(() => video.evaluate((el: HTMLVideoElement) => el.paused)).toBe(true);
+});
+
+test("native autoplay works before hydration with JavaScript disabled", async ({ browser }) => {
+  const context = await browser.newContext({ javaScriptEnabled: false, reducedMotion: "no-preference" });
+  try {
+    const page = await context.newPage();
+    for (const reload of [false, true]) {
+      if (reload) await page.reload();
+      else await page.goto("/");
+      const video = page.locator("#walkthrough video");
+      await expect(video.locator("source")).toHaveCount(2);
+      // Browsers may defer native offscreen autoplay; entering the viewport
+      // must start it without JavaScript, hydration, or a click.
+      await video.scrollIntoViewIfNeeded();
+      await expect.poll(() => video.evaluate((el: HTMLVideoElement) => !el.paused && el.currentTime > 0.1)).toBe(true);
+    }
+  } finally { await context.close(); }
 });
 
 test("cold fragment navigation retries playback once delayed media is ready", async ({ page }) => {
@@ -215,11 +230,26 @@ test("reduced motion shows the poster without loading or autoplaying video", asy
   await video.scrollIntoViewIfNeeded();
   expect(await video.evaluate((el: HTMLVideoElement) => el.paused)).toBe(true);
   await expect(video).toHaveAttribute("poster", "/media/walkthrough-poster.webp");
-  await expect(video.locator("source")).toHaveCount(0);
+  await expect(video.locator("source")).toHaveCount(2);
+  for (const source of await video.locator("source").all()) await expect(source).toHaveAttribute("media", "(prefers-reduced-motion: no-preference)");
   expect(mediaRequests).toHaveLength(0);
   await page.getByRole("button", { name: "Play workflow video", exact: true }).click();
   await expect.poll(() => video.evaluate((el: HTMLVideoElement) => !el.paused && el.currentTime > 0)).toBe(true);
   await expect(video.locator("source")).toHaveCount(2);
+});
+
+test("native source queries preserve the reduced-motion poster before hydration", async ({ browser }) => {
+  const context = await browser.newContext({ javaScriptEnabled: false, reducedMotion: "reduce" });
+  try {
+    const requests: string[] = [];
+    const page = await context.newPage();
+    page.on("request", request => { if (/walkthrough\.(webm|mp4)$/.test(request.url())) requests.push(request.url()); });
+    await page.goto("/");
+    const video = page.locator("#walkthrough video");
+    await video.scrollIntoViewIfNeeded();
+    expect(await video.evaluate((el: HTMLVideoElement) => el.paused && el.currentTime === 0 && el.currentSrc === "")).toBe(true);
+    expect(requests).toHaveLength(0);
+  } finally { await context.close(); }
 });
 
 test("site actions retain high contrast and report surfaces stay opaque", async ({ page }) => {

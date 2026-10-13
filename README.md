@@ -79,15 +79,17 @@ are omitted. The mock result (5/6 versus 6/6) is specific to that dataset;
 the preceding 720p recording is never used as input. H.264 MP4 and VP9 WebM use
 CRF 20; provenance records wheel/report hashes, commands, actual results, and sizes.
 
-The native video has no player chrome or chapter buttons. Click anywhere inside
-it, or focus it and press Space/Enter, to pause or resume. A manual pause persists
-when scrolling away and back. It automatically starts when enough of it is visible
-and pauses offscreen or in a hidden tab. Reduced motion displays the poster without
-loading media until the user explicitly plays it.
-On first visit and reload, visibility enables native muted autoplay and calls
-`play()` to request frames even when metadata preload stops at `HAVE_METADATA`.
-The initial state does not ask for a click; the play hint is reserved for manual
-pause, autoplay rejection, or reduced motion.
+The native video has `autoPlay`, `muted`, `loop`, `playsInline`, `preload="auto"`,
+and both sources in the initial HTML. Startup does not wait for hydration, scrolling,
+or a first click. The application no longer pauses it based on viewport visibility.
+Click anywhere inside it, or focus it and press Space/Enter, to pause or resume;
+a manual pause persists when scrolling away and back. There is no player chrome.
+
+Native source media queries preserve the reduced-motion poster without loading
+video even before hydration; explicit play removes that source restriction.
+The play hint appears for manual pause, autoplay rejection, or reduced motion.
+Browsers may defer native offscreen autoplay without JavaScript until the video
+enters view; no click is needed. The hydrated app requests playback at page load.
 No audio, narration, captions, browser chrome, personal paths, or remote report
 assets are included. The own-data guide is linked below it; the original 60% → 90%
 tutorial remains in the hero and public sample report.
