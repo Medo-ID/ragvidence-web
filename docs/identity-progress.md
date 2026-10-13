@@ -111,3 +111,17 @@ ranked evidence items; print spacing reduces 28 pages to 18 without hiding conte
 Reviewed actual rasterized summary and recovered-evidence PDF pages. These are
 Chromium checks and visual review, not universal assistive-technology or cross-browser
 certification.
+
+## Milestone 10 — Native walkthrough
+
+Fresh installed-wheel tutorial/report states captured at 1920×1080 and composed
+into 2,880 frames at 60fps over 48 seconds. Two 118% zooms, 400ms transitions,
+clean cuts, and a cursor whose screen size remains fixed. No old video input,
+audio, narration, captions, player controls, browser chrome, or personal paths.
+Both files decoded completely with zero errors: H.264 MP4 2,654,144 bytes; VP9
+WebM 4,141,080 bytes; CRF 20. Reviewed native previews and decoded frames in both
+formats. WebP poster and hashes/provenance are included.
+
+Native video has no controls, pauses below 40% visibility, and shows only the
+poster/no video requests under reduced motion. All available checks and 42 browser
+tests passed. Reviewed the embedded showcase and its desktop/mobile surroundings.

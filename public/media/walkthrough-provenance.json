@@ -1,68 +1,15 @@
 {
   "cliVersion": "0.1.0",
-  "recordedAt": "2026-10-12T16:33:07.516Z",
-  "platform": "linux",
-  "width": 1280,
-  "height": 720,
+  "recordedAt": "2026-10-13T11:43:03.916Z",
+  "width": 1920,
+  "height": 1080,
   "fps": 60,
-  "frames": 1440,
-  "durationSeconds": 24,
+  "frames": 2880,
+  "durationSeconds": 48,
   "audio": false,
   "captions": false,
-  "chapters": [
-    {
-      "title": "Run tutorial",
-      "start": 0
-    },
-    {
-      "title": "Compare results",
-      "start": 8
-    },
-    {
-      "title": "Inspect evidence",
-      "start": 16
-    }
-  ],
-  "commands": [
-    {
-      "argv": [
-        "uv",
-        "tool",
-        "install",
-        "--python",
-        "3.12",
-        "--index-url",
-        "https://pypi.org/simple",
-        "ragvidence[semantic]==0.1.0"
-      ],
-      "code": 0,
-      "text": "Resolved 46 packages in 557ms\nInstalled 46 packages in 18ms\n + annotated-doc==0.0.5\n + annotated-types==0.8.0\n + anyio==4.15.1\n + bm25s==0.2.14\n + certifi==2026.7.22\n + charset-normalizer==3.5.2\n + click==8.5.0\n + fastembed==0.9.0\n + filelock==4.1.1\n + flatbuffers==25.12.19\n + fsspec==2026.9.0\n + h11==0.16.0\n + hf-xet==1.7.0\n + httpcore==1.0.9\n + httpx==0.28.1\n + huggingface-hub==1.33.0\n + idna==3.20\n + jinja2==3.1.6\n + loguru==0.7.3\n + markdown-it-py==4.2.0\n + markupsafe==3.0.4\n + mdurl==0.1.2\n + mmh3==5.3.1\n + numpy==2.5.4\n + onnxruntime==1.31.0\n + packaging==26.3\n + pillow==12.3.0\n + protobuf==7.36.2\n + py-rust-stemmers==0.1.8\n + pydantic==2.14.1\n + pydantic-core==2.50.1\n + pydantic-settings==2.15.0\n + pygments==2.21.0\n + python-dotenv==1.2.4\n + pyyaml==6.0.3\n + ragvidence==0.1.0\n + requests==2.34.2\n + rich==14.3.4\n + scipy==1.18.1\n + shellingham==1.5.4\n + tokenizers==0.23.3\n + tqdm==4.70.1\n + typer==0.27.3\n + typing-extensions==4.16.0\n + typing-inspection==0.4.4\n + urllib3==2.8.0\nInstalled 1 executable: ragvi\n"
-    },
-    {
-      "argv": [
-        "/tmp/ragvidence-motion-demo-RvK4wi/bin/ragvi",
-        "--version"
-      ],
-      "code": 0,
-      "text": "0.1.0\n"
-    },
-    {
-      "argv": [
-        "/tmp/ragvidence-motion-demo-RvK4wi/bin/ragvi",
-        "health"
-      ],
-      "code": 0,
-      "text": "┏━━━━━━━━┳━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓\n┃ Status ┃ Check            ┃ Detail                                                   ┃\n┡━━━━━━━━╇━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩\n│ PASS   │ Python           │ 3.12.14                                                  │\n│ PASS   │ Bundled exercise │ data and evidence references are valid                   │\n│ PASS   │ Dependencies     │ bm25s=0.2.14, jinja2=3.1.6, numpy=2.5.4,                 │\n│        │                  │ pydantic=2.14.1, rich=14.3.4, typer=0.27.3               │\n│ PASS   │ Workspace        │ writable: workspaces                                     │\n│ PASS   │ Semantic extra   │ available                                                │\n│ PASS   │ Privacy          │ no account, telemetry, or API key required for local     │\n│        │                  │ BM25                                                     │\n└────────┴──────────────────┴──────────────────────────────────────────────────────────┘\n"
-    },
-    {
-      "argv": [
-        "/tmp/ragvidence-motion-demo-RvK4wi/bin/ragvi",
-        "tutorial"
-      ],
-      "code": 0,
-      "text": "Running bm25-body at k=2\nRunning bm25-heading_context at k=2\nCOMPLETE Guided comparison finished.\nReport: /tmp/ragvidence-motion-demo-RvK4wi/workspaces/first-run/reports/tutorial.html\nNext: Open the report, inspect changed questions, then read the Getting started guide \nincluded with your download.\n"
-    }
-  ],
+  "wheelSHA256": "a01e7d76fc67ae2e58e17cc1d8c0b50ef1f998725487bfe98ca3a076936ad873",
+  "reportSHA256": "c43cdde1a059034e3bab816a7a72f980e9983c32262eb0cd95651fe734a49bb7",
   "baseline": {
     "successful": 6,
     "answerable": 10,
@@ -76,7 +23,75 @@
   "changes": {
     "improved": 3,
     "regressed": 0,
-    "stillInsufficient": 1
+    "unresolved": 1,
+    "stable": 6
   },
-  "presentation": "Authentic released CLI output and generated report states. Actual report link navigation and ranked-evidence expansion captured in Chromium. Website opaque report CSS applied. Cursor motion, typing, camera moves, transitions, and timing composed in post-production at 60fps. No fabricated results or unshipped product interface. Host install caches may be reused."
+  "commands": [
+    {
+      "argv": [
+        "uv",
+        "venv",
+        "--python",
+        "3.12",
+        "venv"
+      ],
+      "code": 0,
+      "text": "Using CPython 3.12.14\nCreating virtual environment at: venv\nActivate with: source venv/bin/activate\n"
+    },
+    {
+      "argv": [
+        "uv",
+        "pip",
+        "install",
+        "--python",
+        "venv/bin/python",
+        "built-wheel.whl"
+      ],
+      "code": 0,
+      "text": "Using Python 3.12.14 environment at: venv\nResolved 20 packages in 649ms\nDownloading pygments (1.2MiB)\nDownloading pydantic-core (2.1MiB)\nDownloading numpy (16.0MiB)\nDownloading scipy (33.7MiB)\n Downloaded pygments\n Downloaded pydantic-core\n Downloaded numpy\n Downloaded scipy\nPrepared 20 packages in 5.04s\nInstalled 20 packages in 15ms\n + annotated-doc==0.0.5\n + annotated-types==0.8.0\n + bm25s==0.2.14\n + jinja2==3.1.6\n + markdown-it-py==4.2.0\n + markupsafe==3.0.4\n + mdurl==0.1.2\n + numpy==2.5.4\n + pydantic==2.14.1\n + pydantic-core==2.50.1\n + pydantic-settings==2.15.0\n + pygments==2.21.0\n + python-dotenv==1.2.4\n + ragvidence==0.1.0 (from file://built-wheel.whl)\n + rich==14.3.4\n + scipy==1.18.1\n + shellingham==1.5.4\n + typer==0.27.3\n + typing-extensions==4.16.0\n + typing-inspection==0.4.4\n"
+    },
+    {
+      "argv": [
+        "ragvi",
+        "verify"
+      ],
+      "code": 0,
+      "text": "┏━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓\n┃ Status ┃ Fixture       ┃ Detail                               ┃\n┡━━━━━━━━╇━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩\n│ PASS   │ Asset hashes  │ verified 2 bundled files             │\n│ PASS   │ Dataset       │ 8 sources; 12 questions              │\n│ PASS   │ Tokenizer     │ identifier/version fixture preserved │\n│ PASS   │ BM25 fixture  │ required source found at k=2         │\n│ PASS   │ Recovery      │ user edit preserved in backup        │\n│ PASS   │ Metrics       │ sufficient-evidence fixture passed   │\n│ PASS   │ HTML template │ self-contained template is installed │\n└────────┴───────────────┴──────────────────────────────────────┘\n"
+    },
+    {
+      "argv": [
+        "ragvi",
+        "tutorial"
+      ],
+      "code": 0,
+      "text": "Running bm25-body at k=2\nRunning bm25-heading_context at k=2\nCOMPLETE Guided comparison finished.\nReport: workspaces/first-run/reports/tutorial.html\nNext: Open the report, inspect changed questions, then read the Getting started guide included \nwith your download.\n"
+    }
+  ],
+  "zooms": [
+    {
+      "stage": "Terminal typing",
+      "scale": 1.18,
+      "durationMs": 400
+    },
+    {
+      "stage": "Recovered evidence",
+      "scale": 1.18,
+      "durationMs": 400
+    }
+  ],
+  "presentation": "Fresh installed source-build wheel, genuine tutorial output and generated-report interactions captured natively at 1920x1080. Clean cuts and fixed-size cursor composed at 60fps; no old recording or upscaled source. Local working paths shortened for presentation. No sound, narration, captions, player controls, browser chrome, or remote report assets.",
+  "files": [
+    {
+      "file": "walkthrough.mp4",
+      "bytes": 2654144,
+      "codec": "H.264",
+      "crf": 20
+    },
+    {
+      "file": "walkthrough.webm",
+      "bytes": 4141080,
+      "codec": "VP9",
+      "crf": 20
+    }
+  ]
 }

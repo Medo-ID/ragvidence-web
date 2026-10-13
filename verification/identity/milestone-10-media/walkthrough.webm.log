@@ -1,0 +1,93 @@
+Input #0, matroska,webm, from 'public/media/walkthrough.webm':
+  Metadata:
+    ENCODER         : Lavf61.1.100
+  Duration: 00:00:48.00, start: 0.000000, bitrate: 690 kb/s
+  Stream #0:0: Video: vp9 (Profile 0), yuv420p(tv, progressive), 1920x1080, SAR 1:1 DAR 16:9, 60 fps, 60 tbr, 1k tbn
+      Metadata:
+        ENCODER         : Lavc61.3.100 libvpx-vp9
+        DURATION        : 00:00:48.000000000
+Stream mapping:
+  Stream #0:0 -> #0:0 (vp9 (native) -> wrapped_avframe (native))
+Press [q] to stop, [?] for help
+Output #0, null, to 'pipe:':
+  Metadata:
+    encoder         : Lavf61.1.100
+  Stream #0:0: Video: wrapped_avframe, yuv420p(tv, progressive), 1920x1080 [SAR 1:1 DAR 16:9], q=2-31, 200 kb/s, 60 fps, 60 tbn
+      Metadata:
+        DURATION        : 00:00:48.000000000
+        encoder         : Lavc61.3.100 wrapped_avframe
+[out#0/null @ 0x10da98c0] video:1238KiB audio:0KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: unknown
+frame= 2880 fps=1125 q=-0.0 Lsize=N/A time=00:00:48.00 bitrate=N/A speed=18.8x
+
+frame=572
+fps=0.00
+stream_0_0_q=-0.0
+bitrate=N/A
+total_size=N/A
+out_time_us=9533333
+out_time_ms=9533333
+out_time=00:00:09.533333
+dup_frames=0
+drop_frames=0
+speed=19.1x
+progress=continue
+frame=1135
+fps=1134.24
+stream_0_0_q=-0.0
+bitrate=N/A
+total_size=N/A
+out_time_us=18916667
+out_time_ms=18916667
+out_time=00:00:18.916667
+dup_frames=0
+drop_frames=0
+speed=18.9x
+progress=continue
+frame=1697
+fps=1130.59
+stream_0_0_q=-0.0
+bitrate=N/A
+total_size=N/A
+out_time_us=28283333
+out_time_ms=28283333
+out_time=00:00:28.283333
+dup_frames=0
+drop_frames=0
+speed=18.8x
+progress=continue
+frame=2221
+fps=1109.80
+stream_0_0_q=-0.0
+bitrate=N/A
+total_size=N/A
+out_time_us=37016667
+out_time_ms=37016667
+out_time=00:00:37.016667
+dup_frames=0
+drop_frames=0
+speed=18.5x
+progress=continue
+frame=2804
+fps=1120.89
+stream_0_0_q=-0.0
+bitrate=N/A
+total_size=N/A
+out_time_us=46733333
+out_time_ms=46733333
+out_time=00:00:46.733333
+dup_frames=0
+drop_frames=0
+speed=18.7x
+progress=continue
+frame=2880
+fps=1125.35
+stream_0_0_q=-0.0
+bitrate=N/A
+total_size=N/A
+out_time_us=48000000
+out_time_ms=48000000
+out_time=00:00:48.000000
+dup_frames=0
+drop_frames=0
+speed=18.8x
+progress=end

@@ -8,7 +8,7 @@ export function ProductWalkthrough() {
       <div className="shell">
         <div className="mb-10 grid gap-5 lg:grid-cols-2 lg:gap-16">
           <div><p className="eyebrow">From command to evidence</p><h2 className="mt-4 max-w-xl text-balance text-3xl font-semibold tracking-tight text-ink sm:text-4xl">Run a change. See exactly what it recovered.</h2></div>
-          <p className="max-w-lg text-base leading-7 text-muted lg:self-end">A short, silent look at the released CLI and its report. Follow the cursor from your terminal to the ranked evidence behind a result.</p>
+          <p className="max-w-lg text-base leading-7 text-muted lg:self-end">A short, silent look at the verified CLI build and its generated report. Follow the cursor from your terminal to the ranked evidence behind a result.</p>
         </div>
         <ProductDemo />
         <div className="mt-7 flex flex-col justify-between gap-5 text-xs leading-6 text-muted sm:flex-row">

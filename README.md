@@ -69,45 +69,45 @@ The production dependency audit is clean. A full development-tree audit may stil
 
 ## Product demo
 
-The homepage includes a 24-second, 1280×720, 60fps silent demo of the production
-v0.1.0 CLI and its generated report. It types the tutorial command, shows actual
-results, compares 60% versus 90%, and opens the recovered ranked evidence.
-Camera moves, cursor motion, typing, and transitions are composed over captured
-real states. There is no audio or caption track. The provenance JSON records the
-executed commands, actual output, checked evaluations, and post-production.
+The homepage includes a 48-second, native 1920×1080, 60fps silent walkthrough
+of the verified installed CLI source build and its generated report. It runs the
+tutorial, holds on 60% → 90%, reviews change composition, and opens recovered
+ranked evidence. Native captures use two purposeful 118% zooms and clean cuts;
+the preceding 720p recording is never used as input. H.264 MP4 and VP9 WebM use
+CRF 20; provenance records wheel/report hashes, commands, actual results, and sizes.
 
-The square player loops only while visible. A pause/play control and keyboard
-chapter navigation remain available. Reduced motion shows a still poster until
-the visitor explicitly plays the demo. The written tutorial is linked below it.
-The WebP poster is much smaller than the preceding PNG; video uses preload none
-and starts loading when the player enters view.
+The native video has no controls or chapter buttons. It pauses when less than 40%
+visible. Reduced motion displays the poster with no video sources or autoplay.
+No audio, narration, captions, browser chrome, personal paths, or remote report
+assets are included. The written tutorial remains available below it.
 
 Article search loads a static full-text index only on the first search; filtering
 and queries remain in the browser. Failed index loads fall back to navigation
 metadata with an explicit retry.
 
-To recreate the demo (optional Linux authoring, outside the quality gate):
+Authoring requires uv, Python 3.12, Playwright Chromium, and an FFmpeg build
+with H.264 and VP9 encoders (outside the product quality gate).
+
+The script installs a freshly built CLI wheel in a temporary environment, verifies
+it, runs the tutorial, confirms every expected change, and captures the real report
+at 1920×1080. It stages both encodings before replacing public media. Source
+captures remain in /tmp for review. This documents the source build; publication
+of the redesigned CLI template to PyPI is a separate release step.
+
+Provide the wheel, an FFmpeg executable supporting libx264/libvpx-vp9, and an
+optional browser library path:
 
 ```bash
-# Requires uv, Python 3.12, and installed Playwright Chromium/FFmpeg.
-node scripts/record-walkthrough.mjs
+node scripts/record-walkthrough.mjs ../ragvidence/dist/ragvidence-0.1.0-py3-none-any.whl /path/to/ffmpeg
 ```
 
-The script installs the pinned production release in a new temporary environment,
-runs the tutorial, verifies 6/10 versus 9/10 and the exact question-level changes,
-captures genuine report interactions, and encodes 1,440 frames at 60fps.
-Two unanswerable cases have N/A metrics and do not enter the success-rate denominator.
-Host installation caches may be reused. Report data is unchanged; its presentation
-uses the website's opaque report CSS. Successful media is staged before copying
-to its destination. Temporary source artifacts remain available for review.
+`--capture-only` creates native previews without replacing media. Resume encoding
+with `node scripts/record-walkthrough.mjs --resume /tmp/capture-directory /path/to/ffmpeg`.
+`RAGVIDENCE_RECORDING_DIR` can stage the final assets outside public/media.
 
-`UV_EXECUTABLE`, `UV_CACHE_DIR`, `FFMPEG_EXECUTABLE`, and
-`RAGVIDENCE_RECORDING_DIR` configure authoring paths. By default, the encoder
-comes from the installed Playwright browser cache.
-
-The current neutral visual system and verification are recorded in
-[neutral-design-pass.md](docs/neutral-design-pass.md). Glass belongs to the website;
-the reporting HTML uses opaque surfaces, readable prose, and semantic status colors.
+The current Abyssal Teal system and milestone verification are recorded in
+[identity-progress.md](docs/identity-progress.md). Ordinary website and report
+surfaces are solid; blur is limited to the sticky site header.
 
 The website does not collect user input, host user data, or provide checkout yet. Update privacy and terms before adding analytics, forms, accounts, or payment processing.
 

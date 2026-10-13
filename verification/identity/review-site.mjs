@@ -31,8 +31,16 @@ try {
       await page.screenshot({ path: `${directory}/${name}-${width}.png` });
       observations.views.push({ route, width, height, overflow: await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), font: await page.locator("body").evaluate(el => getComputedStyle(el).fontFamily) });
       if (name === "landing" && width === 1440) {
-        for (const id of ["proof", "plans"]) {
-          await page.locator(`#${id}`).screenshot({ path: `${directory}/${id}.png` });
+        for (const id of ["proof", "plans", "walkthrough"]) {
+          if (id === "walkthrough") {
+            const video = page.locator("#walkthrough video");
+            await video.scrollIntoViewIfNeeded();
+            await video.evaluate(el => new Promise(resolve => {
+              el.addEventListener("seeked", () => { el.pause(); resolve(); }, { once: true });
+              el.currentTime = 14;
+            }));
+          }
+          await page.locator(id === "walkthrough" ? "#walkthrough .showcase" : `#${id}`).screenshot({ path: `${directory}/${id}.png` });
         }
       }
       if (name === "docs" && width === 390) {

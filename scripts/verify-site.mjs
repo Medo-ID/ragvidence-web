@@ -58,7 +58,8 @@ async function verify() {
   else if (!(await request()).ok) throw new Error(`Site is unavailable at ${baseUrl}.`);
 
   const routes = ["/", "/docs", ...docs.map(({ slug }) => `/docs/${slug}`), "/releases", "/privacy", "/terms", "/security", "/sample-report.html", "/ragvidence-0.1.0-license.txt", "/robots.txt", "/sitemap.xml", "/opengraph-image", "/favicon.ico", "/docs/search-index.json", "/media/walkthrough.webm", "/media/walkthrough-poster.webp", "/media/walkthrough-provenance.json"];
-  const binaryRoutes = new Set(["/opengraph-image", "/favicon.ico", "/media/walkthrough.webm", "/media/walkthrough-poster.webp"]);
+  routes.push("/media/walkthrough.mp4");
+  const binaryRoutes = new Set(["/opengraph-image", "/favicon.ico", "/media/walkthrough.mp4", "/media/walkthrough.webm", "/media/walkthrough-poster.webp"]);
   const failures = [];
   const pages = new Map();
   const headers = [
@@ -92,7 +93,7 @@ async function verify() {
   } catch { failures.push("Documentation search index is not valid JSON."); }
   try {
     const media = JSON.parse(pages.get("/media/walkthrough-provenance.json") ?? "{}");
-    if (media.fps !== 60 || media.audio !== false || media.captions !== false || media.changes?.improved !== 3 || media.changes?.regressed !== 0) failures.push("Demo provenance does not match the verified silent tutorial.");
+    if (media.width !== 1920 || media.height !== 1080 || media.fps !== 60 || media.frames !== 2880 || media.durationSeconds !== 48 || media.audio !== false || media.captions !== false || media.changes?.improved !== 3 || media.changes?.regressed !== 0) failures.push("Demo provenance does not match the verified native silent tutorial.");
   } catch { failures.push("Demo provenance is not valid JSON."); }
   const home = pages.get("/") ?? "";
   for (const phrase of ["ragvidence[semantic]", "See whether your RAG change", "60%", "90%", "10 answerable questions", "The Free edition is a real tool"]) {

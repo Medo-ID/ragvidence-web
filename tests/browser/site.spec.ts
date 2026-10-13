@@ -126,45 +126,32 @@ for (const failure of ["http", "invalid-index"]) {
   });
 }
 
-test("silent product demo starts only in view, supports keyboard chapters, and can be paused", async ({ page }) => {
-  const requests: string[] = [];
-  page.on("request", request => { if (request.url().endsWith("/media/walkthrough.webm")) requests.push(request.url()); });
+test("silent native video pauses offscreen and exposes no controls", async ({ page }) => {
   await page.goto("/");
   const video = page.locator("#walkthrough video");
-  await expect(video).toHaveAttribute("preload", "none");
-  expect(requests).toHaveLength(0);
+  await expect(video).toHaveAttribute("preload", "metadata");
+  await expect(video).not.toHaveAttribute("controls", "");
+  await expect(page.locator("#walkthrough button")).toHaveCount(0);
   await video.scrollIntoViewIfNeeded();
-  await expect(page.getByRole("button", { name: "Pause product demo" })).toBeVisible();
-  await expect.poll(() => video.evaluate((element: HTMLVideoElement) => element.currentTime)).toBeGreaterThan(0);
-  const metadata = await video.evaluate((element: HTMLVideoElement) => ({ width: element.videoWidth, height: element.videoHeight, duration: element.duration, muted: element.muted, loop: element.loop, tracks: element.textTracks.length }));
-  expect(metadata).toMatchObject({ width: 1280, height: 720, muted: true, loop: true, tracks: 0 });
-  expect(metadata.duration).toBeCloseTo(24, 1);
-  await page.getByRole("button", { name: "Pause product demo" }).click();
-  await expect.poll(() => video.evaluate((element: HTMLVideoElement) => element.paused)).toBe(true);
-  await page.getByRole("tab", { name: "Run tutorial" }).click();
-  await page.keyboard.press("ArrowRight");
-  await expect(page.getByRole("tab", { name: "Compare results" })).toBeFocused();
-  expect(await video.evaluate((element: HTMLVideoElement) => element.currentTime)).toBeCloseTo(8, 0);
-  await page.keyboard.press("End");
-  await expect(page.getByRole("tab", { name: "Inspect evidence" })).toBeFocused();
-  expect(await video.evaluate((element: HTMLVideoElement) => element.currentTime)).toBeCloseTo(16, 0);
-  await page.getByRole("button", { name: "Play product demo" }).click();
-  await expect.poll(() => video.evaluate((element: HTMLVideoElement) => element.paused)).toBe(false);
+  await expect.poll(() => video.evaluate((el: HTMLVideoElement) => el.currentTime)).toBeGreaterThan(0);
+  const metadata = await video.evaluate((el: HTMLVideoElement) => ({ width: el.videoWidth, height: el.videoHeight, duration: el.duration, muted: el.muted, loop: el.loop, tracks: el.textTracks.length }));
+  expect(metadata).toMatchObject({ width: 1920, height: 1080, muted: true, loop: true, tracks: 0 });
+  expect(metadata.duration).toBeCloseTo(48, 1);
   await page.locator("#install").scrollIntoViewIfNeeded();
-  await expect.poll(() => video.evaluate((element: HTMLVideoElement) => element.paused)).toBe(true);
+  await expect.poll(() => video.evaluate((el: HTMLVideoElement) => el.paused)).toBe(true);
 });
 
-test("reduced motion keeps the demo still until explicitly played", async ({ page }) => {
+test("reduced motion shows the poster without loading or autoplaying video", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
+  const mediaRequests: string[] = [];
+  page.on("request", request => { if (/walkthrough\.(webm|mp4)$/.test(request.url())) mediaRequests.push(request.url()); });
   await page.goto("/");
   const video = page.locator("#walkthrough video");
   await video.scrollIntoViewIfNeeded();
-  await expect(page.getByRole("button", { name: "Play product demo" })).toBeVisible();
-  expect(await video.evaluate((element: HTMLVideoElement) => element.paused)).toBe(true);
-  await page.getByRole("button", { name: "Play product demo" }).click();
-  await expect.poll(() => video.evaluate((element: HTMLVideoElement) => element.currentTime)).toBeGreaterThan(0);
-  await page.getByRole("button", { name: "Pause product demo" }).click();
-  await expect.poll(() => video.evaluate((element: HTMLVideoElement) => element.paused)).toBe(true);
+  expect(await video.evaluate((el: HTMLVideoElement) => el.paused)).toBe(true);
+  await expect(video).toHaveAttribute("poster", "/media/walkthrough-poster.webp");
+  await expect(video.locator("source")).toHaveCount(0);
+  expect(mediaRequests).toHaveLength(0);
 });
 
 test("site actions retain high contrast and report surfaces stay opaque", async ({ page }) => {

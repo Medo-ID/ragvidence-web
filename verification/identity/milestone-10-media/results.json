@@ -1,0 +1,26 @@
+[
+  {
+    "file": "walkthrough.mp4",
+    "codec": "h264",
+    "width": 1920,
+    "height": 1080,
+    "fps": 60,
+    "durationSeconds": 48,
+    "frames": 2880,
+    "bytes": 2654144,
+    "audio": false,
+    "subtitles": false
+  },
+  {
+    "file": "walkthrough.webm",
+    "codec": "vp9",
+    "width": 1920,
+    "height": 1080,
+    "fps": 60,
+    "durationSeconds": 48,
+    "frames": 2880,
+    "bytes": 4141080,
+    "audio": false,
+    "subtitles": false
+  }
+]
