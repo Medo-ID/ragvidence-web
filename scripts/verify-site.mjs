@@ -94,7 +94,7 @@ async function verify() {
   } catch { failures.push("Documentation search index is not valid JSON."); }
   try {
     const media = JSON.parse(pages.get("/media/walkthrough-provenance.json") ?? "{}");
-    if (media.width !== 1920 || media.height !== 1080 || media.fps !== 60 || media.frames !== 2880 || media.durationSeconds !== 48 || media.audio !== false || media.captions !== false || media.changes?.improved !== 3 || media.changes?.regressed !== 0) failures.push("Demo provenance does not match the verified native silent tutorial.");
+    if (media.width !== 1920 || media.height !== 1080 || media.fps !== 60 || media.frames !== 2160 || media.durationSeconds !== 36 || media.audio !== false || media.captions !== false || media.workflow !== "own-data" || media.mockData !== true || media.sourceCount !== 9 || media.questionCount !== 6 || media.baseline?.successful !== 5 || media.candidate?.successful !== 6 || media.comparison?.baseline !== "bm25-body" || media.comparison?.intervention !== "semantic-body" || media.comparison?.representation !== "body" || media.comparison?.k !== 2 || media.changes?.improved !== 1 || media.changes?.regressed !== 0) failures.push("Demo provenance does not match the verified native silent own-data workflow.");
   } catch { failures.push("Demo provenance is not valid JSON."); }
   const home = pages.get("/") ?? "";
   for (const phrase of ["ragvidence[semantic]", "See whether your RAG change", "60%", "90%", "10 answerable questions", "The Free edition is a real tool"]) {

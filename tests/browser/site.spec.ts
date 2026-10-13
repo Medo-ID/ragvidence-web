@@ -136,7 +136,7 @@ test("silent native video starts on scroll and pauses offscreen without native c
   await expect.poll(() => video.evaluate((el: HTMLVideoElement) => el.currentTime)).toBeGreaterThan(0);
   const metadata = await video.evaluate((el: HTMLVideoElement) => ({ width: el.videoWidth, height: el.videoHeight, duration: el.duration, muted: el.muted, loop: el.loop, tracks: el.textTracks.length }));
   expect(metadata).toMatchObject({ width: 1920, height: 1080, muted: true, loop: true, tracks: 0 });
-  expect(metadata.duration).toBeCloseTo(48, 1);
+  expect(metadata.duration).toBeCloseTo(36, 1);
   await page.locator("#install").scrollIntoViewIfNeeded();
   await expect.poll(() => video.evaluate((el: HTMLVideoElement) => el.paused)).toBe(true);
 });

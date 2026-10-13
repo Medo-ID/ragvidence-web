@@ -69,10 +69,13 @@ The production dependency audit is clean. A full development-tree audit may stil
 
 ## Product demo
 
-The homepage includes a 48-second, native 1920×1080, 60fps silent walkthrough
-of the verified installed CLI source build and its generated report. It runs the
-tutorial, holds on 60% → 90%, reviews change composition, and opens recovered
-ranked evidence. Native captures use two purposeful 118% zooms and clean cuts;
+The homepage includes a 36-second, native 1920×1080, 60fps silent walkthrough
+of an own-data workflow using temporary synthetic shop policies. It shows labeled
+source/question files, validation, BM25 and local semantic benchmarks, evaluation,
+HTML report creation, and the evidence behind a changed question. The two compared
+runs keep the dataset, body representation, and k=2 fixed. Native captures use two
+purposeful 118% zooms and clean cuts; execution waits and the initial model download
+are omitted. The mock result (5/6 versus 6/6) is specific to that dataset;
 the preceding 720p recording is never used as input. H.264 MP4 and VP9 WebM use
 CRF 20; provenance records wheel/report hashes, commands, actual results, and sizes.
 
@@ -82,7 +85,8 @@ when scrolling away and back. It automatically starts when enough of it is visib
 and pauses offscreen or in a hidden tab. Reduced motion displays the poster without
 loading media until the user explicitly plays it.
 No audio, narration, captions, browser chrome, personal paths, or remote report
-assets are included. The written tutorial remains available below it.
+assets are included. The own-data guide is linked below it; the original 60% → 90%
+tutorial remains in the hero and public sample report.
 
 Article search loads a static full-text index only on the first search; filtering
 and queries remain in the browser. Failed index loads fall back to navigation
@@ -91,17 +95,21 @@ metadata with an explicit retry.
 Authoring requires uv, Python 3.12, Playwright Chromium, and an FFmpeg build
 with H.264 and VP9 encoders (outside the product quality gate).
 
-The script installs a freshly built CLI wheel in a temporary environment, verifies
-it, runs the tutorial, confirms every expected change, and captures the real report
-at 1920×1080. It stages both encodings before replacing public media. Source
-captures remain in /tmp for review. This documents the source build; publication
+The script takes a temporary fixture JSON containing `sources` and `questions`
+arrays, installs a freshly built CLI wheel with its semantic extra, verifies it,
+creates a named workspace, replaces its data files, and runs the actual CLI
+workflow. The file preview pretty-prints one real JSONL record per file; it does
+not represent a shipped GUI editor. It checks that the comparison changes only
+the retrieval strategy and captures the generated report at native 1920×1080.
+It stages both encodings before replacing public media. No mock workspace/data
+files are added to either product repository. This documents the source build; publication
 of the redesigned CLI template to PyPI is a separate release step.
 
-Provide the wheel, an FFmpeg executable supporting libx264/libvpx-vp9, and an
+Provide the wheel, a temporary fixture JSON, an FFmpeg executable supporting libx264/libvpx-vp9, and an
 optional browser library path:
 
 ```bash
-node scripts/record-walkthrough.mjs ../ragvidence/dist/ragvidence-0.1.0-py3-none-any.whl /path/to/ffmpeg
+node scripts/record-walkthrough.mjs ../ragvidence/dist/ragvidence-0.1.0-py3-none-any.whl /tmp/fixture.json /path/to/ffmpeg
 ```
 
 `--capture-only` creates native previews without replacing media. Resume encoding

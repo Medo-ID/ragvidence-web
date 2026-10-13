@@ -1,5 +1,11 @@
 # RAGvidence identity delivery — October 13, 2026
 
+Subsequent user-requested video/playback revision:
+[walkthrough-follow-up.md](walkthrough-follow-up.md). Its current media is a
+36-second own-data benchmark, replacing the original 48-second tutorial video
+described in this historical milestone record. Playback supports full-area
+click/keyboard toggling and preserves manual pause when scrolling.
+
 Milestones 1–11 are implemented and separately committed. Final verification remains
 pending the user's confirmation that the standard `npm run build` succeeds locally
 or on Vercel. The Webpack gates below passed; they do not certify Turbopack.
@@ -138,17 +144,18 @@ This is reproducible bundled tutorial data, not a customer claim or general prom
 
 | Artifact | Codec | Dimensions / rate / duration | Bytes |
 |---|---|---|---:|
-| [MP4](../public/media/walkthrough.mp4) | H.264 | native 1920×1080 / 60 FPS / 48 s | 2,654,144 |
-| [WebM](../public/media/walkthrough.webm) | VP9 | native 1920×1080 / 60 FPS / 48 s | 4,141,080 |
-| [Poster](../public/media/walkthrough-poster.webp) | WebP | 1920×1080 | 110,238 |
+| [MP4](../public/media/walkthrough.mp4) | H.264 | native 1920×1080 / 60 FPS / 36 s | 1,979,435 |
+| [WebM](../public/media/walkthrough.webm) | VP9 | native 1920×1080 / 60 FPS / 36 s | 3,520,383 |
+| [Poster](../public/media/walkthrough-poster.webp) | WebP | 1920×1080 | 109,376 |
 
-Both video encodes use CRF 20 and contain 2,880 frames with no audio/subtitle stream.
+The table lists current media after the own-data follow-up. Both video encodes use
+CRF 20 and contain 2,160 frames with no audio/subtitle stream.
 Full decode completed without errors. Native screenshots and decoded frames were
 visually inspected for terminal/evidence readability. Two 118% zooms use 400ms
 transitions, with clean cuts and stationary reading pauses. The original 720p video
 was not an input. No media controls, browser chrome, confidential data, or personal
 paths appear. [Capture provenance](../public/media/walkthrough-provenance.json)
-and [codec/full-decode checks](../verification/identity/milestone-10-media/results.json).
+and [current codec/full-decode checks](../verification/identity/own-data-media/results.json).
 
 ## Performance and remaining checks
 

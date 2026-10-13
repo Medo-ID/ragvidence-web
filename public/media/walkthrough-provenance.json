@@ -1,30 +1,44 @@
 {
+  "workflow": "own-data",
+  "mockData": true,
+  "sourceCount": 9,
+  "questionCount": 6,
+  "datasetHash": "7c4887126a57261899df70a4ea1908d5a08e74296a5f1670564fb2b9e1d2aeb4",
+  "comparison": {
+    "baseline": "bm25-body",
+    "intervention": "semantic-body",
+    "representation": "body",
+    "k": 2,
+    "provider": "fastembed",
+    "model": "BAAI/bge-small-en-v1.5"
+  },
+  "inspectedQuestion": "Q-01",
   "cliVersion": "0.1.0",
-  "recordedAt": "2026-10-13T11:43:03.916Z",
+  "recordedAt": "2026-10-13T15:26:02.050Z",
   "width": 1920,
   "height": 1080,
   "fps": 60,
-  "frames": 2880,
-  "durationSeconds": 48,
+  "frames": 2160,
+  "durationSeconds": 36,
   "audio": false,
   "captions": false,
-  "wheelSHA256": "a01e7d76fc67ae2e58e17cc1d8c0b50ef1f998725487bfe98ca3a076936ad873",
-  "reportSHA256": "c43cdde1a059034e3bab816a7a72f980e9983c32262eb0cd95651fe734a49bb7",
+  "wheelSHA256": "51d6f6ebc8129bcabccd0c07a600a45317dc9040e625b640ea08691711254c0a",
+  "reportSHA256": "bd0fd2ccea2d62235ad60bc74f8c3c532b25675d20583227fead46ff014a2363",
   "baseline": {
-    "successful": 6,
-    "answerable": 10,
-    "sufficient_evidence_rate": 0.6
+    "successful": 5,
+    "answerable": 6,
+    "sufficient_evidence_rate": 0.8333333333333334
   },
   "candidate": {
-    "successful": 9,
-    "answerable": 10,
-    "sufficient_evidence_rate": 0.9
+    "successful": 6,
+    "answerable": 6,
+    "sufficient_evidence_rate": 1
   },
   "changes": {
-    "improved": 3,
+    "improved": 1,
     "regressed": 0,
-    "unresolved": 1,
-    "stable": 6
+    "unresolved": 0,
+    "stable": 5
   },
   "commands": [
     {
@@ -35,6 +49,7 @@
         "3.12",
         "venv"
       ],
+      "cwd": ".",
       "code": 0,
       "text": "Using CPython 3.12.14\nCreating virtual environment at: venv\nActivate with: source venv/bin/activate\n"
     },
@@ -45,51 +60,116 @@
         "install",
         "--python",
         "venv/bin/python",
-        "built-wheel.whl"
+        "built-wheel.whl[semantic]"
       ],
+      "cwd": ".",
       "code": 0,
-      "text": "Using Python 3.12.14 environment at: venv\nResolved 20 packages in 649ms\nDownloading pygments (1.2MiB)\nDownloading pydantic-core (2.1MiB)\nDownloading numpy (16.0MiB)\nDownloading scipy (33.7MiB)\n Downloaded pygments\n Downloaded pydantic-core\n Downloaded numpy\n Downloaded scipy\nPrepared 20 packages in 5.04s\nInstalled 20 packages in 15ms\n + annotated-doc==0.0.5\n + annotated-types==0.8.0\n + bm25s==0.2.14\n + jinja2==3.1.6\n + markdown-it-py==4.2.0\n + markupsafe==3.0.4\n + mdurl==0.1.2\n + numpy==2.5.4\n + pydantic==2.14.1\n + pydantic-core==2.50.1\n + pydantic-settings==2.15.0\n + pygments==2.21.0\n + python-dotenv==1.2.4\n + ragvidence==0.1.0 (from file://built-wheel.whl)\n + rich==14.3.4\n + scipy==1.18.1\n + shellingham==1.5.4\n + typer==0.27.3\n + typing-extensions==4.16.0\n + typing-inspection==0.4.4\n"
+      "text": "Using Python 3.12.14 environment at: venv\nResolved 46 packages in 878ms\nDownloading pillow (6.6MiB)\nDownloading tokenizers (3.2MiB)\nDownloading pydantic-core (2.1MiB)\nDownloading onnxruntime (22.7MiB)\nDownloading numpy (16.0MiB)\nDownloading scipy (33.7MiB)\nDownloading pygments (1.2MiB)\nDownloading hf-xet (4.0MiB)\n Downloaded pygments\n Downloaded pydantic-core\n Downloaded tokenizers\n Downloaded hf-xet\n Downloaded pillow\n Downloaded numpy\n Downloaded onnxruntime\n Downloaded scipy\nPrepared 46 packages in 8.71s\nInstalled 46 packages in 202ms\n + annotated-doc==0.0.5\n + annotated-types==0.8.0\n + anyio==4.15.1\n + bm25s==0.2.14\n + certifi==2026.7.22\n + charset-normalizer==3.5.2\n + click==8.5.0\n + fastembed==0.9.0\n + filelock==4.1.1\n + flatbuffers==25.12.19\n + fsspec==2026.9.0\n + h11==0.16.0\n + hf-xet==1.7.0\n + httpcore==1.0.9\n + httpx==0.28.1\n + huggingface-hub==1.33.0\n + idna==3.20\n + jinja2==3.1.6\n + loguru==0.7.3\n + markdown-it-py==4.2.0\n + markupsafe==3.0.4\n + mdurl==0.1.2\n + mmh3==5.3.1\n + numpy==2.5.4\n + onnxruntime==1.31.0\n + packaging==26.3\n + pillow==12.3.0\n + protobuf==7.36.2\n + py-rust-stemmers==0.1.8\n + pydantic==2.14.1\n + pydantic-core==2.50.1\n + pydantic-settings==2.15.0\n + pygments==2.21.0\n + python-dotenv==1.2.4\n + pyyaml==6.0.3\n + ragvidence==0.1.0 (from file://built-wheel.whl)\n + requests==2.34.2\n + rich==14.3.4\n + scipy==1.18.1\n + shellingham==1.5.4\n + tokenizers==0.23.3\n + tqdm==4.70.1\n + typer==0.27.3\n + typing-extensions==4.16.0\n + typing-inspection==0.4.4\n + urllib3==2.8.0\n"
     },
     {
       "argv": [
         "ragvi",
         "verify"
       ],
+      "cwd": ".",
       "code": 0,
       "text": "┏━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓\n┃ Status ┃ Fixture       ┃ Detail                               ┃\n┡━━━━━━━━╇━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩\n│ PASS   │ Asset hashes  │ verified 2 bundled files             │\n│ PASS   │ Dataset       │ 8 sources; 12 questions              │\n│ PASS   │ Tokenizer     │ identifier/version fixture preserved │\n│ PASS   │ BM25 fixture  │ required source found at k=2         │\n│ PASS   │ Recovery      │ user edit preserved in backup        │\n│ PASS   │ Metrics       │ sufficient-evidence fixture passed   │\n│ PASS   │ HTML template │ self-contained template is installed │\n└────────┴───────────────┴──────────────────────────────────────┘\n"
     },
     {
       "argv": [
         "ragvi",
-        "tutorial"
+        "init",
+        "shop-support"
       ],
+      "cwd": ".",
       "code": 0,
-      "text": "Running bm25-body at k=2\nRunning bm25-heading_context at k=2\nCOMPLETE Guided comparison finished.\nReport: workspaces/first-run/reports/tutorial.html\nNext: Open the report, inspect changed questions, then read the Getting started guide included \nwith your download.\n"
+      "text": "CREATED workspaces/shop-support\n"
+    },
+    {
+      "argv": [
+        "ragvi",
+        "validate",
+        "."
+      ],
+      "cwd": "workspaces/shop-support",
+      "code": 0,
+      "text": "PASS 9 sources, 6 questions, 9 evidence IDs\n"
+    },
+    {
+      "argv": [
+        "ragvi",
+        "benchmark",
+        ".",
+        "--strategies",
+        "bm25,semantic",
+        "--k",
+        "2"
+      ],
+      "cwd": "workspaces/shop-support",
+      "code": 0,
+      "text": "Running bm25-body at k=2\nSAVED runs/bm25-body.json\nRunning bm25-heading_context at k=2\nSAVED runs/bm25-heading_context.json\nRunning semantic-body at k=2\nSAVED runs/semantic-body.json\nRunning semantic-heading_context at k=2\nSAVED runs/semantic-heading_context.json\n"
+    },
+    {
+      "argv": [
+        "ragvi",
+        "evaluate",
+        ".",
+        "runs/bm25-body.json"
+      ],
+      "cwd": "workspaces/shop-support",
+      "code": 0,
+      "text": "SAVED evaluations/bm25-body.json\n"
+    },
+    {
+      "argv": [
+        "ragvi",
+        "evaluate",
+        ".",
+        "runs/semantic-body.json"
+      ],
+      "cwd": "workspaces/shop-support",
+      "code": 0,
+      "text": "SAVED evaluations/semantic-body.json\n"
+    },
+    {
+      "argv": [
+        "ragvi",
+        "report",
+        "evaluations/bm25-body.json",
+        "report.html",
+        "--intervention",
+        "evaluations/semantic-body.json",
+        "--format",
+        "html"
+      ],
+      "cwd": "workspaces/shop-support",
+      "code": 0,
+      "text": "SAVED report.html\n"
     }
   ],
   "zooms": [
     {
-      "stage": "Terminal typing",
+      "stage": "Benchmark command",
       "scale": 1.18,
       "durationMs": 400
     },
     {
-      "stage": "Recovered evidence",
+      "stage": "Changed evidence",
       "scale": 1.18,
       "durationMs": 400
     }
   ],
-  "presentation": "Fresh installed source-build wheel, genuine tutorial output and generated-report interactions captured natively at 1920x1080. Clean cuts and fixed-size cursor composed at 60fps; no old recording or upscaled source. Local working paths shortened for presentation. No sound, narration, captions, player controls, browser chrome, or remote report assets.",
+  "presentation": "Native captures of an installed wheel, temporary synthetic dataset, genuine BM25 and local semantic runs, evaluations, and generated report. Execution waits and first model download omitted. Two purposeful zooms, clean cuts, fixed-size cursor. No old recording input or upscale. No sound, narration, captions, controls, browser chrome, confidential data, or personal paths. Synthetic result is not a general performance claim.",
   "files": [
     {
       "file": "walkthrough.mp4",
-      "bytes": 2654144,
+      "bytes": 1979435,
       "codec": "H.264",
       "crf": 20
     },
     {
       "file": "walkthrough.webm",
-      "bytes": 4141080,
+      "bytes": 3520383,
       "codec": "VP9",
       "crf": 20
     }

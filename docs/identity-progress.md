@@ -156,3 +156,13 @@ Standard Turbopack remains pending the user's confirmation, as agreed.
 
 See [identity-delivery.md](identity-delivery.md) for commits, artifacts, findings,
 performance measurements, limitations, and a continuation prompt.
+
+## User follow-up — Own-data video and playback
+
+The user requested a more useful workflow video and full-area click pause/resume.
+[walkthrough-follow-up.md](walkthrough-follow-up.md) records the separate playback
+commit `0b2996a` and the replacement video milestone. Current media is a genuine
+36-second BM25/local-semantic benchmark on temporary synthetic shop data, native
+1920×1080 at 60fps. The 60% → 90% tutorial proof and sample report remain unchanged.
+All available gates pass, with 45 browser tests and full-frame decode checks.
+The mock workspace is removed after export; final Turbopack confirmation is pending.

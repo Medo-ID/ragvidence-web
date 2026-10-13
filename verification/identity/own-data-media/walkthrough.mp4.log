@@ -1,0 +1,101 @@
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from 'public/media/walkthrough.mp4':
+  Metadata:
+    major_brand     : isom
+    minor_version   : 512
+    compatible_brands: isomiso2avc1mp41
+    encoder         : Lavf61.1.100
+  Duration: 00:00:36.00, start: 0.000000, bitrate: 439 kb/s
+  Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(progressive), 1920x1080 [SAR 1:1 DAR 16:9], 433 kb/s, 60 fps, 60 tbr, 15360 tbn (default)
+      Metadata:
+        handler_name    : VideoHandler
+        vendor_id       : [0][0][0][0]
+        encoder         : Lavc61.3.100 libx264
+Stream mapping:
+  Stream #0:0 -> #0:0 (h264 (native) -> wrapped_avframe (native))
+Press [q] to stop, [?] for help
+Output #0, null, to 'pipe:':
+  Metadata:
+    major_brand     : isom
+    minor_version   : 512
+    compatible_brands: isomiso2avc1mp41
+    encoder         : Lavf61.1.100
+  Stream #0:0(und): Video: wrapped_avframe, yuv420p(progressive), 1920x1080 [SAR 1:1 DAR 16:9], q=2-31, 200 kb/s, 60 fps, 60 tbn (default)
+      Metadata:
+        handler_name    : VideoHandler
+        vendor_id       : [0][0][0][0]
+        encoder         : Lavc61.3.100 wrapped_avframe
+[out#0/null @ 0xd292e40] video:928KiB audio:0KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: unknown
+frame= 2160 fps=824 q=-0.0 Lsize=N/A time=00:00:36.00 bitrate=N/A speed=13.7x
+
+frame=472
+fps=0.00
+stream_0_0_q=-0.0
+bitrate=N/A
+total_size=N/A
+out_time_us=7883333
+out_time_ms=7883333
+out_time=00:00:07.883333
+dup_frames=0
+drop_frames=0
+speed=15.8x
+progress=continue
+frame=1004
+fps=1003.44
+stream_0_0_q=-0.0
+bitrate=N/A
+total_size=N/A
+out_time_us=16733333
+out_time_ms=16733333
+out_time=00:00:16.733333
+dup_frames=0
+drop_frames=0
+speed=16.7x
+progress=continue
+frame=1461
+fps=973.37
+stream_0_0_q=-0.0
+bitrate=N/A
+total_size=N/A
+out_time_us=24350000
+out_time_ms=24350000
+out_time=00:00:24.350000
+dup_frames=0
+drop_frames=0
+speed=16.2x
+progress=continue
+frame=1805
+fps=900.45
+stream_0_0_q=-0.0
+bitrate=N/A
+total_size=N/A
+out_time_us=30083333
+out_time_ms=30083333
+out_time=00:00:30.083333
+dup_frames=0
+drop_frames=0
+speed=  15x
+progress=continue
+frame=2096
+fps=835.80
+stream_0_0_q=-0.0
+bitrate=N/A
+total_size=N/A
+out_time_us=34933333
+out_time_ms=34933333
+out_time=00:00:34.933333
+dup_frames=0
+drop_frames=0
+speed=13.9x
+progress=continue
+frame=2160
+fps=823.78
+stream_0_0_q=-0.0
+bitrate=N/A
+total_size=N/A
+out_time_us=36000000
+out_time_ms=36000000
+out_time=00:00:36.000000
+dup_frames=0
+drop_frames=0
+speed=13.7x
+progress=end
