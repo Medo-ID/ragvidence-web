@@ -96,12 +96,40 @@
       @page { margin: 12mm; }
       body, .hero, section, summary, .run-summary, .composition a { background: #fff; color: #172b2d; }
       main { width: 100%; margin: 0; }
+      body { font-size: 11pt; line-height: 1.5; }
+      h1 { font-size: 24pt; }
+      h2 { font-size: 18pt; }
+      h3 { font-size: 12pt; }
+      h4 { font-size: 11pt; }
+      dt, .summary-metrics, .hit-meta, .config, .status { font-size: 10pt; }
+      code, pre { font-size: 9.5pt; }
+      p { margin-bottom: 6px; }
+      dl { margin-top: 8px; }
+      section { margin: 12px 0; }
+      .comparison { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+      .run-summary { padding: 12px; }
+      .metrics { gap: 6px 12px; }
+      .evidence-ids { margin: 8px 0; }
+      .evidence-change { margin-bottom: 12px; padding: 8px 12px; }
+      .hits { margin-top: 8px; gap: 12px; }
+      .hit { padding-top: 10px; }
+      .question-heading { display: inline; margin: 0 0 0 12px; }
+      .summary-metrics { gap: 4px 12px; }
+      .metrics > div { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px; }
+      .metrics dd { margin: 0; }
+      .metrics dt::after { content: ":"; }
+      .evidence-ids { font-size: 10pt; }
+      .hit h4, .hit-meta { margin-bottom: 4px; }
+      .preview { margin: 6px 0 0; font-size: 10.5pt; line-height: 1.4; }
       .hero { padding: 0 0 16px; border-radius: 0; border-bottom: 2px solid #063f47; }
       .hero-copy, .hero-meta { color: #172b2d; }
       section { padding: 16px; }
       .report-nav, .font-license { display: none; }
-      .runs { grid-template-columns: 1fr; }
-      .run + .run { border-left: 0; border-top: 1px solid var(--line); padding: 16px 0 0; }
+      .runs { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+      .run + .run { border-left: 1px solid var(--line); border-top: 0; padding: 0 0 0 16px; }
+      .question-card { break-inside: avoid; }
+      .investigation { padding: 12px; }
+      summary { padding: 12px; }
       details::details-content { display: block; content-visibility: visible; }
       details:not([open]) > :not(summary) { display: block !important; }
       summary, h2, h3, h4 { break-after: avoid; }
@@ -123,7 +151,7 @@
     <p class="hero-copy">
         Evidence sufficiency improved from 60% to 90%.
     </p>
-<div class="outcomes"><span>3 questions recovered</span><span>0 regressions</span><span>1 unresolved failure</span></div>    <div class="hero-meta"><span>Generated 2026-10-13T11:03:59+00:00</span><span>Artifact schema v1</span></div>
+<div class="outcomes"><span>3 questions recovered</span><span>0 regressions</span><span>1 unresolved failure</span></div>    <div class="hero-meta"><span>Generated 2026-10-13T11:18:05+00:00</span><span>Artifact schema v1</span></div>
   </header>
   <nav class="report-nav" aria-label="Report navigation">
     <a href="#summary">Summary</a>
@@ -137,7 +165,7 @@
     <p class="rate">60%</p>
     <p>6 / 10 answerable questions sufficient</p>
     <p class="config">Strategy: BM25 · Representation: body · k=2</p>
-    <p class="config">Index time: 105.9 ms (secondary run metadata)</p>
+    <p class="config">Index time: 131.3 ms (secondary run metadata)</p>
   </div>
   <div class="run-summary">
     <h3>Intervention · bm25-heading_context</h3>
@@ -1229,9 +1257,9 @@ Teams moving from Orion DeskHub firmware 4.2 to Atlas Dock firmware 4.2 should n
     <div class="metadata">  <div>
     <h3>Baseline · bm25-body</h3>
     <dl>
-      <div><dt>Run ID</dt><dd>769c85a80f45</dd></div>
-      <div><dt>Run created</dt><dd>2026-10-13T11:03:59+00:00</dd></div>
-      <div><dt>Dataset hash</dt><dd>caea580e0969e1ec3447ad413e54f595584680eae8b6524aee09d28e948ca515</dd></div>
+      <div><dt>Run ID</dt><dd>ee71bf462992</dd></div>
+      <div><dt>Run created</dt><dd>2026-10-13T11:18:05+00:00</dd></div>
+      <div><dt>Dataset hash</dt><dd>f7702c7d14e97c796385410be045449a8eccf8c5a7550656071eae0dcaed2d56</dd></div>
       <div><dt>Product version</dt><dd>0.1.0</dd></div>
       <div><dt>Python version</dt><dd>3.12.14</dd></div>
       <div><dt>Platform</dt><dd>Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.43</dd></div>
@@ -1242,9 +1270,9 @@ Teams moving from Orion DeskHub firmware 4.2 to Atlas Dock firmware 4.2 should n
   <div>
     <h3>Intervention · bm25-heading_context</h3>
     <dl>
-      <div><dt>Run ID</dt><dd>be6f31ab71fe</dd></div>
-      <div><dt>Run created</dt><dd>2026-10-13T11:03:59+00:00</dd></div>
-      <div><dt>Dataset hash</dt><dd>caea580e0969e1ec3447ad413e54f595584680eae8b6524aee09d28e948ca515</dd></div>
+      <div><dt>Run ID</dt><dd>515f2f28ad90</dd></div>
+      <div><dt>Run created</dt><dd>2026-10-13T11:18:05+00:00</dd></div>
+      <div><dt>Dataset hash</dt><dd>f7702c7d14e97c796385410be045449a8eccf8c5a7550656071eae0dcaed2d56</dd></div>
       <div><dt>Product version</dt><dd>0.1.0</dd></div>
       <div><dt>Python version</dt><dd>3.12.14</dd></div>
       <div><dt>Platform</dt><dd>Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.43</dd></div>

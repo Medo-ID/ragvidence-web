@@ -21,6 +21,7 @@ try {
   browser = await chromium.launch({ env: { ...process.env, ...(process.argv[3] ? { LD_LIBRARY_PATH: process.argv[3] } : {}) } });
   const page = await browser.newPage();
   page.on("pageerror", error => observations.errors.push(error.message));
+  page.on("console", message => { if (message.type() === "error") observations.errors.push(message.text()); });
   page.on("request", request => { if (!request.url().startsWith("http://127.0.0.1:3003") && !request.url().startsWith("data:")) observations.external.push(request.url()); });
   const widths = milestone === "milestone-9" || milestone === "milestone-11" || milestone === "baseline-web" ? [[360,800],[390,844],[768,1024],[1280,800],[1440,900],[1920,1080]] : [[390,844],[1440,900]];
   for (const [width, height] of widths) {
@@ -35,9 +36,11 @@ try {
         }
       }
       if (name === "docs" && width === 390) {
-        const disclosures = page.locator("details");
-        for (const element of await disclosures.all()) await element.evaluate(el => { el.open = true; });
-        await page.screenshot({ path: `${directory}/docs-disclosures.png` });
+        await page.locator("details[data-docs-browser]").evaluate(el => { el.open = true; });
+        await page.screenshot({ path: `${directory}/docs-navigation.png` });
+        await page.locator("details[data-docs-browser]").evaluate(el => { el.open = false; });
+        await page.locator(".on-this-page details").evaluate(el => { el.open = true; });
+        await page.screenshot({ path: `${directory}/docs-toc.png` });
       }
     }
   }

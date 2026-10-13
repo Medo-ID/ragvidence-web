@@ -94,3 +94,20 @@ Copied exact generated output into the website; SHA-256
 All website checks and 36 browser tests passed. The HTTP verifier now distinguishes
 remote attributes/CSS URLs from harmless URL text in dataset prose/font licensing;
 offline browser checks confirm zero remote requests.
+
+## Milestone 9 — Responsive and accessibility QA
+
+All six requested viewports pass for landing, docs, and report. Installation stays
+visible, desktop article width exceeds 650px with both rails, compact disclosures
+work, and docs links have 44px touch targets. All available checks and 42 browser
+tests pass, including visible focus, active sections, copying, motion preferences,
+and offline/no-JS report behavior. No console errors or unexpected requests.
+
+Browser matrix covers seven generated report variants at 360/1440px, including all
+change classes, N/A, baseline-only/empty hits, long hostile content, and missing
+diagnosis. No executable tags or overflow. Grayscale review preserves classification
+meaning through labels/arrows. PDF inspection verifies all 12 questions and 48
+ranked evidence items; print spacing reduces 28 pages to 18 without hiding content.
+Reviewed actual rasterized summary and recovered-evidence PDF pages. These are
+Chromium checks and visual review, not universal assistive-technology or cross-browser
+certification.

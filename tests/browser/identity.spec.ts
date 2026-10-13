@@ -2,6 +2,25 @@ import { expect, test } from "@playwright/test";
 import { resolve } from "node:path";
 import { pathToFileURL } from "node:url";
 
+for (const [width, height] of [[360,800],[390,844],[768,1024],[1280,800],[1440,900],[1920,1080]]) {
+  test(`responsive navigation and reading widths are usable at ${width}px`, async ({ page }) => {
+    await page.setViewportSize({ width, height });
+    await page.goto("/docs/semantic-workflow");
+    const content = await page.locator(".doc-content").boundingBox();
+    expect(content!.width).toBeGreaterThan(width < 768 ? 320 : width < 1280 ? 650 : 650);
+    if (width < 1280) {
+      await expect(page.locator(".on-this-page > nav")).toBeHidden();
+      await page.locator("details[data-docs-browser] summary").click();
+      const link = page.locator("details[data-docs-browser]").getByRole("link", { name: "Installation", exact: true });
+      expect((await link.boundingBox())!.height).toBeGreaterThanOrEqual(44);
+    } else {
+      await expect(page.locator(".on-this-page > nav")).toBeVisible();
+      await expect(page.locator(".docs-shell > aside")).toBeVisible();
+    }
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  });
+}
+
 test("report works offline without scripts and prints closed ranked evidence", async ({ browser }) => {
   const context = await browser.newContext({ javaScriptEnabled: false, viewport: { width: 390, height: 844 } });
   const page = await context.newPage();

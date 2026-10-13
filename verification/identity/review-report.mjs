@@ -32,6 +32,10 @@ try {
   if (observations.print.some(el => el.height <= 0 || el.visibility !== "visible")) throw new Error("Collapsed evidence missing in print");
   await page.pdf({ path: `${directory}/report.pdf`, format: "A4", printBackground: true });
   await page.screenshot({ path: `${directory}/print-preview.png` });
+  await page.emulateMedia({ media: "screen" });
+  await page.goto(pathToFileURL(report).href);
+  await page.locator("body").evaluate(el => { el.style.filter = "grayscale(1)"; });
+  await page.locator("#change-analysis").screenshot({ path: `${directory}/grayscale-changes.png` });
   if (observations.requests.length || observations.views.some(view => view.overflow)) throw new Error(JSON.stringify(observations));
 } finally {
   await writeFile(`${directory}/observations.json`, JSON.stringify(observations, null, 2) + "\n");
