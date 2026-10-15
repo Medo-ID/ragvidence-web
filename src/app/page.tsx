@@ -16,7 +16,7 @@ export default function Home() {
               <span className="size-1.5 bg-success" aria-hidden="true" />
               Local-first · CLI-native · Evidence-level
             </div>
-            <h1 className="mt-5 max-w-xl text-balance text-[2.4rem] font-semibold leading-[1.08] tracking-[-0.05em] text-ink sm:text-6xl lg:text-[3.2rem] xl:text-6xl">
+            <h1 className="mt-5 max-w-xl text-balance text-[2.4rem] font-semibold leading-[1.08] tracking-tighter text-ink sm:text-6xl lg:text-[3.2rem] xl:text-6xl">
               See whether your RAG change{" "}
               <span className="text-signal-ink">helped.</span>
             </h1>
