@@ -5,7 +5,8 @@
 The website now describes one fully free Apache-2.0 CLI for diagnosing and
 comparing retrieval on users' data. The CLI repository remained read-only.
 The previous cleanup was reviewed and checkpointed separately as `02ad400`.
-Current content, examples, report downloads, licenses and media use production
+Implementation commit: `0ff85aa`. The final report/media provenance records that
+exact source commit. Current content, examples, report downloads, licenses and media use production
 PyPI 0.2.0; provenance and the claim map are in [maintaining.md](maintaining.md).
 
 Local checks: Node 24.20.0, npm 11.19.0, Python 3.12.14, Chromium via Playwright.
@@ -27,7 +28,7 @@ Local checks: Node 24.20.0, npm 11.19.0, Python 3.12.14, Chromium via Playwright
 | PyPI install / uv upgrade / version / health / verify | Pass in isolated `/tmp` environments; personal installation unchanged |
 | Installed CLI examples and schemas | Pass: 42 command/help checks, including formats, suites, exact-span imports, PDF and wheel license copies |
 | Production wheel checksum | Matches published SHA-256 and handoff |
-| Reachable-history secret scan | Gitleaks 8.16.0: 41 commits, no leaks |
+| Reachable-history secret scan | Gitleaks 8.16.0: all reachable commits, no leaks |
 | Publication snapshot secret scan | Gitleaks 8.16.0: no leaks in maintained source/assets |
 
 An exploratory whole-directory scan included Next's ignored preview/cache keys

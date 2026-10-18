@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "kind": "comparison",
-  "generated_at": "2026-10-18T18:04:15.036689+00:00",
+  "generated_at": "2026-10-18T18:21:02.078692+00:00",
   "state": "complete",
   "input_name": "docs",
   "evaluation_level": "reviewed_comparison",
@@ -19,7 +19,7 @@
       "report": {
         "schema_version": 1,
         "kind": "inspection",
-        "generated_at": "2026-10-18T18:04:14.915450+00:00",
+        "generated_at": "2026-10-18T18:21:01.962013+00:00",
         "evaluation_level": "reviewed_evaluation",
         "preparation": {
           "implementation": "portable-files-v1",
@@ -38,11 +38,11 @@
           }
         },
         "manifest": {
-          "run_id": "e3431586ace5",
+          "run_id": "037e0dfdb1b9",
           "schema_version": 2,
           "hash_algorithm": "canonical-json-v1",
           "evaluation_level": "reviewed_evaluation",
-          "created_at": "2026-10-18T18:04:14+00:00",
+          "created_at": "2026-10-18T18:21:01+00:00",
           "product_version": "0.2.0",
           "python_version": "3.12.14",
           "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.43",
@@ -84,7 +84,7 @@
             "query_variants": {},
             "reranker_model": null
           },
-          "index_time_ms": 90.44391899806214,
+          "index_time_ms": 90.23595499820658,
           "warnings": []
         },
         "evaluation": {
@@ -254,7 +254,7 @@
                 "line_end": 5
               }
             ],
-            "query_time_ms": 3.432551002333639,
+            "query_time_ms": 3.3007399979396723,
             "context_characters": 93,
             "context_hash": "12b666efab1d77f87c5ab8ee8cd7ad5367a91f6555a3eaf4282073f7546f9eb7",
             "observations": [],
@@ -292,7 +292,7 @@
             "stages": [
               {
                 "name": "retrieval",
-                "elapsed_ms": 1.0712350012909155,
+                "elapsed_ms": 1.0066920003737323,
                 "hits": [
                   {
                     "source_unit_id": "passage-5bdc4916bcb2462d0250",
@@ -321,7 +321,7 @@
               },
               {
                 "name": "context_selection",
-                "elapsed_ms": 0.050254999223398045,
+                "elapsed_ms": 0.05174799662199803,
                 "hits": [
                   {
                     "source_unit_id": "passage-5bdc4916bcb2462d0250",
@@ -376,7 +376,7 @@
                 "line_end": 9
               }
             ],
-            "query_time_ms": 0.21622100030072033,
+            "query_time_ms": 0.22229300157050602,
             "context_characters": 99,
             "context_hash": "3a614c027a26a3e6ad6e99d73dd050e7c11d51167df98f22c88788acb46fdf2b",
             "observations": [],
@@ -413,7 +413,7 @@
             "stages": [
               {
                 "name": "retrieval",
-                "elapsed_ms": 0.12075899940100498,
+                "elapsed_ms": 0.1346060016658157,
                 "hits": [
                   {
                     "source_unit_id": "passage-4be5e239b1ab47982a8e",
@@ -442,7 +442,7 @@
               },
               {
                 "name": "context_selection",
-                "elapsed_ms": 0.03207099871360697,
+                "elapsed_ms": 0.030398001399589702,
                 "hits": [
                   {
                     "source_unit_id": "passage-4be5e239b1ab47982a8e",
@@ -497,7 +497,7 @@
                 "line_end": 13
               }
             ],
-            "query_time_ms": 0.11922700286959298,
+            "query_time_ms": 0.1219120022142306,
             "context_characters": 98,
             "context_hash": "7c804446513508f27f1c0f5042fe24b9915c0973f768acb27e1807629f8bd769",
             "observations": [],
@@ -532,7 +532,7 @@
             "stages": [
               {
                 "name": "retrieval",
-                "elapsed_ms": 0.06217800182639621,
+                "elapsed_ms": 0.06290899909799919,
                 "hits": [
                   {
                     "source_unit_id": "passage-32a3368b3b75076e202c",
@@ -561,7 +561,7 @@
               },
               {
                 "name": "context_selection",
-                "elapsed_ms": 0.02180099909310229,
+                "elapsed_ms": 0.023254000552697107,
                 "hits": [
                   {
                     "source_unit_id": "passage-32a3368b3b75076e202c",
@@ -616,7 +616,7 @@
                 "line_end": 17
               }
             ],
-            "query_time_ms": 0.10794499758048914,
+            "query_time_ms": 0.14090799959376454,
             "context_characters": 98,
             "context_hash": "222f297b0605ceef1a9d28663d84c2da3a0a9445cfe2bf19edca6758653f61cd",
             "observations": [],
@@ -651,7 +651,7 @@
             "stages": [
               {
                 "name": "retrieval",
-                "elapsed_ms": 0.054664000344928354,
+                "elapsed_ms": 0.05601600059890188,
                 "hits": [
                   {
                     "source_unit_id": "passage-1518103967d65de40d95",
@@ -680,7 +680,7 @@
               },
               {
                 "name": "context_selection",
-                "elapsed_ms": 0.02035799843724817,
+                "elapsed_ms": 0.032312000257661566,
                 "hits": [
                   {
                     "source_unit_id": "passage-1518103967d65de40d95",
@@ -719,7 +719,7 @@
       },
       "resources": {
         "query_ms": {
-          "mean_known": 0.9689860007711104,
+          "mean_known": 0.9464632503295434,
           "known_count": 4,
           "missing_count": 0
         },
@@ -741,7 +741,7 @@
           "missing_count": 0
         },
         "context_unit": "characters",
-        "index_ms": 90.44391899806214,
+        "index_ms": 90.23595499820658,
         "vector_cache": "not_applicable",
         "model_cache": "unknown"
       },
@@ -759,10 +759,10 @@
         {
           "trial": 0,
           "reused": false,
-          "artifact_directory": "jobs/bm25/trial-0/attempt-20261018T180414-8fa721a5ae40",
+          "artifact_directory": "jobs/bm25/trial-0/attempt-20261018T182101-5bc44b6b8a03",
           "resources": {
             "query_ms": {
-              "mean_known": 0.9689860007711104,
+              "mean_known": 0.9464632503295434,
               "known_count": 4,
               "missing_count": 0
             },
@@ -784,7 +784,7 @@
               "missing_count": 0
             },
             "context_unit": "characters",
-            "index_ms": 90.44391899806214,
+            "index_ms": 90.23595499820658,
             "vector_cache": "not_applicable",
             "model_cache": "unknown"
           }
@@ -819,7 +819,7 @@
       "split_resources": {
         "dev": {
           "query_ms": {
-            "mean_known": 0.9689860007711104,
+            "mean_known": 0.9464632503295434,
             "known_count": 4,
             "missing_count": 0
           },
@@ -841,7 +841,7 @@
             "missing_count": 0
           },
           "context_unit": "characters",
-          "index_ms": 90.44391899806214,
+          "index_ms": 90.23595499820658,
           "vector_cache": "not_applicable",
           "model_cache": "unknown"
         },
@@ -863,7 +863,7 @@
             "missing_count": 0
           },
           "context_unit": null,
-          "index_ms": 90.44391899806214,
+          "index_ms": 90.23595499820658,
           "vector_cache": "unavailable",
           "model_cache": "unknown"
         }
@@ -886,7 +886,7 @@
       "report": {
         "schema_version": 1,
         "kind": "inspection",
-        "generated_at": "2026-10-18T18:04:14.927251+00:00",
+        "generated_at": "2026-10-18T18:21:01.970210+00:00",
         "evaluation_level": "reviewed_evaluation",
         "preparation": {
           "implementation": "portable-files-v1",
@@ -905,11 +905,11 @@
           }
         },
         "manifest": {
-          "run_id": "32caf9305b09",
+          "run_id": "cb62869e6242",
           "schema_version": 2,
           "hash_algorithm": "canonical-json-v1",
           "evaluation_level": "reviewed_evaluation",
-          "created_at": "2026-10-18T18:04:14+00:00",
+          "created_at": "2026-10-18T18:21:01+00:00",
           "product_version": "0.2.0",
           "python_version": "3.12.14",
           "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.43",
@@ -951,7 +951,7 @@
             "query_variants": {},
             "reranker_model": null
           },
-          "index_time_ms": 0.7764050023979507,
+          "index_time_ms": 0.825747996714199,
           "warnings": [
             "Child retrieval returns full parent source units. Evidence metrics describe parent context; they do not establish that the matching child contains every fact. Child candidate limits can return fewer than k unique parents."
           ]
@@ -1123,7 +1123,7 @@
                 "line_end": 17
               }
             ],
-            "query_time_ms": 0.2000599997700192,
+            "query_time_ms": 0.30205399889382534,
             "context_characters": 713,
             "context_hash": "3b5a4e8ae04775940ba9a77c3d0decd0902b8c858a35f8fe631b46c96803b3c6",
             "observations": [],
@@ -1160,7 +1160,7 @@
             "stages": [
               {
                 "name": "children",
-                "elapsed_ms": 0.1045989993144758,
+                "elapsed_ms": 0.10649300020304509,
                 "hits": [
                   {
                     "source_unit_id": "child-0",
@@ -1316,7 +1316,7 @@
               },
               {
                 "name": "parent_expansion",
-                "elapsed_ms": 0.007104001269908622,
+                "elapsed_ms": 0.014877998182782903,
                 "hits": [
                   {
                     "source_unit_id": "doc-aaa8b734a101d7f34afb",
@@ -1339,7 +1339,7 @@
               },
               {
                 "name": "retrieval",
-                "elapsed_ms": 0.12875399988843128,
+                "elapsed_ms": 0.2124839993484784,
                 "hits": [
                   {
                     "source_unit_id": "doc-aaa8b734a101d7f34afb",
@@ -1372,7 +1372,7 @@
               },
               {
                 "name": "context_selection",
-                "elapsed_ms": 0.0327320012729615,
+                "elapsed_ms": 0.0383830010832753,
                 "hits": [
                   {
                     "source_unit_id": "doc-aaa8b734a101d7f34afb",
@@ -1432,7 +1432,7 @@
                 "line_end": 17
               }
             ],
-            "query_time_ms": 0.1466590001655277,
+            "query_time_ms": 0.16806900021038018,
             "context_characters": 713,
             "context_hash": "3b5a4e8ae04775940ba9a77c3d0decd0902b8c858a35f8fe631b46c96803b3c6",
             "observations": [],
@@ -1469,7 +1469,7 @@
             "stages": [
               {
                 "name": "children",
-                "elapsed_ms": 0.07625400030519813,
+                "elapsed_ms": 0.09070300075109117,
                 "hits": [
                   {
                     "source_unit_id": "child-3",
@@ -1625,7 +1625,7 @@
               },
               {
                 "name": "parent_expansion",
-                "elapsed_ms": 0.005990998033666983,
+                "elapsed_ms": 0.006140999175840989,
                 "hits": [
                   {
                     "source_unit_id": "doc-aaa8b734a101d7f34afb",
@@ -1648,7 +1648,7 @@
               },
               {
                 "name": "retrieval",
-                "elapsed_ms": 0.09378799950354733,
+                "elapsed_ms": 0.10927699986496009,
                 "hits": [
                   {
                     "source_unit_id": "doc-aaa8b734a101d7f34afb",
@@ -1681,7 +1681,7 @@
               },
               {
                 "name": "context_selection",
-                "elapsed_ms": 0.020078001398360357,
+                "elapsed_ms": 0.02230300015071407,
                 "hits": [
                   {
                     "source_unit_id": "doc-aaa8b734a101d7f34afb",
@@ -1741,7 +1741,7 @@
                 "line_end": 17
               }
             ],
-            "query_time_ms": 0.1396449988533277,
+            "query_time_ms": 0.14651799938292243,
             "context_characters": 713,
             "context_hash": "3b5a4e8ae04775940ba9a77c3d0decd0902b8c858a35f8fe631b46c96803b3c6",
             "observations": [],
@@ -1776,7 +1776,7 @@
             "stages": [
               {
                 "name": "children",
-                "elapsed_ms": 0.07340900265262462,
+                "elapsed_ms": 0.07850899783079512,
                 "hits": [
                   {
                     "source_unit_id": "child-4",
@@ -1932,7 +1932,7 @@
               },
               {
                 "name": "parent_expansion",
-                "elapsed_ms": 0.004778998118126765,
+                "elapsed_ms": 0.004458997864276171,
                 "hits": [
                   {
                     "source_unit_id": "doc-aaa8b734a101d7f34afb",
@@ -1955,7 +1955,7 @@
               },
               {
                 "name": "retrieval",
-                "elapsed_ms": 0.08837800123728812,
+                "elapsed_ms": 0.09374799992656335,
                 "hits": [
                   {
                     "source_unit_id": "doc-aaa8b734a101d7f34afb",
@@ -1988,7 +1988,7 @@
               },
               {
                 "name": "context_selection",
-                "elapsed_ms": 0.018835999071598053,
+                "elapsed_ms": 0.020509000023594126,
                 "hits": [
                   {
                     "source_unit_id": "doc-aaa8b734a101d7f34afb",
@@ -2048,7 +2048,7 @@
                 "line_end": 17
               }
             ],
-            "query_time_ms": 0.1651640013733413,
+            "query_time_ms": 0.1689810014795512,
             "context_characters": 713,
             "context_hash": "3b5a4e8ae04775940ba9a77c3d0decd0902b8c858a35f8fe631b46c96803b3c6",
             "observations": [],
@@ -2083,7 +2083,7 @@
             "stages": [
               {
                 "name": "children",
-                "elapsed_ms": 0.08824699762044474,
+                "elapsed_ms": 0.09911899906001054,
                 "hits": [
                   {
                     "source_unit_id": "child-7",
@@ -2239,7 +2239,7 @@
               },
               {
                 "name": "parent_expansion",
-                "elapsed_ms": 0.00464899858343415,
+                "elapsed_ms": 0.004319001163821667,
                 "hits": [
                   {
                     "source_unit_id": "doc-aaa8b734a101d7f34afb",
@@ -2262,7 +2262,7 @@
               },
               {
                 "name": "retrieval",
-                "elapsed_ms": 0.1089570032490883,
+                "elapsed_ms": 0.11735299995052628,
                 "hits": [
                   {
                     "source_unit_id": "doc-aaa8b734a101d7f34afb",
@@ -2295,7 +2295,7 @@
               },
               {
                 "name": "context_selection",
-                "elapsed_ms": 0.02085999949485995,
+                "elapsed_ms": 0.02047899761237204,
                 "hits": [
                   {
                     "source_unit_id": "doc-aaa8b734a101d7f34afb",
@@ -2339,7 +2339,7 @@
       },
       "resources": {
         "query_ms": {
-          "mean_known": 0.16288200004055398,
+          "mean_known": 0.19640549999166979,
           "known_count": 4,
           "missing_count": 0
         },
@@ -2361,7 +2361,7 @@
           "missing_count": 0
         },
         "context_unit": "characters",
-        "index_ms": 0.7764050023979507,
+        "index_ms": 0.825747996714199,
         "vector_cache": "not_applicable",
         "model_cache": "unknown"
       },
@@ -2379,10 +2379,10 @@
         {
           "trial": 0,
           "reused": false,
-          "artifact_directory": "jobs/parent-child/trial-0/attempt-20261018T180414-bf91a8f16c8c",
+          "artifact_directory": "jobs/parent-child/trial-0/attempt-20261018T182101-57d2b0962c03",
           "resources": {
             "query_ms": {
-              "mean_known": 0.16288200004055398,
+              "mean_known": 0.19640549999166979,
               "known_count": 4,
               "missing_count": 0
             },
@@ -2404,7 +2404,7 @@
               "missing_count": 0
             },
             "context_unit": "characters",
-            "index_ms": 0.7764050023979507,
+            "index_ms": 0.825747996714199,
             "vector_cache": "not_applicable",
             "model_cache": "unknown"
           }
@@ -2439,7 +2439,7 @@
       "split_resources": {
         "dev": {
           "query_ms": {
-            "mean_known": 0.16288200004055398,
+            "mean_known": 0.19640549999166979,
             "known_count": 4,
             "missing_count": 0
           },
@@ -2461,7 +2461,7 @@
             "missing_count": 0
           },
           "context_unit": "characters",
-          "index_ms": 0.7764050023979507,
+          "index_ms": 0.825747996714199,
           "vector_cache": "not_applicable",
           "model_cache": "unknown"
         },
@@ -2483,7 +2483,7 @@
             "missing_count": 0
           },
           "context_unit": null,
-          "index_ms": 0.7764050023979507,
+          "index_ms": 0.825747996714199,
           "vector_cache": "unavailable",
           "model_cache": "unknown"
         }
@@ -2506,7 +2506,7 @@
       "report": {
         "schema_version": 1,
         "kind": "inspection",
-        "generated_at": "2026-10-18T18:04:14.940293+00:00",
+        "generated_at": "2026-10-18T18:21:01.983640+00:00",
         "evaluation_level": "reviewed_evaluation",
         "preparation": {
           "implementation": "portable-files-v1",
@@ -2525,11 +2525,11 @@
           }
         },
         "manifest": {
-          "run_id": "3a363f822026",
+          "run_id": "d2bd272c1f5f",
           "schema_version": 2,
           "hash_algorithm": "canonical-json-v1",
           "evaluation_level": "reviewed_evaluation",
-          "created_at": "2026-10-18T18:04:14+00:00",
+          "created_at": "2026-10-18T18:21:01+00:00",
           "product_version": "0.2.0",
           "python_version": "3.12.14",
           "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.43",
@@ -2582,7 +2582,7 @@
               "prompt_version": "extractive-spans-v1"
             }
           },
-          "index_time_ms": 0.7207900016510393,
+          "index_time_ms": 0.8261689981736708,
           "warnings": [
             "Extractive compression can remove required facts or qualifications; evidence is rescored from only the returned spans."
           ]
@@ -2802,7 +2802,7 @@
                 "context_part": 2
               }
             ],
-            "query_time_ms": 0.6617569997615647,
+            "query_time_ms": 0.5741109998780303,
             "context_characters": 75,
             "context_hash": "120f4463ddf7f8c302a3a3115862e534e83f6c693d0e22e56f8e1a86ffda4e39",
             "observations": [],
@@ -2840,7 +2840,7 @@
             "stages": [
               {
                 "name": "retrieval",
-                "elapsed_ms": 0.12449700079741888,
+                "elapsed_ms": 0.14205899788066745,
                 "hits": [
                   {
                     "source_unit_id": "passage-5bdc4916bcb2462d0250",
@@ -2959,7 +2959,7 @@
               },
               {
                 "name": "compression",
-                "elapsed_ms": 0.3921450006600935,
+                "elapsed_ms": 0.348312001733575,
                 "hits": [
                   {
                     "source_unit_id": "passage-5bdc4916bcb2462d0250",
@@ -3219,7 +3219,7 @@
               },
               {
                 "name": "context_selection",
-                "elapsed_ms": 0.07663600263185799,
+                "elapsed_ms": 0.030297000193968415,
                 "hits": [
                   {
                     "source_unit_id": "passage-5bdc4916bcb2462d0250",
@@ -3333,7 +3333,7 @@
                 "context_part": 2
               }
             ],
-            "query_time_ms": 0.39501100036432035,
+            "query_time_ms": 0.4350359995441977,
             "context_characters": 66,
             "context_hash": "8a28741798b7a689f8895cdece7005ec1fc4d6c5e9f34e980de8343fee74b89b",
             "observations": [],
@@ -3370,7 +3370,7 @@
             "stages": [
               {
                 "name": "retrieval",
-                "elapsed_ms": 0.10408799789729528,
+                "elapsed_ms": 0.09299700104747899,
                 "hits": [
                   {
                     "source_unit_id": "passage-4be5e239b1ab47982a8e",
@@ -3489,7 +3489,7 @@
               },
               {
                 "name": "compression",
-                "elapsed_ms": 0.20507899898802862,
+                "elapsed_ms": 0.2553249978518579,
                 "hits": [
                   {
                     "source_unit_id": "passage-4be5e239b1ab47982a8e",
@@ -3749,7 +3749,7 @@
               },
               {
                 "name": "context_selection",
-                "elapsed_ms": 0.0386139981856104,
+                "elapsed_ms": 0.037431000237120315,
                 "hits": [
                   {
                     "source_unit_id": "passage-4be5e239b1ab47982a8e",
@@ -3863,7 +3863,7 @@
                 "context_part": 2
               }
             ],
-            "query_time_ms": 0.3499650010780897,
+            "query_time_ms": 0.3233139977965038,
             "context_characters": 80,
             "context_hash": "1b19fd8fb3a391a16f76698e603b2c82984ff69139addd4edbd5c64470a82e6f",
             "observations": [],
@@ -3898,7 +3898,7 @@
             "stages": [
               {
                 "name": "retrieval",
-                "elapsed_ms": 0.07882000136305578,
+                "elapsed_ms": 0.08480199903715402,
                 "hits": [
                   {
                     "source_unit_id": "passage-32a3368b3b75076e202c",
@@ -4017,7 +4017,7 @@
               },
               {
                 "name": "compression",
-                "elapsed_ms": 0.20618200142052956,
+                "elapsed_ms": 0.17413000023225322,
                 "hits": [
                   {
                     "source_unit_id": "passage-32a3368b3b75076e202c",
@@ -4159,7 +4159,7 @@
               },
               {
                 "name": "context_selection",
-                "elapsed_ms": 0.022483000066131353,
+                "elapsed_ms": 0.022352000087266788,
                 "hits": [
                   {
                     "source_unit_id": "passage-32a3368b3b75076e202c",
@@ -4273,7 +4273,7 @@
                 "context_part": 2
               }
             ],
-            "query_time_ms": 0.5401059970608912,
+            "query_time_ms": 1.3479410008585546,
             "context_characters": 55,
             "context_hash": "18aa5af5448804e043abe7858f6f406fd7039c5d1582235b870c9c42bc93d7a5",
             "observations": [],
@@ -4308,7 +4308,7 @@
             "stages": [
               {
                 "name": "retrieval",
-                "elapsed_ms": 0.301151998428395,
+                "elapsed_ms": 0.07471200297004543,
                 "hits": [
                   {
                     "source_unit_id": "passage-1518103967d65de40d95",
@@ -4427,7 +4427,7 @@
               },
               {
                 "name": "compression",
-                "elapsed_ms": 0.17017299978761002,
+                "elapsed_ms": 0.18633400031831115,
                 "hits": [
                   {
                     "source_unit_id": "passage-1518103967d65de40d95",
@@ -4517,7 +4517,7 @@
               },
               {
                 "name": "context_selection",
-                "elapsed_ms": 0.022723001166014,
+                "elapsed_ms": 0.026129997422685847,
                 "hits": [
                   {
                     "source_unit_id": "passage-1518103967d65de40d95",
@@ -4568,7 +4568,7 @@
       },
       "resources": {
         "query_ms": {
-          "mean_known": 0.4867097495662165,
+          "mean_known": 0.6701004995193216,
           "known_count": 4,
           "missing_count": 0
         },
@@ -4590,7 +4590,7 @@
           "missing_count": 0
         },
         "context_unit": "characters",
-        "index_ms": 0.7207900016510393,
+        "index_ms": 0.8261689981736708,
         "vector_cache": "not_applicable",
         "model_cache": "unknown"
       },
@@ -4608,10 +4608,10 @@
         {
           "trial": 0,
           "reused": false,
-          "artifact_directory": "jobs/compress/trial-0/attempt-20261018T180414-2d8fb679c40d",
+          "artifact_directory": "jobs/compress/trial-0/attempt-20261018T182101-544e2f9d121c",
           "resources": {
             "query_ms": {
-              "mean_known": 0.4867097495662165,
+              "mean_known": 0.6701004995193216,
               "known_count": 4,
               "missing_count": 0
             },
@@ -4633,7 +4633,7 @@
               "missing_count": 0
             },
             "context_unit": "characters",
-            "index_ms": 0.7207900016510393,
+            "index_ms": 0.8261689981736708,
             "vector_cache": "not_applicable",
             "model_cache": "unknown"
           }
@@ -4668,7 +4668,7 @@
       "split_resources": {
         "dev": {
           "query_ms": {
-            "mean_known": 0.4867097495662165,
+            "mean_known": 0.6701004995193216,
             "known_count": 4,
             "missing_count": 0
           },
@@ -4690,7 +4690,7 @@
             "missing_count": 0
           },
           "context_unit": "characters",
-          "index_ms": 0.7207900016510393,
+          "index_ms": 0.8261689981736708,
           "vector_cache": "not_applicable",
           "model_cache": "unknown"
         },
@@ -4712,7 +4712,7 @@
             "missing_count": 0
           },
           "context_unit": null,
-          "index_ms": 0.7207900016510393,
+          "index_ms": 0.8261689981736708,
           "vector_cache": "unavailable",
           "model_cache": "unknown"
         }

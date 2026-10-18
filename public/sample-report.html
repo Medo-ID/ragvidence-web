@@ -20,7 +20,7 @@ header,section{background:white;border:1px solid #d5dfda;border-radius:10px;padd
 <p class="meta">Strategy: bm25 · k=1 · 10 prepared passages</p>
 <p><strong>Evidence scope: exact_returned_spans</strong></p>
 <p class="meta">Reviewed evidence is scored against the union of exact original-text spans.</p><div class="scroll"><table><thead><tr><th>Split / slice</th><th>Sufficient / answerable</th><th>Coverage</th><th>MRR</th><th>Precision</th></tr></thead><tbody>
-<tr><td>dev / all</td><td>3 / 4</td><td>0.875</td><td>1.0</td><td>1.0</td></tr><tr><td>heldout / all</td><td>0 / 0</td><td>N/A</td><td>N/A</td><td>N/A</td></tr></tbody></table></div><p>Mean query time over 4 known values: 0.97 ms · 0 missing</p>
+<tr><td>dev / all</td><td>3 / 4</td><td>0.875</td><td>1.0</td><td>1.0</td></tr><tr><td>heldout / all</td><td>0 / 0</td><td>N/A</td><td>N/A</td><td>N/A</td></tr></tbody></table></div><p>Mean query time over 4 known values: 0.95 ms · 0 missing</p>
 <p>Mean rendered context: 161.25 characters · Original text characters: 97.0</p>
 <p>Supplied-usage cost estimate: N/A  · Pricing: unavailable</p>
 <details><summary>Configuration, criteria and separate timing trials</summary><pre>{
@@ -53,7 +53,7 @@ header,section{background:white;border:1px solid #d5dfda;border-radius:10px;padd
   "repeat_rankings_changed": false,
   "trials": [
     {
-      "artifact_directory": "jobs/bm25/trial-0/attempt-20261018T180414-8fa721a5ae40",
+      "artifact_directory": "jobs/bm25/trial-0/attempt-20261018T182101-5bc44b6b8a03",
       "resources": {
         "context_characters": {
           "known_count": 4,
@@ -66,11 +66,11 @@ header,section{background:white;border:1px solid #d5dfda;border-radius:10px;padd
           "mean_known": 161.25,
           "missing_count": 0
         },
-        "index_ms": 90.44391899806214,
+        "index_ms": 90.23595499820658,
         "model_cache": "unknown",
         "query_ms": {
           "known_count": 4,
-          "mean_known": 0.9689860007711104,
+          "mean_known": 0.9464632503295434,
           "missing_count": 0
         },
         "runtime_versions": {
@@ -106,7 +106,7 @@ Hold the reset button for eight seconds to clear pairing. The status light </pre
         "tokenizers": "0.23.3"
       }
     },
-    "elapsed_ms": 1.0712350012909155,
+    "elapsed_ms": 1.0066920003737323,
     "hits": [
       {
         "evidence_ids": [],
@@ -132,7 +132,7 @@ Hold the reset button for eight seconds to clear pairing. The status light </pre
       "skipped": [],
       "unit": "characters"
     },
-    "elapsed_ms": 0.050254999223398045,
+    "elapsed_ms": 0.05174799662199803,
     "hits": [
       {
         "evidence_ids": [],
@@ -165,7 +165,7 @@ The warranty lasts two years. Keep your receipt. Accidental water damage is excl
         "tokenizers": "0.23.3"
       }
     },
-    "elapsed_ms": 0.12075899940100498,
+    "elapsed_ms": 0.1346060016658157,
     "hits": [
       {
         "evidence_ids": [],
@@ -191,7 +191,7 @@ The warranty lasts two years. Keep your receipt. Accidental water damage is excl
       "skipped": [],
       "unit": "characters"
     },
-    "elapsed_ms": 0.03207099871360697,
+    "elapsed_ms": 0.030398001399589702,
     "hits": [
       {
         "evidence_ids": [],
@@ -224,7 +224,7 @@ Store the device in a cool, dry place. Charge it every three months when unused.
         "tokenizers": "0.23.3"
       }
     },
-    "elapsed_ms": 0.06217800182639621,
+    "elapsed_ms": 0.06290899909799919,
     "hits": [
       {
         "evidence_ids": [],
@@ -250,7 +250,7 @@ Store the device in a cool, dry place. Charge it every three months when unused.
       "skipped": [],
       "unit": "characters"
     },
-    "elapsed_ms": 0.02180099909310229,
+    "elapsed_ms": 0.023254000552697107,
     "hits": [
       {
         "evidence_ids": [],
@@ -283,7 +283,7 @@ Standard delivery takes five working days. Tracked delivery is available in Moro
         "tokenizers": "0.23.3"
       }
     },
-    "elapsed_ms": 0.054664000344928354,
+    "elapsed_ms": 0.05601600059890188,
     "hits": [
       {
         "evidence_ids": [],
@@ -309,7 +309,7 @@ Standard delivery takes five working days. Tracked delivery is available in Moro
       "skipped": [],
       "unit": "characters"
     },
-    "elapsed_ms": 0.02035799843724817,
+    "elapsed_ms": 0.032312000257661566,
     "hits": [
       {
         "evidence_ids": [],
@@ -329,7 +329,7 @@ Standard delivery takes five working days. Tracked delivery is available in Moro
 <p class="meta">Strategy: bm25 · k=1 · 10 prepared passages</p>
 <p><strong>Evidence scope: exact_returned_spans</strong></p>
 <p class="meta">Reviewed evidence is scored against the union of exact original-text spans.</p><p class="meta">Child retrieval returns full parent source units. Evidence metrics describe parent context; they do not establish that the matching child contains every fact. Child candidate limits can return fewer than k unique parents.</p><div class="scroll"><table><thead><tr><th>Split / slice</th><th>Sufficient / answerable</th><th>Coverage</th><th>MRR</th><th>Precision</th></tr></thead><tbody>
-<tr><td>dev / all</td><td>4 / 4</td><td>1.0</td><td>1.0</td><td>1.0</td></tr><tr><td>heldout / all</td><td>0 / 0</td><td>N/A</td><td>N/A</td><td>N/A</td></tr></tbody></table></div><p>Mean query time over 4 known values: 0.16 ms · 0 missing</p>
+<tr><td>dev / all</td><td>4 / 4</td><td>1.0</td><td>1.0</td><td>1.0</td></tr><tr><td>heldout / all</td><td>0 / 0</td><td>N/A</td><td>N/A</td><td>N/A</td></tr></tbody></table></div><p>Mean query time over 4 known values: 0.20 ms · 0 missing</p>
 <p>Mean rendered context: 741.0 characters · Original text characters: 713.0</p>
 <p>Supplied-usage cost estimate: N/A  · Pricing: unavailable</p>
 <details><summary>Configuration, criteria and separate timing trials</summary><pre>{
@@ -362,7 +362,7 @@ Standard delivery takes five working days. Tracked delivery is available in Moro
   "repeat_rankings_changed": false,
   "trials": [
     {
-      "artifact_directory": "jobs/parent-child/trial-0/attempt-20261018T180414-bf91a8f16c8c",
+      "artifact_directory": "jobs/parent-child/trial-0/attempt-20261018T182101-57d2b0962c03",
       "resources": {
         "context_characters": {
           "known_count": 4,
@@ -375,11 +375,11 @@ Standard delivery takes five working days. Tracked delivery is available in Moro
           "mean_known": 741.0,
           "missing_count": 0
         },
-        "index_ms": 0.7764050023979507,
+        "index_ms": 0.825747996714199,
         "model_cache": "unknown",
         "query_ms": {
           "known_count": 4,
-          "mean_known": 0.16288200004055398,
+          "mean_known": 0.19640549999166979,
           "missing_count": 0
         },
         "runtime_versions": {
@@ -477,7 +477,7 @@ Standard delivery takes five working days. Tracked delivery is available in Moro
       ],
       "query": "How long should I hold the reset button, and what power is required?"
     },
-    "elapsed_ms": 0.1045989993144758,
+    "elapsed_ms": 0.10649300020304509,
     "hits": [
       {
         "evidence_ids": [],
@@ -576,7 +576,7 @@ Standard delivery takes five working days. Tracked delivery is available in Moro
     "details": {
       "query": "How long should I hold the reset button, and what power is required?"
     },
-    "elapsed_ms": 0.007104001269908622,
+    "elapsed_ms": 0.014877998182782903,
     "hits": [
       {
         "evidence_ids": [],
@@ -609,7 +609,7 @@ Standard delivery takes five working days. Tracked delivery is available in Moro
         "tokenizers": "0.23.3"
       }
     },
-    "elapsed_ms": 0.12875399988843128,
+    "elapsed_ms": 0.2124839993484784,
     "hits": [
       {
         "evidence_ids": [],
@@ -639,7 +639,7 @@ Standard delivery takes five working days. Tracked delivery is available in Moro
       "skipped": [],
       "unit": "characters"
     },
-    "elapsed_ms": 0.0327320012729615,
+    "elapsed_ms": 0.0383830010832753,
     "hits": [
       {
         "evidence_ids": [],
@@ -738,7 +738,7 @@ Standard delivery takes five working days. Tracked delivery is available in Moro
       ],
       "query": "How long is the warranty and what damage is excluded?"
     },
-    "elapsed_ms": 0.07625400030519813,
+    "elapsed_ms": 0.09070300075109117,
     "hits": [
       {
         "evidence_ids": [],
@@ -837,7 +837,7 @@ Standard delivery takes five working days. Tracked delivery is available in Moro
     "details": {
       "query": "How long is the warranty and what damage is excluded?"
     },
-    "elapsed_ms": 0.005990998033666983,
+    "elapsed_ms": 0.006140999175840989,
     "hits": [
       {
         "evidence_ids": [],
@@ -870,7 +870,7 @@ Standard delivery takes five working days. Tracked delivery is available in Moro
         "tokenizers": "0.23.3"
       }
     },
-    "elapsed_ms": 0.09378799950354733,
+    "elapsed_ms": 0.10927699986496009,
     "hits": [
       {
         "evidence_ids": [],
@@ -900,7 +900,7 @@ Standard delivery takes five working days. Tracked delivery is available in Moro
       "skipped": [],
       "unit": "characters"
     },
-    "elapsed_ms": 0.020078001398360357,
+    "elapsed_ms": 0.02230300015071407,
     "hits": [
       {
         "evidence_ids": [],
@@ -999,7 +999,7 @@ Standard delivery takes five working days. Tracked delivery is available in Moro
       ],
       "query": "How often should I charge an unused device?"
     },
-    "elapsed_ms": 0.07340900265262462,
+    "elapsed_ms": 0.07850899783079512,
     "hits": [
       {
         "evidence_ids": [],
@@ -1098,7 +1098,7 @@ Standard delivery takes five working days. Tracked delivery is available in Moro
     "details": {
       "query": "How often should I charge an unused device?"
     },
-    "elapsed_ms": 0.004778998118126765,
+    "elapsed_ms": 0.004458997864276171,
     "hits": [
       {
         "evidence_ids": [],
@@ -1131,7 +1131,7 @@ Standard delivery takes five working days. Tracked delivery is available in Moro
         "tokenizers": "0.23.3"
       }
     },
-    "elapsed_ms": 0.08837800123728812,
+    "elapsed_ms": 0.09374799992656335,
     "hits": [
       {
         "evidence_ids": [],
@@ -1161,7 +1161,7 @@ Standard delivery takes five working days. Tracked delivery is available in Moro
       "skipped": [],
       "unit": "characters"
     },
-    "elapsed_ms": 0.018835999071598053,
+    "elapsed_ms": 0.020509000023594126,
     "hits": [
       {
         "evidence_ids": [],
@@ -1260,7 +1260,7 @@ Standard delivery takes five working days. Tracked delivery is available in Moro
       ],
       "query": "Where is tracked delivery available?"
     },
-    "elapsed_ms": 0.08824699762044474,
+    "elapsed_ms": 0.09911899906001054,
     "hits": [
       {
         "evidence_ids": [],
@@ -1359,7 +1359,7 @@ Standard delivery takes five working days. Tracked delivery is available in Moro
     "details": {
       "query": "Where is tracked delivery available?"
     },
-    "elapsed_ms": 0.00464899858343415,
+    "elapsed_ms": 0.004319001163821667,
     "hits": [
       {
         "evidence_ids": [],
@@ -1392,7 +1392,7 @@ Standard delivery takes five working days. Tracked delivery is available in Moro
         "tokenizers": "0.23.3"
       }
     },
-    "elapsed_ms": 0.1089570032490883,
+    "elapsed_ms": 0.11735299995052628,
     "hits": [
       {
         "evidence_ids": [],
@@ -1422,7 +1422,7 @@ Standard delivery takes five working days. Tracked delivery is available in Moro
       "skipped": [],
       "unit": "characters"
     },
-    "elapsed_ms": 0.02085999949485995,
+    "elapsed_ms": 0.02047899761237204,
     "hits": [
       {
         "evidence_ids": [],
@@ -1446,7 +1446,7 @@ Standard delivery takes five working days. Tracked delivery is available in Moro
 <p class="meta">Strategy: bm25 · k=1 · 10 prepared passages</p>
 <p><strong>Evidence scope: exact_returned_spans</strong></p>
 <p class="meta">Reviewed evidence is scored against the union of exact original-text spans.</p><p class="meta">Extractive compression can remove required facts or qualifications; evidence is rescored from only the returned spans.</p><div class="scroll"><table><thead><tr><th>Split / slice</th><th>Sufficient / answerable</th><th>Coverage</th><th>MRR</th><th>Precision</th></tr></thead><tbody>
-<tr><td>dev / all</td><td>3 / 4</td><td>0.875</td><td>1.0</td><td>1.0</td></tr><tr><td>heldout / all</td><td>0 / 0</td><td>N/A</td><td>N/A</td><td>N/A</td></tr></tbody></table></div><p>Mean query time over 4 known values: 0.49 ms · 0 missing</p>
+<tr><td>dev / all</td><td>3 / 4</td><td>0.875</td><td>1.0</td><td>1.0</td></tr><tr><td>heldout / all</td><td>0 / 0</td><td>N/A</td><td>N/A</td><td>N/A</td></tr></tbody></table></div><p>Mean query time over 4 known values: 0.67 ms · 0 missing</p>
 <p>Mean rendered context: 199.5 characters · Original text characters: 69.0</p>
 <p>Supplied-usage cost estimate: N/A  · Pricing: unavailable</p>
 <details><summary>Configuration, criteria and separate timing trials</summary><pre>{
@@ -1490,7 +1490,7 @@ Standard delivery takes five working days. Tracked delivery is available in Moro
   "repeat_rankings_changed": false,
   "trials": [
     {
-      "artifact_directory": "jobs/compress/trial-0/attempt-20261018T180414-2d8fb679c40d",
+      "artifact_directory": "jobs/compress/trial-0/attempt-20261018T182101-544e2f9d121c",
       "resources": {
         "context_characters": {
           "known_count": 4,
@@ -1503,11 +1503,11 @@ Standard delivery takes five working days. Tracked delivery is available in Moro
           "mean_known": 199.5,
           "missing_count": 0
         },
-        "index_ms": 0.7207900016510393,
+        "index_ms": 0.8261689981736708,
         "model_cache": "unknown",
         "query_ms": {
           "known_count": 4,
-          "mean_known": 0.4867097495662165,
+          "mean_known": 0.6701004995193216,
           "missing_count": 0
         },
         "runtime_versions": {
@@ -1543,7 +1543,7 @@ Standard delivery takes five working days. Tracked delivery is available in Moro
         "tokenizers": "0.23.3"
       }
     },
-    "elapsed_ms": 0.12449700079741888,
+    "elapsed_ms": 0.14205899788066745,
     "hits": [
       {
         "evidence_ids": [],
@@ -1738,7 +1738,7 @@ Standard delivery takes five working days. Tracked delivery is available in Moro
       },
       "state": "complete"
     },
-    "elapsed_ms": 0.3921450006600935,
+    "elapsed_ms": 0.348312001733575,
     "hits": [
       {
         "context_spans": [
@@ -1919,7 +1919,7 @@ Standard delivery takes five working days. Tracked delivery is available in Moro
       "skipped": [],
       "unit": "characters"
     },
-    "elapsed_ms": 0.07663600263185799,
+    "elapsed_ms": 0.030297000193968415,
     "hits": [
       {
         "context_spans": [
@@ -1961,7 +1961,7 @@ Standard delivery takes five working days. Tracked delivery is available in Moro
         "tokenizers": "0.23.3"
       }
     },
-    "elapsed_ms": 0.10408799789729528,
+    "elapsed_ms": 0.09299700104747899,
     "hits": [
       {
         "evidence_ids": [],
@@ -2156,7 +2156,7 @@ Standard delivery takes five working days. Tracked delivery is available in Moro
       },
       "state": "complete"
     },
-    "elapsed_ms": 0.20507899898802862,
+    "elapsed_ms": 0.2553249978518579,
     "hits": [
       {
         "context_spans": [
@@ -2337,7 +2337,7 @@ Standard delivery takes five working days. Tracked delivery is available in Moro
       "skipped": [],
       "unit": "characters"
     },
-    "elapsed_ms": 0.0386139981856104,
+    "elapsed_ms": 0.037431000237120315,
     "hits": [
       {
         "context_spans": [
@@ -2379,7 +2379,7 @@ Standard delivery takes five working days. Tracked delivery is available in Moro
         "tokenizers": "0.23.3"
       }
     },
-    "elapsed_ms": 0.07882000136305578,
+    "elapsed_ms": 0.08480199903715402,
     "hits": [
       {
         "evidence_ids": [],
@@ -2545,7 +2545,7 @@ Standard delivery takes five working days. Tracked delivery is available in Moro
       },
       "state": "complete"
     },
-    "elapsed_ms": 0.20618200142052956,
+    "elapsed_ms": 0.17413000023225322,
     "hits": [
       {
         "context_spans": [
@@ -2637,7 +2637,7 @@ Standard delivery takes five working days. Tracked delivery is available in Moro
       "skipped": [],
       "unit": "characters"
     },
-    "elapsed_ms": 0.022483000066131353,
+    "elapsed_ms": 0.022352000087266788,
     "hits": [
       {
         "context_spans": [
@@ -2681,7 +2681,7 @@ Standard delivery takes five working days. Tracked delivery is available in Moro
         "tokenizers": "0.23.3"
       }
     },
-    "elapsed_ms": 0.301151998428395,
+    "elapsed_ms": 0.07471200297004543,
     "hits": [
       {
         "evidence_ids": [],
@@ -2833,7 +2833,7 @@ Standard delivery takes five working days. Tracked delivery is available in Moro
       },
       "state": "complete"
     },
-    "elapsed_ms": 0.17017299978761002,
+    "elapsed_ms": 0.18633400031831115,
     "hits": [
       {
         "context_spans": [
@@ -2887,7 +2887,7 @@ Standard delivery takes five working days. Tracked delivery is available in Moro
       "skipped": [],
       "unit": "characters"
     },
-    "elapsed_ms": 0.022723001166014,
+    "elapsed_ms": 0.026129997422685847,
     "hits": [
       {
         "context_spans": [
@@ -2914,7 +2914,7 @@ Standard delivery takes five working days. Tracked delivery is available in Moro
     "name": "context_selection"
   }
 ]</pre></details></article></details>
-</section><section><h2>Limitations</h2><ul><li>Grids are exploratory. Intervals are not adjusted for multiple comparisons.</li><li>Heldout reuse is tracked under this output root, without protection against edits.</li><li>Vector reuse is observed. Model/OS cache warmth and external traces are unknown.</li><li>Missing timing/cost is unavailable. Supplied usage/pricing yields labeled estimates.</li><li>nDCG requires graded relevance gains. Answer quality is not evaluated.</li></ul><p class="meta">Generated 2026-10-18T18:04:15.036689+00:00 · Query-stage invocation upper bound 12</p><details><summary>Bundled font license</summary><pre>Copyright (c) 2023 Vercel, in collaboration with basement.studio
+</section><section><h2>Limitations</h2><ul><li>Grids are exploratory. Intervals are not adjusted for multiple comparisons.</li><li>Heldout reuse is tracked under this output root, without protection against edits.</li><li>Vector reuse is observed. Model/OS cache warmth and external traces are unknown.</li><li>Missing timing/cost is unavailable. Supplied usage/pricing yields labeled estimates.</li><li>nDCG requires graded relevance gains. Answer quality is not evaluated.</li></ul><p class="meta">Generated 2026-10-18T18:21:02.078692+00:00 · Query-stage invocation upper bound 12</p><details><summary>Bundled font license</summary><pre>Copyright (c) 2023 Vercel, in collaboration with basement.studio
 
 This Font Software is licensed under the SIL Open Font License, Version 1.1.
 This license is copied below, and is also available with a FAQ at:

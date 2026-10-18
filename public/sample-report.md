@@ -21,7 +21,7 @@ Evidence scope: exact_returned_spans
 dev/all: 3 / 4 answerable sufficient · Coverage: 0.875 · MRR: 1.0 · Precision: 1.0
 heldout/all: 0 / 0 answerable sufficient · Coverage: N/A · MRR: N/A · Precision: N/A
 
-Mean known query ms: 0.9689860007711104 (0 missing)
+Mean known query ms: 0.9464632503295434 (0 missing)
 Mean context: 161.25 characters
 Estimated supplied-usage cost: N/A N/A
 
@@ -37,7 +37,7 @@ Hold the reset button for eight seconds to clear pairing. The status light </pre
 <pre>[
   {
     &quot;name&quot;: &quot;retrieval&quot;,
-    &quot;elapsed_ms&quot;: 1.0712350012909155,
+    &quot;elapsed_ms&quot;: 1.0066920003737323,
     &quot;hits&quot;: [
       {
         &quot;source_unit_id&quot;: &quot;passage-5bdc4916bcb2462d0250&quot;,
@@ -66,7 +66,7 @@ Hold the reset button for eight seconds to clear pairing. The status light </pre
   },
   {
     &quot;name&quot;: &quot;context_selection&quot;,
-    &quot;elapsed_ms&quot;: 0.050254999223398045,
+    &quot;elapsed_ms&quot;: 0.05174799662199803,
     &quot;hits&quot;: [
       {
         &quot;source_unit_id&quot;: &quot;passage-5bdc4916bcb2462d0250&quot;,
@@ -106,7 +106,7 @@ The warranty lasts two years. Keep your receipt. Accidental water damage is excl
 <pre>[
   {
     &quot;name&quot;: &quot;retrieval&quot;,
-    &quot;elapsed_ms&quot;: 0.12075899940100498,
+    &quot;elapsed_ms&quot;: 0.1346060016658157,
     &quot;hits&quot;: [
       {
         &quot;source_unit_id&quot;: &quot;passage-4be5e239b1ab47982a8e&quot;,
@@ -135,7 +135,7 @@ The warranty lasts two years. Keep your receipt. Accidental water damage is excl
   },
   {
     &quot;name&quot;: &quot;context_selection&quot;,
-    &quot;elapsed_ms&quot;: 0.03207099871360697,
+    &quot;elapsed_ms&quot;: 0.030398001399589702,
     &quot;hits&quot;: [
       {
         &quot;source_unit_id&quot;: &quot;passage-4be5e239b1ab47982a8e&quot;,
@@ -175,7 +175,7 @@ Store the device in a cool, dry place. Charge it every three months when unused.
 <pre>[
   {
     &quot;name&quot;: &quot;retrieval&quot;,
-    &quot;elapsed_ms&quot;: 0.06217800182639621,
+    &quot;elapsed_ms&quot;: 0.06290899909799919,
     &quot;hits&quot;: [
       {
         &quot;source_unit_id&quot;: &quot;passage-32a3368b3b75076e202c&quot;,
@@ -204,7 +204,7 @@ Store the device in a cool, dry place. Charge it every three months when unused.
   },
   {
     &quot;name&quot;: &quot;context_selection&quot;,
-    &quot;elapsed_ms&quot;: 0.02180099909310229,
+    &quot;elapsed_ms&quot;: 0.023254000552697107,
     &quot;hits&quot;: [
       {
         &quot;source_unit_id&quot;: &quot;passage-32a3368b3b75076e202c&quot;,
@@ -244,7 +244,7 @@ Standard delivery takes five working days. Tracked delivery is available in Moro
 <pre>[
   {
     &quot;name&quot;: &quot;retrieval&quot;,
-    &quot;elapsed_ms&quot;: 0.054664000344928354,
+    &quot;elapsed_ms&quot;: 0.05601600059890188,
     &quot;hits&quot;: [
       {
         &quot;source_unit_id&quot;: &quot;passage-1518103967d65de40d95&quot;,
@@ -273,7 +273,7 @@ Standard delivery takes five working days. Tracked delivery is available in Moro
   },
   {
     &quot;name&quot;: &quot;context_selection&quot;,
-    &quot;elapsed_ms&quot;: 0.02035799843724817,
+    &quot;elapsed_ms&quot;: 0.032312000257661566,
     &quot;hits&quot;: [
       {
         &quot;source_unit_id&quot;: &quot;passage-1518103967d65de40d95&quot;,
@@ -312,7 +312,7 @@ Evidence scope: exact_returned_spans
 dev/all: 4 / 4 answerable sufficient · Coverage: 1.0 · MRR: 1.0 · Precision: 1.0
 heldout/all: 0 / 0 answerable sufficient · Coverage: N/A · MRR: N/A · Precision: N/A
 
-Mean known query ms: 0.16288200004055398 (0 missing)
+Mean known query ms: 0.19640549999166979 (0 missing)
 Mean context: 741.0 characters
 Estimated supplied-usage cost: N/A N/A
 
@@ -343,7 +343,7 @@ Standard delivery takes five working days. Tracked delivery is available in Moro
 <pre>[
   {
     &quot;name&quot;: &quot;children&quot;,
-    &quot;elapsed_ms&quot;: 0.1045989993144758,
+    &quot;elapsed_ms&quot;: 0.10649300020304509,
     &quot;hits&quot;: [
       {
         &quot;source_unit_id&quot;: &quot;child-0&quot;,
@@ -499,7 +499,7 @@ Standard delivery takes five working days. Tracked delivery is available in Moro
   },
   {
     &quot;name&quot;: &quot;parent_expansion&quot;,
-    &quot;elapsed_ms&quot;: 0.007104001269908622,
+    &quot;elapsed_ms&quot;: 0.014877998182782903,
     &quot;hits&quot;: [
       {
         &quot;source_unit_id&quot;: &quot;doc-aaa8b734a101d7f34afb&quot;,
@@ -522,7 +522,7 @@ Standard delivery takes five working days. Tracked delivery is available in Moro
   },
   {
     &quot;name&quot;: &quot;retrieval&quot;,
-    &quot;elapsed_ms&quot;: 0.12875399988843128,
+    &quot;elapsed_ms&quot;: 0.2124839993484784,
     &quot;hits&quot;: [
       {
         &quot;source_unit_id&quot;: &quot;doc-aaa8b734a101d7f34afb&quot;,
@@ -555,7 +555,7 @@ Standard delivery takes five working days. Tracked delivery is available in Moro
   },
   {
     &quot;name&quot;: &quot;context_selection&quot;,
-    &quot;elapsed_ms&quot;: 0.0327320012729615,
+    &quot;elapsed_ms&quot;: 0.0383830010832753,
     &quot;hits&quot;: [
       {
         &quot;source_unit_id&quot;: &quot;doc-aaa8b734a101d7f34afb&quot;,
@@ -614,7 +614,7 @@ Standard delivery takes five working days. Tracked delivery is available in Moro
 <pre>[
   {
     &quot;name&quot;: &quot;children&quot;,
-    &quot;elapsed_ms&quot;: 0.07625400030519813,
+    &quot;elapsed_ms&quot;: 0.09070300075109117,
     &quot;hits&quot;: [
       {
         &quot;source_unit_id&quot;: &quot;child-3&quot;,
@@ -770,7 +770,7 @@ Standard delivery takes five working days. Tracked delivery is available in Moro
   },
   {
     &quot;name&quot;: &quot;parent_expansion&quot;,
-    &quot;elapsed_ms&quot;: 0.005990998033666983,
+    &quot;elapsed_ms&quot;: 0.006140999175840989,
     &quot;hits&quot;: [
       {
         &quot;source_unit_id&quot;: &quot;doc-aaa8b734a101d7f34afb&quot;,
@@ -793,7 +793,7 @@ Standard delivery takes five working days. Tracked delivery is available in Moro
   },
   {
     &quot;name&quot;: &quot;retrieval&quot;,
-    &quot;elapsed_ms&quot;: 0.09378799950354733,
+    &quot;elapsed_ms&quot;: 0.10927699986496009,
     &quot;hits&quot;: [
       {
         &quot;source_unit_id&quot;: &quot;doc-aaa8b734a101d7f34afb&quot;,
@@ -826,7 +826,7 @@ Standard delivery takes five working days. Tracked delivery is available in Moro
   },
   {
     &quot;name&quot;: &quot;context_selection&quot;,
-    &quot;elapsed_ms&quot;: 0.020078001398360357,
+    &quot;elapsed_ms&quot;: 0.02230300015071407,
     &quot;hits&quot;: [
       {
         &quot;source_unit_id&quot;: &quot;doc-aaa8b734a101d7f34afb&quot;,
@@ -885,7 +885,7 @@ Standard delivery takes five working days. Tracked delivery is available in Moro
 <pre>[
   {
     &quot;name&quot;: &quot;children&quot;,
-    &quot;elapsed_ms&quot;: 0.07340900265262462,
+    &quot;elapsed_ms&quot;: 0.07850899783079512,
     &quot;hits&quot;: [
       {
         &quot;source_unit_id&quot;: &quot;child-4&quot;,
@@ -1041,7 +1041,7 @@ Standard delivery takes five working days. Tracked delivery is available in Moro
   },
   {
     &quot;name&quot;: &quot;parent_expansion&quot;,
-    &quot;elapsed_ms&quot;: 0.004778998118126765,
+    &quot;elapsed_ms&quot;: 0.004458997864276171,
     &quot;hits&quot;: [
       {
         &quot;source_unit_id&quot;: &quot;doc-aaa8b734a101d7f34afb&quot;,
@@ -1064,7 +1064,7 @@ Standard delivery takes five working days. Tracked delivery is available in Moro
   },
   {
     &quot;name&quot;: &quot;retrieval&quot;,
-    &quot;elapsed_ms&quot;: 0.08837800123728812,
+    &quot;elapsed_ms&quot;: 0.09374799992656335,
     &quot;hits&quot;: [
       {
         &quot;source_unit_id&quot;: &quot;doc-aaa8b734a101d7f34afb&quot;,
@@ -1097,7 +1097,7 @@ Standard delivery takes five working days. Tracked delivery is available in Moro
   },
   {
     &quot;name&quot;: &quot;context_selection&quot;,
-    &quot;elapsed_ms&quot;: 0.018835999071598053,
+    &quot;elapsed_ms&quot;: 0.020509000023594126,
     &quot;hits&quot;: [
       {
         &quot;source_unit_id&quot;: &quot;doc-aaa8b734a101d7f34afb&quot;,
@@ -1156,7 +1156,7 @@ Standard delivery takes five working days. Tracked delivery is available in Moro
 <pre>[
   {
     &quot;name&quot;: &quot;children&quot;,
-    &quot;elapsed_ms&quot;: 0.08824699762044474,
+    &quot;elapsed_ms&quot;: 0.09911899906001054,
     &quot;hits&quot;: [
       {
         &quot;source_unit_id&quot;: &quot;child-7&quot;,
@@ -1312,7 +1312,7 @@ Standard delivery takes five working days. Tracked delivery is available in Moro
   },
   {
     &quot;name&quot;: &quot;parent_expansion&quot;,
-    &quot;elapsed_ms&quot;: 0.00464899858343415,
+    &quot;elapsed_ms&quot;: 0.004319001163821667,
     &quot;hits&quot;: [
       {
         &quot;source_unit_id&quot;: &quot;doc-aaa8b734a101d7f34afb&quot;,
@@ -1335,7 +1335,7 @@ Standard delivery takes five working days. Tracked delivery is available in Moro
   },
   {
     &quot;name&quot;: &quot;retrieval&quot;,
-    &quot;elapsed_ms&quot;: 0.1089570032490883,
+    &quot;elapsed_ms&quot;: 0.11735299995052628,
     &quot;hits&quot;: [
       {
         &quot;source_unit_id&quot;: &quot;doc-aaa8b734a101d7f34afb&quot;,
@@ -1368,7 +1368,7 @@ Standard delivery takes five working days. Tracked delivery is available in Moro
   },
   {
     &quot;name&quot;: &quot;context_selection&quot;,
-    &quot;elapsed_ms&quot;: 0.02085999949485995,
+    &quot;elapsed_ms&quot;: 0.02047899761237204,
     &quot;hits&quot;: [
       {
         &quot;source_unit_id&quot;: &quot;doc-aaa8b734a101d7f34afb&quot;,
@@ -1411,7 +1411,7 @@ Evidence scope: exact_returned_spans
 dev/all: 3 / 4 answerable sufficient · Coverage: 0.875 · MRR: 1.0 · Precision: 1.0
 heldout/all: 0 / 0 answerable sufficient · Coverage: N/A · MRR: N/A · Precision: N/A
 
-Mean known query ms: 0.4867097495662165 (0 missing)
+Mean known query ms: 0.6701004995193216 (0 missing)
 Mean context: 199.5 characters
 Estimated supplied-usage cost: N/A N/A
 
@@ -1431,7 +1431,7 @@ Rank 1 · manual.md · Source text · Original characters 41–98
 <pre>[
   {
     &quot;name&quot;: &quot;retrieval&quot;,
-    &quot;elapsed_ms&quot;: 0.12449700079741888,
+    &quot;elapsed_ms&quot;: 0.14205899788066745,
     &quot;hits&quot;: [
       {
         &quot;source_unit_id&quot;: &quot;passage-5bdc4916bcb2462d0250&quot;,
@@ -1550,7 +1550,7 @@ Rank 1 · manual.md · Source text · Original characters 41–98
   },
   {
     &quot;name&quot;: &quot;compression&quot;,
-    &quot;elapsed_ms&quot;: 0.3921450006600935,
+    &quot;elapsed_ms&quot;: 0.348312001733575,
     &quot;hits&quot;: [
       {
         &quot;source_unit_id&quot;: &quot;passage-5bdc4916bcb2462d0250&quot;,
@@ -1810,7 +1810,7 @@ Rank 1 · manual.md · Source text · Original characters 41–98
   },
   {
     &quot;name&quot;: &quot;context_selection&quot;,
-    &quot;elapsed_ms&quot;: 0.07663600263185799,
+    &quot;elapsed_ms&quot;: 0.030297000193968415,
     &quot;hits&quot;: [
       {
         &quot;source_unit_id&quot;: &quot;passage-5bdc4916bcb2462d0250&quot;,
@@ -1863,7 +1863,7 @@ Rank 1 · manual.md · Source text · Original characters 288–325
 <pre>[
   {
     &quot;name&quot;: &quot;retrieval&quot;,
-    &quot;elapsed_ms&quot;: 0.10408799789729528,
+    &quot;elapsed_ms&quot;: 0.09299700104747899,
     &quot;hits&quot;: [
       {
         &quot;source_unit_id&quot;: &quot;passage-4be5e239b1ab47982a8e&quot;,
@@ -1982,7 +1982,7 @@ Rank 1 · manual.md · Source text · Original characters 288–325
   },
   {
     &quot;name&quot;: &quot;compression&quot;,
-    &quot;elapsed_ms&quot;: 0.20507899898802862,
+    &quot;elapsed_ms&quot;: 0.2553249978518579,
     &quot;hits&quot;: [
       {
         &quot;source_unit_id&quot;: &quot;passage-4be5e239b1ab47982a8e&quot;,
@@ -2242,7 +2242,7 @@ Rank 1 · manual.md · Source text · Original characters 288–325
   },
   {
     &quot;name&quot;: &quot;context_selection&quot;,
-    &quot;elapsed_ms&quot;: 0.0386139981856104,
+    &quot;elapsed_ms&quot;: 0.037431000237120315,
     &quot;hits&quot;: [
       {
         &quot;source_unit_id&quot;: &quot;passage-4be5e239b1ab47982a8e&quot;,
@@ -2295,7 +2295,7 @@ Rank 1 · manual.md · Source text · Original characters 434–476
 <pre>[
   {
     &quot;name&quot;: &quot;retrieval&quot;,
-    &quot;elapsed_ms&quot;: 0.07882000136305578,
+    &quot;elapsed_ms&quot;: 0.08480199903715402,
     &quot;hits&quot;: [
       {
         &quot;source_unit_id&quot;: &quot;passage-32a3368b3b75076e202c&quot;,
@@ -2414,7 +2414,7 @@ Rank 1 · manual.md · Source text · Original characters 434–476
   },
   {
     &quot;name&quot;: &quot;compression&quot;,
-    &quot;elapsed_ms&quot;: 0.20618200142052956,
+    &quot;elapsed_ms&quot;: 0.17413000023225322,
     &quot;hits&quot;: [
       {
         &quot;source_unit_id&quot;: &quot;passage-32a3368b3b75076e202c&quot;,
@@ -2556,7 +2556,7 @@ Rank 1 · manual.md · Source text · Original characters 434–476
   },
   {
     &quot;name&quot;: &quot;context_selection&quot;,
-    &quot;elapsed_ms&quot;: 0.022483000066131353,
+    &quot;elapsed_ms&quot;: 0.022352000087266788,
     &quot;hits&quot;: [
       {
         &quot;source_unit_id&quot;: &quot;passage-32a3368b3b75076e202c&quot;,
@@ -2611,7 +2611,7 @@ Rank 1 · manual.md · Source text · Original characters 619–661
 <pre>[
   {
     &quot;name&quot;: &quot;retrieval&quot;,
-    &quot;elapsed_ms&quot;: 0.301151998428395,
+    &quot;elapsed_ms&quot;: 0.07471200297004543,
     &quot;hits&quot;: [
       {
         &quot;source_unit_id&quot;: &quot;passage-1518103967d65de40d95&quot;,
@@ -2730,7 +2730,7 @@ Rank 1 · manual.md · Source text · Original characters 619–661
   },
   {
     &quot;name&quot;: &quot;compression&quot;,
-    &quot;elapsed_ms&quot;: 0.17017299978761002,
+    &quot;elapsed_ms&quot;: 0.18633400031831115,
     &quot;hits&quot;: [
       {
         &quot;source_unit_id&quot;: &quot;passage-1518103967d65de40d95&quot;,
@@ -2820,7 +2820,7 @@ Rank 1 · manual.md · Source text · Original characters 619–661
   },
   {
     &quot;name&quot;: &quot;context_selection&quot;,
-    &quot;elapsed_ms&quot;: 0.022723001166014,
+    &quot;elapsed_ms&quot;: 0.026129997422685847,
     &quot;hits&quot;: [
       {
         &quot;source_unit_id&quot;: &quot;passage-1518103967d65de40d95&quot;,
