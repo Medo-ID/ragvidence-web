@@ -1,53 +1,63 @@
 # Project health
 
-## Verification status
+## CLI 0.2.0 synchronization — October 18, 2026
 
-Repository cleanup: October 15, 2026. Historical design reviews, screenshots,
-logs, temporary captures, and unused brand alternatives were removed. Maintained
-browser tests, verifier tests, CI, and repeatable media-authoring tools remain.
+The website now describes one fully free Apache-2.0 CLI for diagnosing and
+comparing retrieval on users' data. The CLI repository remained read-only.
+The previous cleanup was reviewed and checkpointed separately as `02ad400`.
+Implementation commit: `0ff85aa`. The final report/media provenance records that
+exact source commit. Current content, examples, report downloads, licenses and media use production
+PyPI 0.2.0; provenance and the claim map are in [maintaining.md](maintaining.md).
 
-Cleanup verification on Node 24.20.0 / npm 11.19.0:
+Local checks: Node 24.20.0, npm 11.19.0, Python 3.12.14, Chromium via Playwright.
 
 | Check | Result |
 | --- | --- |
-| ESLint and TypeScript | Pass |
-| `npm run build -- --webpack` | Pass |
-| HTTP/content/header checks | Pass: 39 routes, 124 links/fragments |
-| Verifier regression tests | Pass: 5 tests |
-| Chromium suite | 62 pass, 2 existing reduced-motion failures |
+| `npm ci` | Pass |
+| ESLint / TypeScript / `git diff --check` | Pass |
+| `npm run verify` with normal Turbopack build | Pass in GitHub Actions on `b860fc1`; local fresh build remains blocked by worker-port sandboxing |
+| `npm run build -- --webpack` | Pass; authorized local fallback only |
+| HTTP/content/link/header/not-found checks | Pass: 51 routes, 160 links/fragments |
+| Verifier and artifact provenance tests | Pass: 6 tests |
+| Full Chromium suite | Pass: 66 tests, including both previously failing reduced-motion cases |
+| Separate local preview | Pass at `http://127.0.0.1:3000`: route/header checks, 390/1440px captures, no page errors |
+| Offline reports / Unicode / escaped source text / print | Pass; open desired portable-report disclosures before printing |
+| Native media decoding | Pass: H.264 and VP9, 1920×1080, 60fps, 2,160 frames, 36 seconds, no audio/subtitles |
 | Production dependency audit | Pass: zero reported vulnerabilities |
-| Gitleaks 8.16.0 | No leaks detected in 40 commits or the cleaned publication snapshot |
-| Additional credential-pattern scan | No matches in 1,120 reachable historical blobs or current source files |
+| Full dependency audit | Five high-severity package entries from the accepted development-only braces advisory below |
+| PyPI install / uv upgrade / version / health / verify | Pass in isolated `/tmp` environments; personal installation unchanged |
+| Installed CLI examples and schemas | Pass: 42 command/help checks, including formats, suites, exact-span imports, PDF and wheel license copies |
+| Production wheel checksum | Matches published SHA-256 and handoff |
+| Reachable-history secret scan | Gitleaks 8.16.0: all reachable commits, no leaks |
+| Publication snapshot secret scan | Gitleaks 8.16.0: no leaks in maintained source/assets |
 
-The two browser failures are `reduced motion shows the poster without loading or
-autoplaying video` and `native source queries preserve the reduced-motion poster
-before hydration` in `tests/browser/site.spec.ts`. The current video component
-autoplays unconditionally and its sources lack reduced-motion media queries.
-The component is byte-identical to the pre-cleanup HEAD; this cleanup does not
-change video behavior. Fix those failures before treating the full gate as green.
-Browser checks used temporary libraries outside the repository because the host
-lacked Chromium's NSS/NSPR/ALSA libraries. No dependencies were added to the project.
+An exploratory whole-directory scan included Next's ignored preview/cache keys
+and raced active browser traces. The publication scan instead examined exactly
+Git-tracked/intended source files, excluding generated files. Those build keys
+and captures are not publication inputs. Secret scans detect known patterns,
+not all possible confidential information.
 
-The sample report, active mark, videos, poster, and recording provenance retain
-their pre-cleanup SHA-256 hashes. Deletions remove historical review artifacts
-from the current tree; existing Git history remains intact. Secret scans detect
-known patterns and do not constitute a guarantee that all sensitive data is absent.
+The complete standard gate passed in [GitHub Actions run 39156419147](https://github.com/Medo-ID/ragvidence-web/actions/runs/39156419147)
+on exact candidate `b860fc180ff4c46770905e3049ab198a64561ce8`. It runs the unchanged
+`npm run verify` command: lint, types, fresh normal Turbopack production build,
+HTTP verifier, verifier/provenance tests, Chromium suite and production audit.
+This establishes the normal-build gate on a capable host. The local Webpack
+fallback remains labeled separately; local fresh Turbopack attempts hit the CSS
+worker port-binding restriction even on escalated retry.
 
-The restricted execution environment previously prevented Turbopack worker port
-binding. The existing Webpack CSS hook permits `npm run build -- --webpack` for
-local verification; the normal build remains Turbopack. Standard build and live
-hosting/domain checks remain pending on a capable host.
+Chromium used temporary NSS/NSPR/ALSA libraries under `/tmp` because this host
+lacks them. They are not repository dependencies. Media authoring used a temporary
+FFmpeg binary. Generated logs, screenshots, installation environments and working
+artifacts remain ignored/outside the repository.
 
 ## Dependency policy and tracked advisory
 
-Read exact dependency versions from `package.json` and `package-lock.json`.
-Keep Node types aligned with Node 24, Next.js aligned with eslint-config-next,
-and React aligned with React DOM. Check peer compatibility before major updates.
-The previously audited TypeScript lint range was `>=4.8.4 <6.1.0`; the React and
-accessibility lint plugins excluded ESLint 10. Recheck installed peers before
-changing those versions.
+Read exact versions from `package.json` and `package-lock.json`. This update
+changes the website version to 0.2.0 without upgrading dependencies. Keep Next.js
+aligned with eslint-config-next, React aligned with React DOM and Node types
+aligned with Node 24. Do not use force fixes or incompatible overrides.
 
-The previously accepted development-only advisory follows this path:
+The currently accepted development advisory follows this path:
 
 ```text
 eslint-config-next@16.4.0
@@ -57,20 +67,35 @@ eslint-config-next@16.4.0
          └─ braces@3.0.3
 ```
 
-Advisory identifier: `GHSA-vfj7-8cjw-p6xm` (stack exhaustion on deeply nested
-patterns). The prior audit reported no compatible fix; its proposed Next.js
-lint-stack downgrade was not applied. Recheck with `npm audit` when updating
-dependencies. Do not use force fixes or incompatible overrides. Audit production
-and development separately; production audits must pass.
+Identifier: `GHSA-vfj7-8cjw-p6xm`, stack exhaustion on deeply nested patterns.
+The five audit entries represent that dependency and affected ancestors.
+No compatible fix is offered; do not apply the proposed incompatible Next lint
+stack downgrade. Production audits must remain clean. Recheck on dependency updates.
 
-## Release checks
+## Review and deployment status
 
-- Run `npm ci` and `npm run verify` on a capable host.
-- Check preview routes and headers with `RAGVIDENCE_SITE_URL` and `verify:site`.
-- Check keyboard navigation, search, copy controls, reduced motion, and media.
-- Confirm the intended CLI release installs from production PyPI before changing
-  availability claims or announcing a release.
-- Verify hosting, domain configuration, HTTPS, and live loading behavior.
+The code and synthetic artifacts are pushed for review on `release/website-0.2.0`.
+CI runs the standard gate on branch pushes as well as PRs, so review candidates
+can be checked before merging. No production deployment or DNS change is authorized.
+The local preview uses the verified fallback build; it is not a hosted deployment.
 
-Local measurements and synthetic tutorial outcomes are not field performance
-claims. Keep new verification output in ignored directories.
+Remaining gates:
+
+- Open/review the website PR and follow any branch protection requirements.
+- Connect/select the intended Node 24 Next.js host, then verify a hosted preview.
+- Obtain separate production-deployment authorization only after preview review.
+- Deploy the reviewed commit, configure host-supplied domain/DNS, verify HTTPS,
+  redirects, metadata, search/copy/mobile/media and installation/documentation links.
+- Record deployed commit and rollback target, then update repository homepage/About.
+
+The owner chose to open the PR and create the Vercel preview. Use feature branch
+`release/website-0.2.0` against `main`; create a **Preview** deployment of that branch
+with Node 24, `npm ci` and the normal `npm run build`. No environment variables
+are required. Send the reachable preview URL for verification before considering
+production authorization. No hosted preview or production URL has been verified.
+
+Checklist tasks 7–11 are complete. Task 12 awaits the owner's PR/hosted-preview
+steps, then preview verification and separate production authorization. Task 13
+(verified live links/About, deployed identity/rollback and launch) follows
+production. The CLI working tree is clean and unchanged. Human Windows CLI
+usability review and sponsorship remain deferred and do not block website work.

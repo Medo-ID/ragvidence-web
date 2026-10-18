@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 export const siteUrl = "https://ragvidence.medo-id.com";
-export const homeTitle = "RAGvidence — Local RAG retrieval evaluation CLI";
-export const homeDescription = "Evaluate BM25 and semantic RAG retrieval locally. Compare evidence coverage, diagnose regressions, and share self-contained HTML reports. No account or telemetry.";
+export const homeTitle = "RAGvidence — Free RAG retrieval diagnostics CLI";
+export const homeDescription = "Diagnose and compare RAG retrieval techniques on your data with the free Apache-2.0 CLI. Inspect context and reviewed evidence in offline HTML, JSON and Markdown reports.";
 
 /** Specify nested social fields explicitly: Next.js metadata merges shallowly. */
 export function pageMetadata({ title, description, path }: { title: string; description: string; path: string }): Metadata {

@@ -26,7 +26,7 @@ test("report works offline without scripts and prints closed ranked evidence", a
   const page = await context.newPage();
   const remote: string[] = [];
   page.on("request", request => { if (!/^(file:|data:)/.test(request.url())) remote.push(request.url()); });
-  await page.goto(pathToFileURL(resolve("public/sample-report.html")).href);
+  await page.goto(pathToFileURL(resolve("public/tutorial-report.html")).href);
   await expect(page.locator("script, img, link")).toHaveCount(0);
   await expect(page.locator(".result")).toHaveText("60% → 90%");
   const question = page.locator("#improvements .question-card").first();
@@ -44,15 +44,38 @@ test("report works offline without scripts and prints closed ranked evidence", a
 
 test("env and JSONL copy exact raw content without terminal prompts", async ({ page }) => {
   await page.addInitScript(() => Object.defineProperty(navigator, "clipboard", { value: { writeText: async (text: string) => { document.documentElement.dataset.copied = text; } } }));
-  for (const [route, label] of [["/docs/semantic-workflow", ".env"], ["/docs/evidence-labels", "JSONL"]]) {
+  for (const [route, label] of [["/docs/semantic-workflow", ".env"], ["/docs/bring-your-own-data", "JSONL"]]) {
     await page.goto(route);
-    const block = page.locator(".terminal").filter({ has: page.getByText(new RegExp(label === ".env" ? "^\\.env$" : "^JSONL")) }).first();
+    const block = page.locator(".terminal").filter({ has: page.getByText(new RegExp(label === ".env" ? "^\\.env" : "^JSONL")) }).first();
     const raw = await block.locator("code").textContent();
     expect(raw).not.toMatch(/^\$ /);
     await block.getByRole("button", { name: /^Copy / }).click();
     await expect(page.locator("html")).toHaveAttribute("data-copied", raw!);
     await expect(block.getByRole("button")).toHaveText("Copied");
   }
+});
+
+test("portable comparison stays offline, exposes all participants and prints opened evidence", async ({ browser }) => {
+  const context = await browser.newContext({ javaScriptEnabled: false, viewport: { width: 390, height: 844 } });
+  const page = await context.newPage();
+  const remote: string[] = [];
+  page.on("request", request => { if (!/^(file:|data:)/.test(request.url())) remote.push(request.url()); });
+  await page.goto(pathToFileURL(resolve("public/sample-report.html")).href);
+  await expect(page.locator("script, img, link")).toHaveCount(0);
+  await expect(page.getByRole("heading", { name: "parent-child versus bm25", exact: true })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "compress versus bm25", exact: true })).toBeVisible();
+  const parent = page.locator("section").filter({ has: page.getByRole("heading", { name: "parent-child", exact: true }) });
+  const summary = parent.getByText("Ranked contexts and stage evidence (4 questions)", { exact: true });
+  await summary.focus();
+  await page.keyboard.press("Enter");
+  const question = parent.locator("article").first();
+  await expect(question).toContainText("Keep USB-C power connected throughout the reset.");
+  await expect(question).toContainText("Sufficient: True");
+  await page.emulateMedia({ media: "print" });
+  await expect(question).toBeVisible();
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  expect(remote).toHaveLength(0);
+  await context.close();
 });
 
 test("docs rails track headings and compact navigation works by keyboard", async ({ page }) => {
@@ -82,7 +105,7 @@ for (const [width, height] of [[360, 800], [390, 844], [768, 1024], [1280, 800],
     await page.setViewportSize({ width, height });
     await page.goto("/");
     const command = page.locator("#hero-install-command code");
-    await expect(command).toHaveText('uv tool install --python 3.12 "ragvidence[semantic]"');
+    await expect(command).toHaveText('uv tool install --python 3.12 "ragvidence==0.2.0"');
     const box = await command.boundingBox();
     expect(box!.y + box!.height).toBeLessThan(height);
     expect(await command.evaluate(el => el.scrollWidth <= el.clientWidth)).toBe(true);

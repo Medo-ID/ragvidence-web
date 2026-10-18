@@ -57,7 +57,7 @@ async function verify() {
   if (!explicitUrl) await startProduction();
   else if (!(await request()).ok) throw new Error(`Site is unavailable at ${baseUrl}.`);
 
-  const routes = ["/", "/docs", ...docs.map(({ slug }) => `/docs/${slug}`), "/releases", "/privacy", "/terms", "/security", "/sample-report.html", "/ragvidence-0.1.0-license.txt", "/robots.txt", "/sitemap.xml", "/opengraph-image", "/favicon.ico", "/icon.svg", "/apple-icon.png", "/brand/a-evidence-convergence/mark-dark.svg", "/docs/search-index.json", "/media/walkthrough.webm", "/media/walkthrough-poster.webp", "/media/walkthrough-provenance.json"];
+  const routes = ["/", "/docs", ...docs.map(({ slug }) => `/docs/${slug}`), "/releases", "/privacy", "/terms", "/security", "/sample-report.html", "/ragvidence-0.1.0-license.txt", "/ragvidence-0.2.0-license.txt", "/ragvidence-0.2.0-notice.txt", "/sample-report.json", "/sample-report.md", "/tutorial-report.html", "/examples/manual.md", "/examples/questions.txt", "/examples/reviewed.json", "/examples/provenance.json", "/robots.txt", "/sitemap.xml", "/opengraph-image", "/favicon.ico", "/icon.svg", "/apple-icon.png", "/brand/a-evidence-convergence/mark-dark.svg", "/docs/search-index.json", "/media/walkthrough.webm", "/media/walkthrough-poster.webp", "/media/walkthrough-provenance.json"];
   routes.push("/media/walkthrough.mp4");
   routes.push("/ragvidence-source-notices.txt", "/ragvidence-source-licenses.txt");
   const binaryRoutes = new Set(["/opengraph-image", "/favicon.ico", "/apple-icon.png", "/media/walkthrough.mp4", "/media/walkthrough.webm", "/media/walkthrough-poster.webp"]);
@@ -82,7 +82,7 @@ async function verify() {
     pages.set(route, body);
     if (route.endsWith(".svg")) {
       if (!body.includes("<svg")) failures.push(`${route}: not an SVG image`);
-    } else if (!/\.(txt|xml|json|vtt)$/.test(route)) {
+    } else if (!/\.(txt|md|xml|json|vtt)$/.test(route)) {
       if (!body.includes("<html")) failures.push(`${route}: not an HTML document`);
       if (notFound(body)) failures.push(`${route}: unexpectedly rendered not-found content`);
     }
@@ -96,10 +96,10 @@ async function verify() {
   } catch { failures.push("Documentation search index is not valid JSON."); }
   try {
     const media = JSON.parse(pages.get("/media/walkthrough-provenance.json") ?? "{}");
-    if (media.width !== 1920 || media.height !== 1080 || media.fps !== 60 || media.frames !== 2160 || media.durationSeconds !== 36 || media.audio !== false || media.captions !== false || media.workflow !== "own-data" || media.mockData !== true || media.sourceCount !== 9 || media.questionCount !== 6 || media.baseline?.successful !== 5 || media.candidate?.successful !== 6 || media.comparison?.baseline !== "bm25-body" || media.comparison?.intervention !== "semantic-body" || media.comparison?.representation !== "body" || media.comparison?.k !== 2 || media.changes?.improved !== 1 || media.changes?.regressed !== 0) failures.push("Demo provenance does not match the verified native silent own-data workflow.");
+    if (media.width !== 1920 || media.height !== 1080 || media.fps !== 60 || media.frames !== 2160 || media.durationSeconds !== 36 || media.audio !== false || media.captions !== false || media.workflow !== "own-data" || media.mockData !== true || media.sourceCount !== 1 || media.questionCount !== 4 || media.cliVersion !== "0.2.0" || media.comparison?.k !== 1 || media.comparison?.techniques?.join(",") !== "bm25,parent-child,compress") failures.push("Demo provenance does not match the verified production 0.2.0 synthetic workflow.");
   } catch { failures.push("Demo provenance is not valid JSON."); }
   const home = pages.get("/") ?? "";
-  for (const phrase of ["ragvidence[semantic]", "See whether your RAG change", "60%", "90%", "10 answerable questions", "The Free edition is a real tool"]) {
+  for (const phrase of ["ragvidence==0.2.0", "See whether your RAG change", "Apache-2.0", "reviewed original spans", "One CLI."]) {
     if (!home.includes(phrase)) failures.push(`/: missing ${phrase}`);
   }
   if (!(pages.get("/docs/first-tutorial") ?? "").includes("Why the report lists 12 questions")) failures.push("Tutorial docs do not explain the score denominator.");

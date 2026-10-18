@@ -1,86 +1,158 @@
 # Maintaining the website
 
-## Content updates
+## Product and source of truth
 
-Edit the landing page in `src/app/page.tsx` and versioned CLI articles in
-`src/lib/docs.ts`. Navigation and the static search index derive from those
-articles. Use the existing typed content blocks and shared renderers.
-Route-specific metadata uses `src/lib/seo.ts`; the preferred documentation
-overview is `/docs`. Keep release, installation, trust, and license information
-consistent with the shipped CLI.
+This website documents the fully free Apache-2.0 CLI **0.2.0**. Use the published
+production package, installed outside both repositories. Keep the CLI checkout
+read-only. The deferred human Windows usability review is separate from website
+work; do not describe it as passed. Automated installed-package checks cover
+Python 3.12 on Linux x64, Windows x64 and macOS ARM64/Intel. Model checks establish
+only their identified configurations.
 
-## Tutorial sample
+Release tag: `v0.2.0`; release commit:
+`fba0c92ddaeb414ba8e9f0dea0e0c93f4e9c29f4`.
 
-`public/sample-report.html` is generated CLI output, not a hand-authored website
-mockup. It represents the bundled v0.1.0 BM25 tutorial: ten answerable questions,
-k=2, body versus heading-context, 6/10 → 9/10 sufficient questions. Two additional
-unanswerable questions appear as N/A. The result is tutorial data, not a customer
-benchmark or a general performance promise.
-
-The retained sample was generated from the CLI source build during the report
-template work. It does not establish that the same template is in the published
-PyPI wheel. The release license in `public/ragvidence-0.1.0-license.txt` was copied
-from the production wheel; source notices and licenses are retained separately.
-
-Sample SHA-256 at repository cleanup:
+Production wheel SHA-256:
 
 ```text
-8b82b8c9ad7927ebb98a3b76a0a8346d387f19e11cef6d874922658f4ef7c93c
+ef300e798bc7cad72a560dc2a6c6c9819737bdbac9241f7ebf2a593a5f2c54e9
 ```
 
-When updating the proof:
+[PyPI](https://pypi.org/project/ragvidence/0.2.0/) ·
+[GitHub release](https://github.com/Medo-ID/ragvidence/releases/tag/v0.2.0) ·
+[CLI maintainer checklist](https://github.com/Medo-ID/ragvidence/blob/main/docs/maintainer/release-and-website-checklist.md)
 
-1. Install the intended released CLI version in an isolated environment.
-2. Run `ragvi --version`, `ragvi health`, and `ragvi tutorial`.
-3. Inspect the question-level outcomes and record the version and configuration.
-4. Copy the generated report to `public/sample-report.html`; do not patch its HTML.
-5. Update the landing page, CLI demo, tutorial documentation, and this provenance
-   together if the verified results change.
-6. Check the report offline and in print; retain its escaped content and licenses.
+## Claim and content map
 
-## Demo media
+| Website surface | Technical authority | Checks/counterpart |
+| --- | --- | --- |
+| Landing, terminal demo, install commands | Installed `--version`, `--help`, `techniques --format json`; installation/getting-started guides | Isolated uv install/upgrade, health/verify, own-data examples |
+| File/schema docs | `bm25 --help`, portable-file-usage guide | TXT, Markdown, visible HTML, document JSON/JSONL/CSV, optional text PDF; Unicode/long text |
+| Technique and model requirements | Installed technique catalog; portable-techniques and portable-advanced-techniques guides | BM25/parent-child/heading/contextual/query-fusion/filter/extraction examples; provider examples require the user's configured service |
+| Reviewed evidence and metrics | Original-span sidecar validation; interpreting-results guide | Actual reviewed hashes/quotes; questions alone remain unscored |
+| Imports and comparisons | `import-data`/`compare-data --help`; portable-comparisons guide | Exact-span imports, frozen suites, validated resume, partial failures and dev/heldout boundaries |
+| Reports, proof and video | Unmodified reports from production wheel | Four synthetic dev questions; all participants and context-size trade-offs shown |
+| Releases, terms, license downloads | Production wheel's `dist-info/licenses` | Byte-for-byte LICENSE.md, NOTICE, THIRD_PARTY_NOTICES.md and THIRD_PARTY_LICENSES.md |
+| Privacy/security | Actual website integrations and CLI provider boundaries | No accounts/forms/analytics/checkout; explicit remote operations; reports/internal artifacts can contain project data |
+| Metadata, sitemap/search/navigation | `src/lib/seo.ts`, typed docs, `docPath` | Route verifier and SEO/browser tests |
 
-The homepage video is a separate 36-second native 1920×1080, 60fps recording using
-synthetic shop-policy data. It compares BM25 and local semantic retrieval with
-the same dataset, body representation, and k=2: 5/6 versus 6/6 successful questions.
-It is not the 60% → 90% bundled tutorial. Execution waits and the first model
-download are omitted from the recording.
+Edit content in `src/app/page.tsx`, `src/components/product-sections.tsx` and
+`src/lib/docs.ts`; keep article bodies on the server. Preserve existing article
+URLs, especially `/docs/commands` and the preferred `/docs` overview. Internal
+navigation uses Next Link; files, email and external destinations use anchors.
 
-`public/media/walkthrough-provenance.json` records the commands, source wheel and
-report hashes, results, and encoding details. Keep it alongside both encodings
-and the poster. Do not substitute invented results or private customer data.
-
-To regenerate, provide a verified CLI wheel, a temporary fixture JSON with
-`sources` and `questions` arrays, uv, Python 3.12, Playwright Chromium, and an
-FFmpeg executable with H.264 and VP9 encoders:
+Use one base install command, with optional extras explained in Installation:
 
 ```bash
-node scripts/record-walkthrough.mjs /path/to/ragvidence.whl /tmp/fixture.json /path/to/ffmpeg
+uv tool install --python 3.12 "ragvidence==0.2.0"
+ragvi --version
+ragvi health
+ragvi verify
 ```
 
-This runs the real CLI in a temporary workspace, captures the report, and stages
-both encodings before replacing the public assets. `--capture-only` produces
-previews without replacing media. To resume encoding:
+BM25 and sentence extraction need no LLM. Local FastEmbed needs the semantic extra
+and a first model download. Ollama/OpenAI-compatible operations need the user's
+server or API access; an adapter does not provide credits or model rights. Do not
+promise universal model support, a best technique or generated-answer judging.
+Omit sponsorship buttons until an owner supplies a verified working destination.
+
+## Reproduce the public reports
+
+`public/sample-report.{html,json,md}` are actual portable comparison exports from
+PyPI 0.2.0. Do not patch generated HTML or scores. `public/examples/` contains the
+synthetic original manual, questions, reviewed original spans and provenance.
+`src/lib/example-results.ts` is generated from the same JSON for displayed facts.
+
+The example compares BM25, parent-child and deterministic sentence extraction,
+with k=1, chunk size 100, overlap 10 and four answerable **dev** questions. Outcomes
+are 3/4, 4/4 and 3/4 sufficient. Q1 requires RESET and POWER; only the parent adds
+POWER. Mean complete rendered contexts round to 161, 741 and 200 characters.
+There is no heldout evaluation or general quality/speed claim. All outcomes stay
+visible; the unchanged compression result is part of the comparison.
+
+`public/tutorial-report.html` is separately generated by `ragvi tutorial`:
+fictional BM25 body versus heading-context, ten answerable questions, k=2,
+6/10 → 9/10; two unanswerable questions are N/A. It remains an optional teaching
+workflow, rather than the homepage's main proof.
+
+Install the exact production wheel in a temporary Python 3.12 environment, then:
+
+```bash
+node scripts/generate-release-example.mjs /tmp/ragvidence-web-020/bin/ragvi
+/tmp/ragvidence-web-020/bin/python scripts/validate-cli-examples.py
+```
+
+The second script expects the downloaded verified wheel at
+`/tmp/ragvidence-0.2.0-py3-none-any.whl` and an isolated environment with the `pdf`
+extra. It validates schemas/commands and checks license copies against that wheel.
+Provider endpoint/model names and COPY_* schema placeholders in docs are templates;
+they require the user's own source IDs, references or service. Their flags are
+checked against installed help; no remote-model inference is represented as tested
+by the website's deterministic gate.
+
+The generator creates an isolated synthetic workspace, validates the CLI,
+generates reports, validates resume and records source/report hashes, commands,
+settings, release identity and the website source commit. The final website commit
+binds those artifacts through Git; see `git log -- public/examples/provenance.json`.
+Update references from the new inventory when original source text changes.
+
+The HTML exports work offline with embedded fonts and escaped content. Before
+printing a portable report, open the desired context/stage disclosures. Keep
+notices intact. Internal snapshots, references, prompts and contexts may contain
+full source data; share reviewed exports rather than the whole run directory.
+
+## Regenerate demo media
+
+The homepage is a 36-second native 1920×1080, 60fps silent recording of the same
+synthetic comparison. It shows actual captured CLI outputs and its unmodified
+report. Execution waits are omitted. It does not require a model or API key.
+
+Provide Playwright Chromium, FFmpeg with H.264/VP9 and the exact production wheel:
+
+```bash
+node scripts/record-walkthrough.mjs /tmp/ragvidence-0.2.0-py3-none-any.whl /path/to/ffmpeg
+node scripts/check-walkthrough.mjs /path/to/ffmpeg
+```
+
+The recorder validates wheel/report/source hashes before capture, stages both
+encodings and the poster, and writes `public/media/walkthrough-provenance.json`.
+`--capture-only` allows frame review before encoding; resume with:
 
 ```bash
 node scripts/record-walkthrough.mjs --resume /tmp/capture-directory /path/to/ffmpeg
 ```
 
-`RAGVIDENCE_RECORDING_DIR` can stage media outside `public/media`. Inspect exported
-frames and provenance for private paths or data before committing them.
+`RAGVIDENCE_RECORDING_DIR` selects a staging destination. Optional temporary browser
+libraries can be supplied via `LD_LIBRARY_PATH`; do not add them to the repository.
+Review frames for clipping and private paths, and decode both final files. Native
+source media queries preserve the reduced-motion poster before hydration; explicit
+play opts in. Test autoplay, manual pause, keyboard controls and rejected playback.
 
-To decode both videos and check dimensions, frame counts, codecs, and audio:
+## Licenses and assets
+
+The current CLI license and NOTICE were copied from the production wheel into
+`public/ragvidence-0.2.0-{license,notice}.txt`. Source dependency notices/licenses
+are copied from the same wheel. The historical 0.1.0 license remains separately
+linked only from release history. Website rights remain reserved; do not apply
+the CLI license to website code or design. Preserve font/model/third-party notices.
+The active mark is `public/brand/a-evidence-convergence/mark-dark.svg`.
+
+## Review and deployment
+
+Run `npm ci`, `npm run verify`, separate development audit, and `git diff --check`.
+The full gate uses the **normal Turbopack build**. A local Webpack fallback is
+useful for restricted-host checks, but does not establish that the normal build
+passed. Keep any failures explicit in `docs/project-health.md`.
+
+Commit as Medo-ID <midaghdour@gmail.com>, push a review branch, open a PR and confirm
+its exact-commit CI before merging. A production deployment requires separate
+owner authorization after a concrete preview has been verified. No deployment or
+DNS changes are implicit in publishing source. Check a reachable preview with:
 
 ```bash
-node scripts/check-walkthrough.mjs /path/to/ffmpeg
+RAGVIDENCE_SITE_URL=https://your-preview.example npm run verify:site
 ```
 
-Its logs and frame captures go to the ignored `verification/` directory.
-
-## Public assets
-
-The active evidence-convergence mark is
-`public/brand/a-evidence-convergence/mark-dark.svg`. App icons live in `src/app/`.
-Keep font and CLI license notices with their corresponding assets. Old logo
-alternatives, review HTML, design handoffs, screenshots, and milestone logs are
-not part of the maintained source tree.
+Then check browser interactions, media, metadata, HTTPS and domain redirects.
+Record deployed commit and rollback target. Do not announce the website as live
+until production checks pass. Only then update repository About/homepage links.

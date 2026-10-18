@@ -17,8 +17,8 @@ Inspect Git status and relevant diffs; preserve existing uncommitted work.
 
 The site has no accounts, forms, analytics, or checkout. Keep privacy and trust
 content consistent with actual integrations. Never add invented testimonials,
-customer logos, prices, benchmarks, or payment flows. Plus is future direction
-until functionality and licensing are verified.
+customer logos, prices, benchmarks, or payment flows. The CLI is fully free under Apache-2.0; all shipped features are included.
+Keep the website’s rights separate from CLI and third-party licenses.
 
 ## Setup and dependencies
 
@@ -69,14 +69,16 @@ until functionality and licensing are verified.
 
 ## Product artifacts
 
-The bundled v0.1.0 tutorial is BM25, ten answerable questions, k=2, body versus
-heading-context, 60% → 90%. Update claims, CLI demo, docs, and generated sample
-together if the verified tutorial changes. Keep `public/sample-report.html`
-generated from the CLI; preserve its provenance and embedded license notices.
-The own-data video is a separate synthetic-data comparison documented in
-`docs/maintaining.md` and `public/media/walkthrough-provenance.json`.
-Verify production PyPI installation before changing release availability claims
-or announcing a release.
+Use the production PyPI 0.2.0 wheel as the source of truth. The main synthetic
+sample compares BM25, parent-child and sentence extraction on four reviewed dev
+questions at k=1: 3/4, 4/4 and 3/4 sufficient, with different context sizes. It is
+not a benchmark or heldout claim. The optional fictional tutorial remains BM25,
+ten answerable questions at k=2, body versus heading-context, 60% → 90%.
+Keep reports generated and unmodified; update copy, docs, terminal demo, media,
+provenance and tests together. Record commands and artifact hashes. Read
+`docs/maintaining.md` for the claim map and regeneration instructions.
+Keep the CLI repository read-only during website work. Omit sponsorship buttons
+until a working destination is supplied and verified.
 
 ## Verification and repository hygiene
 

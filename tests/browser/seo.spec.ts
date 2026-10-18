@@ -38,7 +38,8 @@ test("SEO: overview alias agrees with preferred canonical and sitemap", async ({
   expect(sitemap.ok()).toBe(true);
   const urls = [...(await sitemap.text()).matchAll(/<loc>(.*?)<\/loc>/g)].map(match => match[1]);
   expect(new Set(urls).size).toBe(urls.length);
-  expect(urls).toHaveLength(22);
+  expect(urls).toHaveLength(25);
+  for (const slug of ["commands", "supported-inputs", "techniques", "advanced-techniques"]) expect(urls).toContain(`${domain}/docs/${slug}`);
   expect(urls).toContain(domain + "/docs");
   expect(urls).not.toContain(domain + "/docs/overview");
   await page.goto("/docs/overview");

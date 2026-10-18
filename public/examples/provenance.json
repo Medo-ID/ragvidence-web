@@ -1,0 +1,98 @@
+{
+  "cliVersion": "0.2.0",
+  "releaseCommit": "fba0c92ddaeb414ba8e9f0dea0e0c93f4e9c29f4",
+  "websiteSourceCommit": "0ff85aa7feb94ca88d6f7e4028aeb0baefa3a97e",
+  "packageIndex": "https://pypi.org/simple",
+  "wheelSHA256": "ef300e798bc7cad72a560dc2a6c6c9819737bdbac9241f7ebf2a593a5f2c54e9",
+  "synthetic": true,
+  "generatedAt": "2026-10-18T18:21:03.704Z",
+  "models": [],
+  "corpusHash": "b4bdb92293aa66d4636c27dd25ca77a791dbbeea111d33eb4873d314acfa0386",
+  "configuration": {
+    "techniques": [
+      "bm25",
+      "parent-child",
+      "compress"
+    ],
+    "k": 1,
+    "chunkSize": 100,
+    "chunkOverlap": 10,
+    "phase": "dev"
+  },
+  "files": [
+    {
+      "path": "public/examples/manual.md",
+      "sha256": "60d754e2f2aa039fe08127ae15f0775df6ea8309a1531920cbd9d94e46d405b9"
+    },
+    {
+      "path": "public/examples/questions.txt",
+      "sha256": "cba13447ab4bd66d5938a9fe9135e6dc88e8fa4a6a338ea06e26e01e483d43d9"
+    },
+    {
+      "path": "public/examples/reviewed.json",
+      "sha256": "6507586deef4b22dff137f418cde2697c2b8c18a47d8bce152601d6a8ac7ec79"
+    },
+    {
+      "path": "public/sample-report.html",
+      "sha256": "4d53ac174a7bd6d33cefa5b5ec38842c8734f9d7f268305bf2ad04863d0a805f"
+    },
+    {
+      "path": "public/sample-report.json",
+      "sha256": "461b0ee2e951100c62cda558a43713e031c646b7fde955632bdb35cc673c1619"
+    },
+    {
+      "path": "public/sample-report.md",
+      "sha256": "6c295abf30e430557929bf473906cc745b4eafd1b5371df87b1d6f6629eacabe"
+    },
+    {
+      "path": "public/tutorial-report.html",
+      "sha256": "16f06672bc67969384627f681540038a4eaeafd95811d132fb9f7e6b880d5597"
+    }
+  ],
+  "commands": [
+    {
+      "command": "ragvi --version",
+      "output": "0.2.0\n"
+    },
+    {
+      "command": "ragvi health",
+      "output": "┏━━━━━━━━┳━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓\n┃ Status ┃ Check            ┃ Detail                                                               ┃\n┡━━━━━━━━╇━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩\n│ PASS   │ Python           │ 3.12.14                                                              │\n│ PASS   │ Bundled exercise │ data and evidence references are valid                               │\n│ PASS   │ Dependencies     │ bm25s=0.2.14, jinja2=3.1.6, numpy=2.5.4, pydantic=2.14.1,            │\n│        │                  │ rich=14.3.4, typer=0.27.3                                            │\n│ PASS   │ Workspace        │ writable: workspaces                                                 │\n│ PASS   │ Semantic extra   │ available                                                            │\n│ PASS   │ Privacy          │ no account, telemetry, or API key required for local BM25            │\n└────────┴──────────────────┴──────────────────────────────────────────────────────────────────────┘\n"
+    },
+    {
+      "command": "ragvi verify",
+      "output": "┏━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓\n┃ Status ┃ Fixture       ┃ Detail                               ┃\n┡━━━━━━━━╇━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩\n│ PASS   │ Asset hashes  │ verified 2 bundled files             │\n│ PASS   │ Dataset       │ 8 sources; 12 questions              │\n│ PASS   │ Tokenizer     │ identifier/version fixture preserved │\n│ PASS   │ BM25 fixture  │ required source found at k=2         │\n│ PASS   │ Recovery      │ user edit preserved in backup        │\n│ PASS   │ Metrics       │ sufficient-evidence fixture passed   │\n│ PASS   │ HTML template │ self-contained template is installed │\n└────────┴───────────────┴──────────────────────────────────────┘\n"
+    },
+    {
+      "command": "ragvi techniques --format json",
+      "output": "[\n  {\n    \"name\": \"bm25\",\n    \"description\": \"Lexical ranking over independent passages\",\n    \"requirements\": \"None\"\n  },\n  {\n    \"name\": \"semantic\",\n    \"description\": \"Dense cosine ranking\",\n    \"requirements\": \"Embedding provider; semantic extra for local models\"\n  },\n  {\n    \"name\": \"hybrid\",\n    \"description\": \"Weighted BM25/dense reciprocal rank fusion\",\n    \"requirements\": \"Embedding provider\"\n  },\n  {\n    \"name\": \"rerank\",\n    \"description\": \"Cross-encoder over retrieved candidates\",\n    \"requirements\": \"semantic extra and --reranker-model\"\n  },\n  {\n    \"name\": \"parent-child\",\n    \"description\": \"Search children and return full originals\",\n    \"requirements\": \"None for BM25 base\"\n  },\n  {\n    \"name\": \"heading-context\",\n    \"description\": \"Index authentic heading paths with body text\",\n    \"requirements\": \"Headings in the source\"\n  },\n  {\n    \"name\": \"contextual\",\n    \"description\": \"Index reviewed source prefixes with body text\",\n    \"requirements\": \"--prefixes FILE\"\n  },\n  {\n    \"name\": \"multi-query\",\n    \"description\": \"Fuse original query and supplied variants\",\n    \"requirements\": \"--variants FILE\"\n  },\n  {\n    \"name\": \"import-data\",\n    \"description\": \"Inspect external ID or exact-span results\",\n    \"requirements\": \"--results FILE\"\n  },\n  {\n    \"name\": \"metadata-filter\",\n    \"description\": \"Apply typed metadata predicates before ranking\",\n    \"requirements\": \"--filters FILE\"\n  },\n  {\n    \"name\": \"mmr\",\n    \"description\": \"Select relevant and diverse candidates using cosine MMR\",\n    \"requirements\": \"Embedding provider\"\n  },\n  {\n    \"name\": \"rewrite\",\n    \"description\": \"Search model-rewritten queries; evaluate original intent\",\n    \"requirements\": \"--rewrite-model; transformation provider\"\n  },\n  {\n    \"name\": \"auto-multi-query\",\n    \"description\": \"Generate bounded query variants and fuse their rankings\",\n    \"requirements\": \"--rewrite-model; transformation provider\"\n  },\n  {\n    \"name\": \"compress\",\n    \"description\": \"Return exact question-relevant source spans\",\n    \"requirements\": \"None for deterministic sentence selection\"\n  }\n]\n"
+    },
+    {
+      "command": "ragvi bm25 ./docs --no-input --format json --output ./inventory",
+      "output": "COMPLETE · ingestion_only\n1 sources · 5 passages · 0 questions · 0 skipped · 0 failed · 0 warnings\nRetrieval was not executed because no questions were supplied.\nJSON report: ./inventory/docs-20261018T182059-aedc1f63f361/report.json\n"
+    },
+    {
+      "command": "ragvi bm25 ./docs/manual.md --query How do I reset the device? --output ./single",
+      "output": "COMPLETE · retrieval_inspection\n1 sources · 5 passages · 1 questions · 0 skipped · 0 failed · 0 warnings\nRanked passages are shown for inspection; relevance has not been scored.\n\nHow do I reset the device?\n  #1 manual.md · 1.0302\n  ## Reset pairing\n\nHold the reset button for eight seconds to clear pairing. The status light flashes twice. Disconnect\nthe companion app before starting. Keep USB-C power connected throughout the reset.\n\n\n  #2 manual.md · 0.3744\n  ## Warranty\n\nThe warranty lasts two years. Keep your receipt. Accidental water damage is excluded. Contact the \nsupport team before returning a device.\n\n\nHTML report: ./single/manual-20261018T182059-c5b42055abe0/report.html\n"
+    },
+    {
+      "command": "ragvi bm25 ./docs --questions ./questions.txt --format html --format json --output ./inspection",
+      "output": "COMPLETE · retrieval_inspection\n1 sources · 5 passages · 4 questions · 0 skipped · 0 failed · 0 warnings\nRanked passages are shown for inspection; relevance has not been scored.\n\nHow long should I hold the reset button, and what power is required?\n  #1 manual.md · 2.4319\n  ## Reset pairing\n\nHold the reset button for eight seconds to clear pairing. The status light flashes twice. Disconnect\nthe companion app before starting. Keep USB-C power connected throughout the reset.\n\n\n  #2 manual.md · 0.5166\n  ## Delivery\n\nStandard delivery takes five working days. Tracked delivery is available in Morocco. Keep the \ntracking number until the parcel arrives.\n\n\nHow long is the warranty and what damage is excluded?\n  #1 manual.md · 2.7243\n  ## Warranty\n\nThe warranty lasts two years. Keep your receipt. Accidental water damage is excluded. Contact the \nsupport team before returning a device.\n\n\n  #2 manual.md · 0.8683\n  ## Delivery\n\nStandard delivery takes five working days. Tracked delivery is available in Morocco. Keep the \ntracking number until the parcel arrives.\n\n\nHow often should I charge an unused device?\n  #1 manual.md · 1.5834\n  ## Battery care\n\nStore the device in a cool, dry place. Charge it every three months when unused. Use only the \nsupplied USB-C cable. Recycle batteries at an approved collection point.\n\n\n  #2 manual.md · 0.3513\n  # Orion device manual\n\n\n\nWhere is tracked delivery available?\n  #1 manual.md · 2.3918\n  ## Delivery\n\nStandard delivery takes five working days. Tracked delivery is available in Morocco. Keep the \ntracking number until the parcel arrives.\n\n  #2 manual.md · 0.3443\n  ## Warranty\n\nThe warranty lasts two years. Keep your receipt. Accidental water damage is excluded. Contact the \nsupport team before returning a device.\n\n\nHTML report: ./inspection/docs-20261018T182100-b528125ecf55/report.html\nJSON report: ./inspection/docs-20261018T182100-b528125ecf55/report.json\n"
+    },
+    {
+      "command": "ragvi compare-data ./docs --questions ./questions.txt --techniques bm25,parent-child --output ./unscored",
+      "output": "Comparing bm25\nComparing parent-child\nCOMPLETE · unscored_comparison · policy=fixed_k · phase=dev\nbm25: complete\n  Query ms (known): 1.121278251048352 · Context: 416.25 characters\nparent-child: complete\n  Query ms (known): 0.13596549979411066 · Context: 741.0 characters\nKeeping the baseline is valid. Choose using these cases and your requirements.\nEqual k does not imply equal context volume; resources are reported separately.\nUnlabeled data cannot establish a quality winner.\nThese observations do not prove what caused a particular failure.\nComparison artifacts: ./unscored/comparison-docs-20261018T182101-0f2990cd8d6e\nHTML report: ./unscored/comparison-docs-20261018T182101-0f2990cd8d6e/exports/eea575adca954f8ca88da5147d0776ba/report.html\n"
+    },
+    {
+      "command": "ragvi compare-data ./docs --reviewed ./reviewed.json --techniques bm25,parent-child,compress --k 1 --chunk-size 100 --chunk-overlap 10 --format html --format json --format markdown --output ./comparison",
+      "output": "Comparing bm25\nComparing parent-child\nComparing compress\nCOMPLETE · reviewed_comparison · policy=fixed_k · phase=dev\nbm25: complete\n  dev: 3/4 answerable questions sufficient\n  heldout: 0/0 answerable questions sufficient\n  Query ms (known): 0.9464632503295434 · Context: 161.25 characters\nparent-child: complete\n  dev: 4/4 answerable questions sufficient\n  heldout: 0/0 answerable questions sufficient\n  Query ms (known): 0.19640549999166979 · Context: 741.0 characters\ncompress: complete\n  dev: 3/4 answerable questions sufficient\n  heldout: 0/0 answerable questions sufficient\n  Query ms (known): 0.6701004995193216 · Context: 199.5 characters\nKeeping the baseline is valid. Choose using these cases and your requirements.\nEqual k does not imply equal context volume; resources are reported separately.\nIntervals pair questions or families. Repeated timings are not extra samples.\nThese observations do not prove what caused a particular failure.\nComparison artifacts: ./comparison/comparison-docs-20261018T182101-c42f58d45990\nFrozen shortlist: ./comparison/comparison-docs-20261018T182101-c42f58d45990/shortlist.json\nHTML report: ./comparison/comparison-docs-20261018T182101-c42f58d45990/exports/9560f04454664a2ca8cd5c8c868e08ab/report.html\nJSON report: ./comparison/comparison-docs-20261018T182101-c42f58d45990/exports/9560f04454664a2ca8cd5c8c868e08ab/report.json\nMARKDOWN report: ./comparison/comparison-docs-20261018T182101-c42f58d45990/exports/9560f04454664a2ca8cd5c8c868e08ab/report.md\n"
+    },
+    {
+      "command": "ragvi compare-data . --resume /tmp/ragvidence-020-example-SWNHIp/comparison/comparison-docs-20261018T182101-c42f58d45990 --format json",
+      "output": "Comparing bm25\nComparing parent-child\nComparing compress\nCOMPLETE · reviewed_comparison · policy=fixed_k · phase=dev\nbm25: complete\n  dev: 3/4 answerable questions sufficient\n  heldout: 0/0 answerable questions sufficient\n  Query ms (known): 0.9464632503295434 · Context: 161.25 characters\nparent-child: complete\n  dev: 4/4 answerable questions sufficient\n  heldout: 0/0 answerable questions sufficient\n  Query ms (known): 0.19640549999166979 · Context: 741.0 characters\ncompress: complete\n  dev: 3/4 answerable questions sufficient\n  heldout: 0/0 answerable questions sufficient\n  Query ms (known): 0.6701004995193216 · Context: 199.5 characters\nKeeping the baseline is valid. Choose using these cases and your requirements.\nEqual k does not imply equal context volume; resources are reported separately.\nIntervals pair questions or families. Repeated timings are not extra samples.\nThese observations do not prove what caused a particular failure.\nComparison artifacts: ./comparison/comparison-docs-20261018T182101-c42f58d45990\nFrozen shortlist: ./comparison/comparison-docs-20261018T182101-c42f58d45990/shortlist.json\nJSON report: ./comparison/comparison-docs-20261018T182101-c42f58d45990/exports/454a337bcd644f45ae4973663ac60b09/report.json\n"
+    },
+    {
+      "command": "ragvi tutorial",
+      "output": "Running bm25-body at k=2\nRunning bm25-heading_context at k=2\nCOMPLETE Guided comparison finished.\nReport: ./workspaces/first-run/reports/tutorial.html\nNext: Open the report, inspect changed questions, then read the Getting started guide included with \nyour download.\n"
+    }
+  ]
+}
