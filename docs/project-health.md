@@ -15,7 +15,7 @@ Local checks: Node 24.20.0, npm 11.19.0, Python 3.12.14, Chromium via Playwright
 | --- | --- |
 | `npm ci` | Pass |
 | ESLint / TypeScript / `git diff --check` | Pass |
-| `npm run verify` with normal Turbopack build | Attempted; fresh CSS worker port binding fails with `Operation not permitted`, also on escalated retry |
+| `npm run verify` with normal Turbopack build | Pass in GitHub Actions on `b860fc1`; local fresh build remains blocked by worker-port sandboxing |
 | `npm run build -- --webpack` | Pass; authorized local fallback only |
 | HTTP/content/link/header/not-found checks | Pass: 51 routes, 160 links/fragments |
 | Verifier and artifact provenance tests | Pass: 6 tests |
@@ -37,11 +37,13 @@ Git-tracked/intended source files, excluding generated files. Those build keys
 and captures are not publication inputs. Secret scans detect known patterns,
 not all possible confidential information.
 
-The earlier normal-build baseline reused cached CSS and passed. A fresh build
-exposed the worker-port restriction; neither that cached run nor the Webpack
-fallback establishes a successful fresh normal build. The normal `npm run verify`
-command and Turbopack configuration remain unchanged. CI must establish the fresh
-normal production gate before this update can be treated as fully verified.
+The complete standard gate passed in [GitHub Actions run 39156419147](https://github.com/Medo-ID/ragvidence-web/actions/runs/39156419147)
+on exact candidate `b860fc180ff4c46770905e3049ab198a64561ce8`. It runs the unchanged
+`npm run verify` command: lint, types, fresh normal Turbopack production build,
+HTTP verifier, verifier/provenance tests, Chromium suite and production audit.
+This establishes the normal-build gate on a capable host. The local Webpack
+fallback remains labeled separately; local fresh Turbopack attempts hit the CSS
+worker port-binding restriction even on escalated retry.
 
 Chromium used temporary NSS/NSPR/ALSA libraries under `/tmp` because this host
 lacks them. They are not repository dependencies. Media authoring used a temporary
@@ -72,14 +74,13 @@ stack downgrade. Production audits must remain clean. Recheck on dependency upda
 
 ## Review and deployment status
 
-The code and synthetic artifacts are ready for review on `release/website-0.2.0`.
+The code and synthetic artifacts are pushed for review on `release/website-0.2.0`.
 CI runs the standard gate on branch pushes as well as PRs, so review candidates
 can be checked before merging. No production deployment or DNS change is authorized.
 The local preview uses the verified fallback build; it is not a hosted deployment.
 
 Remaining gates:
 
-- Confirm exact-commit CI, including the fresh normal Turbopack build.
 - Open/review the website PR and follow any branch protection requirements.
 - Connect/select the intended Node 24 Next.js host, then verify a hosted preview.
 - Obtain separate production-deployment authorization only after preview review.
@@ -87,7 +88,14 @@ Remaining gates:
   redirects, metadata, search/copy/mobile/media and installation/documentation links.
 - Record deployed commit and rollback target, then update repository homepage/About.
 
-There is no GitHub API or hosting token configured in this session. Git SSH can
-publish source; PR creation/hosting may require owner access. Do not describe
-unperformed CI, hosted-preview or live-domain checks as passed. Human Windows CLI
+The owner chose to open the PR and create the Vercel preview. Use feature branch
+`release/website-0.2.0` against `main`; create a **Preview** deployment of that branch
+with Node 24, `npm ci` and the normal `npm run build`. No environment variables
+are required. Send the reachable preview URL for verification before considering
+production authorization. No hosted preview or production URL has been verified.
+
+Checklist tasks 7–11 are complete. Task 12 awaits the owner's PR/hosted-preview
+steps, then preview verification and separate production authorization. Task 13
+(verified live links/About, deployed identity/rollback and launch) follows
+production. The CLI working tree is clean and unchanged. Human Windows CLI
 usability review and sponsorship remain deferred and do not block website work.
