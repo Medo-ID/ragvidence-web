@@ -36,11 +36,6 @@ const nextConfig: NextConfig = {
           { key: "Cross-Origin-Opener-Policy", value: "same-origin" },
         ],
       },
-      // Review HTML is public for sharing, but should not compete with product pages.
-      ...["/brand/concepts.html", "/brand/brand-sheet.html", "/brand/:concept/tab-preview.html"].map(source => ({
-        source,
-        headers: [{ key: "X-Robots-Tag", value: "noindex" }],
-      })),
     ];
   },
   turbopack: {

@@ -1,6 +1,6 @@
 <!-- BEGIN:nextjs-agent-rules -->
 
-## This is NOT the Next.js you know
+# This is NOT the Next.js you know
 
 This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
 
@@ -8,153 +8,105 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 
 <!-- END:nextjs-agent-rules -->
 
-## Project purpose and boundaries
+## Scope and orientation
 
-RAGvidence's product website and versioned CLI documentation. This repository is a
-Next.js App Router site, not the CLI implementation. The current product flow is
-installation, a reproducible tutorial, a sample report, and documentation; there
-are no accounts, forms, analytics, or checkout.
+This repository contains the RAGvidence product website and versioned CLI
+documentation, not the Python CLI implementation. Read `README.md`,
+`docs/maintaining.md`, and `docs/project-health.md` before making changes.
+Inspect Git status and relevant diffs; preserve existing uncommitted work.
 
-- Read `README.md` for release, ownership, and deployment context.
-- Read `docs/project-health.md` for the dated baseline and optimization backlog.
-  Recheck findings before treating them as current facts.
-- Preserve existing uncommitted changes. Inspect `git status` and relevant diffs
-  before editing. Keep changes focused on the requested outcome.
-- Keep the managed Next.js block above intact.
+The site has no accounts, forms, analytics, or checkout. Keep privacy and trust
+content consistent with actual integrations. Never add invented testimonials,
+customer logos, prices, benchmarks, or payment flows. Plus is future direction
+until functionality and licensing are verified.
 
-## Setup and dependency policy
+## Setup and dependencies
 
-- Use npm and `package-lock.json`. Node 24 is the project baseline (`.nvmrc`);
-  README requires npm 11 or newer. Use `npm ci` for a clean install.
-- Current stack: Next.js 16, React 19, TypeScript 6, Tailwind CSS 4, Lucide icons,
-  and locally packaged Geist fonts. Read versions from `package.json` and the lock.
-- Keep `next` and `eslint-config-next` aligned, and `react` and `react-dom` aligned.
-- Verify peer dependencies before major upgrades. The audited lint stack supports
-  TypeScript `>=4.8.4 <6.1.0`; React and accessibility lint plugins exclude ESLint
-  10. Keep Node types aligned with the target Node runtime. Recheck these ranges
-  when updating the lint stack rather than blindly choosing `latest`.
-- Update the manifest and lock together. Avoid force-installing dependencies or
-  running `npm audit fix --force` to bypass compatibility problems.
+- Use Node.js 24, npm 11 or newer, and `npm ci`. Commit manifest and lock changes
+  together. Read exact versions from `package.json` and `package-lock.json`.
+- Keep Next.js and eslint-config-next aligned, and React and React DOM aligned.
+  Check peer ranges before major upgrades; never force dependency installation
+  or use `npm audit fix --force` to bypass compatibility constraints.
 - Audit production and development dependencies separately. Track unresolved
-  advisories with their dependency path and remediation status.
+  advisories and their dependency paths in `docs/project-health.md`.
 
-## Code and content map
+## Code and content
 
-- `src/app/page.tsx`: product landing page and installation/tutorial commands.
-- `src/app/layout.tsx`: shared layout, fonts, site metadata, and skip link.
-- `src/app/globals.css`: Tailwind import, theme tokens, global helpers, reduced
-  motion, and print styles.
-- `src/app/docs/`: docs layout, overview, and statically enumerated `[slug]` route.
-- `src/lib/docs.ts`: typed content blocks, doc pages, groups, and navigation order.
-- `src/components/`: shared page sections and interactive controls.
-- `src/components/cli-demo.tsx`: guided installation, health, tutorial, and report
-  preview; manual steps and optional playback, with reduced-motion support.
-- `src/app/privacy`, `terms`, `security`: trust pages.
-- `src/app/robots.ts`, `sitemap.ts`, `opengraph-image.tsx`: discovery and sharing.
-- `public/sample-report.html`: generated tutorial proof; preserve its provenance.
-- `scripts/verify-site.mjs`: HTTP/content/link/header smoke check.
-- `next.config.ts`: caching, partial prefetching, security headers, and the
-  `@tailwindcss/turbopack` CSS loader. This project uses Turbopack; do not assume a
-  PostCSS config or switch bundlers without checking CSS compilation.
+- `src/app/page.tsx` contains the landing page. `src/app/layout.tsx` owns the
+  shared layout, fonts, metadata, and skip link; `src/app/globals.css` owns global
+  styles and theme tokens.
+- `src/lib/docs.ts` contains typed article content and navigation order.
+  `src/app/docs/` renders it; keep full article bodies out of client navigation.
+- `src/components/` contains shared UI and interactive controls. Reuse it.
+  Keep pages and content rendering in Server Components; add `"use client"`
+  only where interaction requires it. Use strict TypeScript and `@/*` imports.
+- Read the relevant installed Next.js guide before editing framework behavior.
+  Preserve async route params, static generation, unknown-slug handling, and the
+  existing caching/prefetch configuration unless the task requires changing them.
+- Preserve canonical URLs, sitemap coverage, security headers, and route metadata.
+  Use `pageMetadata` from `src/lib/seo.ts`, `docPath` for the preferred `/docs`
+  overview URL, and safe serialization for factual JSON-LD. Use `next/link` for
+  internal pages and anchors for files, mail, and external destinations.
+- Handle browser API failures and effect cleanup. Clipboard failures need useful
+  recovery. Preserve labels, heading order, keyboard focus, the skip link,
+  reduced-motion behavior, and print support.
 
-## Implementation conventions
+## Visual conventions
 
-- Use strict TypeScript, existing typed content models, and the `@/*` source alias.
-  Match surrounding conventions and reuse shared components before adding helpers.
-- Keep pages and content rendering in Server Components. Add `"use client"` only
-  where interaction requires it; avoid importing full documentation bodies into
-  client navigation when only titles, descriptions, groups, and slugs are needed.
-- Read the installed Next.js guide for the feature being changed. Route params
-  are asynchronous in the existing docs route; preserve static generation and
-  unknown-slug handling. Check caching/prefetching guidance before changing the
-  existing flags or `instant` exports.
-- Handle browser API failures and effect cleanup. Copy controls need a useful
-  failure state when clipboard access is unavailable or denied.
-- Preserve route metadata, canonical URLs, sitemap coverage, and security headers.
-  Use `next/link` for internal page navigation and appropriate anchors for files,
-  mail links, and external destinations.
-- Use `pageMetadata` from `src/lib/seo.ts` for complete route-specific search and
-  social metadata. Use `docPath` for the preferred overview URL (`/docs`). Keep
-  the sitemap canonical-only. Safely serialize factual JSON-LD; do not invent
-  reviews, ratings, or search-volume claims. Keep review HTML indexing exclusions
-  separate from crawl access and from public logo/favicon assets.
-
-## Tailwind and visual work
-
-- Use the 6/9/12/16px radius tokens for small controls, navigation/copy controls,
-  cards/code/disclosures, and showcases. Avoid pills and independently rounded
-  nested children. Navigation uses a full-width border and aligned inner content;
-  the brand uses concept A's evidence-convergence mark with the RAGvidence wordmark.
-  Abyssal Teal #063f47 is the identity color;
-  pale teal is used for readable text/focus. Preserve separate semantic colors.
+- Use the existing Abyssal Teal identity (#063f47), evidence-convergence mark,
+  and RAGvidence wordmark. Reuse theme colors and `shell`, `surface`, `eyebrow`,
+  and `CodeBlock` helpers. Copy command content without shell prompts.
+- Preserve 6/9/12/16px radius tokens for small controls, navigation controls,
+  cards/code/disclosures, and showcases. Avoid pills and individually rounded
+  nested children. Navigation uses a full-width border and aligned inner content.
 - Most surfaces are solid and near-black. Reserve teal translucency for important
-  regions; blur belongs only to the sticky header. Reuse CodeBlock for commands,
-  structured data, configuration, and output; copy raw content without prompts.
-- Keep the CSS-first v4 setup: `@import "tailwindcss"` and `@theme inline` tokens.
-  Use existing colors (`canvas`, `panel`, `line`, `ink`, `muted`, `signal`, etc.) and
-  shared helpers (`shell`, `surface`, `eyebrow`) to maintain the visual language.
-- Write complete class strings so Tailwind can detect them. For conditional
-  styles, map to full literals instead of constructing utility names dynamically.
-- Prefer standard utilities when they express the exact intended value. Arbitrary
-  values remain valid when needed. Examples of optional v4 simplifications:
-  `bg-white/[0.025]` → `bg-white/2.5`, `min-w-[34rem]` → `min-w-136`.
-- Avoid removed v3 utilities such as `bg-opacity-*`, `text-opacity-*`,
-  `flex-shrink-*`, `flex-grow-*`, and `overflow-ellipsis`. Consult the official
-  Tailwind upgrade guide and installed compiler before migrating classes.
-- Check mobile and desktop layouts, long code blocks, tables, and docs navigation.
-  Preserve accessible labels, heading order, visible keyboard focus, the skip
-  link, reduced-motion behavior, and print support.
+  regions and blur for the sticky header. Keep semantic colors distinct.
+- Preserve the CSS-first Tailwind v4 setup (`@import "tailwindcss"` and
+  `@theme inline`). Use complete class strings and existing theme utilities;
+  avoid removed v3 utilities or dynamically constructed utility names.
+- This project uses Turbopack and `@tailwindcss/turbopack`; do not assume a
+  PostCSS config or switch the normal bundler without verifying CSS compilation.
 
-## Product accuracy
+## Product artifacts
 
-- Describe shipped Free features accurately. Plus remains future direction until
-  functionality and licensing are verified. Do not invent testimonials, customer
-  logos, benchmarks, pricing, or payment flows.
-- The 60% → 90% result is the bundled v0.1.0 BM25 tutorial: ten questions, k=2,
-  body versus heading-context. Update claims, CLI demo, docs, and the generated
-  sample report together when the verified tutorial changes.
-- Keep site privacy claims consistent with actual integrations. When introducing
-  data collection, accounts, analytics, or checkout, update relevant trust content
-  as part of that feature.
-- Confirm production PyPI release/install status before changing release claims
-  or announcing the site. README describes the release sequence.
+The bundled v0.1.0 tutorial is BM25, ten answerable questions, k=2, body versus
+heading-context, 60% → 90%. Update claims, CLI demo, docs, and generated sample
+together if the verified tutorial changes. Keep `public/sample-report.html`
+generated from the CLI; preserve its provenance and embedded license notices.
+The own-data video is a separate synthetic-data comparison documented in
+`docs/maintaining.md` and `public/media/walkthrough-provenance.json`.
+Verify production PyPI installation before changing release availability claims
+or announcing a release.
 
-## Verification and optimization workflow
+## Verification and repository hygiene
 
-1. Inspect the affected code and relevant installed Next.js documentation.
-2. Establish a baseline for the requested behavior, then make a focused change.
-3. Run `npm run lint` and `npm run typecheck` for code/config changes.
-4. Run `npm run build` for production verification. `npm run check` combines
-   lint, typecheck, and build; Next.js builds do not automatically run ESLint.
-5. Run `npm run verify:site` for route/content/navigation/header changes after a
-   successful build. It starts its own `next start` on port 3001 and stops it after
-   checking; an occupied port fails instead of reusing an unknown server. Explicit
-   `RAGVIDENCE_SITE_URL` targets must already be reachable. For an additional
-   production smoke check, start the build separately with `npm run start -- --port 3001`, then run
-   `RAGVIDENCE_SITE_URL=http://127.0.0.1:3001 npm run verify:site` while it is running.
-   Stop servers you started after checking them.
-6. Use `npm run verify` for the full gate (including Chromium tests against a
-   dedicated production server on port 3002), plus the explicit production smoke
-   check above before deployment. Install Chromium with
-   `npx playwright install --with-deps chromium` when needed. Check `npm audit` and `npm outdated`
-   when dependencies change; the existing verify gate audits production only.
-7. Verify interactive and responsive changes in a browser, including keyboard
-   operation, clipboard failures, docs search, mobile menus, and console errors.
-   HTTP checks do not cover these behaviors. Add focused regression coverage when
-   fixing meaningful behavior; avoid tests that only mirror implementation.
-8. Run `git diff --check` and review the final diff. Report changes, evidence,
-   unresolved issues, and environment limitations accurately. Do not call a
-   blocked build or unperformed browser check a pass.
+1. Inspect affected code, installed framework guidance, and the behavior baseline.
+2. Make focused changes, then run `npm run lint` and `npm run typecheck` for
+   code/config changes, followed by `npm run build`.
+3. Run `npm run verify:site` after a successful build for route, asset, navigation,
+   content, or header changes. It owns port 3001 and stops its server. Explicit
+   `RAGVIDENCE_SITE_URL` targets must already be reachable.
+4. Run `npm run verify` before deployment. It includes Chromium tests on a
+   dedicated production server at port 3002 and a production dependency audit.
+   For a separate production smoke check, start `npm run start -- --port 3001`,
+   run the verifier with `RAGVIDENCE_SITE_URL=http://127.0.0.1:3001`, then stop it.
+5. Verify interactive and responsive changes in a browser, including keyboard
+   use, clipboard failures, search, mobile menus, and console errors. Add focused
+   regression tests for meaningful behavior changes.
+6. Run `git diff --check` and review the final diff. Report failures and unperformed
+   checks honestly. Never describe a Webpack check as Turbopack verification.
 
-In this restricted execution environment the user authorizes `npm run build --
---webpack` plus the available gate in `verification/identity/verify-milestone.mjs`.
-Webpack uses the existing Tailwind compiler through a verification-only hook;
-the normal Turbopack command/configuration stays in place. Standard build and
-deployment verification remain pending until the user confirms them locally or
-on Vercel. The development-only braces advisory is temporarily accepted; production
-audits must pass and the dependency path/remediation remain tracked in the health notes.
+In restricted environments, `npm run build -- --webpack` is an authorized fallback
+using the existing verification-only CSS hook; leave the normal build command
+unchanged. Standard Turbopack and deployment verification still require a capable
+host. The temporarily accepted development-only braces advisory and its dependency
+path are tracked in `docs/project-health.md`; production audits must pass.
 
-Measure performance before and after optimization: production client JavaScript,
-CSS size, and representative mobile/desktop loading and interaction metrics. Prefer
-small client boundaries and simpler layouts; do not add a dependency or redesign
-without a concrete benefit to the requested product flow.
+Measure performance before and after optimization. Prefer small client boundaries
+and simpler layouts; avoid dependencies or redesigns without a concrete benefit.
+
+Keep maintained tests and CI scripts in Git. Ignore generated logs, captures,
+workspaces, build output, and local agent/tool settings. Never commit credentials,
+private keys, environment files, or confidential data. Inspect staged changes and
+scan reachable history before publishing a repository; deleting a file from the
+working tree does not remove its historical contents.

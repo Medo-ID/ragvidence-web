@@ -59,11 +59,10 @@ test("SEO: site identity and article breadcrumbs are crawlable inert data", asyn
   ] });
 });
 
-test("SEO: review HTML is noindex while public product assets remain usable", async ({ request }) => {
+test("SEO: removed design previews return 404 while public product assets remain usable", async ({ request }) => {
   for (const path of ["/brand/concepts.html", "/brand/brand-sheet.html", ...["a-evidence-convergence", "b-evidence-search", "c-connected-v"].map(concept => `/brand/${concept}/tab-preview.html`)]) {
     const response = await request.get(path);
-    expect(response.status()).toBe(200);
-    expect(response.headers()["x-robots-tag"]).toBe("noindex");
+    expect(response.status()).toBe(404);
     expect(response.headers()["x-frame-options"]).toBe("DENY");
   }
   for (const path of ["/favicon.ico", "/icon.svg", "/brand/a-evidence-convergence/mark-dark.svg", "/sample-report.html"]) {

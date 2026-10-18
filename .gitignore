@@ -1,5 +1,3 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
 # dependencies
 /node_modules
 /.pnp
@@ -14,6 +12,12 @@
 /coverage
 /playwright-report/
 /test-results/
+/blob-report/
+
+# local reviews, captures, and generated workspaces
+/verification/
+/workspaces/
+/.local-verification/
 
 # next.js
 /.next/
@@ -24,16 +28,33 @@
 
 # misc
 .DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# credentials and local tool configuration
 *.pem
+*.key
+*.p12
+*.pfx
+.env*
+.npmrc
+.netrc
+.pypirc
+/.aws/
+/.agents/
+/.codex/
+/.ssh/
+/.vscode/
+/.idea/
 
 # debug
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
-
-# env files (can opt-in for committing if needed)
-.env*
+*.log
 
 # vercel
 .vercel

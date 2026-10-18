@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-/* Local Linux fallbacks, measured against Geist 1.7.2; see layout-stability.md.
+/* Local Linux fallbacks, measured against Geist 1.7.2 to reduce layout shift.
    Geist and its existing adjusted Arial fallback retain first priority. */
 @font-face {
   font-family: "RAGvidence DejaVu Fallback";

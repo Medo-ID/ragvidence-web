@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" role="img" aria-labelledby="title"><title id="title">RAGvidence</title>
-  <g fill="#063f47">
-    <path d="M3 5h5l3.5 6h-5L3 5Zm7 10h5l3.5 6-4 5L10 15Z"/>
-    <path d="m9 10.5 4 6.5" fill="none" stroke="#063f47" stroke-width="1.25"/>
-    <path data-accent="true" fill="#063f47" d="M14 28 10.5 23l4-3 2.5 4L25 5h5L19 28h-5Z"/>
-  </g>
-</svg>
