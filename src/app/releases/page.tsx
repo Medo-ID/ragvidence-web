@@ -14,30 +14,27 @@ export default function ReleasesPage() {
       <div className="max-w-2xl">
         <p className="eyebrow">Release history</p>
         <h1 className="mt-5 text-4xl font-semibold tracking-tight text-ink sm:text-5xl">What ships with RAGvidence.</h1>
-        <p className="mt-5 text-base leading-7 text-muted">Released capabilities, requirements, and the license distributed with each version. Documentation currently covers the Free v0.1.0 release.</p>
+        <p className="mt-5 text-base leading-7 text-muted">Current documentation covers the fully free Apache-2.0 CLI v0.2.0.</p>
       </div>
       <article className="surface mt-12 max-w-4xl border border-line p-6 sm:p-10">
-        <div className="flex flex-wrap items-center justify-between gap-4 border-b border-line pb-6">
-          <h2 className="font-mono text-2xl font-semibold text-ink">v0.1.0</h2>
-          <time dateTime="2026-10-08" className="text-sm text-muted">October 8, 2026</time>
-        </div>
-        <p className="mt-6 text-sm leading-7 text-muted">Initial Free release · Python 3.12 · Proprietary software. No account or paid activation is required.</p>
+        <h2 className="font-mono text-2xl font-semibold text-ink">v0.2.0</h2>
+        <p className="mt-6 text-sm leading-7 text-muted">Published on production PyPI · Python 3.12 · Apache-2.0 · All shipped features free.</p>
         <ul className="mt-6 list-disc space-y-3 pl-5 text-sm leading-7 text-muted marker:text-signal-ink">
-          <li>BM25, optional FastEmbed semantic retrieval, and Ollama / OpenAI-compatible embedding adapters.</li>
-          <li>Controlled body versus heading-context comparisons and imported retriever results.</li>
-          <li>Evidence-level evaluation, improvement and regression analysis, and deterministic diagnosis.</li>
-          <li>Self-contained HTML, Markdown, and JSON reports, with recoverable local workspaces.</li>
+          <li>Portable TXT, Markdown, HTML, document JSON/JSONL, CSV and optional text-bearing PDF input.</li>
+          <li>BM25, dense, hybrid, reranking, parent-child, heading/contextual indexing, query fusion, typed filters, MMR, rewriting and exact-span compression.</li>
+          <li>Original-span evidence evaluation, external retriever imports, frozen comparisons, bounded suites/grids, dev shortlists, heldout disclosure and validated resume.</li>
+          <li>Terminal summaries and self-contained HTML, JSON and Markdown reports with exact context and stage evidence.</li>
         </ul>
-        <div className="mt-8 border-t border-line pt-6 text-sm leading-7 text-muted">
-          <p>The bundled tutorial compares the same ten questions at k=2 using BM25. Evidence sufficiency changes from 60% to 90%; this teaching example is not a benchmark for another corpus.</p>
-          <p className="mt-4">Plus features remain future direction. This release does not provide paid checkout or team hosting.</p>
-        </div>
+        <p className="mt-6 text-sm leading-7 text-muted">Local models need their optional runtime and first download. Selected Ollama or OpenAI-compatible operations use your server/API access. Answer and citation correctness judging is outside this release.</p>
         <div className="mt-8 flex flex-wrap gap-6 text-sm text-signal-ink">
-          <Link href="/docs/installation" className="inline-flex min-h-11 items-center gap-2 hover:text-ink">Installation guide<ArrowRight size={15} aria-hidden="true" /></Link>
-          <a href="https://pypi.org/project/ragvidence/0.1.0/" className="inline-flex min-h-11 items-center gap-2 hover:text-ink">Release on PyPI<ExternalLink size={15} aria-hidden="true" /></a>
-          <a href="/ragvidence-0.1.0-license.txt" className="inline-flex min-h-11 items-center gap-2 hover:text-ink">Read the shipped license<ArrowRight size={15} aria-hidden="true" /></a>
+          <Link href="/docs/installation" className="inline-flex min-h-11 items-center gap-2">Installation guide<ArrowRight size={15} aria-hidden="true" /></Link>
+          <a href="https://pypi.org/project/ragvidence/0.2.0/" className="inline-flex min-h-11 items-center gap-2">PyPI release<ExternalLink size={15} aria-hidden="true" /></a>
+          <a href="https://github.com/Medo-ID/ragvidence/releases/tag/v0.2.0" className="inline-flex min-h-11 items-center gap-2">GitHub release<ExternalLink size={15} aria-hidden="true" /></a>
+          <a href="/ragvidence-0.2.0-license.txt" className="inline-flex min-h-11 items-center gap-2">Shipped license<ArrowRight size={15} aria-hidden="true" /></a>
+          <a href="/ragvidence-0.2.0-notice.txt" className="inline-flex min-h-11 items-center gap-2">NOTICE<ArrowRight size={15} aria-hidden="true" /></a>
         </div>
       </article>
+      <details className="mt-8 max-w-4xl border-t border-line py-6 text-sm text-muted"><summary className="cursor-pointer py-2">Historical release: v0.1.0</summary><p className="mt-4 leading-7">Historical release records are separate from current documentation. The <a href="https://pypi.org/project/ragvidence/0.1.0/" className="text-signal-ink">0.1.0 package</a> retains its <a href="/ragvidence-0.1.0-license.txt" className="text-signal-ink">original shipped license</a>.</p></details>
     </div>
   );
 }

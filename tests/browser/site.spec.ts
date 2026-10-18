@@ -1,5 +1,20 @@
 import { expect, test } from "@playwright/test";
 
+test("current release pages have no browser errors and expose the free CLI workflow", async ({ page }) => {
+  const errors: string[] = [];
+  page.on("pageerror", error => errors.push(error.message));
+  page.on("console", message => { if (message.type() === "error") errors.push(message.text()); });
+  for (const route of ["/", "/docs/supported-inputs", "/docs/techniques", "/docs/advanced-techniques", "/releases", "/sample-report.html"]) {
+    await page.goto(route);
+    await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
+    if (route === "/") {
+      await expect(page.locator("main")).toContainText("Apache-2.0");
+      await expect(page.locator("main")).not.toContainText(/Plus|Sponsor|Donate/);
+    }
+  }
+  expect(errors).toEqual([]);
+});
+
 test("mobile docs selection closes the browser and reveals the article", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("/docs/installation");
@@ -53,7 +68,7 @@ test("copy failure provides feedback and retry copies the real command", async (
   await expect(page.locator("#demo").getByRole("status")).toContainText("copy it manually");
   await copy.click();
   await expect(copy).toHaveText("Copied");
-  await expect(page.locator("html")).toHaveAttribute("data-copied", 'uv tool install --python 3.12 "ragvidence[semantic]"');
+  await expect(page.locator("html")).toHaveAttribute("data-copied", 'uv tool install --python 3.12 "ragvidence==0.2.0"');
 });
 
 test("preview steps, bounds, playback, and reduced motion remain usable", async ({ page }) => {
@@ -345,7 +360,7 @@ test("installation and mobile navigation remain accessible without JavaScript", 
   const context = await browser.newContext({ javaScriptEnabled: false, viewport: { width: 390, height: 844 } });
   const page = await context.newPage();
   await page.goto("http://127.0.0.1:3002/");
-  await page.locator("header").getByRole("link", { name: "Install Free", exact: true }).click();
+  await page.locator("header").getByRole("link", { name: "Install CLI", exact: true }).click();
   await expect(page.getByRole("heading", { level: 1, name: "Installation", exact: true })).toBeVisible();
   await page.getByText("Browse documentation", { exact: true }).click();
   await page.locator("details[data-docs-browser]").getByRole("link", { name: "First tutorial", exact: true }).click();

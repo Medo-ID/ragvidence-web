@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Brand } from "./brand";
 
 const groups = [
-  { title: "Product", links: [["Install", "/#install"], ["Proof", "/#proof"], ["Plans", "/#plans"], ["Roadmap", "/#roadmap"]] },
+  { title: "Product", links: [["Install", "/#install"], ["Proof", "/#proof"], ["Open source", "/#open-source"], ["Source", "https://github.com/Medo-ID/ragvidence"]] },
   { title: "Learn", links: [["Documentation", "/docs"], ["First tutorial", "/docs/first-tutorial"], ["Releases", "/releases"], ["Troubleshooting", "/docs/troubleshooting"]] },
   { title: "Trust", links: [["Privacy", "/privacy"], ["Terms", "/terms"], ["Security", "/security"], ["Support", "mailto:midaghdour@gmail.com"]] },
 ] as const;
@@ -21,7 +21,7 @@ export function SiteFooter() {
             <div key={group.title}>
               <h2 className="text-sm font-semibold text-ink">{group.title}</h2>
               <ul className="mt-4 space-y-3">
-                {group.links.map(([label, href]) => <li key={href}><Link href={href} className="text-sm text-muted transition-colors hover:text-signal-ink">{label}</Link></li>)}
+                {group.links.map(([label, href]) => <li key={href}><FooterLink href={href} label={label} /></li>)}
               </ul>
             </div>
           ))}
@@ -29,10 +29,15 @@ export function SiteFooter() {
       </div>
       <div className="border-t border-line/70">
         <div className="shell flex flex-col gap-2 py-5 text-xs text-muted sm:flex-row sm:items-center sm:justify-between">
-          <p>© 2026 Medo-ID. RAGvidence is proprietary software.</p>
+          <p>© 2026 Medo-ID. CLI: Apache-2.0. Website rights reserved.</p>
           <p>No telemetry · No account · Your data stays under your control</p>
         </div>
       </div>
     </footer>
   );
+}
+
+function FooterLink({ href, label }: { href: string; label: string }) {
+  const className = "text-sm text-muted transition-colors hover:text-signal-ink";
+  return href.startsWith("/") ? <Link href={href} className={className}>{label}</Link> : <a href={href} className={className}>{label}</a>;
 }

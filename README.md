@@ -1,8 +1,8 @@
 # RAGvidence website
 
 Source for the RAGvidence product website and versioned CLI documentation.
-RAGvidence helps evaluate whether a retrieval change improves the evidence
-available to answer your questions.
+RAGvidence is a fully free Apache-2.0 CLI for diagnosing and comparing RAG
+retrieval techniques on users’ data. This website documents the published 0.2.0 CLI.
 
 This repository contains the website, documentation, sample report, and demo
 media. The Python CLI is maintained separately.
@@ -12,6 +12,17 @@ media. The Python CLI is maintained separately.
 - [Installation guide](https://ragvidence.medo-id.com/docs/installation)
 - [Sample report](https://ragvidence.medo-id.com/sample-report.html)
 - [CLI on PyPI](https://pypi.org/project/ragvidence/)
+
+CLI installation:
+
+```bash
+uv tool install --python 3.12 "ragvidence==0.2.0"
+ragvi verify
+```
+
+[CLI source](https://github.com/Medo-ID/ragvidence) ·
+[Contribute](https://github.com/Medo-ID/ragvidence/blob/main/CONTRIBUTING.md) ·
+[Star](https://github.com/Medo-ID/ragvidence/stargazers)
 
 ## Run locally
 
@@ -110,5 +121,5 @@ security, and terms pages when introducing integrations that change this behavio
 
 Copyright © 2026 Medo-ID. This repository is publicly visible and does not include
 an open-source license for the website. The CLI has its own
-[release license](public/ragvidence-0.1.0-license.txt); third-party notices remain
+[release license](public/ragvidence-0.2.0-license.txt); third-party notices remain
 with their corresponding assets.

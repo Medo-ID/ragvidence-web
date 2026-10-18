@@ -2,7 +2,6 @@ name: Verify website
 
 on:
   push:
-    branches: [main]
   pull_request:
 
 permissions:

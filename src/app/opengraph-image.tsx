@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 
-export const alt = "RAGvidence — Local RAG retrieval evaluation";
+export const alt = "RAGvidence — Free Apache-2.0 retrieval diagnostics";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 const font = await readFile(join(process.cwd(), "node_modules/geist/dist/fonts/geist-sans/Geist-SemiBold.ttf"));
@@ -22,7 +22,7 @@ export default function Image() {
         </svg>
         <span><span style={{ color: "#8bd4db" }}>RAG</span>vidence</span>
       </div>
-      <div style={{ display: "flex", flexDirection: "column" }}><div style={{ color: "#8bd4db", fontSize: "18px", letterSpacing: "0.12em", textTransform: "uppercase" }}>Local RAG retrieval evaluation</div><div style={{ marginTop: "22px", maxWidth: "980px", fontSize: "66px", lineHeight: 1.05, letterSpacing: "-0.04em" }}>Know whether your retriever found enough evidence.</div></div>
+      <div style={{ display: "flex", flexDirection: "column" }}><div style={{ color: "#8bd4db", fontSize: "18px", letterSpacing: "0.12em", textTransform: "uppercase" }}>Free Apache-2.0 retrieval diagnostics</div><div style={{ marginTop: "22px", maxWidth: "980px", fontSize: "66px", lineHeight: 1.05, letterSpacing: "-0.04em" }}>Know whether your retriever found enough evidence.</div></div>
       <div style={{ display: "flex", gap: "28px", color: "#a4b0ae", fontSize: "18px" }}><span>Local-first</span><span>CLI-native</span><span>Reproducible reports</span></div>
     </div>,
     { ...size, fonts: [{ name: "Geist", data: font, weight: 600, style: "normal" }] },

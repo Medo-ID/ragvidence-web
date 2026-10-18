@@ -10,7 +10,7 @@ const links = [
   { href: "/#walkthrough", label: "Walkthrough" },
   { href: "/#how-it-works", label: "How it works" },
   { href: "/#proof", label: "Proof" },
-  { href: "/#plans", label: "Plans" },
+  { href: "/#open-source", label: "Open source" },
   { href: "/docs", label: "Docs" },
 ];
 
@@ -46,7 +46,7 @@ export function SiteHeader() {
               {link.label}
             </Link>
           ))}
-          <Link href="/docs/installation" className="ml-3 inline-flex min-h-10 items-center rounded-sm button-primary px-4 text-sm font-semibold transition-colors">Install Free</Link>
+          <Link href="/docs/installation" className="ml-3 inline-flex min-h-10 items-center rounded-sm button-primary px-4 text-sm font-semibold transition-colors">Install CLI</Link>
         </div>
         <button ref={toggleRef} type="button" aria-expanded={open} aria-controls="mobile-navigation" aria-label={open ? "Close navigation" : "Open navigation"} onClick={() => setOpen((value) => !value)} className="grid size-11 place-items-center border border-line text-ink hover:bg-canvas/20 xl:hidden">
           {open ? <X size={20} /> : <Menu size={20} />}
@@ -57,12 +57,12 @@ export function SiteHeader() {
           {links.map((link) => (
             <Link key={link.href} href={link.href} onClick={() => setOpen(false)} className="block rounded-md px-3 py-3 text-sm text-muted hover:bg-white/4 hover:text-ink">{link.label}</Link>
           ))}
-          <Link href="/docs/installation" onClick={() => setOpen(false)} className="mt-2 block rounded-sm button-primary px-3 py-3 text-sm font-semibold ">Install Free</Link>
+          <Link href="/docs/installation" onClick={() => setOpen(false)} className="mt-2 block rounded-sm button-primary px-3 py-3 text-sm font-semibold ">Install CLI</Link>
         </div>
       </div>
       <noscript>
         <div className="shell flex flex-wrap gap-6 border-t border-line py-3 text-sm text-ink xl:hidden">
-          <Link href="/docs/installation">Install Free</Link>
+          <Link href="/docs/installation">Install CLI</Link>
           <Link href="/docs">Documentation</Link>
           <a href="/sample-report.html">Sample report</a>
         </div>

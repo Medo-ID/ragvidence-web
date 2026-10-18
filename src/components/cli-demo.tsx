@@ -4,39 +4,40 @@ import { ArrowRight, Check, ChevronLeft, ChevronRight, FileSearch, Pause, Play, 
 import Link from "next/link";
 import { useEffect, useState, useSyncExternalStore } from "react";
 import { CodeBlock } from "./code-block";
+import { exampleResults } from "@/lib/example-results";
 
 const steps = [
   {
     label: "Install",
     title: "One command. Your own machine.",
-    command: 'uv tool install --python 3.12 "ragvidence[semantic]"',
-    description: "Install the Free CLI in an isolated tool environment. The semantic extra adds local embedding support.",
-    detail: "No account or API key is needed for the bundled BM25 tutorial.",
+    command: 'uv tool install --python 3.12 "ragvidence==0.2.0"',
+    description: "Install the free Apache-2.0 CLI in an isolated tool environment.",
+    detail: "BM25 and the synthetic example need no account or API key.",
     href: "/docs/installation",
     link: "Installation guide",
   },
   {
     label: "Check",
     title: "Check before you experiment.",
-    command: "ragvi health",
-    description: "Check your Python environment, required dependencies, workspace permissions, and optional providers.",
+    command: "ragvi health\nragvi verify",
+    description: "Run bundled deterministic checks without downloading a model.",
     detail: "PASS means a check succeeded. WARN identifies optional capabilities. Resolve required FAIL checks before continuing.",
     href: "/docs/troubleshooting",
     link: "Understand health checks",
   },
   {
     label: "Run",
-    title: "Same questions. One controlled change.",
-    command: "ragvi tutorial",
-    description: "Compare BM25 on body text against heading-context using the same ten answerable questions at k=2.",
-    detail: "The bundled example recovers three failures without introducing a regression. Results depend on your own corpus.",
-    href: "/docs/first-tutorial",
-    link: "Follow the tutorial",
+    title: "Compare techniques on frozen data.",
+    command: "ragvi compare-data ./docs --reviewed ./reviewed.json --techniques bm25,parent-child,compress --k 1 --chunk-size 100 --chunk-overlap 10",
+    description: "Compare BM25, parent-child and sentence extraction on four reviewed synthetic dev questions at k=1.",
+    detail: "Download the manual and reviewed sidecar from the own-data guide. The larger parent recovers a power condition; all outcomes remain visible.",
+    href: "/docs/bring-your-own-data#example",
+    link: "Get the example files",
   },
   {
     label: "Inspect",
     title: "Open the evidence behind the score.",
-    command: "workspaces/first-run/reports/tutorial.html",
+    command: "ragvi-reports/COMPARISON/exports/EXPORT/report.html",
     description: "Open the generated HTML report in your browser. Review changed questions, required evidence, ranked hits, and diagnosis.",
     detail: "A self-contained report you can inspect locally and share. Review source content before sharing it.",
     href: "/sample-report.html",
@@ -88,7 +89,7 @@ export function CliDemo() {
     <div id="demo" className="surface showcase scroll-mt-24 border border-line text-left">
       <div className="flex flex-wrap items-center justify-between gap-3 px-5 py-4 sm:px-6 sm:py-5">
         <div className="flex items-center gap-3 text-sm font-medium text-ink"><Terminal size={17} className="text-signal-ink" aria-hidden="true" />From command to evidence</div>
-        <span className="font-mono text-xs text-muted">Guided tutorial preview</span>
+        <span className="font-mono text-xs text-muted">Synthetic own-data preview</span>
       </div>
 
       <div className="no-print grid grid-cols-4 border-b border-line" aria-label="Tutorial steps">
@@ -117,18 +118,15 @@ export function CliDemo() {
             <div className="mt-5 min-h-32">
               {index < 2 ? (
                 <div className="space-y-2 border-l-2 border-signal/40 bg-canvas/50 p-4 text-sm text-muted">
-                  {(index === 0 ? ["Free edition with lexical and semantic retrieval", "Isolated installation with uv", "Local workspaces and portable reports"] : ["Required runtime and dependencies", "Workspace permissions and bundled data", "Optional semantic support and privacy defaults"]).map((item) => (
+                  {(index === 0 ? ["All shipped features under Apache-2.0", "Isolated installation with uv", "Local workspaces and portable reports"] : ["Required runtime and dependencies", "Workspace permissions and bundled data", "Optional semantic support and privacy defaults"]).map((item) => (
                     <p key={item} className="flex items-center gap-3"><Check size={15} className="shrink-0 text-signal-ink" aria-hidden="true" />{item}</p>
                   ))}
                 </div>
               ) : (
                 <div className="border border-line bg-canvas/75 p-4 text-ink">
-                  <p className="mb-4 text-xs font-medium text-muted">Bundled tutorial · 10 answerable questions · BM25 · k=2 · v0.1.0</p>
-                  <div className="grid grid-cols-2 gap-4">
-                    <div><p className="text-xs">Body only</p><p className="mt-2 text-3xl font-semibold tracking-tight">60%</p><p className="mt-1 text-xs">6 / 10 sufficient</p></div>
-                    <div className="border-l border-line pl-4"><p className="text-xs">With heading context</p><p className="mt-2 text-3xl font-semibold tracking-tight text-signal-ink">90%</p><p className="mt-1 text-xs">9 / 10 sufficient</p></div>
-                  </div>
-                  <p className="mt-4 border-t border-line pt-3 text-xs leading-5 text-success">3 improved · 0 regressions · 1 still insufficient</p>
+                  <p className="mb-4 text-xs font-medium text-muted">Synthetic manual · 4 reviewed dev questions · k=1 · v0.2.0</p>
+                  <div className="space-y-2">{exampleResults.map(row => <p key={row.name} className="flex flex-wrap justify-between gap-2 text-sm"><span>{row.name}</span><span>{row.sufficient} / {row.total} sufficient</span></p>)}</div>
+                  <p className="mt-4 border-t border-line pt-3 text-xs leading-5 text-muted">The parent returns more context. Small teaching data does not establish a general winner.</p>
                 </div>
               )}
             </div>

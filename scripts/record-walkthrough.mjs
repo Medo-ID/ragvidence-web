@@ -4,8 +4,7 @@ import { spawn } from "node:child_process";
 import { once } from "node:events";
 import { copyFile, mkdir, mkdtemp, readFile, writeFile, stat } from "node:fs/promises";
 import { tmpdir } from "node:os";
-import { join, resolve, basename } from "node:path";
-import { stripVTControlCharacters } from "node:util";
+import { join, resolve } from "node:path";
 import { captureOwnData } from "./capture-own-data.mjs";
 import { prepareDemoRenderer } from "./render-demo-frames.mjs";
 
@@ -14,25 +13,11 @@ const working = resume ? resolve(process.argv[3]) : await mkdtemp(join(tmpdir(),
 const staging = join(working, "media");
 await mkdir(staging, { recursive: true });
 const destination = resolve(process.env.RAGVIDENCE_RECORDING_DIR ?? "public/media");
-const wheel = resume ? null : resolve(process.argv[2] ?? "../ragvidence/dist/ragvidence-0.1.0-py3-none-any.whl");
-if (!resume && !process.argv[3]) throw new Error("Provide a temporary fixture JSON with sources/questions arrays");
-const fixturePath = resume ? null : resolve(process.argv[3]);
-const ffmpeg = process.argv[4] ?? process.env.FFMPEG_EXECUTABLE;
-const libraryPath = process.argv[5] ?? process.env.LD_LIBRARY_PATH;
+if (!resume && !process.argv[2]) throw new Error("Provide the verified production 0.2.0 wheel");
+const wheel = resume ? null : resolve(process.argv[2]);
+const ffmpeg = process.argv[resume ? 4 : 3] ?? process.env.FFMPEG_EXECUTABLE;
+const libraryPath = process.env.LD_LIBRARY_PATH;
 const captureOnly = process.argv.includes("--capture-only");
-const env = { ...process.env, UV_CACHE_DIR: join(working, "cache"), UV_LINK_MODE: "copy", NO_COLOR: "1", TERM: "dumb", COLUMNS: "96" };
-const transcript = [];
-const clean = text => stripVTControlCharacters(text).replaceAll(working + "/", "").replaceAll(working, ".").replaceAll(wheel ?? "<no-wheel>", "built-wheel.whl");
-async function command(executable, args, cwd = working) {
-  const child = spawn(executable, args, { cwd, env, stdio: ["ignore", "pipe", "pipe"] });
-  let output = "";
-  child.stdout.on("data", chunk => { output += chunk; });
-  child.stderr.on("data", chunk => { output += chunk; });
-  const code = await new Promise((resolveResult, reject) => { child.once("error", reject); child.once("close", resolveResult); });
-  transcript.push({ argv: [basename(executable), ...args.map(arg => clean(String(arg)))], cwd: clean(cwd), code, text: clean(output) });
-  if (code !== 0) throw new Error(output);
-  return clean(output);
-}
 const browser = await chromium.launch({ env: { ...process.env, ...(libraryPath ? { LD_LIBRARY_PATH: libraryPath } : {}) } });
 const encoders = [];
 try {
@@ -40,7 +25,7 @@ try {
   let state;
   if (resume) state = JSON.parse(await readFile(join(working, "capture-state.json"), "utf8"));
   else {
-    state = await captureOwnData({ page, command, working, wheel, fixturePath, transcript });
+    state = await captureOwnData({ page, working, wheel });
     await writeFile(join(working, "capture-state.json"), JSON.stringify(state));
   }
   await prepareDemoRenderer(page, state.captures, state.points, state.fontCSS, state.typing);
@@ -63,8 +48,11 @@ try {
       const done = new Promise((resolveResult, reject) => { child.once("error", reject); child.once("close", code => code === 0 ? resolveResult() : reject(new Error(errors))); }); done.catch(() => {});
       return { child, done, error: () => failure };
     });
+    const sceneFrames = new Map();
     for (let frame = 0; frame < state.provenance.frames; frame++) {
-      const jpeg = Buffer.from(await page.evaluate(time => window.renderFrame(time), frame / 60), "base64");
+      const scene = Math.floor(frame / 360);
+      if (!sceneFrames.has(scene)) sceneFrames.set(scene, Buffer.from(await page.evaluate(time => window.renderFrame(time), frame / 60), "base64"));
+      const jpeg = sceneFrames.get(scene);
       for (const job of jobs) { if (job.error()) throw job.error(); if (!job.child.stdin.write(jpeg)) await once(job.child.stdin, "drain"); }
       if (frame % 600 === 0) console.log(`Rendered ${frame} / ${state.provenance.frames} native frames`);
     }

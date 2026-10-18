@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "corpus_hash": "b4bdb92293aa66d4636c27dd25ca77a791dbbeea111d33eb4873d314acfa0386",
+  "evidence": [
+    {
+      "evidence_id": "RESET",
+      "spans": [
+        {
+          "source_id": "doc-aaa8b734a101d7f34afb",
+          "start": 41,
+          "end": 98,
+          "text": "Hold the reset button for eight seconds to clear pairing."
+        }
+      ]
+    },
+    {
+      "evidence_id": "POWER",
+      "spans": [
+        {
+          "source_id": "doc-aaa8b734a101d7f34afb",
+          "start": 177,
+          "end": 225,
+          "text": "Keep USB-C power connected throughout the reset."
+        }
+      ]
+    },
+    {
+      "evidence_id": "WARRANTY",
+      "spans": [
+        {
+          "source_id": "doc-aaa8b734a101d7f34afb",
+          "start": 240,
+          "end": 269,
+          "text": "The warranty lasts two years."
+        }
+      ]
+    },
+    {
+      "evidence_id": "EXCLUSION",
+      "spans": [
+        {
+          "source_id": "doc-aaa8b734a101d7f34afb",
+          "start": 289,
+          "end": 325,
+          "text": "Accidental water damage is excluded."
+        }
+      ]
+    },
+    {
+      "evidence_id": "CHARGE",
+      "spans": [
+        {
+          "source_id": "doc-aaa8b734a101d7f34afb",
+          "start": 435,
+          "end": 476,
+          "text": "Charge it every three months when unused."
+        }
+      ]
+    },
+    {
+      "evidence_id": "DELIVERY",
+      "spans": [
+        {
+          "source_id": "doc-aaa8b734a101d7f34afb",
+          "start": 620,
+          "end": 661,
+          "text": "Tracked delivery is available in Morocco."
+        }
+      ]
+    }
+  ],
+  "questions": [
+    {
+      "question_id": "Q1",
+      "question": "How long should I hold the reset button, and what power is required?",
+      "split": "dev",
+      "answerable": true,
+      "required_evidence_ids": [
+        "RESET",
+        "POWER"
+      ]
+    },
+    {
+      "question_id": "Q2",
+      "question": "How long is the warranty and what damage is excluded?",
+      "split": "dev",
+      "answerable": true,
+      "required_evidence_ids": [
+        "WARRANTY",
+        "EXCLUSION"
+      ]
+    },
+    {
+      "question_id": "Q3",
+      "question": "How often should I charge an unused device?",
+      "split": "dev",
+      "answerable": true,
+      "required_evidence_ids": [
+        "CHARGE"
+      ]
+    },
+    {
+      "question_id": "Q4",
+      "question": "Where is tracked delivery available?",
+      "split": "dev",
+      "answerable": true,
+      "required_evidence_ids": [
+        "DELIVERY"
+      ]
+    }
+  ]
+}
