@@ -8,7 +8,7 @@ test("current release pages have no browser errors and expose the free CLI workf
     await page.goto(route);
     await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
     if (route === "/") {
-      await expect(page.locator("main")).toContainText("Apache-2.0");
+      await expect(page.locator("main")).toContainText("All shipped features included");
       await expect(page.locator("main")).not.toContainText(/Plus|Sponsor|Donate/);
     }
   }
@@ -34,7 +34,7 @@ test("mobile docs selection closes the browser and reveals the article", async (
 test("mobile menu dismisses on Escape, brand click, and route navigation", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("/docs");
-  const toggle = page.locator("header button");
+  const toggle = page.locator("header button[aria-controls=mobile-navigation]");
   await toggle.click();
   await expect(toggle).toHaveAttribute("aria-expanded", "true");
   await page.keyboard.press("Escape");
@@ -68,7 +68,7 @@ test("copy failure provides feedback and retry copies the real command", async (
   await expect(page.locator("#demo").getByRole("status")).toContainText("copy it manually");
   await copy.click();
   await expect(copy).toHaveText("Copied");
-  await expect(page.locator("html")).toHaveAttribute("data-copied", 'uv tool install --python 3.12 "ragvidence==0.2.0"');
+  await expect(page.locator("html")).toHaveAttribute("data-copied", 'uv tool install --python 3.12 "ragvidence==0.2.1"');
 });
 
 test("preview steps, bounds, playback, and reduced motion remain usable", async ({ page }) => {
@@ -141,17 +141,27 @@ for (const failure of ["http", "invalid-index"]) {
   });
 }
 
-test("silent native video autoplays on page load without scrolling or native controls", async ({ page }) => {
+test("silent workflow autoplays without visible controls and retains browser options", async ({ page }) => {
   await page.goto("/");
   const video = page.locator("#walkthrough video");
   await expect(video).toHaveAttribute("autoplay", "");
   await expect(video).toHaveAttribute("preload", "auto");
-  await expect(video).not.toHaveAttribute("controls", "");
-  await expect(page.locator("#walkthrough button")).toHaveCount(1);
+  expect(await video.evaluate((el: HTMLVideoElement) => el.controls)).toBe(false);
+  await expect(page.locator("#walkthrough button")).toHaveCount(0);
   await expect.poll(() => video.evaluate((el: HTMLVideoElement) => !el.paused && el.currentTime > 0.1)).toBe(true);
   const metadata = await video.evaluate((el: HTMLVideoElement) => ({ width: el.videoWidth, height: el.videoHeight, duration: el.duration, muted: el.muted, loop: el.loop, tracks: el.textTracks.length }));
-  expect(metadata).toMatchObject({ width: 1920, height: 1080, muted: true, loop: true, tracks: 0 });
-  expect(metadata.duration).toBeCloseTo(36, 1);
+  expect(metadata).toMatchObject({ width: 1920, height: 1080, muted: true, loop: true, tracks: 1 });
+  expect(metadata.duration).toBeCloseTo(34, 1);
+  await expect(video.locator("source").first()).toHaveAttribute("type", "video/mp4");
+  await video.evaluate((el: HTMLVideoElement) => { el.currentTime = 12; el.textTracks[0].mode = "showing"; });
+  await expect.poll(() => video.evaluate((el: HTMLVideoElement) => [...(el.textTracks[0].activeCues ?? [])].map(cue => (cue as VTTCue).text).join(" "))).toContain("Export HTML, JSON and Markdown");
+  await video.scrollIntoViewIfNeeded();
+  await video.evaluate(el => el.addEventListener("contextmenu", event => {
+    queueMicrotask(() => { document.documentElement.dataset.nativeVideoMenuPrevented = String(event.defaultPrevented); });
+  }, { once: true }));
+  await video.click({ button: "right", position: { x: 120, y: 80 } });
+  await expect(page.locator("html")).toHaveAttribute("data-native-video-menu-prevented", "false");
+  await page.keyboard.press("Escape");
 });
 
 test("native autoplay works before hydration with JavaScript disabled", async ({ browser }) => {
@@ -211,9 +221,9 @@ test("clicking anywhere toggles playback and manual pause survives scrolling", a
   await page.goto("/");
   const video = page.locator("#walkthrough video");
   await video.scrollIntoViewIfNeeded();
-  const toggle = page.locator("#walkthrough button");
+  const toggle = video;
   await expect(toggle).toHaveAccessibleName("Pause workflow video");
-  await toggle.click({ position: { x: 12, y: 12 } });
+  await toggle.click({ position: { x: 120, y: 80 } });
   await expect(toggle).toHaveAccessibleName("Play workflow video");
   const time = await video.evaluate((el: HTMLVideoElement) => el.currentTime);
   await page.locator("#install").scrollIntoViewIfNeeded();
@@ -222,6 +232,7 @@ test("clicking anywhere toggles playback and manual pause survives scrolling", a
   await page.keyboard.press("Tab");
   await toggle.focus();
   expect(await toggle.evaluate(el => getComputedStyle(el).outlineWidth)).toBe("2px");
+  expect(await toggle.evaluate(el => getComputedStyle(el).outlineOffset)).toBe("-4px");
   await page.keyboard.press("Space");
   await expect(toggle).toHaveAccessibleName("Pause workflow video");
   await page.keyboard.press("Enter");
@@ -236,24 +247,28 @@ test("a tall video can autoplay in a short viewport", async ({ page }) => {
   await expect.poll(() => video.evaluate((el: HTMLVideoElement) => !el.paused && el.currentTime > 0)).toBe(true);
 });
 
-test("reduced motion shows the poster without loading or autoplaying video", async ({ page }) => {
+test("owner-requested autoplay also starts with reduced motion and preserves manual pause", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
   const mediaRequests: string[] = [];
   page.on("request", request => { if (/walkthrough\.(webm|mp4)$/.test(request.url())) mediaRequests.push(request.url()); });
   await page.goto("/");
   const video = page.locator("#walkthrough video");
   await video.scrollIntoViewIfNeeded();
-  expect(await video.evaluate((el: HTMLVideoElement) => el.paused)).toBe(true);
+  await expect.poll(() => video.evaluate((el: HTMLVideoElement) => !el.paused && el.currentTime > .1)).toBe(true);
   await expect(video).toHaveAttribute("poster", "/media/walkthrough-poster.webp");
   await expect(video.locator("source")).toHaveCount(2);
-  for (const source of await video.locator("source").all()) await expect(source).toHaveAttribute("media", "(prefers-reduced-motion: no-preference)");
-  expect(mediaRequests).toHaveLength(0);
-  await page.getByRole("button", { name: "Play workflow video", exact: true }).click();
+  for (const source of await video.locator("source").all()) await expect(source).not.toHaveAttribute("media");
+  expect(mediaRequests.length).toBeGreaterThan(0);
+  await video.click();
+  await expect.poll(() => video.evaluate((el: HTMLVideoElement) => el.paused)).toBe(true);
+  await page.emulateMedia({ reducedMotion: "no-preference" });
+  expect(await video.evaluate((el: HTMLVideoElement) => el.paused)).toBe(true);
+  await video.focus(); await page.keyboard.press("Space");
   await expect.poll(() => video.evaluate((el: HTMLVideoElement) => !el.paused && el.currentTime > 0)).toBe(true);
   await expect(video.locator("source")).toHaveCount(2);
 });
 
-test("native source queries preserve the reduced-motion poster before hydration", async ({ browser }) => {
+test("native autoplay also works before hydration with reduced motion", async ({ browser }) => {
   const context = await browser.newContext({ javaScriptEnabled: false, reducedMotion: "reduce" });
   try {
     const requests: string[] = [];
@@ -262,12 +277,12 @@ test("native source queries preserve the reduced-motion poster before hydration"
     await page.goto("/");
     const video = page.locator("#walkthrough video");
     await video.scrollIntoViewIfNeeded();
-    expect(await video.evaluate((el: HTMLVideoElement) => el.paused && el.currentTime === 0 && el.currentSrc === "")).toBe(true);
-    expect(requests).toHaveLength(0);
+    await expect.poll(() => video.evaluate((el: HTMLVideoElement) => !el.paused && el.currentTime > .1 && el.currentSrc !== "")).toBe(true);
+    expect(requests.length).toBeGreaterThan(0);
   } finally { await context.close(); }
 });
 
-test("site actions retain high contrast and report surfaces stay opaque", async ({ page }) => {
+test("site actions retain high contrast and reports keep their generated surfaces", async ({ page }) => {
   await page.goto("/");
   for (const blur of await page.locator(".surface").evaluateAll(elements => elements.map(element => getComputedStyle(element).backdropFilter))) expect(blur).toBe("none");
   await page.goto("/sample-report.html");
@@ -279,7 +294,7 @@ test("site actions retain high contrast and report surfaces stay opaque", async 
     for (const style of styles) {
       expect(style.blur).toBe("none");
       expect(style.image).toBe("none");
-      expect(style.alpha).toBe(1);
+      expect([0, 1]).toContain(style.alpha);
     }
     const samples = await page.locator(".hero-copy, .rate, .run-summary .config, .summary-metrics, .hit-meta").evaluateAll(elements => elements.map(element => {
       const foreground = getComputedStyle(element).color.match(/[\d.]+/g)!.slice(0, 3).map(Number);
@@ -350,8 +365,12 @@ for (const width of [320, 390, 768, 1024, 1440, 1920]) {
     }
     if (width >= 1024) {
       await page.goto("/");
-      const shell = await page.locator("#install > .shell").boundingBox();
-      expect(shell?.width).toBeCloseTo(Math.min(width * 0.8, 1440), 0);
+      const shell = await page.locator("#install > .hero-frame").boundingBox();
+      expect(shell!.width).toBeLessThanOrEqual(1440);
+      expect(shell!.x).toBeCloseTo((width - shell!.width) / 2, 0);
+      const header = await page.locator("header > nav.shell").boundingBox();
+      expect(header!.x).toBeCloseTo(shell!.x, 0);
+      expect(header!.width).toBeCloseTo(shell!.width, 0);
     }
   });
 }
@@ -366,4 +385,16 @@ test("installation and mobile navigation remain accessible without JavaScript", 
   await page.locator("details[data-docs-browser]").getByRole("link", { name: "First tutorial", exact: true }).click();
   await expect(page.getByRole("heading", { level: 1, name: "First tutorial", exact: true })).toBeVisible();
   await context.close();
+});
+
+
+test("rejected explicit video playback provides retry and accessible alternatives", async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.addInitScript(() => { HTMLMediaElement.prototype.play = () => Promise.reject(new Error("Playback unavailable")); });
+  await page.goto("/#walkthrough");
+  await page.getByRole("button", { name: "Play workflow video", exact: true }).click();
+  const status = page.locator("#walkthrough [role=status]");
+  await expect(status).toContainText("Playback could not start");
+  await expect(status.getByRole("link", { name: "read the transcript" })).toHaveAttribute("href", "/media/walkthrough-transcript.txt");
+  await expect(page.getByRole("button", { name: "Play workflow video", exact: true })).toBeEnabled();
 });

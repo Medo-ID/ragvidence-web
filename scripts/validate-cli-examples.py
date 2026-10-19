@@ -9,7 +9,7 @@ import sys
 import tempfile
 import zipfile
 
-cli = Path(sys.argv[1] if len(sys.argv) > 1 else '/tmp/ragvidence-web-020/bin/ragvi')
+cli = Path(sys.argv[1] if len(sys.argv) > 1 else '/tmp/ragvidence-web-021/bin/ragvi')
 site = Path(__file__).resolve().parent.parent
 root = Path(tempfile.mkdtemp(prefix='ragvidence-web-command-check-'))
 (root/'docs').mkdir()
@@ -27,7 +27,7 @@ def run(*args):
 def last(root_name):
     return sorted((root/root_name).glob('*/report.json'))[-1]
 
-assert run('--version').strip() == '0.2.0'
+assert run('--version').strip() == '0.2.1'
 for command in ['bm25','semantic','hybrid','rerank','parent-child','heading-context','contextual','multi-query','import-data','metadata-filter','mmr','rewrite','auto-multi-query','compress','compare-data','techniques','health','verify','workspace','generate']:
     run(command, '--help')
 (root/'manual.txt').write_text('Hold the reset button for eight seconds. Use USB-C power.', encoding='utf-8')
@@ -74,12 +74,12 @@ stream=DecodedStreamObject();stream.set_data(b'BT /F1 12 Tf 50 700 Td (Hold rese
 with (root/'manual.pdf').open('wb') as handle:writer.write(handle)
 run('bm25','./manual.pdf','--query','Reset procedure')
 # Verify website license copies byte-for-byte against the downloaded production wheel.
-wheel=Path('/tmp/ragvidence-0.2.0-py3-none-any.whl')
-assert hashlib.sha256(wheel.read_bytes()).hexdigest()=='ef300e798bc7cad72a560dc2a6c6c9819737bdbac9241f7ebf2a593a5f2c54e9'
+wheel=Path('/tmp/ragvidence-0.2.1-py3-none-any.whl')
+assert hashlib.sha256(wheel.read_bytes()).hexdigest()=='4e74385f2920e13e0de462949791813cf7891fb4575ec17c8e9b577c005eebcf'
 with zipfile.ZipFile(wheel) as archive:
-    for original,target in [('LICENSE.md','ragvidence-0.2.0-license.txt'),('NOTICE','ragvidence-0.2.0-notice.txt'),('THIRD_PARTY_NOTICES.md','ragvidence-source-notices.txt'),('THIRD_PARTY_LICENSES.md','ragvidence-source-licenses.txt')]:
+    for original,target in [('LICENSE.md','ragvidence-0.2.1-license.txt'),('NOTICE','ragvidence-0.2.1-notice.txt'),('THIRD_PARTY_NOTICES.md','ragvidence-source-notices.txt'),('THIRD_PARTY_LICENSES.md','ragvidence-source-licenses.txt')]:
         name=next(name for name in archive.namelist() if name.endswith('/licenses/'+original))
         assert archive.read(name)==(site/'public'/target).read_bytes()
-output=site/'verification/cli-0.2.0/command-validation.json'
+output=site/'verification/cli-0.2.1/command-validation.json'
 output.write_text(json.dumps({'root':str(root),'results':results},indent=2)+'\n')
 print(f'{len(results)} installed CLI command/help checks passed; PDF and license copies verified. {root}')

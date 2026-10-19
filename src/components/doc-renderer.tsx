@@ -28,7 +28,7 @@ export function DocRenderer({ blocks }: { blocks: DocBlock[] }) {
         }
         if (block.type === "table") {
           return (
-            <div key={index} className="surface my-7 overflow-x-auto border border-line">
+            <div key={index} role="region" aria-label={`${block.headers.join(", ")} table; scroll for more columns`} tabIndex={0} className="surface my-7 overflow-x-auto border border-line">
               <table className="w-full min-w-[34rem] border-collapse text-left text-sm">
                 <thead className="bg-panel"><tr>{block.headers.map((header) => <th key={header} className="border-b border-line px-4 py-3 font-semibold text-ink">{header}</th>)}</tr></thead>
                 <tbody>{block.rows.map((row, rowIndex) => <tr key={rowIndex} className="border-b border-line/70 last:border-0">{row.map((cell, cellIndex) => <td key={cellIndex} className="px-4 py-3.5 align-top leading-6 text-muted">{cell}</td>)}</tr>)}</tbody>

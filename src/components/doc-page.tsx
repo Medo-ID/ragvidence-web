@@ -5,6 +5,7 @@ import { DocRenderer } from "./doc-renderer";
 import { OnThisPage } from "./on-this-page";
 import { docPath } from "@/lib/doc-path";
 import { serializeJsonLd, siteUrl } from "@/lib/seo";
+import { DocMarkdown } from "./doc-markdown";
 
 export function DocPage({ doc }: { doc: DocPageType }) {
   const { previous, next } = adjacentDocs(doc.slug);
@@ -22,9 +23,10 @@ export function DocPage({ doc }: { doc: DocPageType }) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(breadcrumb) }} />
       <div className="doc-heading min-w-0">
       <div className="flex flex-wrap items-center gap-2 font-mono text-xs text-muted"><Link href="/docs" className="hover:text-signal-ink">Docs</Link><span>/</span><span>{doc.group}</span></div>
-      <h1 className="mt-5 text-balance text-4xl font-semibold tracking-[-0.045em] text-ink sm:text-5xl">{doc.title}</h1>
+      <h1 className="doc-title">{doc.title}</h1>
       <p className="mt-5 text-lg leading-8 text-muted">{doc.description}</p>
-      <div className="mt-6 flex items-center gap-3 text-xs text-muted"><span className="rounded-sm border border-line px-2.5 py-1 font-mono">v0.2.0</span><span>Apache-2.0 · All features free</span></div>
+      <div className="mt-6 flex items-center gap-3 text-xs text-muted"><span className="rounded-sm border border-line px-2.5 py-1 font-mono">v0.2.1</span><span>Local CLI · Offline reports</span></div>
+      <DocMarkdown key={doc.slug} slug={doc.slug} />
       </div>
       <OnThisPage headings={headings} />
       <div className="doc-content min-w-0">

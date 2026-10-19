@@ -27,7 +27,7 @@ test("report works offline without scripts and prints closed ranked evidence", a
   const remote: string[] = [];
   page.on("request", request => { if (!/^(file:|data:)/.test(request.url())) remote.push(request.url()); });
   await page.goto(pathToFileURL(resolve("public/tutorial-report.html")).href);
-  await expect(page.locator("script, img, link")).toHaveCount(0);
+  await expect(page.locator("script:not(#report-theme), img, link")).toHaveCount(0);
   await expect(page.locator(".result")).toHaveText("60% → 90%");
   const question = page.locator("#improvements .question-card").first();
   await question.locator("summary").focus();
@@ -61,16 +61,18 @@ test("portable comparison stays offline, exposes all participants and prints ope
   const remote: string[] = [];
   page.on("request", request => { if (!/^(file:|data:)/.test(request.url())) remote.push(request.url()); });
   await page.goto(pathToFileURL(resolve("public/sample-report.html")).href);
-  await expect(page.locator("script, img, link")).toHaveCount(0);
+  await expect(page.locator("script:not(#report-theme), img, link")).toHaveCount(0);
   await expect(page.getByRole("heading", { name: "parent-child versus bm25", exact: true })).toBeVisible();
   await expect(page.getByRole("heading", { name: "compress versus bm25", exact: true })).toBeVisible();
   const parent = page.locator("section").filter({ has: page.getByRole("heading", { name: "parent-child", exact: true }) });
   const summary = parent.getByText("Ranked contexts and stage evidence (4 questions)", { exact: true });
   await summary.focus();
   await page.keyboard.press("Enter");
+  await parent.locator("summary").filter({ hasText: /^Q1 ·/ }).first().click();
   const question = parent.locator("article").first();
+  await expect(question).toBeVisible();
   await expect(question).toContainText("Keep USB-C power connected throughout the reset.");
-  await expect(question).toContainText("Sufficient: True");
+  await expect(question).toContainText("Sufficient evidence");
   await page.emulateMedia({ media: "print" });
   await expect(question).toBeVisible();
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
@@ -105,7 +107,7 @@ for (const [width, height] of [[360, 800], [390, 844], [768, 1024], [1280, 800],
     await page.setViewportSize({ width, height });
     await page.goto("/");
     const command = page.locator("#hero-install-command code");
-    await expect(command).toHaveText('uv tool install --python 3.12 "ragvidence==0.2.0"');
+    await expect(command).toHaveText('uv tool install --python 3.12 "ragvidence==0.2.1"');
     const box = await command.boundingBox();
     expect(box!.y + box!.height).toBeLessThan(height);
     expect(await command.evaluate(el => el.scrollWidth <= el.clientWidth)).toBe(true);
@@ -113,16 +115,23 @@ for (const [width, height] of [[360, 800], [390, 844], [768, 1024], [1280, 800],
 }
 
 test("essential website text meets AA contrast and docs search has visible focus", async ({ page }) => {
+  for (const theme of ["dark", "light"]) {
   for (const route of ["/", "/docs/semantic-workflow"]) {
     await page.goto(route);
+    if (await page.locator("html").getAttribute("data-theme") !== theme) await page.getByRole("button", { name: "Light theme", exact: true }).click();
     const samples = await page.locator("h1, h2, p, a, button, summary, pre code, input").evaluateAll(elements => {
-      const rgb = (value: string) => value.match(/[\d.]+/g)?.map(Number) ?? [0, 0, 0, 0];
+      const canvas = document.createElement("canvas"); canvas.width = canvas.height = 1;
+      const context = canvas.getContext("2d")!;
+      const rgb = (value: string) => {
+        context.clearRect(0, 0, 1, 1); context.fillStyle = value; context.fillRect(0, 0, 1, 1);
+        const rgba = [...context.getImageData(0, 0, 1, 1).data]; return [...rgba.slice(0, 3), rgba[3] / 255];
+      };
       const blend = (fg: number[], bg: number[]) => fg.slice(0, 3).map((v, i) => v * (fg[3] ?? 1) + bg[i] * (1 - (fg[3] ?? 1)));
       const lum = (color: number[]) => color.map(v => { const n = v / 255; return n <= 0.04045 ? n / 12.92 : ((n + 0.055) / 1.055) ** 2.4; }).reduce((sum, n, i) => sum + n * [0.2126, 0.7152, 0.0722][i], 0);
       return elements.filter(el => el.getClientRects().length && getComputedStyle(el).visibility === "visible" && !el.closest("[inert], .sr-only") && !(el instanceof HTMLButtonElement && el.disabled)).map(el => {
         const chain: Element[] = [];
         for (let parent: Element | null = el; parent; parent = parent.parentElement) chain.unshift(parent);
-        let bg = [5, 8, 9];
+        let bg = [1, 1, 1];
         for (const parent of chain) bg = blend(rgb(getComputedStyle(parent).backgroundColor), bg);
         const fg = blend(rgb(getComputedStyle(el).color), bg);
         const a = lum(fg), b = lum(bg);
@@ -130,7 +139,8 @@ test("essential website text meets AA contrast and docs search has visible focus
       });
     });
     expect(samples.length).toBeGreaterThan(20);
-    for (const sample of samples) expect(sample.contrast, sample.text).toBeGreaterThanOrEqual(4.5);
+    for (const sample of samples) expect(sample.contrast, `${theme} ${route} ${sample.text}`).toBeGreaterThanOrEqual(4.5);
+  }
   }
   await page.getByRole("textbox", { name: "Search documentation" }).filter({ visible: true }).focus();
   expect(await page.locator(".search-field:focus-within").evaluate(el => getComputedStyle(el).outlineWidth)).toBe("2px");

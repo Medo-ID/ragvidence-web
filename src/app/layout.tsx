@@ -17,11 +17,14 @@ export const metadata: Metadata = {
   keywords: ["RAG evaluation", "retrieval diagnostics", "BM25", "semantic search", "AI engineering"],
 };
 
-export const viewport: Viewport = { themeColor: "#050809", colorScheme: "dark" };
+export const viewport: Viewport = { themeColor: "#ffbf00", colorScheme: "dark light" };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable}`}>
+    <html lang="en" data-theme="dark" suppressHydrationWarning className={`${GeistSans.variable} ${GeistMono.variable}`}>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: '(function(){var r=document.documentElement;r.dataset.js="true";try{var t=localStorage.getItem("ragvidence-theme");if(t==="light"||t==="dark")r.dataset.theme=t}catch(e){}})()' }} />
+      </head>
       <body className="flex min-h-dvh flex-col font-sans antialiased">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(websiteIdentity) }} />
         <a href="#main-content" className="fixed left-4 top-3 z-100 -translate-y-20 rounded-sm bg-ink px-4 py-2 text-sm font-semibold text-canvas transition-transform focus:translate-y-0">

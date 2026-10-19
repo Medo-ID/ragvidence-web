@@ -2,7 +2,7 @@
 
 Source for the RAGvidence product website and versioned CLI documentation.
 RAGvidence is a fully free Apache-2.0 CLI for diagnosing and comparing RAG
-retrieval techniques on users’ data. This website documents the published 0.2.0 CLI.
+retrieval techniques on users’ data. This website documents the published 0.2.1 CLI.
 
 This repository contains the website, documentation, sample report, and demo
 media. The Python CLI is maintained separately.
@@ -16,7 +16,7 @@ media. The Python CLI is maintained separately.
 CLI installation:
 
 ```bash
-uv tool install --python 3.12 "ragvidence==0.2.0"
+uv tool install --python 3.12 "ragvidence==0.2.1"
 ragvi verify
 ```
 
@@ -62,7 +62,7 @@ npm run verify
 
 The route verifier and browser suite require a successful production build.
 They start and stop dedicated servers on ports 3001 and 3002; those ports must
-be available. CI runs the full gate on pull requests and pushes to `main`.
+be available. CI runs the full gate on pull requests and branch pushes.
 Generated reports, screenshots, traces, and build output are ignored by Git.
 
 To check an already running preview or deployment:
@@ -121,5 +121,5 @@ security, and terms pages when introducing integrations that change this behavio
 
 Copyright © 2026 Medo-ID. This repository is publicly visible and does not include
 an open-source license for the website. The CLI has its own
-[release license](public/ragvidence-0.2.0-license.txt); third-party notices remain
+[release license](public/ragvidence-0.2.1-license.txt); third-party notices remain
 with their corresponding assets.

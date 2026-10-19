@@ -1,0 +1,19 @@
+RAGvidence 0.2.1 — synthetic own-data workflow
+
+0–4.5s: Run ragvi bm25 on a synthetic local manual with a question. Read the actual ranked source passages. Questions alone are retrieval inspection, not scored evaluation. Execution waits are omitted.
+
+4.5–10.5s: Run compare-data on the same local documents with reviewed.json, comparing BM25, parent-child and sentence extraction at k=1, chunk size 100 and overlap 10. The actual output retains all participants, the dev and heldout counts, resource measurements and limitations.
+
+10.5–14s: The repeated --format html --format json --format markdown options export all three formats in one command. Read the actual HTML, JSON and Markdown file paths. Open the generated HTML report for interactive evidence inspection.
+
+14–18s: Read the unmodified production 0.2.1 HTML report and its resource trade-offs. The three participants have 3/4, 4/4 and 3/4 sufficient dev questions, with mean rendered contexts of approximately 161, 741 and 200 characters. Unavailable supplied-usage costs remain N/A. No automatic winner or heldout evaluation is claimed.
+
+18–21s: Inspect question-level changes. Q1 gains required POWER evidence with parent-child retrieval. Sentence extraction remains insufficient for the same question.
+
+21–27.5s: Open ranked contexts and the Q1 disclosure. Zoom into the original parent passage: hold reset for eight seconds and keep USB-C power connected throughout the reset. These are reviewed source spans, not generated-answer correctness scores.
+
+27.5–29.5s: Switch the report to light mode without changing evidence or scores.
+
+29.5–32s: Inspect the same report and original source evidence on mobile, including native horizontally scrolling keyboard navigation.
+
+32–34s: Print includes closed evidence disclosures. These synthetic teaching results are not a benchmark. Review report contents before sharing.
