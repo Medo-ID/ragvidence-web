@@ -62,7 +62,7 @@ npm run verify
 
 The route verifier and browser suite require a successful production build.
 They start and stop dedicated servers on ports 3001 and 3002; those ports must
-be available. CI runs the full gate on pull requests and pushes to `main`.
+be available. CI runs the full gate on pull requests and branch pushes.
 Generated reports, screenshots, traces, and build output are ignored by Git.
 
 To check an already running preview or deployment:

@@ -27,12 +27,14 @@ export function ProductDemo() {
     if (!element) return;
     manualChoice.current = true;
     if (element.paused) {
+      // Loading reduced-motion sources must wait for this explicit play request.
+      element.autoplay = false;
       if (!element.currentSrc) {
         for (const source of element.querySelectorAll("source")) source.removeAttribute("media");
         element.load();
       }
       setPlayError(false);
-      element.play().catch(() => setPlayError(true));
+      element.play().catch(() => { element.pause(); setPlayError(true); });
     }
     else element.pause();
   }
