@@ -1,4 +1,4 @@
-# Website 0.2.1 synchronization in progress
+# Website 0.2.1 synchronization
 
 Production 0.2.1 was independently verified on 2026-10-19. Its public annotated
 tag resolves to `60b3302d8b2ad1726c1a40bece26b64b0c06c1e1` and its wheel SHA-256
@@ -11,10 +11,11 @@ journeys preserve the approved evidence and pass offline browser/print checks.
 The owner accepted the structural redesign and requested tighter spacing, a thin
 evidence/CLI mark and Amber #FFBF00 accents. Repeated licensing/promotional labels
 have been removed. The inspected Supabase dark Table Editor loop is 28.2 seconds;
-the RAGvidence draft is shortened to 22 seconds without introductory scenes.
-Existing media remains preserved until the new candidate passes frame/decode/hash
-checks. No production deployment is authorized. Source review and exact-commit CI
-follow the completed media.
+the RAGvidence recording is shortened to 22 seconds without introductory scenes.
+MP4, WebM, poster, captions and transcript use the production-wheel reports.
+The source identity is `5c9987bc425d87267b5156d2dd6c5c0b5f770d49`; artifact
+and media hashes are recorded in the public provenance files. See project health
+for current verification and CI. No production deployment is authorized.
 
 The following 0.2.0 handoff is retained as a historical record.
 

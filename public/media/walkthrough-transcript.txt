@@ -1,0 +1,15 @@
+RAGvidence 0.2.1 — synthetic own-data workflow
+
+0–4s: Run the actual comparison command on a synthetic local manual and four reviewed dev questions. Reviewed spans anchor the reset duration and power condition to the original text. k=1, chunk size 100, overlap 10. Execution waits are omitted.
+
+4–8s: Read all three participants and their resource trade-offs in the unmodified production 0.2.1 report. BM25, parent-child and sentence extraction have 3/4, 4/4 and 3/4 sufficient dev questions. Mean rendered contexts round to 161, 741 and 200 characters. No automatic winner or heldout evaluation is claimed.
+
+8–11s: Inspect question-level changes. Q1 gains the required POWER evidence with parent-child retrieval. Sentence extraction remains insufficient for the same question.
+
+11–16s: Open ranked contexts. The original parent passage includes both the reset duration and the condition: Keep USB-C power connected throughout the reset.
+
+16–18s: Switch the report to light mode without changing evidence or scores.
+
+18–20.5s: Inspect the same report and source evidence on mobile, including native horizontally scrolling keyboard navigation.
+
+20.5–22s: Print includes closed evidence disclosures. These synthetic teaching results are not a benchmark. Review report contents before sharing.
