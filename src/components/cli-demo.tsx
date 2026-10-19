@@ -1,10 +1,9 @@
 "use client";
 
-import { ArrowRight, Check, ChevronLeft, ChevronRight, FileSearch, Pause, Play, RotateCcw, Terminal } from "lucide-react";
+import { ArrowRight, ChevronLeft, ChevronRight, FileSearch, Pause, Play, RotateCcw, Terminal } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState, useSyncExternalStore } from "react";
 import { CodeBlock } from "./code-block";
-import { exampleResults } from "@/lib/example-results";
 
 const steps = [
   {
@@ -30,7 +29,7 @@ const steps = [
     title: "Compare techniques on frozen data.",
     command: "ragvi compare-data ./docs --reviewed ./reviewed.json --techniques bm25,parent-child,compress --k 1 --chunk-size 100 --chunk-overlap 10",
     description: "Compare BM25, parent-child and sentence extraction on four reviewed synthetic dev questions at k=1.",
-    detail: "Download the manual and reviewed sidecar from the own-data guide. The larger parent recovers a power condition; all outcomes remain visible.",
+    detail: "Download the manual and reviewed sidecar from the own-data guide. Inspect every outcome and context trade-off in the report.",
     href: "/docs/bring-your-own-data#example",
     link: "Get the example files",
   },
@@ -114,22 +113,6 @@ export function CliDemo() {
             <CodeBlock label={index === 3 ? "Output" : "Terminal"} content={step.command} prompt={index < 3} wrap />
 
             <p className="mt-5 text-base leading-7 text-muted">{step.description}</p>
-
-            <div className="mt-5 min-h-32">
-              {index < 2 ? (
-                <div className="space-y-2 border-l-2 border-signal/40 bg-canvas/50 p-4 text-sm text-muted">
-                  {(index === 0 ? ["All shipped techniques included", "Isolated installation with uv", "Local workspaces and portable reports"] : ["Required runtime and dependencies", "Workspace permissions and bundled data", "Optional semantic support and privacy defaults"]).map((item) => (
-                    <p key={item} className="flex items-center gap-3"><Check size={15} className="shrink-0 text-signal-ink" aria-hidden="true" />{item}</p>
-                  ))}
-                </div>
-              ) : (
-                <div className="border border-line bg-canvas/75 p-4 text-ink">
-                  <p className="mb-4 text-xs font-medium text-muted">Synthetic manual · 4 reviewed dev questions · k=1 · v0.2.1</p>
-                  <div className="space-y-2">{exampleResults.map(row => <p key={row.name} className="flex flex-wrap justify-between gap-2 text-sm"><span>{row.name}</span><span>{row.sufficient} / {row.total} sufficient</span></p>)}</div>
-                  <p className="mt-4 border-t border-line pt-3 text-xs leading-5 text-muted">The parent returns more context. Small teaching data does not establish a general winner.</p>
-                </div>
-              )}
-            </div>
 
             <p className="mt-3 text-xs leading-5 text-muted">{step.detail}</p>
           </div>

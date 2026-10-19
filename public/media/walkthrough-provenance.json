@@ -4,23 +4,24 @@
   "cliVersion": "0.2.1",
   "releaseTag": "v0.2.1",
   "releaseCommit": "60b3302d8b2ad1726c1a40bece26b64b0c06c1e1",
-  "websiteSourceCommit": "5c9987bc425d87267b5156d2dd6c5c0b5f770d49",
+  "websiteSourceCommit": "547e441ab3cb04c073f586ebe606397a060265c4",
+  "websiteSourceCommitRole": "Reachable baseline; exact recording source identified by the file snapshot",
   "websiteSourceFiles": [
     {
       "path": "scripts/capture-own-data.mjs",
-      "sha256": "6fe7129923f628fb31e60515b89dc03ff4d7a4328e25de4508482eff11c932b1"
+      "sha256": "28a717e8663ddd3e30c5a21c7a7a4e117c17373d6daba0bdc4c255f354f41fce"
     },
     {
       "path": "scripts/render-demo-frames.mjs",
-      "sha256": "6e0db1068b791cc7d748c87d286f3e75d8ffe2e825d575c77dcb60e08e9ee17c"
+      "sha256": "dc7cfbb8ad72891d5b8e8be818155b5c9d16cb11a49193b7cb5394aae482a234"
     },
     {
       "path": "scripts/record-walkthrough.mjs",
-      "sha256": "2160ade448c301902d5ce0006b2ba168c4cc5541736999d3643a38f7d6b9cf2f"
+      "sha256": "c72f339b4485f938c21da49e8ddb55e6f15b2ca04d02da7c323cab651b5c84a6"
     },
     {
       "path": "scripts/walkthrough-plan.mjs",
-      "sha256": "572b1de1dab1ab88edabb3ebc8bbf150c0daaddc0bb959656e4e9d2478e0a47e"
+      "sha256": "f004d4619cfc44d9e14f5837089dc0c7e2e6f532f4340d0470774a738f2b89c1"
     },
     {
       "path": "src/app/globals.css",
@@ -36,23 +37,24 @@
     },
     {
       "path": "src/components/product-walkthrough.tsx",
-      "sha256": "f99bdcd78f7318cf1e43c0082d26a9d3a46448e6e6b44cc03dd92cb78c794a44"
+      "sha256": "a1c850777623c5d7e9c171c4f92b2b483cc4bb00905011f31c47e64384909989"
     },
     {
       "path": "src/components/product-demo.tsx",
-      "sha256": "dae6a56d31096bd6241538ec12a2ed0a8a82e0e160bda17843b4b74c39eba2c3"
+      "sha256": "b4b105303ab7bda785e27dc279e1f80a0bf2a23ac3adfa42d4a550f9aa7d6b52"
     },
     {
       "path": "public/brand/evidence-cli/mark-dark.svg",
       "sha256": "b436f86ccbc4eb32137de21b772f50086353dda21141ed891807752ac0944ba0"
     }
   ],
-  "recordedAt": "2026-10-19T15:27:19.637Z",
+  "websiteSourceSnapshotSHA256": "dc3b28d1656f93f732c665b73ae37f75066cdc9fa784e39fd73df6a7a7566546",
+  "recordedAt": "2026-10-19T16:33:46.312Z",
   "width": 1920,
   "height": 1080,
   "fps": 30,
-  "frames": 660,
-  "durationSeconds": 22,
+  "durationSeconds": 34,
+  "frames": 1020,
   "audio": false,
   "captions": true,
   "sourceCount": 1,
@@ -148,6 +150,12 @@
   ],
   "interactions": [
     {
+      "action": "open",
+      "target": "Generated HTML export",
+      "path": "public/sample-report.html",
+      "sha256": "2d2c842ac9d023a722881c10696e18dd29bba142bc8e392734794ffbbaed930b"
+    },
+    {
       "action": "click",
       "target": "Report navigation / parent-child"
     },
@@ -184,35 +192,77 @@
     "chromium": "156.0.8078.4",
     "capture": "Playwright native screenshots at deviceScaleFactor=2",
     "compositor": "Canvas 2D, every frame rendered",
-    "settings": "1920×1080, 30 fps; H.264/VP9 CRF 20; no audio",
+    "encodings": [
+      {
+        "file": "walkthrough.mp4",
+        "codec": "h264",
+        "arguments": [
+          "-c:v",
+          "libx264",
+          "-preset",
+          "medium",
+          "-crf",
+          "23",
+          "-movflags",
+          "+faststart"
+        ]
+      },
+      {
+        "file": "walkthrough.webm",
+        "codec": "vp9",
+        "arguments": [
+          "-c:v",
+          "libvpx-vp9",
+          "-crf",
+          "32",
+          "-b:v",
+          "0",
+          "-cpu-used",
+          "3",
+          "-row-mt",
+          "1"
+        ]
+      }
+    ],
+    "settings": "1920×1080, 30 fps; H.264 CRF 23 / VP9 CRF 32; no audio",
     "ffmpeg": "ffmpeg version 7.0.2-static https://johnvansickle.com/ffmpeg/  Copyright (c) 2000-2024 the FFmpeg developers"
+  },
+  "cursor": "Black arrow with white outline; native-style hand on controls; no click rings, matching the inspected Supabase reference treatment",
+  "exports": {
+    "formats": [
+      "html",
+      "json",
+      "markdown"
+    ],
+    "opened": "html",
+    "command": "ragvi compare-data ./docs --reviewed ./reviewed.json --techniques bm25,parent-child,compress --k 1 --chunk-size 100 --chunk-overlap 10 --format html --format json --format markdown --output ./comparison"
   },
   "presentation": "Continuous cursor, typing, scroll and zoom replay using actual CLI transcripts and native report states captured after genuine interactions. Execution waits omitted. Synthetic dev-only data. No general performance or quality claim; no automatic winner. Color changes are document-local; mobile and paper views use the same unmodified report.",
   "files": [
     {
       "file": "walkthrough.mp4",
-      "bytes": 3884503,
-      "sha256": "9c286e7bba823c71cdcc1a90c517da43c3373e569b9ef0a1d472730228b6f90b"
+      "bytes": 3623208,
+      "sha256": "d800411150a3a6dece0d338ac999092f306f5a253755a2e66eebf1ab7978d4d0"
     },
     {
       "file": "walkthrough.webm",
-      "bytes": 8712670,
-      "sha256": "3a3a3434c1762a42a24dcfb49f6c899d5beb83be6e1935da065b7299c4d221c3"
+      "bytes": 5175593,
+      "sha256": "879f6182375e17fdd912085f805cc49f401ff0325a8433a034280e775e058cc9"
     },
     {
       "file": "walkthrough-poster.webp",
-      "bytes": 106640,
-      "sha256": "33aaaee3e1d4e11a788fa83af2437d91d76530241c30f1ab3f751dc29ec05d68"
+      "bytes": 108198,
+      "sha256": "89af0bd989386d1454e6ef7048c86369bd45591ece0a3ab46b248953f5db1b85"
     },
     {
       "file": "walkthrough.vtt",
-      "bytes": 635,
-      "sha256": "f2b4a84e0f1859fec5032631dbafc5ba4d524eb805e81b9452716d897f7f631a"
+      "bytes": 837,
+      "sha256": "7ede4d6e914318a07f2773e697890fafe83b8b0744d844669faa8ecbffdbcfc3"
     },
     {
       "file": "walkthrough-transcript.txt",
-      "bytes": 1307,
-      "sha256": "1640f27420054eeec34f8e5724366a92721e3173cfa6fac1c9de81af1e2587b9"
+      "bytes": 1901,
+      "sha256": "c35c7a61213391f2751facbb1f982307bfecc54afd3dcc772a269fb1552b4ebf"
     }
   ]
 }

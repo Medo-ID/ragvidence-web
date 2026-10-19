@@ -41,6 +41,13 @@ Edit content in `src/app/page.tsx`, `src/components/product-sections.tsx` and
 URLs, especially `/docs/commands` and the preferred `/docs` overview. Internal
 navigation uses Next Link; files, email and external destinations use anchors.
 
+Each article offers **Copy as Markdown** and **Download .md**. The static
+`/docs/[slug]/markdown` handler serializes the same typed blocks as the HTML article,
+including raw commands, tables, links and scope notices. Markdown responses carry
+`noindex`; HTML canonical URLs and sitemap entries remain unchanged. Copy fetches
+the article only on demand, with selectable text/download recovery if clipboard
+access fails. Downloads work without JavaScript.
+
 Use one base install command, with optional extras explained in Installation:
 
 ```bash
@@ -125,7 +132,7 @@ single-run observations are not benchmarks.
 
 ## Regenerate demo media
 
-The short 22-second loop is composed at 1920×1080, 30fps from genuine production
+The 34-second loop is composed at 1920×1080, 30fps from genuine production
 0.2.1 command transcripts and native report captures at device scale factor 2.
 It follows the inspected [Supabase Table Editor reference](https://supabase.com/):
 a continuous workspace, cursor movement, typing, focused zooms and real report
@@ -133,13 +140,21 @@ interactions. The exact dark reference is `supabase-table-editor.webm` under its
 public website video storage, 28.2 seconds / 1916×1080 when inspected on 2026-10-19.
 No Supabase footage or branding is included in the website assets.
 
-The workflow moves directly from the reviewed comparison command to resources,
-question-level gains and expanded original context. It ends with light, mobile
+The workflow starts with a local-file question, then types the reviewed comparison
+command more slowly and holds its real output. It explicitly shows the HTML,
+JSON and Markdown format flags and exported paths before opening HTML. Focused
+zooms indicate resources and the expanded original context. The cursor follows
+the reference's black arrow/white outline and native-style hand on controls,
+without colored click rings. It ends with light, mobile
 and print views. All three participants, unscored/heldout boundaries, unavailable
 values and synthetic-example limitations are retained. Execution waits are
 omitted. There is no audio; WebVTT descriptions and a readable transcript provide
-accessible alternatives. Native seek/caption controls and an explicit play/pause
-button remain available. Reduced motion keeps the poster until the user plays.
+accessible alternatives. The owner requested no visible control bar or overlay
+and muted looping autoplay in both motion preferences. Clicking the video or
+pressing Space/Enter pauses or plays; the native right-click menu remains intact.
+Users can expose browser controls there for seeking/captions. Browser/device
+autoplay policies can still block playback, in which case a retry and transcript
+remain available. The rest of the site's reduced-motion behavior is unchanged.
 
 Provide Playwright Chromium, FFmpeg with H.264/VP9 and the verified production wheel:
 
@@ -158,12 +173,24 @@ not replace public media. After frame review, promote the fully decoded candidat
 node scripts/check-walkthrough.mjs /path/to/ffmpeg --media verification/website-021/media-candidate --publish
 ```
 
-The checker verifies 660 frames / 22 seconds in both encodings, hashes, source
-identity, captions and at least 18 distinct content samples away from the footer.
+The checker verifies 1,020 frames / 34 seconds in both encodings, hashes, source
+identity, captions, an 8 MB budget per encoding and distinct content in at least
+82% of the one-second samples away from the footer. MP4 uses H.264 CRF 23 with
+fast-start metadata and is the primary browser source; WebM uses VP9 CRF 32.
 Every frame is rendered; scene caching is forbidden. The provenance records CLI
 version/tag/commit, wheel and report hashes, commands/inputs, actual interaction
 steps, website source commit and file digests, browser/FFmpeg versions and final
-media hashes. Changed source/report inputs require fresh capture before encoding.
+media hashes. A video's source can differ from the report generator's source:
+their release and report hashes must match. For an amended delivery commit, set
+`RAGVIDENCE_RECORDING_SOURCE_BASE` to a reachable ancestor. Provenance explicitly
+labels that commit as a baseline and records a SHA-256 manifest of the exact
+authoring files; the final amended commit binds that snapshot and media together.
+Changed recording scripts, branding or report inputs require fresh capture before
+encoding. The recording validator checks these actual footage inputs against the
+current files and verifies the complete historical snapshot digest. Website page,
+player and CSS hashes in that snapshot describe the site at capture time; they
+are not canvas-rendering inputs. Later spacing or documentation changes can ship
+with the same validated footage while retaining that original capture record.
 Keep the old video until the replacement passes these checks.
 
 ## Licenses and assets

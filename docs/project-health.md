@@ -13,38 +13,57 @@ The owner-reviewed redesign uses shared rails, thin dividers, persistent
 light/dark themes, a refined evidence/CLI mark and Amber #FFBF00 accents.
 The requested spacing and terminal/manual-step reductions are implemented.
 Reports remain byte-identical generated exports, with their original theme colors.
-Samples and media record source commit
-`5c9987bc425d87267b5156d2dd6c5c0b5f770d49`; public provenance records every input,
-command, report and final media hash. Main outcomes remain 3/4, 4/4 and 3/4 on four
+Samples retain source commit `5c9987bc425d87267b5156d2dd6c5c0b5f770d49`.
+The revised media records reachable baseline `547e441ab3cb04c073f586ebe606397a060265c4`
+and a SHA-256 snapshot of the exact authoring files, so the owner-requested amended
+delivery commit can bind the changed source and media without changing reports.
+Public provenance records every input, command, report and final media hash. Main outcomes remain 3/4, 4/4 and 3/4 on four
 reviewed dev questions, with mean context sizes 161, 741 and 200 characters.
 
 | Check | Result |
 | --- | --- |
 | Node / npm | 24.20.0 / 11.19.0; `npm ci` passed |
 | Complete `npm run verify` | Pass locally with the normal Turbopack build |
-| HTTP, links, headers, not-found | 55 routes and 171 links/fragments passed |
-| Verifier / provenance tests | 7 passed |
-| Chromium | 76 passed; no retries needed in the final run |
+| HTTP, links, headers, not-found | 75 routes and 191 links/fragments passed |
+| Verifier / provenance tests | 10 passed |
+| Chromium | 83 passed; no retries needed in the final run |
 | Themes / mobile / keyboard / copy / search | Passed, including storage errors, pre-hydration theme, AA text contrast, overflow and print |
-| Native media controls | Click, keyboard playback, seek and captions passed; browser context menu is not intercepted |
+| Video playback | Owner-requested hidden controls and autoplay in both motion preferences; click, keyboard, seek/captions and untouched browser context menu are checked |
 | Production dependency audit | Zero advisories |
 | Separate development audit | Five high entries for the accepted braces advisory below; no compatible fix offered |
 | Installed CLI commands, schemas, PDF and licenses | 42 checks passed |
 | Seven robustness journeys | 70 offline browser checks; unchanged evidence and all expected blocks in 14 PDFs |
-| Media | H.264 / VP9, 1920×1080, 30fps, 660 frames / 22 seconds; every frame decoded; 22 distinct content samples per format |
+| Media | H.264 / VP9, 1920×1080, 30fps, 1,020 frames / 34 seconds; every frame decoded; 34 distinct samples per format; MP4 fast-start verified |
 | Secret scans | Gitleaks 8.16.0: reachable history and intended publication files; no leaks found |
 | `git diff --check` | Pass |
 
-The new MP4, WebM, poster, WebVTT descriptions and transcript replaced the retained
-recording only after candidate validation. The video autoplays muted and loops,
-with native controls and an explicit toggle. Reduced motion keeps the poster
-until explicit playback. A regression test found and now prevents native autoplay
-from racing a rejected manual play request. MP4 is 3.88 MB and WebM is 8.71 MB;
-continuous motion increases media bytes compared with the historical static scenes.
+The owner requested more instructional pacing after the initial review. The
+34-second revision shows a local-file question, a larger/slower comparison command,
+all real output and HTML/JSON/Markdown export paths before opening HTML. The
+reference-style black arrow/white outline becomes a hand on controls, and focused
+zooms indicate resources and original evidence. Scores and report bytes are unchanged.
+
+Per the owner's latest request, the video has no visible playback bar or overlay
+and requests muted looping autoplay even with reduced motion enabled. Click and
+Space/Enter pause or play, and the native right-click menu remains intact. Browser
+or device policies can still block autoplay; retry/download/transcript recovery
+is provided. Other site animations retain reduced-motion support. The primary
+MP4 is 3,623,208 bytes (3.62 MB), approximately 58% less than the prior primary
+WebM's 8,712,670 bytes. The VP9 fallback is 5,175,593 bytes (5.18 MB). Both are
+smaller than the corresponding prior encodings despite the longer demonstration.
+MP4 fast-start metadata is verified by checking that `moov` precedes `mdat`.
+
+A controlled loading observation used cold browser cache, 40 ms latency and
+4 Mbit/s download on the local production server. First video frame was about
+1.14 s both before (WebM) and after (MP4); this does not establish a speed gain.
+Reduced-motion mode now also autoplays as requested (first frame about 1.15 s).
+These are single local observations, not a benchmark or SEO ranking claim.
+Logs and final captures for this revision are in
+`verification/website-021/video-revision/`.
 
 Before/after local observations used Chromium at 1440×1000 with reduced motion.
-Home FCP: 172 → 172 ms; resource transfer: 478,122 → 436,031 bytes. Docs FCP:
-68 → 80 ms; transfer: 19,514 → 24,525 bytes. These are individual local runs with
+Home FCP: 172 → 136 ms; resource transfer: 478,122 → 435,968 bytes. Docs FCP:
+68 → 76 ms; transfer: 19,514 → 23,269 bytes. These are individual local runs with
 warm shared resources and different build/cache conditions; the final used
 Turbopack. They do not establish a performance improvement or measure
 full autoplay media delivery. Final captures show no page overflow or console errors.
@@ -52,8 +71,38 @@ full autoplay media delivery. Final captures show no page overflow or console er
 Fresh local builds earlier encountered CSS-worker port restrictions. The final
 normal build and entire standard gate passed without switching bundlers.
 Ignored evidence is under `verification/website-021/`; final screenshots and
-metrics are in `final/`, with full output in `verify-final.log`. Exact-commit CI
-is the remaining source-publication check. No deployment is claimed.
+metrics are in `final/`, with full output in `verify-final.log`. The pushed
+review branch also runs the unchanged standard gate in
+[GitHub Actions](https://github.com/Medo-ID/ragvidence-web/actions?query=branch%3Arelease%2Fwebsite-0.2.1).
+Check its exact commit before merging. No deployment is claimed.
+
+The final spacing pass reduces the hero title from 84 to 66 px maximum, tightens
+terminal text to 13 px (12 px in the manual preview) and removes the duplicate
+installation terminal. The manual preview keeps its commands and explanations,
+while removing repeated checklists/results already shown elsewhere. Shorter
+feature descriptions and more section padding
+leave more surrounding space. The video frame is square; docs navigation uses a
+square selection edge aligned with the left structural rail, with inset keyboard
+focus so its outline is not clipped. Article body text retains its reading size.
+
+All 20 articles now offer Markdown copy and download from statically generated
+routes. They share the HTML article source, preserve raw commands and scope
+notices, and use absolute links. Browser checks cover both themes/mobile,
+keyboard copying, denied clipboard recovery, failed fetch/retry, downloads and
+no-JavaScript use. Markdown responses are noindex; existing HTML canonicals and
+sitemap coverage remain intact.
+
+The unchanged movie passed complete decoding and provenance checks again. Its
+historical website context snapshot remains intact. Validation distinguishes
+actual recording scripts/branding/report inputs from surrounding website page
+and CSS context, so these spacing changes do not claim to be new footage.
+
+The finishing review captured 390/1440 px home/docs pages in both themes without
+overflow or console errors. Local before/after observations at 1440×1000 measured
+home FCP 236 → 156 ms and initial resource transfer 437,596 → 438,003 bytes; docs
+FCP 108 → 96 ms and transfer 24,560 → 23,220 bytes. These are single local runs,
+with shared warm resources, not a demonstrated speed gain or full video delivery
+measurement. Evidence is in `verification/website-021/finishing/`.
 
 The following 0.2.0 section is a historical verification record.
 

@@ -5,7 +5,7 @@ import { once } from "node:events";
 import { copyFile, mkdir, mkdtemp, readFile, writeFile, stat } from "node:fs/promises";
 import { createHash } from "node:crypto";
 import { execFileSync } from "node:child_process";
-import { walkthroughPlan, captions, plainTranscript } from "./walkthrough-plan.mjs";
+import { walkthroughPlan, walkthroughEncodings, walkthroughPreviewTimes, captions, plainTranscript } from "./walkthrough-plan.mjs";
 import { join, resolve } from "node:path";
 import { captureOwnData } from "./capture-own-data.mjs";
 import { prepareDemoRenderer } from "./render-demo-frames.mjs";
@@ -37,7 +37,7 @@ try {
     }
   }
   await prepareDemoRenderer(page, state.captures, state.points, state.fontCSS, state.typing);
-  for (const time of [0.5, 2, 3.5, 5, 7, 9, 11.7, 13, 15, 16.7, 19, 20, 21.5]) {
+  for (const time of walkthroughPreviewTimes) {
     const png = await page.evaluate(time => { window.renderFrame(time); return document.querySelector("canvas").toDataURL("image/png").split(",")[1]; }, time);
     await writeFile(join(working, `preview-${time}s.png`), Buffer.from(png, "base64"));
   }
@@ -45,11 +45,7 @@ try {
   if (captureOnly) process.exitCode = 0;
   else {
     if (!ffmpeg) throw new Error("Provide an FFmpeg executable with libx264 and libvpx-vp9");
-    const outputs = [
-      ["walkthrough.mp4", ["-c:v", "libx264", "-preset", "medium", "-crf", "20", "-movflags", "+faststart"]],
-      ["walkthrough.webm", ["-c:v", "libvpx-vp9", "-crf", "20", "-b:v", "0", "-cpu-used", "4", "-row-mt", "1"]],
-    ];
-    const jobs = outputs.map(([file, codec]) => {
+    const jobs = walkthroughEncodings.map(({ file, arguments: codec }) => {
       const child = spawn(ffmpeg, ["-y", "-hide_banner", "-loglevel", "error", "-f", "image2pipe", "-vcodec", "mjpeg", "-r", String(walkthroughPlan.fps), "-i", "pipe:0", "-an", "-sn", ...codec, "-threads", "4", "-g", "120", "-pix_fmt", "yuv420p", join(staging, file)], { stdio: ["pipe", "ignore", "pipe"] });
       encoders.push(child); let errors = "", failure;
       child.stderr.on("data", chunk => { errors += chunk; }); child.stdin.on("error", error => { failure = error; });
@@ -62,7 +58,7 @@ try {
       if (frame % 600 === 0) console.log(`Rendered ${frame} / ${state.provenance.frames} native frames`);
     }
     for (const job of jobs) job.child.stdin.end(); await Promise.all(jobs.map(job => job.done));
-    const poster = await page.evaluate(() => { window.renderFrame(6); return document.querySelector("canvas").toDataURL("image/webp", 0.95).split(",")[1]; });
+    const poster = await page.evaluate(() => { window.renderFrame(17); return document.querySelector("canvas").toDataURL("image/webp", 0.95).split(",")[1]; });
     await writeFile(join(staging, "walkthrough-poster.webp"), Buffer.from(poster, "base64"));
     await writeFile(join(staging, "walkthrough.vtt"), captions);
     await writeFile(join(staging, "walkthrough-transcript.txt"), plainTranscript);
@@ -71,7 +67,7 @@ try {
     await writeFile(join(staging, "walkthrough-provenance.json"), JSON.stringify(state.provenance, null, 2) + "\n");
     await mkdir(destination, { recursive: true });
     for (const file of ["walkthrough.mp4", "walkthrough.webm", "walkthrough-poster.webp", "walkthrough.vtt", "walkthrough-transcript.txt", "walkthrough-provenance.json"]) await copyFile(join(staging, file), join(destination, file));
-    console.log("Created 22-second 1080p30 candidate MP4, WebM, poster, captions and transcript. Validate before publishing.");
+    console.log(`Created ${walkthroughPlan.durationSeconds}-second 1080p${walkthroughPlan.fps} candidate MP4, WebM, poster, captions and transcript. Validate before publishing.`);
   }
 } finally {
   for (const child of encoders) if (child.exitCode === null) child.kill("SIGTERM");

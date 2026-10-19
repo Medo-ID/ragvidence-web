@@ -39,7 +39,7 @@ function Navigation({ query, pages, groups, index, loading, close }: NavigationP
                 const active = pathname === `/docs/${doc.slug}` || (pathname === "/docs" && doc.slug === "overview");
                 return (
                   <li key={doc.slug}>
-                    <Link href={docPath(doc.slug)} onClick={close} aria-current={active ? "page" : undefined} className={`flex min-h-11 items-center rounded-md px-3 py-2 text-sm leading-5 transition-colors xl:min-h-9 xl:py-1.5 ${active ? "docs-selected font-medium text-ink" : "text-muted hover:bg-white/[0.035] hover:text-ink"}`}>
+                    <Link href={docPath(doc.slug)} onClick={close} aria-current={active ? "page" : undefined} className={`flex min-h-11 items-center px-3 py-2 text-sm leading-5 transition-colors xl:min-h-9 xl:py-1.5 ${active ? "docs-selected font-medium text-ink" : "text-muted hover:bg-white/[0.035] hover:text-ink"}`}>
                       {doc.title}
                     </Link>
                   </li>

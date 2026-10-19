@@ -5,6 +5,7 @@ import { DocRenderer } from "./doc-renderer";
 import { OnThisPage } from "./on-this-page";
 import { docPath } from "@/lib/doc-path";
 import { serializeJsonLd, siteUrl } from "@/lib/seo";
+import { DocMarkdown } from "./doc-markdown";
 
 export function DocPage({ doc }: { doc: DocPageType }) {
   const { previous, next } = adjacentDocs(doc.slug);
@@ -25,6 +26,7 @@ export function DocPage({ doc }: { doc: DocPageType }) {
       <h1 className="doc-title">{doc.title}</h1>
       <p className="mt-5 text-lg leading-8 text-muted">{doc.description}</p>
       <div className="mt-6 flex items-center gap-3 text-xs text-muted"><span className="rounded-sm border border-line px-2.5 py-1 font-mono">v0.2.1</span><span>Local CLI · Offline reports</span></div>
+      <DocMarkdown key={doc.slug} slug={doc.slug} />
       </div>
       <OnThisPage headings={headings} />
       <div className="doc-content min-w-0">

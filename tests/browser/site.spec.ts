@@ -141,17 +141,27 @@ for (const failure of ["http", "invalid-index"]) {
   });
 }
 
-test("silent workflow video autoplays with native controls and descriptions", async ({ page }) => {
+test("silent workflow autoplays without visible controls and retains browser options", async ({ page }) => {
   await page.goto("/");
   const video = page.locator("#walkthrough video");
   await expect(video).toHaveAttribute("autoplay", "");
   await expect(video).toHaveAttribute("preload", "auto");
-  await expect(video).toHaveAttribute("controls", "");
-  await expect(page.locator("#walkthrough button")).toHaveCount(1);
+  expect(await video.evaluate((el: HTMLVideoElement) => el.controls)).toBe(false);
+  await expect(page.locator("#walkthrough button")).toHaveCount(0);
   await expect.poll(() => video.evaluate((el: HTMLVideoElement) => !el.paused && el.currentTime > 0.1)).toBe(true);
   const metadata = await video.evaluate((el: HTMLVideoElement) => ({ width: el.videoWidth, height: el.videoHeight, duration: el.duration, muted: el.muted, loop: el.loop, tracks: el.textTracks.length }));
   expect(metadata).toMatchObject({ width: 1920, height: 1080, muted: true, loop: true, tracks: 1 });
-  expect(metadata.duration).toBeCloseTo(22, 1);
+  expect(metadata.duration).toBeCloseTo(34, 1);
+  await expect(video.locator("source").first()).toHaveAttribute("type", "video/mp4");
+  await video.evaluate((el: HTMLVideoElement) => { el.currentTime = 12; el.textTracks[0].mode = "showing"; });
+  await expect.poll(() => video.evaluate((el: HTMLVideoElement) => [...(el.textTracks[0].activeCues ?? [])].map(cue => (cue as VTTCue).text).join(" "))).toContain("Export HTML, JSON and Markdown");
+  await video.scrollIntoViewIfNeeded();
+  await video.evaluate(el => el.addEventListener("contextmenu", event => {
+    queueMicrotask(() => { document.documentElement.dataset.nativeVideoMenuPrevented = String(event.defaultPrevented); });
+  }, { once: true }));
+  await video.click({ button: "right", position: { x: 120, y: 80 } });
+  await expect(page.locator("html")).toHaveAttribute("data-native-video-menu-prevented", "false");
+  await page.keyboard.press("Escape");
 });
 
 test("native autoplay works before hydration with JavaScript disabled", async ({ browser }) => {
@@ -211,9 +221,9 @@ test("clicking anywhere toggles playback and manual pause survives scrolling", a
   await page.goto("/");
   const video = page.locator("#walkthrough video");
   await video.scrollIntoViewIfNeeded();
-  const toggle = page.locator("#walkthrough button");
+  const toggle = video;
   await expect(toggle).toHaveAccessibleName("Pause workflow video");
-  await toggle.click({ position: { x: 12, y: 12 } });
+  await toggle.click({ position: { x: 120, y: 80 } });
   await expect(toggle).toHaveAccessibleName("Play workflow video");
   const time = await video.evaluate((el: HTMLVideoElement) => el.currentTime);
   await page.locator("#install").scrollIntoViewIfNeeded();
@@ -222,6 +232,7 @@ test("clicking anywhere toggles playback and manual pause survives scrolling", a
   await page.keyboard.press("Tab");
   await toggle.focus();
   expect(await toggle.evaluate(el => getComputedStyle(el).outlineWidth)).toBe("2px");
+  expect(await toggle.evaluate(el => getComputedStyle(el).outlineOffset)).toBe("-4px");
   await page.keyboard.press("Space");
   await expect(toggle).toHaveAccessibleName("Pause workflow video");
   await page.keyboard.press("Enter");
@@ -236,24 +247,28 @@ test("a tall video can autoplay in a short viewport", async ({ page }) => {
   await expect.poll(() => video.evaluate((el: HTMLVideoElement) => !el.paused && el.currentTime > 0)).toBe(true);
 });
 
-test("reduced motion shows the poster without loading or autoplaying video", async ({ page }) => {
+test("owner-requested autoplay also starts with reduced motion and preserves manual pause", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
   const mediaRequests: string[] = [];
   page.on("request", request => { if (/walkthrough\.(webm|mp4)$/.test(request.url())) mediaRequests.push(request.url()); });
   await page.goto("/");
   const video = page.locator("#walkthrough video");
   await video.scrollIntoViewIfNeeded();
-  expect(await video.evaluate((el: HTMLVideoElement) => el.paused)).toBe(true);
+  await expect.poll(() => video.evaluate((el: HTMLVideoElement) => !el.paused && el.currentTime > .1)).toBe(true);
   await expect(video).toHaveAttribute("poster", "/media/walkthrough-poster.webp");
   await expect(video.locator("source")).toHaveCount(2);
-  for (const source of await video.locator("source").all()) await expect(source).toHaveAttribute("media", "(prefers-reduced-motion: no-preference)");
-  expect(mediaRequests).toHaveLength(0);
-  await page.getByRole("button", { name: "Play workflow video", exact: true }).click();
+  for (const source of await video.locator("source").all()) await expect(source).not.toHaveAttribute("media");
+  expect(mediaRequests.length).toBeGreaterThan(0);
+  await video.click();
+  await expect.poll(() => video.evaluate((el: HTMLVideoElement) => el.paused)).toBe(true);
+  await page.emulateMedia({ reducedMotion: "no-preference" });
+  expect(await video.evaluate((el: HTMLVideoElement) => el.paused)).toBe(true);
+  await video.focus(); await page.keyboard.press("Space");
   await expect.poll(() => video.evaluate((el: HTMLVideoElement) => !el.paused && el.currentTime > 0)).toBe(true);
   await expect(video.locator("source")).toHaveCount(2);
 });
 
-test("native source queries preserve the reduced-motion poster before hydration", async ({ browser }) => {
+test("native autoplay also works before hydration with reduced motion", async ({ browser }) => {
   const context = await browser.newContext({ javaScriptEnabled: false, reducedMotion: "reduce" });
   try {
     const requests: string[] = [];
@@ -262,8 +277,8 @@ test("native source queries preserve the reduced-motion poster before hydration"
     await page.goto("/");
     const video = page.locator("#walkthrough video");
     await video.scrollIntoViewIfNeeded();
-    expect(await video.evaluate((el: HTMLVideoElement) => el.paused && el.currentTime === 0 && el.currentSrc === "")).toBe(true);
-    expect(requests).toHaveLength(0);
+    await expect.poll(() => video.evaluate((el: HTMLVideoElement) => !el.paused && el.currentTime > .1 && el.currentSrc !== "")).toBe(true);
+    expect(requests.length).toBeGreaterThan(0);
   } finally { await context.close(); }
 });
 

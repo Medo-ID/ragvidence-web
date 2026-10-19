@@ -63,7 +63,9 @@ Keep the website’s rights separate from CLI and third-party licenses.
   section dividers. Preserve layered translucent texture and amber accents in both
   themes, with readable opaque fallbacks. Reserve blur for the sticky header.
   Use the report and AdonisJS structural reference without forcing report width
-  or square corners onto inner website components. Keep semantic colors distinct.
+  or square corners onto inner website components. The video frame and docs
+  navigation selection use square structural edges per the owner’s finishing
+  review. Keep semantic colors distinct.
 - Preserve the CSS-first Tailwind v4 setup (`@import "tailwindcss"` and
   `@theme inline`). Use complete class strings and existing theme utilities;
   avoid removed v3 utilities or dynamically constructed utility names.
@@ -82,6 +84,12 @@ provenance and tests together. Record commands and artifact hashes. Read
 `docs/maintaining.md` for the claim map and regeneration instructions.
 Keep the CLI repository read-only during website work. Omit sponsorship buttons
 until a working destination is supplied and verified.
+
+The owner requested a 34-second instructional product loop with no visible
+playback controls and muted autoplay in both motion preferences. Preserve click,
+Space/Enter and native right-click playback options, accessible transcript/captions
+and useful recovery when browser autoplay policies block playback. Keep the
+remaining site animations responsive to reduced motion.
 
 ## Verification and repository hygiene
 
