@@ -25,7 +25,7 @@ const list = (...items: string[]): DocBlock => ({ type: "list", items });
 const note = (title: string, text: string): DocBlock => ({ type: "note", title, text, tone: "info" });
 const table = (headers: string[], rows: string[][]): DocBlock => ({ type: "table", headers, rows });
 const links = (...items: { label: string; href: string }[]): DocBlock => ({ type: "links", items });
-const guide = (name: string, label: string): DocBlock => links({ label, href: `https://github.com/Medo-ID/ragvidence/blob/v0.2.0/docs/${name}.md` });
+const guide = (name: string, label: string): DocBlock => links({ label, href: `https://github.com/Medo-ID/ragvidence/blob/v0.2.1/docs/${name}.md` });
 const page = (slug: string, title: string, description: string, group: string, blocks: DocBlock[]): DocPage => ({ slug, title, description, group, blocks });
 
 export const docs: DocPage[] = [
@@ -39,7 +39,7 @@ export const docs: DocPage[] = [
     h("lifecycle", "The experiment lifecycle"),
     list("Install once, then run from any data folder.", "Inspect extraction and returned context.", "Compare alternatives on frozen data and questions.", "Add reviewed references for scored evaluation.", "Read failures, regressions, context size and observed timing together.", "Use dev questions for exploration, then freeze a shortlist before heldout evaluation."),
   ]),
-  page("installation", "Installation", "Install CLI 0.2.0, check it, and add optional PDF or model support.", "Start here", [
+  page("installation", "Installation", "Install CLI 0.2.1, check it, and add optional PDF or model support.", "Start here", [
     p("Python 3.12 is required. uv installs an isolated global command and can download the selected Python version. Python 3.13 and newer are outside the supported release scope."),
     h("prerequisites", "First, install uv"),
     code("curl -LsSf https://astral.sh/uv/install.sh | sh", "macOS / Linux"),
@@ -47,12 +47,12 @@ export const docs: DocPage[] = [
     p("Open a new terminal afterward. Follow the installer’s PATH instructions, then run uv --version."),
     links({ label: "Official uv installation instructions", href: "https://docs.astral.sh/uv/getting-started/installation/" }),
     h("recommended", "Install the CLI"),
-    code('uv tool install --python 3.12 "ragvidence==0.2.0"\nragvi --version\nragvi health\nragvi verify'),
+    code('uv tool install --python 3.12 "ragvidence==0.2.1"\nragvi --version\nragvi health\nragvi verify'),
     p("verify runs deterministic bundled checks without downloading a model. A WARN for an absent optional semantic runtime does not block BM25."),
     h("upgrade", "Upgrade an existing installation"),
-    code('uv tool install --upgrade --python 3.12 "ragvidence==0.2.0"\nragvi --version\nragvi verify'),
+    code('uv tool install --upgrade --python 3.12 "ragvidence==0.2.1"\nragvi --version\nragvi verify'),
     h("extras", "Optional extras"),
-    code('uv tool install --reinstall --python 3.12 "ragvidence[pdf,semantic]==0.2.0"'),
+    code('uv tool install --reinstall --python 3.12 "ragvidence[pdf,semantic]==0.2.1"'),
     p("pdf adds text-bearing PDF extraction, without OCR. semantic adds local FastEmbed embeddings and cross-encoder reranking. Include every extra you need when reinstalling. First model use downloads model files; inference is then local. Choose --cache-dir for model/vector storage."),
     h("platforms", "Tested platforms"),
     p("Automated installed-package release checks cover Linux x64, Windows x64, macOS ARM64 and macOS Intel with Python 3.12. Real-model checks use identified Linux configurations; this is not a claim that every model/hardware combination works on every OS. Human Windows usability review remains deferred."),
@@ -87,7 +87,7 @@ export const docs: DocPage[] = [
     note("Why the report lists 12 questions", "Ten questions are answerable; two unanswerable questions have N/A retrieval metrics and remain outside the denominator. Three failures recover, none regress, six stay sufficient and one stays insufficient."),
     h("inspect", "Inspect the evidence"),
     list("Check the fixed k and representation.", "Open changed question details and compare ranked source units.", "Check all required evidence, including conditions and exceptions.", "Read the limitation beside the diagnosis."),
-    links({ label: "Generated tutorial report from PyPI 0.2.0", href: "/tutorial-report.html" }),
+    links({ label: "Generated tutorial report from PyPI 0.2.1", href: "/tutorial-report.html" }),
   ]),
   page("first-report", "Read your first report", "Read status, context, evidence and limitations before drawing a conclusion.", "Start here", [
     h("summary", "Check status and configuration"),
@@ -164,7 +164,7 @@ export const docs: DocPage[] = [
   ]),
   page("semantic-workflow", "Semantic workflow", "Select local FastEmbed, Ollama or an OpenAI-compatible embedding provider.", "Workflows", [
     h("local", "Local FastEmbed"),
-    code('uv tool install --reinstall --python 3.12 "ragvidence[semantic]==0.2.0"\nragvi semantic ./docs --query "How do I reset the device?"'),
+    code('uv tool install --reinstall --python 3.12 "ragvidence[semantic]==0.2.1"\nragvi semantic ./docs --query "How do I reset the device?"'),
     p("First use downloads the selected model; inference then runs locally. --cache-dir chooses model/vector storage. Reuse requires compatible model and searchable-text identities. Dense retrieval ranks by cosine; weighted hybrid combines lexical/dense ranks with RRF."),
     h("ollama", "Ollama embeddings"),
     code("RAGVIDENCE_EMBEDDING_BASE_URL=http://localhost:11434", ".env · providers.env"),
@@ -247,7 +247,7 @@ export const docs: DocPage[] = [
     code('ragvi bm25 ./docs --questions ./questions.txt --format html --format json --format markdown'),
     p("HTML is the default; an explicit repeated --format selection replaces it. Every run uses a unique directory under ragvi-reports/; --output chooses a different root. --open opens HTML only when requested."),
     h("contents", "What exports contain"),
-    p("Reports identify input hashes, settings, source locations, exact returned context, queries, stage candidates/scores/timings, model/provider identity, warnings and evaluation scope. Unknown cost/timing stays unavailable. HTML escapes source content, embeds fonts and has no scripts or remote assets. Disclosures and print styles allow offline inspection."),
+    p("Reports identify input hashes, settings, source locations, exact returned context, queries, stage candidates/scores/timings, model/provider identity, warnings and evaluation scope. Unknown cost/timing stays unavailable. HTML escapes source content, embeds fonts and includes only a static light/dark theme switch, without storage or remote assets. Theme choice stays in the open report. Keyboard-accessible navigation and native disclosures work offline without JavaScript. Print styles include closed evidence disclosures in supported browsers; open them first in older print engines."),
     links({ label: "Synthetic comparison · HTML", href: "/sample-report.html" }, { label: "Same report · JSON", href: "/sample-report.json" }, { label: "Same report · Markdown", href: "/sample-report.md" }, { label: "Generation commands and hashes", href: "/examples/provenance.json" }),
     h("private", "Keep internal artifacts private"),
     p("snapshot.json retains original bodies; questions.json and references.json retain evaluation inputs; run.json records exact context; search-sources.json freezes searchable bodies/prefixes. Comparison directories also retain plans, sidecars, tokenizers and checkpoints. They can expose much more than the selected report. Review all content before sharing."),

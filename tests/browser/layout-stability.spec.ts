@@ -31,7 +31,7 @@ for (const width of [360, 390, 768, 1280, 1440, 1920]) {
       try {
         await page.goto(route, { waitUntil: "domcontentloaded" });
         await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
-        if (route === "/") await expect(page.locator("#hero-install-command")).toContainText("ragvidence==0.2.0");
+        if (route === "/") await expect(page.locator("#hero-install-command")).toContainText("ragvidence==0.2.1");
         await page.waitForTimeout(200);
         releaseFonts();
         await page.evaluate(() => document.fonts.ready);

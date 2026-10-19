@@ -2,24 +2,24 @@
 
 ## Product and source of truth
 
-This website documents the fully free Apache-2.0 CLI **0.2.0**. Use the published
+This website documents the fully free Apache-2.0 CLI **0.2.1**. Use the published
 production package, installed outside both repositories. Keep the CLI checkout
 read-only. The deferred human Windows usability review is separate from website
 work; do not describe it as passed. Automated installed-package checks cover
 Python 3.12 on Linux x64, Windows x64 and macOS ARM64/Intel. Model checks establish
 only their identified configurations.
 
-Release tag: `v0.2.0`; release commit:
-`fba0c92ddaeb414ba8e9f0dea0e0c93f4e9c29f4`.
+Release tag: `v0.2.1`; release commit:
+`60b3302d8b2ad1726c1a40bece26b64b0c06c1e1`.
 
 Production wheel SHA-256:
 
 ```text
-ef300e798bc7cad72a560dc2a6c6c9819737bdbac9241f7ebf2a593a5f2c54e9
+4e74385f2920e13e0de462949791813cf7891fb4575ec17c8e9b577c005eebcf
 ```
 
-[PyPI](https://pypi.org/project/ragvidence/0.2.0/) ·
-[GitHub release](https://github.com/Medo-ID/ragvidence/releases/tag/v0.2.0) ·
+[PyPI](https://pypi.org/project/ragvidence/0.2.1/) ·
+[GitHub release](https://github.com/Medo-ID/ragvidence/releases/tag/v0.2.1) ·
 [CLI maintainer checklist](https://github.com/Medo-ID/ragvidence/blob/main/docs/maintainer/release-and-website-checklist.md)
 
 ## Claim and content map
@@ -44,7 +44,7 @@ navigation uses Next Link; files, email and external destinations use anchors.
 Use one base install command, with optional extras explained in Installation:
 
 ```bash
-uv tool install --python 3.12 "ragvidence==0.2.0"
+uv tool install --python 3.12 "ragvidence==0.2.1"
 ragvi --version
 ragvi health
 ragvi verify
@@ -59,7 +59,7 @@ Omit sponsorship buttons until an owner supplies a verified working destination.
 ## Reproduce the public reports
 
 `public/sample-report.{html,json,md}` are actual portable comparison exports from
-PyPI 0.2.0. Do not patch generated HTML or scores. `public/examples/` contains the
+PyPI 0.2.1. Do not patch generated HTML or scores. `public/examples/` contains the
 synthetic original manual, questions, reviewed original spans and provenance.
 `src/lib/example-results.ts` is generated from the same JSON for displayed facts.
 
@@ -78,12 +78,12 @@ workflow, rather than the homepage's main proof.
 Install the exact production wheel in a temporary Python 3.12 environment, then:
 
 ```bash
-node scripts/generate-release-example.mjs /tmp/ragvidence-web-020/bin/ragvi
-/tmp/ragvidence-web-020/bin/python scripts/validate-cli-examples.py
+node scripts/generate-release-example.mjs /tmp/ragvidence-web-021/bin/ragvi /tmp/ragvidence-0.2.1-py3-none-any.whl
+/tmp/ragvidence-web-021/bin/python scripts/validate-cli-examples.py
 ```
 
 The second script expects the downloaded verified wheel at
-`/tmp/ragvidence-0.2.0-py3-none-any.whl` and an isolated environment with the `pdf`
+`/tmp/ragvidence-0.2.1-py3-none-any.whl` and an isolated environment with the `pdf`
 extra. It validates schemas/commands and checks license copies against that wheel.
 Provider endpoint/model names and COPY_* schema placeholders in docs are templates;
 they require the user's own source IDs, references or service. Their flags are
@@ -96,46 +96,88 @@ settings, release identity and the website source commit. The final website comm
 binds those artifacts through Git; see `git log -- public/examples/provenance.json`.
 Update references from the new inventory when original source text changes.
 
-The HTML exports work offline with embedded fonts and escaped content. Before
-printing a portable report, open the desired context/stage disclosures. Keep
-notices intact. Internal snapshots, references, prompts and contexts may contain
+The HTML exports work offline with embedded fonts, escaped content and the
+wheel’s trusted static theme script. The report stores no theme preference.
+Supported browsers print closed evidence disclosures; open desired disclosures
+first in older print engines. Keep notices intact. Internal snapshots, references, prompts and contexts may contain
 full source data; share reviewed exports rather than the whole run directory.
+
+## Theme and design review
+
+The report’s centered rails and thin dividers guide the website structure;
+[AdonisJS](https://adonisjs.com/) informs crisp outer edges with rounded inner
+controls. Website and docs widths adapt to their content. Geist remains the typeface. The owner selected Amber #FFBF00 for the main
+accent, with lighter dark-mode links, darker light-mode links and subtle warm
+surface tones. Semantic success, failure and information colors remain distinct. Dark uses Woodsmoke #010101/#16161b and light uses gray-100;
+translucent surfaces retain readable opaque header fallbacks.
+
+A synchronous root-layout script applies the saved `ragvidence-theme` preference
+before first paint. The client toggle handles unavailable storage and cross-tab
+changes without moving article bodies into client bundles. Reports intentionally
+keep their own document-local theme behavior. The website privacy page documents
+local storage. Validate keyboard access, both themes, no-JS reports, closed
+print disclosures, search and clipboard failure before recording.
+
+`node scripts/review-design.mjs` captures a reachable production preview at
+`RAGVIDENCE_SITE_URL` (default port 3011) into ignored verification output. Keep
+performance measurements tied to build, viewport and cache conditions; local
+single-run observations are not benchmarks.
 
 ## Regenerate demo media
 
-The homepage is a 36-second native 1920×1080, 60fps silent recording of the same
-synthetic comparison. It shows actual captured CLI outputs and its unmodified
-report. Execution waits are omitted. It does not require a model or API key.
+The short 22-second loop is composed at 1920×1080, 30fps from genuine production
+0.2.1 command transcripts and native report captures at device scale factor 2.
+It follows the inspected [Supabase Table Editor reference](https://supabase.com/):
+a continuous workspace, cursor movement, typing, focused zooms and real report
+interactions. The exact dark reference is `supabase-table-editor.webm` under its
+public website video storage, 28.2 seconds / 1916×1080 when inspected on 2026-10-19.
+No Supabase footage or branding is included in the website assets.
 
-Provide Playwright Chromium, FFmpeg with H.264/VP9 and the exact production wheel:
+The workflow moves directly from the reviewed comparison command to resources,
+question-level gains and expanded original context. It ends with light, mobile
+and print views. All three participants, unscored/heldout boundaries, unavailable
+values and synthetic-example limitations are retained. Execution waits are
+omitted. There is no audio; WebVTT descriptions and a readable transcript provide
+accessible alternatives. Native seek/caption controls and an explicit play/pause
+button remain available. Reduced motion keeps the poster until the user plays.
+
+Provide Playwright Chromium, FFmpeg with H.264/VP9 and the verified production wheel:
 
 ```bash
-node scripts/record-walkthrough.mjs /tmp/ragvidence-0.2.0-py3-none-any.whl /path/to/ffmpeg
-node scripts/check-walkthrough.mjs /path/to/ffmpeg
+node scripts/record-walkthrough.mjs /tmp/ragvidence-0.2.1-py3-none-any.whl /path/to/ffmpeg --capture-only
+node scripts/record-walkthrough.mjs --resume /absolute/capture-directory /path/to/ffmpeg
+node scripts/check-walkthrough.mjs /path/to/ffmpeg --media verification/website-021/media-candidate
 ```
 
-The recorder validates wheel/report/source hashes before capture, stages both
-encodings and the poster, and writes `public/media/walkthrough-provenance.json`.
-`--capture-only` allows frame review before encoding; resume with:
+Review the captured PNG frames before encoding and decoded frames before replacing
+media. Fresh capture roots and candidate outputs live under ignored verification.
+`RAGVIDENCE_RECORDING_DIR` selects another candidate directory. The recorder does
+not replace public media. After frame review, promote the fully decoded candidate:
 
 ```bash
-node scripts/record-walkthrough.mjs --resume /tmp/capture-directory /path/to/ffmpeg
+node scripts/check-walkthrough.mjs /path/to/ffmpeg --media verification/website-021/media-candidate --publish
 ```
 
-`RAGVIDENCE_RECORDING_DIR` selects a staging destination. Optional temporary browser
-libraries can be supplied via `LD_LIBRARY_PATH`; do not add them to the repository.
-Review frames for clipping and private paths, and decode both final files. Native
-source media queries preserve the reduced-motion poster before hydration; explicit
-play opts in. Test autoplay, manual pause, keyboard controls and rejected playback.
+The checker verifies 660 frames / 22 seconds in both encodings, hashes, source
+identity, captions and at least 18 distinct content samples away from the footer.
+Every frame is rendered; scene caching is forbidden. The provenance records CLI
+version/tag/commit, wheel and report hashes, commands/inputs, actual interaction
+steps, website source commit and file digests, browser/FFmpeg versions and final
+media hashes. Changed source/report inputs require fresh capture before encoding.
+Keep the old video until the replacement passes these checks.
 
 ## Licenses and assets
 
 The current CLI license and NOTICE were copied from the production wheel into
-`public/ragvidence-0.2.0-{license,notice}.txt`. Source dependency notices/licenses
-are copied from the same wheel. The historical 0.1.0 license remains separately
+`public/ragvidence-0.2.1-{license,notice}.txt`. Source dependency notices/licenses
+are copied from the same wheel. Historical 0.1.0 and 0.2.0 license files remain separately
 linked only from release history. Website rights remain reserved; do not apply
 the CLI license to website code or design. Preserve font/model/third-party notices.
-The active mark is `public/brand/a-evidence-convergence/mark-dark.svg`.
+The active thin mark combines converging evidence lines with the CLI `>_`:
+`public/brand/evidence-cli/mark-{dark,light}.svg`. The original evidence-convergence
+asset is retained for historical links. `src/app/icon.svg` is the favicon source;
+`node scripts/generate-brand-assets.mjs` renders the ICO and Apple touch icon.
+Keep the header/footer, favicon, touch icon and social card aligned.
 
 ## Review and deployment
 

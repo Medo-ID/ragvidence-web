@@ -1,3 +1,25 @@
+# Website 0.2.1 synchronization in progress
+
+Production 0.2.1 was independently verified on 2026-10-19. Its public annotated
+tag resolves to `60b3302d8b2ad1726c1a40bece26b64b0c06c1e1` and its wheel SHA-256
+is `4e74385f2920e13e0de462949791813cf7891fb4575ec17c8e9b577c005eebcf`.
+Use [maintaining.md](docs/maintaining.md) for current references and generation.
+The local CLI handoffs were read without modifying the CLI checkout. New website
+verification outputs live under `verification/website-021/`. All seven robustness
+journeys preserve the approved evidence and pass offline browser/print checks.
+
+The owner accepted the structural redesign and requested tighter spacing, a thin
+evidence/CLI mark and Amber #FFBF00 accents. Repeated licensing/promotional labels
+have been removed. The inspected Supabase dark Table Editor loop is 28.2 seconds;
+the RAGvidence draft is shortened to 22 seconds without introductory scenes.
+Existing media remains preserved until the new candidate passes frame/decode/hash
+checks. No production deployment is authorized. Source review and exact-commit CI
+follow the completed media.
+
+The following 0.2.0 handoff is retained as a historical record.
+
+---
+
 # Website handoff: RAGvidence 0.2.0
 
 Use this brief in the separate `../ragvidence-web` session. Follow that repository's

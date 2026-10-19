@@ -10,8 +10,8 @@ const steps = [
   {
     label: "Install",
     title: "One command. Your own machine.",
-    command: 'uv tool install --python 3.12 "ragvidence==0.2.0"',
-    description: "Install the free Apache-2.0 CLI in an isolated tool environment.",
+    command: 'uv tool install --python 3.12 "ragvidence==0.2.1"',
+    description: "Install the CLI in an isolated tool environment.",
     detail: "BM25 and the synthetic example need no account or API key.",
     href: "/docs/installation",
     link: "Installation guide",
@@ -118,13 +118,13 @@ export function CliDemo() {
             <div className="mt-5 min-h-32">
               {index < 2 ? (
                 <div className="space-y-2 border-l-2 border-signal/40 bg-canvas/50 p-4 text-sm text-muted">
-                  {(index === 0 ? ["All shipped features under Apache-2.0", "Isolated installation with uv", "Local workspaces and portable reports"] : ["Required runtime and dependencies", "Workspace permissions and bundled data", "Optional semantic support and privacy defaults"]).map((item) => (
+                  {(index === 0 ? ["All shipped techniques included", "Isolated installation with uv", "Local workspaces and portable reports"] : ["Required runtime and dependencies", "Workspace permissions and bundled data", "Optional semantic support and privacy defaults"]).map((item) => (
                     <p key={item} className="flex items-center gap-3"><Check size={15} className="shrink-0 text-signal-ink" aria-hidden="true" />{item}</p>
                   ))}
                 </div>
               ) : (
                 <div className="border border-line bg-canvas/75 p-4 text-ink">
-                  <p className="mb-4 text-xs font-medium text-muted">Synthetic manual · 4 reviewed dev questions · k=1 · v0.2.0</p>
+                  <p className="mb-4 text-xs font-medium text-muted">Synthetic manual · 4 reviewed dev questions · k=1 · v0.2.1</p>
                   <div className="space-y-2">{exampleResults.map(row => <p key={row.name} className="flex flex-wrap justify-between gap-2 text-sm"><span>{row.name}</span><span>{row.sufficient} / {row.total} sufficient</span></p>)}</div>
                   <p className="mt-4 border-t border-line pt-3 text-xs leading-5 text-muted">The parent returns more context. Small teaching data does not establish a general winner.</p>
                 </div>

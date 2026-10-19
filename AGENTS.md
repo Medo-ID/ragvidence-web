@@ -53,14 +53,17 @@ Keep the website’s rights separate from CLI and third-party licenses.
 
 ## Visual conventions
 
-- Use the existing Abyssal Teal identity (#063f47), evidence-convergence mark,
-  and RAGvidence wordmark. Reuse theme colors and `shell`, `surface`, `eyebrow`,
+- Use the owner-selected Amber accent (#FFBF00), thin evidence/CLI `>_` mark,
+  and RAGvidence wordmark (owner’s 0.2.1 redesign). Reuse theme colors and `shell`, `surface`, `eyebrow`,
   and `CodeBlock` helpers. Copy command content without shell prompts.
 - Preserve 6/9/12/16px radius tokens for small controls, navigation controls,
   cards/code/disclosures, and showcases. Avoid pills and individually rounded
   nested children. Navigation uses a full-width border and aligned inner content.
-- Most surfaces are solid and near-black. Reserve teal translucency for important
-  regions and blur for the sticky header. Keep semantic colors distinct.
+- Use Woodsmoke/gray-100 dark/light themes, crisp structural rails and thin
+  section dividers. Preserve layered translucent texture and amber accents in both
+  themes, with readable opaque fallbacks. Reserve blur for the sticky header.
+  Use the report and AdonisJS structural reference without forcing report width
+  or square corners onto inner website components. Keep semantic colors distinct.
 - Preserve the CSS-first Tailwind v4 setup (`@import "tailwindcss"` and
   `@theme inline`). Use complete class strings and existing theme utilities;
   avoid removed v3 utilities or dynamically constructed utility names.
@@ -69,7 +72,7 @@ Keep the website’s rights separate from CLI and third-party licenses.
 
 ## Product artifacts
 
-Use the production PyPI 0.2.0 wheel as the source of truth. The main synthetic
+Use the production PyPI 0.2.1 wheel as the source of truth. The main synthetic
 sample compares BM25, parent-child and sentence extraction on four reviewed dev
 questions at k=1: 3/4, 4/4 and 3/4 sufficient, with different context sizes. It is
 not a benchmark or heldout claim. The optional fictional tutorial remains BM25,

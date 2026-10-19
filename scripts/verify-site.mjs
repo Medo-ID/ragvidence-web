@@ -1,6 +1,8 @@
 import { spawn } from "node:child_process";
 import { once } from "node:events";
 import { docs } from "../src/lib/docs.ts";
+import { walkthroughPlan } from "./walkthrough-plan.mjs";
+import { validReportScripts } from "./report-contract.mjs";
 
 const explicitUrl = process.env.RAGVIDENCE_SITE_URL;
 const baseUrl = new URL(explicitUrl ?? "http://127.0.0.1:3001");
@@ -57,8 +59,8 @@ async function verify() {
   if (!explicitUrl) await startProduction();
   else if (!(await request()).ok) throw new Error(`Site is unavailable at ${baseUrl}.`);
 
-  const routes = ["/", "/docs", ...docs.map(({ slug }) => `/docs/${slug}`), "/releases", "/privacy", "/terms", "/security", "/sample-report.html", "/ragvidence-0.1.0-license.txt", "/ragvidence-0.2.0-license.txt", "/ragvidence-0.2.0-notice.txt", "/sample-report.json", "/sample-report.md", "/tutorial-report.html", "/examples/manual.md", "/examples/questions.txt", "/examples/reviewed.json", "/examples/provenance.json", "/robots.txt", "/sitemap.xml", "/opengraph-image", "/favicon.ico", "/icon.svg", "/apple-icon.png", "/brand/a-evidence-convergence/mark-dark.svg", "/docs/search-index.json", "/media/walkthrough.webm", "/media/walkthrough-poster.webp", "/media/walkthrough-provenance.json"];
-  routes.push("/media/walkthrough.mp4");
+  const routes = ["/", "/docs", ...docs.map(({ slug }) => `/docs/${slug}`), "/releases", "/privacy", "/terms", "/security", "/sample-report.html", "/ragvidence-0.1.0-license.txt", "/ragvidence-0.2.1-license.txt", "/ragvidence-0.2.1-notice.txt", "/sample-report.json", "/sample-report.md", "/tutorial-report.html", "/examples/manual.md", "/examples/questions.txt", "/examples/reviewed.json", "/examples/provenance.json", "/robots.txt", "/sitemap.xml", "/opengraph-image", "/favicon.ico", "/icon.svg", "/apple-icon.png", "/brand/a-evidence-convergence/mark-dark.svg", "/docs/search-index.json", "/media/walkthrough.webm", "/media/walkthrough-poster.webp", "/media/walkthrough-provenance.json"];
+  routes.push("/media/walkthrough.mp4", "/media/walkthrough.vtt", "/media/walkthrough-transcript.txt", "/brand/evidence-cli/mark-dark.svg", "/brand/evidence-cli/mark-light.svg");
   routes.push("/ragvidence-source-notices.txt", "/ragvidence-source-licenses.txt");
   const binaryRoutes = new Set(["/opengraph-image", "/favicon.ico", "/apple-icon.png", "/media/walkthrough.mp4", "/media/walkthrough.webm", "/media/walkthrough-poster.webp"]);
   const failures = [];
@@ -96,17 +98,17 @@ async function verify() {
   } catch { failures.push("Documentation search index is not valid JSON."); }
   try {
     const media = JSON.parse(pages.get("/media/walkthrough-provenance.json") ?? "{}");
-    if (media.width !== 1920 || media.height !== 1080 || media.fps !== 60 || media.frames !== 2160 || media.durationSeconds !== 36 || media.audio !== false || media.captions !== false || media.workflow !== "own-data" || media.mockData !== true || media.sourceCount !== 1 || media.questionCount !== 4 || media.cliVersion !== "0.2.0" || media.comparison?.k !== 1 || media.comparison?.techniques?.join(",") !== "bm25,parent-child,compress") failures.push("Demo provenance does not match the verified production 0.2.0 synthetic workflow.");
+    if (Object.entries(walkthroughPlan).some(([key, value]) => media[key] !== value) || media.audio !== false || media.captions !== true || media.workflow !== "own-data" || media.mockData !== true || media.sourceCount !== 1 || media.questionCount !== 4 || media.cliVersion !== "0.2.1" || media.comparison?.k !== 1 || media.comparison?.techniques?.join(",") !== "bm25,parent-child,compress") failures.push("Demo provenance does not match the verified production 0.2.1 synthetic workflow.");
   } catch { failures.push("Demo provenance is not valid JSON."); }
   const home = pages.get("/") ?? "";
-  for (const phrase of ["ragvidence==0.2.0", "See whether your RAG change", "Apache-2.0", "reviewed original spans", "One CLI."]) {
+  for (const phrase of ["ragvidence==0.2.1", "See whether your RAG change", "Apache-2.0", "reviewed original spans", "One CLI."]) {
     if (!home.includes(phrase)) failures.push(`/: missing ${phrase}`);
   }
   if (!(pages.get("/docs/first-tutorial") ?? "").includes("Why the report lists 12 questions")) failures.push("Tutorial docs do not explain the score denominator.");
   const sampleReport = pages.get("/sample-report.html") ?? "";
   // Plain dataset text and the embedded font license can contain URL strings.
   // Reject executable tags and remote asset/navigation attributes, not escaped prose.
-  if (/<script(?:\s|>)/i.test(sampleReport) || /(?:src|href)\s*=\s*["']\s*(?:https?:)?\/\//i.test(sampleReport) || /url\(\s*["']?\s*(?:https?:)?\/\//i.test(sampleReport)) failures.push("Sample report contains scripts or remote assets.");
+  if (!validReportScripts(sampleReport) || /(?:src|href)\s*=\s*["']\s*(?:https?:)?\/\//i.test(sampleReport) || /url\(\s*["']?\s*(?:https?:)?\/\//i.test(sampleReport)) failures.push("Sample report contains an untrusted script or remote assets.");
 
   const internalLinks = new Map();
   for (const [route, html] of pages) {

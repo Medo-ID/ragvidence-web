@@ -1,5 +1,35 @@
 # Project health
 
+## CLI 0.2.1 synchronization — October 19, 2026 (in progress)
+
+Public production tag `v0.2.1` resolves to
+`60b3302d8b2ad1726c1a40bece26b64b0c06c1e1`. Downloaded production wheel SHA-256:
+`4e74385f2920e13e0de462949791813cf7891fb4575ec17c8e9b577c005eebcf`.
+The isolated Python 3.12 installation was compared byte for byte with the wheel.
+The CLI checkout's five existing local handoff changes are preserved read-only.
+
+The website now uses a structural grid, shared rails and dividers, persistent
+light/dark themes, the refined evidence/CLI mark and owner-selected Amber accent.
+The owner reviewed the redesign and requested the implemented spacing refinements.
+The amber design passed 75 Chromium tests before the new media integration.
+All seven freshly generated robustness journeys passed 70 offline browser checks
+and evidence-complete extraction of 14 PDFs. The 42 installed command/schema/PDF
+and wheel-license checks pass. Main sample outcomes remain 3/4, 4/4 and 3/4 on
+four reviewed dev questions, with mean context sizes 161, 741 and 200 characters.
+
+New media integration and final release/provenance gates remain in progress.
+The prior recording is retained until the 22-second candidate is validated.
+No current-branch CI or production deployment is claimed yet.
+
+Fresh local normal Turbopack builds hit the known CSS worker port-binding
+restriction, including escalated retry. The authorized Webpack verification
+fallback passes and is labeled separately. Normal-build verification still
+requires exact-commit CI on a capable host. Production audit: zero advisories.
+The separate development audit retains the five entries for the accepted braces
+advisory below. Generated evidence lives in ignored `verification/website-021/`.
+
+The following 0.2.0 section is a historical verification record.
+
 ## CLI 0.2.0 synchronization — October 18, 2026
 
 The website now describes one fully free Apache-2.0 CLI for diagnosing and

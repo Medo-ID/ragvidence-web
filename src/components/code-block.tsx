@@ -1,10 +1,10 @@
 import { CopyCommand } from "./copy-command";
 
-type Props = { content: string; label?: string; prompt?: boolean; wrap?: boolean; className?: string };
+type Props = { content: string; label?: string; prompt?: boolean; wrap?: boolean; className?: string; compact?: boolean };
 
-export function CodeBlock({ content, label = "Terminal", prompt = false, wrap = false, className = "" }: Props) {
+export function CodeBlock({ content, label = "Terminal", prompt = false, wrap = false, className = "", compact = false }: Props) {
   return (
-    <div className={`terminal ${className}`}>
+    <div className={`terminal ${compact ? "compact-terminal" : ""} ${className}`}>
       <div className="terminal-header">
         <span className="font-mono text-xs text-muted">{label}</span>
         <CopyCommand command={content} contentLabel={label === "Terminal" || label === "bash" ? "command" : label} />

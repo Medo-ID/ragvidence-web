@@ -9,8 +9,8 @@ export default function TermsPage() {
       <h2>Acceptance and eligibility</h2>
       <p>By using this website, you agree to these terms. If you use it for an organization, you represent that you have authority to accept them for that organization. If you do not agree, do not use the website.</p>
       <h2>Software license</h2>
-      <p>The RAGvidence 0.2.0 CLI is fully free and open source under Apache-2.0, including all shipped techniques, comparisons and report formats. Its license and NOTICE govern software use and redistribution.</p>
-      <p><a href="/ragvidence-0.2.0-license.txt">CLI Apache-2.0 license</a> · <a href="/ragvidence-0.2.0-notice.txt">CLI NOTICE</a>. Third-party code, fonts and downloaded models retain their own notices and licenses. A model adapter does not grant rights to model weights or services.</p>
+      <p>The RAGvidence 0.2.1 CLI is fully free and open source under Apache-2.0, including all shipped techniques, comparisons and report formats. Its license and NOTICE govern software use and redistribution.</p>
+      <p><a href="/ragvidence-0.2.1-license.txt">CLI Apache-2.0 license</a> · <a href="/ragvidence-0.2.1-notice.txt">CLI NOTICE</a>. Third-party code, fonts and downloaded models retain their own notices and licenses. A model adapter does not grant rights to model weights or services.</p>
       <h2>Website materials</h2>
       <p>Copyright © 2026 Medo-ID. The website repository has no open-source license; website rights remain reserved. The CLI license does not apply to the website’s original code and design. Embedded asset notices remain with their assets.</p>
       <h2>No professional advice or certification</h2>
