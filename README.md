@@ -71,10 +71,6 @@ To check an already running preview or deployment:
 RAGVIDENCE_SITE_URL=https://your-preview.example npm run verify:site
 ```
 
-See [project health](docs/project-health.md) for verification limits and tracked
-dependency findings. A Webpack fallback is available for restricted environments;
-it does not replace verification of the standard Turbopack build.
-
 ## Project layout
 
 Built with Next.js 16 App Router, React 19, TypeScript 6, Tailwind CSS 4, Lucide
@@ -87,13 +83,15 @@ icons, and locally packaged Geist fonts. Exact dependencies are in
 | `src/lib/docs.ts` | Typed documentation content and navigation order |
 | `src/components/` | Shared UI, documentation navigation, copy controls, and demos |
 | `public/` | Active brand mark, demo media, generated sample report, and license notices |
-| `scripts/` | HTTP verification and repeatable demo-media authoring tools |
+| `scripts/` | HTTP verification and shared public-artifact checks |
 | `tests/` | Maintained browser and verifier regression tests |
 | `.github/workflows/verify.yml` | Production quality gate |
-| `AGENTS.md` | Repository instructions for coding agents |
 
-For content updates, report provenance, and media regeneration, read
-[the maintenance guide](docs/maintaining.md).
+Edit website articles in `src/lib/docs.ts` and landing-page content in
+`src/app/page.tsx` and `src/components/product-sections.tsx`. Public reports and
+demo media are shipped product examples; their provenance records the CLI
+release, commands, inputs and artifact hashes. Keep examples and displayed
+results consistent when updating the documented CLI release.
 
 ## Deployment
 

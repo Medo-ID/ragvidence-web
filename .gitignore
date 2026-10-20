@@ -62,3 +62,15 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Personal instructions and maintainer notes
+/AGENTS.md
+/AGENTS.local.md
+/CLI-HANDOFF.md
+/instructions.md
+/docs/maintaining.md
+/docs/project-health.md
+/.local-notes/
+/.claude/
+/.cursor/
+/.mcp.json

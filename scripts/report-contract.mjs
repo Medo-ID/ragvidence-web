@@ -9,3 +9,6 @@ export function validReportScripts(html) {
     createHash("sha256").update(scripts[0][2]).digest("hex") === reportThemeSHA256 &&
     (html.match(/<script\b/gi) ?? []).length === 1;
 }
+
+// Specification of the published product video.
+export const walkthroughSpec = { width: 1920, height: 1080, fps: 30, durationSeconds: 34, frames: 1020 };

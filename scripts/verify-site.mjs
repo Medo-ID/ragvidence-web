@@ -2,8 +2,7 @@ import { spawn } from "node:child_process";
 import { once } from "node:events";
 import { docs } from "../src/lib/docs.ts";
 import { docMarkdown } from "../src/lib/docs-markdown.ts";
-import { walkthroughPlan } from "./walkthrough-plan.mjs";
-import { validReportScripts } from "./report-contract.mjs";
+import { validReportScripts, walkthroughSpec } from "./report-contract.mjs";
 
 const explicitUrl = process.env.RAGVIDENCE_SITE_URL;
 const baseUrl = new URL(explicitUrl ?? "http://127.0.0.1:3001");
@@ -60,7 +59,7 @@ async function verify() {
   if (!explicitUrl) await startProduction();
   else if (!(await request()).ok) throw new Error(`Site is unavailable at ${baseUrl}.`);
 
-  const routes = ["/", "/docs", ...docs.map(({ slug }) => `/docs/${slug}`), "/releases", "/privacy", "/terms", "/security", "/sample-report.html", "/ragvidence-0.1.0-license.txt", "/ragvidence-0.2.1-license.txt", "/ragvidence-0.2.1-notice.txt", "/sample-report.json", "/sample-report.md", "/tutorial-report.html", "/examples/manual.md", "/examples/questions.txt", "/examples/reviewed.json", "/examples/provenance.json", "/robots.txt", "/sitemap.xml", "/opengraph-image", "/favicon.ico", "/icon.svg", "/apple-icon.png", "/brand/a-evidence-convergence/mark-dark.svg", "/docs/search-index.json", "/media/walkthrough.webm", "/media/walkthrough-poster.webp", "/media/walkthrough-provenance.json"];
+  const routes = ["/", "/docs", ...docs.map(({ slug }) => `/docs/${slug}`), "/releases", "/privacy", "/terms", "/security", "/sample-report.html", "/ragvidence-0.1.0-license.txt", "/ragvidence-0.2.1-license.txt", "/ragvidence-0.2.1-notice.txt", "/sample-report.json", "/sample-report.md", "/tutorial-report.html", "/examples/manual.md", "/examples/questions.txt", "/examples/reviewed.json", "/examples/provenance.json", "/robots.txt", "/sitemap.xml", "/opengraph-image", "/favicon.ico", "/icon.svg", "/apple-icon.png", "/docs/search-index.json", "/media/walkthrough.webm", "/media/walkthrough-poster.webp", "/media/walkthrough-provenance.json"];
   routes.push("/media/walkthrough.mp4", "/media/walkthrough.vtt", "/media/walkthrough-transcript.txt", "/brand/evidence-cli/mark-dark.svg", "/brand/evidence-cli/mark-light.svg");
   routes.push("/ragvidence-source-notices.txt", "/ragvidence-source-licenses.txt");
   const markdownRoutes = new Map(docs.map(doc => [`/docs/${doc.slug}/markdown`, doc]));
@@ -106,7 +105,7 @@ async function verify() {
   } catch { failures.push("Documentation search index is not valid JSON."); }
   try {
     const media = JSON.parse(pages.get("/media/walkthrough-provenance.json") ?? "{}");
-    if (Object.entries(walkthroughPlan).some(([key, value]) => media[key] !== value) || media.audio !== false || media.captions !== true || media.workflow !== "own-data" || media.mockData !== true || media.sourceCount !== 1 || media.questionCount !== 4 || media.cliVersion !== "0.2.1" || media.comparison?.k !== 1 || media.comparison?.techniques?.join(",") !== "bm25,parent-child,compress") failures.push("Demo provenance does not match the verified production 0.2.1 synthetic workflow.");
+    if (Object.entries(walkthroughSpec).some(([key, value]) => media[key] !== value) || media.audio !== false || media.captions !== true || media.workflow !== "own-data" || media.mockData !== true || media.sourceCount !== 1 || media.questionCount !== 4 || media.cliVersion !== "0.2.1" || media.comparison?.k !== 1 || media.comparison?.techniques?.join(",") !== "bm25,parent-child,compress") failures.push("Demo provenance does not match the verified production 0.2.1 synthetic workflow.");
   } catch { failures.push("Demo provenance is not valid JSON."); }
   const home = pages.get("/") ?? "";
   for (const phrase of ["ragvidence==0.2.1", "See whether your RAG change", "Apache-2.0", "reviewed original spans", "One CLI."]) {
