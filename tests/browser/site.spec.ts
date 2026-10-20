@@ -65,6 +65,25 @@ test("mobile menu dismisses on Escape, brand click, and route navigation", async
   await expect(toggle).toHaveAttribute("aria-expanded", "false");
 });
 
+test("GitHub is reachable from desktop and keyboard-operated mobile navigation", async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 1000 });
+  await page.goto("/");
+  const desktop = page.getByRole("navigation", { name: "Primary navigation" }).getByRole("link", { name: "GitHub", exact: true });
+  await expect(desktop).toBeVisible();
+  await expect(desktop).toHaveAttribute("href", "https://github.com/Medo-ID/ragvidence");
+  await page.setViewportSize({ width: 390, height: 844 });
+  const toggle = page.getByRole("button", { name: "Open navigation" });
+  await toggle.focus();
+  await page.keyboard.press("Enter");
+  const mobile = page.locator("#mobile-navigation").getByRole("link", { name: "GitHub", exact: true });
+  await expect(mobile).toBeVisible();
+  await expect(mobile).toHaveAttribute("href", "https://github.com/Medo-ID/ragvidence");
+  await mobile.focus();
+  await expect(mobile).toBeFocused();
+  await page.keyboard.press("Escape");
+  await expect(toggle).toBeFocused();
+});
+
 test("copy failure provides feedback and retry copies the real command", async ({ page }) => {
   await page.addInitScript(() => {
     let attempts = 0;

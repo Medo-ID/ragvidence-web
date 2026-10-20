@@ -50,14 +50,53 @@ test("SEO: overview alias agrees with preferred canonical and sitemap", async ({
 test("SEO: site identity and article breadcrumbs are crawlable inert data", async ({ page }) => {
   await page.goto("/");
   const identity = await page.locator('script[type="application/ld+json"]').evaluateAll(elements => elements.map(el => JSON.parse(el.textContent!)));
-  expect(identity).toHaveLength(1);
-  expect(identity[0]).toMatchObject({ "@context": "https://schema.org", "@type": "WebSite", name: "RAGvidence", url: domain + "/" });
+  expect(identity).toHaveLength(2);
+  expect(identity.find(item => item["@type"] === "WebSite")).toMatchObject({
+    "@context": "https://schema.org", "@type": "WebSite", name: "RAGvidence", url: domain + "/",
+    publisher: { "@type": "Person", name: "Medo-ID", url: "https://medo-id.com" },
+  });
+  expect(identity.find(item => item["@type"] === "SoftwareApplication")).toMatchObject({
+    "@id": domain + "/#software", softwareVersion: "0.2.1", isAccessibleForFree: true,
+    installUrl: domain + "/docs/installation", sameAs: expect.arrayContaining(["https://github.com/Medo-ID/ragvidence"]),
+  });
   await page.goto("/docs/installation");
-  const breadcrumb = await page.locator('article script[type="application/ld+json"]').evaluate(el => JSON.parse(el.textContent!));
+  const articleData = await page.locator('article script[type="application/ld+json"]').evaluateAll(elements => elements.map(el => JSON.parse(el.textContent!)));
+  const breadcrumb = articleData.find(item => item["@type"] === "BreadcrumbList");
   expect(breadcrumb).toMatchObject({ "@type": "BreadcrumbList", itemListElement: [
     { "@type": "ListItem", position: 1, name: "Documentation", item: domain + "/docs" },
     { "@type": "ListItem", position: 2, name: "Installation", item: domain + "/docs/installation" },
   ] });
+  expect(articleData.find(item => item["@type"] === "TechArticle")).toMatchObject({
+    headline: "Installation", url: domain + "/docs/installation", version: "0.2.1",
+    author: { name: "Medo-ID", url: "https://medo-id.com" },
+    about: { "@id": domain + "/#software" },
+  });
+});
+
+test("SEO: every authored owner credit links to the portfolio", async ({ page }) => {
+  for (const path of ["/", "/docs/installation", "/terms"]) {
+    await page.goto(path);
+    const credits = page.getByRole("link", { name: "Medo-ID", exact: true });
+    await expect(credits).toHaveCount(path === "/terms" ? 4 : 2);
+    for (const credit of await credits.all()) await expect(credit).toHaveAttribute("href", "https://medo-id.com");
+    const unlinked = await page.locator("body").evaluate(body => {
+      const walker = document.createTreeWalker(body, NodeFilter.SHOW_TEXT);
+      const result: string[] = [];
+      while (walker.nextNode()) {
+        const node = walker.currentNode;
+        if (node.textContent?.includes("Medo-ID") && !node.parentElement?.closest("a, script, style")) result.push(node.textContent);
+      }
+      return result;
+    });
+    expect(unlinked).toEqual([]);
+    await expect(page.locator('link[rel="author"]')).toHaveAttribute("href", "https://medo-id.com");
+  }
+});
+
+test("SEO: docs keep direct GitHub source and issue links", async ({ page }) => {
+  await page.goto("/docs/installation");
+  await expect(page.getByRole("link", { name: "CLI source on GitHub", exact: true })).toHaveAttribute("href", "https://github.com/Medo-ID/ragvidence");
+  await expect(page.getByRole("link", { name: "Report an issue on GitHub", exact: true })).toHaveAttribute("href", "https://github.com/Medo-ID/ragvidence/issues");
 });
 
 test("SEO: removed design previews return 404 while public product assets remain usable", async ({ request }) => {
