@@ -7,7 +7,8 @@ export default function PrivacyPage() {
   return (
     <TrustPage eyebrow="Trust" title="Privacy, without vague boundaries." intro="The website is intentionally simple, and the CLI is local by default. This page distinguishes the two and explains when a third-party provider may receive data.">
       <h2>Website data</h2>
-      <p>This website does not include account creation, advertising trackers, analytics scripts, or payment forms. The hosting provider may process ordinary request data such as IP address, user agent, requested URL, and timestamps for security and delivery operations under its own terms.</p>
+      <p>This website has no accounts, advertising trackers, or payment forms. It includes Vercel Web Analytics to measure aggregate page visits when enabled on the hosting project. Vercel processes page URLs, referrers, approximate location, browser, and device information. It uses a request-derived hash rather than third-party cookies to distinguish visitors; the visitor session is discarded after 24 hours. See <a href="https://vercel.com/docs/analytics/privacy-policy">Vercel’s Web Analytics privacy documentation</a>.</p>
+      <p>The hosting provider may also process ordinary request data such as IP address, user agent, requested URL, and timestamps for security and delivery operations under its own terms.</p>
       <p>Your color-theme choice is saved in this browser’s local storage and used across website pages. It is not sent to us. If storage is blocked, theme switching still works for the current visit. Downloaded reports keep their theme choice only while the report is open.</p>
       <h2>Support email</h2>
       <p>If you email <a href="mailto:midaghdour@gmail.com">midaghdour@gmail.com</a>, the message and any attachments are processed by the sender’s and recipient’s email providers. Send only the information needed to investigate the problem. Remove API keys, credentials, and confidential source content.</p>

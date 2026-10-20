@@ -45,13 +45,13 @@ or external services are required to run the website.
 | `npm run dev` | Start the development server |
 | `npm run build` | Create a production build with Turbopack |
 | `npm run start` | Serve the production build |
-| `npm run lint` | Run ESLint with zero warnings allowed |
+| `npm run lint` | Run ESLint and Oxlint with zero warnings allowed |
 | `npm run typecheck` | Check TypeScript |
 | `npm run check` | Run lint, types, and a production build |
 | `npm run verify:site` | Check routes, links, content, and security headers |
 | `npm run test:verification` | Test the HTTP verifier and structured-data serialization |
 | `npm run test:browser` | Run Chromium interaction and responsive regression tests |
-| `npm run verify` | Run all checks above and audit production dependencies |
+| `npm run verify` | Run all checks above and audit production and development dependencies |
 
 Before running the browser tests, install Chromium:
 
@@ -112,8 +112,20 @@ workspaces, and verification output out of commits. `.gitignore` covers these
 paths; review staged changes before publishing. The maintained tests and CI
 scripts are intentional source files.
 
-The website has no accounts, forms, analytics, or checkout. Update its privacy,
-security, and terms pages when introducing integrations that change this behavior.
+The website has no accounts, forms, or checkout. It includes Vercel Web Analytics
+for aggregate page visits when enabled in the hosting project. Its data boundaries
+are described on the privacy and security pages. Update trust content when
+introducing integrations that change this behavior.
+Analytics loads only in Vercel builds (`VERCEL=1`, supplied by Vercel system
+environment variables). Local and standalone Node builds do not request Vercel's
+analytics endpoint. Enable Web Analytics and system environment variables in the
+Vercel project for deployed collection.
+
+ESLint checks React, Hooks, accessibility and TypeScript. Oxlint checks Next.js
+core-web-vitals rules, supplemented by route-aware navigation checks in
+`scripts/lint/navigation.mjs`. This avoids the unpatched `braces` dependency in
+the Next.js ESLint preset. The verification gate audits the full dependency tree
+at every severity; it does not use advisory exceptions or force fixes.
 
 ## Ownership
 
