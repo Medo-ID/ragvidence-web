@@ -1,4 +1,4 @@
-// Generated from public/sample-report.json by generate-release-example.mjs.
+// Published comparison results from public/sample-report.json.
 export const exampleResults = [
   {
     "name": "bm25",

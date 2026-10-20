@@ -5,50 +5,7 @@
   "releaseTag": "v0.2.1",
   "releaseCommit": "60b3302d8b2ad1726c1a40bece26b64b0c06c1e1",
   "websiteSourceCommit": "547e441ab3cb04c073f586ebe606397a060265c4",
-  "websiteSourceCommitRole": "Reachable baseline; exact recording source identified by the file snapshot",
-  "websiteSourceFiles": [
-    {
-      "path": "scripts/capture-own-data.mjs",
-      "sha256": "28a717e8663ddd3e30c5a21c7a7a4e117c17373d6daba0bdc4c255f354f41fce"
-    },
-    {
-      "path": "scripts/render-demo-frames.mjs",
-      "sha256": "dc7cfbb8ad72891d5b8e8be818155b5c9d16cb11a49193b7cb5394aae482a234"
-    },
-    {
-      "path": "scripts/record-walkthrough.mjs",
-      "sha256": "c72f339b4485f938c21da49e8ddb55e6f15b2ca04d02da7c323cab651b5c84a6"
-    },
-    {
-      "path": "scripts/walkthrough-plan.mjs",
-      "sha256": "f004d4619cfc44d9e14f5837089dc0c7e2e6f532f4340d0470774a738f2b89c1"
-    },
-    {
-      "path": "src/app/globals.css",
-      "sha256": "cad562fca97972f83737b8f94bf47779929d909f8aeabba8d325b5e8d951e9eb"
-    },
-    {
-      "path": "src/app/page.tsx",
-      "sha256": "aa83b3f688a10a1ae98545a8ab51cab073597f9efd48c2ff8bb4bb420772bef2"
-    },
-    {
-      "path": "src/components/product-sections.tsx",
-      "sha256": "2b505bb5dd44342e72889a09fd02e6720b42fa4f0ccc2b8d2985f8b3f980548e"
-    },
-    {
-      "path": "src/components/product-walkthrough.tsx",
-      "sha256": "a1c850777623c5d7e9c171c4f92b2b483cc4bb00905011f31c47e64384909989"
-    },
-    {
-      "path": "src/components/product-demo.tsx",
-      "sha256": "b4b105303ab7bda785e27dc279e1f80a0bf2a23ac3adfa42d4a550f9aa7d6b52"
-    },
-    {
-      "path": "public/brand/evidence-cli/mark-dark.svg",
-      "sha256": "b436f86ccbc4eb32137de21b772f50086353dda21141ed891807752ac0944ba0"
-    }
-  ],
-  "websiteSourceSnapshotSHA256": "dc3b28d1656f93f732c665b73ae37f75066cdc9fa784e39fd73df6a7a7566546",
+  "websiteSourceCommitRole": "Historical recording baseline; shipped media and report inputs are identified by their artifact hashes.",
   "recordedAt": "2026-10-19T16:33:46.312Z",
   "width": 1920,
   "height": 1080,
@@ -140,7 +97,7 @@
       "output": "Comparing bm25\nComparing parent-child\nComparing compress\nCOMPLETE · reviewed_comparison · policy=fixed_k · phase=dev\nbm25: complete\n  dev: 3/4 answerable questions sufficient\n  heldout: 0/0 answerable questions sufficient\n  Query ms (known): 0.8010242509044474 · Context: 161.25 characters\nparent-child: complete\n  dev: 4/4 answerable questions sufficient\n  heldout: 0/0 answerable questions sufficient\n  Query ms (known): 0.16565724945394322 · Context: 741.0 characters\ncompress: complete\n  dev: 3/4 answerable questions sufficient\n  heldout: 0/0 answerable questions sufficient\n  Query ms (known): 0.4523267498370842 · Context: 199.5 characters\nKeeping the baseline is valid. Choose using these cases and your requirements.\nEqual k does not imply equal context volume; resources are reported separately.\nIntervals pair questions or families. Repeated timings are not extra samples.\nThese observations do not prove what caused a particular failure.\nComparison artifacts: ./comparison/comparison-docs-20261019T152651-3458d1fa0ca7\nFrozen shortlist: ./comparison/comparison-docs-20261019T152651-3458d1fa0ca7/shortlist.json\nHTML report: ./comparison/comparison-docs-20261019T152651-3458d1fa0ca7/exports/4277adcb831c48b1b75809e70cd250be/report.html\nJSON report: ./comparison/comparison-docs-20261019T152651-3458d1fa0ca7/exports/4277adcb831c48b1b75809e70cd250be/report.json\nMARKDOWN report: ./comparison/comparison-docs-20261019T152651-3458d1fa0ca7/exports/4277adcb831c48b1b75809e70cd250be/report.md\n"
     },
     {
-      "command": "ragvi compare-data . --resume /home/medo-id/projects/ragvidence-web/verification/cli-0.2.1/example-wNC7SF/comparison/comparison-docs-20261019T152651-3458d1fa0ca7 --format json",
+      "command": "ragvi compare-data . --resume ./comparison/comparison-docs-20261019T152651-3458d1fa0ca7 --format json",
       "output": "Comparing bm25\nComparing parent-child\nComparing compress\nCOMPLETE · reviewed_comparison · policy=fixed_k · phase=dev\nbm25: complete\n  dev: 3/4 answerable questions sufficient\n  heldout: 0/0 answerable questions sufficient\n  Query ms (known): 0.8010242509044474 · Context: 161.25 characters\nparent-child: complete\n  dev: 4/4 answerable questions sufficient\n  heldout: 0/0 answerable questions sufficient\n  Query ms (known): 0.16565724945394322 · Context: 741.0 characters\ncompress: complete\n  dev: 3/4 answerable questions sufficient\n  heldout: 0/0 answerable questions sufficient\n  Query ms (known): 0.4523267498370842 · Context: 199.5 characters\nKeeping the baseline is valid. Choose using these cases and your requirements.\nEqual k does not imply equal context volume; resources are reported separately.\nIntervals pair questions or families. Repeated timings are not extra samples.\nThese observations do not prove what caused a particular failure.\nComparison artifacts: ./comparison/comparison-docs-20261019T152651-3458d1fa0ca7\nFrozen shortlist: ./comparison/comparison-docs-20261019T152651-3458d1fa0ca7/shortlist.json\nJSON report: ./comparison/comparison-docs-20261019T152651-3458d1fa0ca7/exports/1d80374cf36e4605ae4fcfd891dd394d/report.json\n"
     },
     {
@@ -264,5 +221,7 @@
       "bytes": 1901,
       "sha256": "c35c7a61213391f2751facbb1f982307bfecc54afd3dcc772a269fb1552b4ebf"
     }
-  ]
+  ],
+  "commandPaths": "Recorded commands use paths relative to the example workspace; local absolute paths are normalized.",
+  "recordingSourceSnapshotSHA256": "dc3b28d1656f93f732c665b73ae37f75066cdc9fa784e39fd73df6a7a7566546"
 }

@@ -66,7 +66,7 @@ test("SEO: removed design previews return 404 while public product assets remain
     expect(response.status()).toBe(404);
     expect(response.headers()["x-frame-options"]).toBe("DENY");
   }
-  for (const path of ["/favicon.ico", "/icon.svg", "/brand/a-evidence-convergence/mark-dark.svg", "/sample-report.html"]) {
+  for (const path of ["/favicon.ico", "/icon.svg", "/brand/evidence-cli/mark-dark.svg", "/brand/evidence-cli/mark-light.svg", "/sample-report.html"]) {
     const response = await request.get(path);
     expect(response.ok()).toBe(true);
     expect(response.headers()["x-robots-tag"] ?? "").not.toMatch(/noindex/);
