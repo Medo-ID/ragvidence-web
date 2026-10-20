@@ -31,6 +31,21 @@ test("mobile docs selection closes the browser and reveals the article", async (
   await expect(navigation).not.toHaveAttribute("open", "");
 });
 
+test("trust pages disclose analytics and standalone builds avoid the Vercel script endpoint", async ({ page }) => {
+  const analyticsRequests: string[] = [];
+  page.on("request", request => {
+    if (request.url().includes("/_vercel/insights/")) analyticsRequests.push(request.url());
+  });
+  await page.goto("/privacy");
+  await expect(page.getByRole("main")).toContainText("Vercel Web Analytics");
+  await expect(page.getByRole("link", { name: "Vercel’s Web Analytics privacy documentation" })).toHaveAttribute("href", "https://vercel.com/docs/analytics/privacy-policy");
+  await page.goto("/security");
+  await expect(page.getByRole("main")).toContainText("Vercel Web Analytics");
+  await page.getByRole("link", { name: "privacy page", exact: true }).click();
+  await expect(page).toHaveURL(/\/privacy$/);
+  if (process.env.VERCEL !== "1") expect(analyticsRequests).toEqual([]);
+});
+
 test("mobile menu dismisses on Escape, brand click, and route navigation", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("/docs");

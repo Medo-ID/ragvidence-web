@@ -6,7 +6,7 @@ import { SiteHeader } from "@/components/site-header";
 import "./globals.css";
 import { ReactNode } from "react";
 import { homeDescription, homeTitle, pageMetadata, serializeJsonLd, siteUrl, websiteIdentity } from "@/lib/seo";
-import { Analytics } from "@vercel/analytics/next"
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
   ...pageMetadata({ title: homeTitle, description: homeDescription, path: "/" }),
@@ -27,7 +27,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <script dangerouslySetInnerHTML={{ __html: '(function(){var r=document.documentElement;r.dataset.js="true";try{var t=localStorage.getItem("ragvidence-theme");if(t==="light"||t==="dark")r.dataset.theme=t}catch(e){}})()' }} />
       </head>
       <body className="flex min-h-dvh flex-col font-sans antialiased">
-        <Analytics />
+        {/* The analytics endpoint is supplied by Vercel, not a standalone Node server. */}
+        {process.env.VERCEL === "1" && <Analytics />}
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(websiteIdentity) }} />
         <a href="#main-content" className="fixed left-4 top-3 z-100 -translate-y-20 rounded-sm bg-ink px-4 py-2 text-sm font-semibold text-canvas transition-transform focus:translate-y-0">
           Skip to content

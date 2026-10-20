@@ -9,13 +9,14 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint . --max-warnings=0",
+    "lint": "eslint . --max-warnings=0 && oxlint . --max-warnings=0",
     "typecheck": "tsc --noEmit",
     "verify:site": "node scripts/verify-site.mjs",
     "test:browser": "playwright test",
     "test:verification": "node --test tests/verification/*.test.mjs",
     "check": "npm run lint && npm run typecheck && npm run build",
-    "verify": "npm run check && npm run verify:site && npm run test:verification && npm run test:browser && npm audit --omit=dev --audit-level=high"
+    "verify": "npm run check && npm run verify:site && npm run test:verification && npm run test:browser && npm run audit:dependencies",
+    "audit:dependencies": "npm audit --omit=dev --audit-level=low && npm audit --include=dev --audit-level=low"
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",
@@ -26,14 +27,21 @@
     "react-dom": "19.3.0"
   },
   "devDependencies": {
+    "@eslint-community/eslint-utils": "4.10.1",
     "@playwright/test": "^1.64.0",
     "@tailwindcss/turbopack": "^4.3.3",
     "@types/node": "^24.19.2",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
     "eslint": "9.39.5",
-    "eslint-config-next": "16.4.0",
+    "eslint-plugin-import": "2.32.0",
+    "eslint-plugin-jsx-a11y": "6.10.2",
+    "eslint-plugin-react": "7.37.5",
+    "eslint-plugin-react-hooks": "7.1.1",
+    "globals": "16.4.0",
+    "oxlint": "1.89.0",
     "tailwindcss": "^4.3.3",
-    "typescript": "^6.0.3"
+    "typescript": "^6.0.3",
+    "typescript-eslint": "8.71.1"
   }
 }
