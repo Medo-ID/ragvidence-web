@@ -3,12 +3,14 @@ import Link from "next/link";
 import { CliDemo } from "@/components/cli-demo";
 import { ProductSections } from "@/components/product-sections";
 import { CodeBlock } from "@/components/code-block";
+import { serializeJsonLd, softwareIdentity } from "@/lib/seo";
 
 const installCommand = 'uv tool install --python 3.12 "ragvidence==0.2.1"';
 
 export default function Home() {
   return (
     <div className="home-sections">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(softwareIdentity) }} />
       <section id="install" className="hero-section">
         <div className="frame hero-frame">
           <Link href="/releases" className="release-link"><span className="release-version">v0.2.1</span><span>New HTML reports. Same inspectable evidence.</span><ArrowRight size={14} aria-hidden="true" /></Link>
@@ -23,7 +25,7 @@ export default function Home() {
           <p className="hero-footnote">Runs locally · BM25 needs no model or API key</p>
         </div>
         <div className="frame assurance-grid">{[
-          [LockKeyhole, "No account"], [ShieldCheck, "No telemetry"], [Database, "No hosted database"], [Globe2, "Your model, or none"],
+          [LockKeyhole, "No account"], [ShieldCheck, "CLI: no telemetry"], [Database, "No hosted database"], [Globe2, "Your model, or none"],
         ].map(([Icon, text]) => { const ItemIcon = Icon as typeof LockKeyhole; return <div key={String(text)}><ItemIcon size={16} aria-hidden="true" /><span>{String(text)}</span></div>; })}</div>
       </section>
       <section className="experiment-section">

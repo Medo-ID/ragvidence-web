@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { Brand } from "./brand";
 import { ThemeToggle } from "./theme-toggle";
+import { cliRepositoryUrl } from "@/lib/seo";
 
 const links = [
   { href: "/#walkthrough", label: "Walkthrough" },
@@ -48,6 +49,7 @@ export function SiteHeader() {
               {link.label}
             </Link>
           ))}
+          <a href={cliRepositoryUrl} className="inline-flex min-h-11 items-center rounded-md px-3 text-sm text-ink transition-colors hover:bg-canvas/20">GitHub <span aria-hidden="true" className="ml-1">↗</span></a>
           <Link href="/docs/installation" className="ml-3 inline-flex min-h-10 items-center rounded-sm button-primary px-4 text-sm font-semibold transition-colors">Install CLI</Link>
         </div>
         <ThemeToggle />
@@ -61,6 +63,7 @@ export function SiteHeader() {
           {links.map((link) => (
             <Link key={link.href} href={link.href} onClick={() => setOpen(false)} className="block rounded-md px-3 py-3 text-sm text-muted hover:bg-white/4 hover:text-ink">{link.label}</Link>
           ))}
+          <a href={cliRepositoryUrl} className="block rounded-md px-3 py-3 text-sm text-muted hover:bg-white/4 hover:text-ink">GitHub <span aria-hidden="true">↗</span></a>
           <Link href="/docs/installation" onClick={() => setOpen(false)} className="mt-2 block rounded-sm button-primary px-3 py-3 text-sm font-semibold ">Install CLI</Link>
         </div>
       </div>
@@ -69,6 +72,7 @@ export function SiteHeader() {
           <Link href="/docs/installation">Install CLI</Link>
           <Link href="/docs">Documentation</Link>
           <a href="/sample-report.html">Sample report</a>
+          <a href={cliRepositoryUrl}>GitHub</a>
         </div>
       </noscript>
     </header>

@@ -22,7 +22,7 @@ ragvi verify
 
 [CLI source](https://github.com/Medo-ID/ragvidence) ·
 [Contribute](https://github.com/Medo-ID/ragvidence/blob/main/CONTRIBUTING.md) ·
-[Star](https://github.com/Medo-ID/ragvidence/stargazers)
+[Star](https://github.com/Medo-ID/ragvidence)
 
 ## Run locally
 
@@ -105,6 +105,9 @@ URL. Configure `ragvidence.medo-id.com` in the hosting provider and use the DNS
 records it supplies. Verify HTTPS, navigation, search, copy controls, and media
 on the deployed site before announcing it.
 
+Launch drafts for X and LinkedIn, tester feedback links, and the search-indexing
+handoff are in [LAUNCH_POSTS.md](LAUNCH_POSTS.md).
+
 ## Repository hygiene
 
 Keep credentials, environment files, local agent configuration, generated
@@ -129,7 +132,7 @@ at every severity; it does not use advisory exceptions or force fixes.
 
 ## Ownership
 
-Copyright © 2026 Medo-ID. This repository is publicly visible and does not include
+Copyright © 2026 [Medo-ID](https://medo-id.com). This repository is publicly visible and does not include
 an open-source license for the website. The CLI has its own
 [release license](public/ragvidence-0.2.1-license.txt); third-party notices remain
 with their corresponding assets.

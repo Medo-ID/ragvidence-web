@@ -5,7 +5,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import "./globals.css";
 import { ReactNode } from "react";
-import { homeDescription, homeTitle, pageMetadata, serializeJsonLd, siteUrl, websiteIdentity } from "@/lib/seo";
+import { homeDescription, homeTitle, ownerName, ownerUrl, pageMetadata, serializeJsonLd, siteUrl, websiteIdentity } from "@/lib/seo";
 import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
@@ -13,8 +13,8 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: { default: homeTitle, template: "%s · RAGvidence" },
   applicationName: "RAGvidence",
-  authors: [{ name: "Medo-ID", url: "https://medo-id.com" }],
-  creator: "Medo-ID",
+  authors: [{ name: ownerName, url: ownerUrl }],
+  creator: ownerName,
   keywords: ["RAG evaluation", "retrieval diagnostics", "BM25", "semantic search", "AI engineering"],
 };
 

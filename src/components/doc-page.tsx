@@ -4,12 +4,28 @@ import { adjacentDocs, type DocPage as DocPageType } from "@/lib/docs";
 import { DocRenderer } from "./doc-renderer";
 import { OnThisPage } from "./on-this-page";
 import { docPath } from "@/lib/doc-path";
-import { serializeJsonLd, siteUrl } from "@/lib/seo";
+import { cliIssuesUrl, cliRepositoryUrl, ownerIdentity, serializeJsonLd, siteUrl } from "@/lib/seo";
 import { DocMarkdown } from "./doc-markdown";
 
 export function DocPage({ doc }: { doc: DocPageType }) {
   const { previous, next } = adjacentDocs(doc.slug);
   const headings = doc.blocks.filter((block) => block.type === "h2" || block.type === "h3");
+  const articleUrl = new URL(docPath(doc.slug), siteUrl).href;
+  const article = {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "@id": `${articleUrl}#article`,
+    headline: doc.title,
+    description: doc.description,
+    url: articleUrl,
+    mainEntityOfPage: articleUrl,
+    inLanguage: "en",
+    version: "0.2.1",
+    isAccessibleForFree: true,
+    author: ownerIdentity,
+    isPartOf: { "@type": "CollectionPage", "@id": `${siteUrl}/docs#documentation`, url: `${siteUrl}/docs`, name: "RAGvidence documentation" },
+    about: { "@type": "SoftwareApplication", "@id": `${siteUrl}/#software`, name: "RAGvidence", softwareVersion: "0.2.1" },
+  };
   const breadcrumb = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -21,6 +37,7 @@ export function DocPage({ doc }: { doc: DocPageType }) {
   return (
     <article className="doc-grid min-w-0">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(breadcrumb) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(article) }} />
       <div className="doc-heading min-w-0">
       <div className="flex flex-wrap items-center gap-2 font-mono text-xs text-muted"><Link href="/docs" className="hover:text-signal-ink">Docs</Link><span>/</span><span>{doc.group}</span></div>
       <h1 className="doc-title">{doc.title}</h1>
@@ -36,6 +53,7 @@ export function DocPage({ doc }: { doc: DocPageType }) {
         {next && <Link href={docPath(next.slug)} className="rounded-lg border border-line p-4 text-right text-sm text-muted hover:border-signal/30 hover:text-ink"><span className="flex items-center justify-end gap-2 font-mono text-xs uppercase tracking-wider">Next <ArrowRight size={13} /></span><strong className="mt-2 block text-ink">{next.title}</strong></Link>}
       </nav>
       <div className="mt-8 text-sm text-muted">Was something unclear? <a href={`mailto:midaghdour@gmail.com?subject=RAGvidence%20docs%20feedback%3A%20${encodeURIComponent(doc.title)}`} className="text-signal-ink hover:text-ink">Send documentation feedback.</a></div>
+      <div className="mt-4 flex flex-wrap gap-x-6 gap-y-3 text-sm text-signal-ink"><a href={cliRepositoryUrl} className="hover:text-ink">CLI source on GitHub</a><a href={cliIssuesUrl} className="hover:text-ink">Report an issue on GitHub</a></div>
       </div>
     </article>
   );
