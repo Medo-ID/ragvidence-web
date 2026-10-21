@@ -97,6 +97,9 @@ test("SEO: docs keep direct GitHub source and issue links", async ({ page }) => 
   await page.goto("/docs/installation");
   await expect(page.getByRole("link", { name: "CLI source on GitHub", exact: true })).toHaveAttribute("href", "https://github.com/Medo-ID/ragvidence");
   await expect(page.getByRole("link", { name: "Report an issue on GitHub", exact: true })).toHaveAttribute("href", "https://github.com/Medo-ID/ragvidence/issues");
+  for (const scope of [page.locator("article"), page.locator("footer")]) {
+    await expect(scope.getByRole("link", { name: "Donate via PayPal" })).toHaveAttribute("href", "https://paypal.me/Medo7id");
+  }
 });
 
 test("SEO: removed design previews return 404 while public product assets remain usable", async ({ request }) => {

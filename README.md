@@ -24,6 +24,11 @@ ragvi verify
 [Contribute](https://github.com/Medo-ID/ragvidence/blob/main/CONTRIBUTING.md) ·
 [Star](https://github.com/Medo-ID/ragvidence)
 
+[Donate via PayPal](https://paypal.me/Medo7id) to support ongoing CLI and
+documentation maintenance. Donations are optional; all shipped CLI features
+remain fully free. Website donation links open PayPal; no payment widget or
+checkout is embedded on this site.
+
 ## Run locally
 
 Use Node.js 24 (`.nvmrc`) and npm 11 or newer.

@@ -9,7 +9,8 @@ test("current release pages have no browser errors and expose the free CLI workf
     await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
     if (route === "/") {
       await expect(page.locator("main")).toContainText("All shipped features included");
-      await expect(page.locator("main")).not.toContainText(/Plus|Sponsor|Donate/);
+      await expect(page.locator("main")).not.toContainText(/Plus edition|paid plan|paid tier/i);
+      await expect(page.locator("#open-source").getByRole("link", { name: "Donate via PayPal" })).toHaveAttribute("href", "https://paypal.me/Medo7id");
     }
   }
   expect(errors).toEqual([]);

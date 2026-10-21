@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Brand } from "./brand";
 import { OwnerLink } from "./owner-link";
 import { cliRepositoryUrl } from "@/lib/seo";
+import { DonationLink } from "@/components/donation-link";
 
 const groups = [
   { title: "Product", links: [["Install", "/docs/installation"], ["Proof", "/#proof"], ["Open source", "/#open-source"], ["CLI on GitHub", cliRepositoryUrl]] },
@@ -17,6 +18,7 @@ export function SiteFooter() {
           <Brand />
           <p className="mt-4 max-w-sm text-sm leading-6 text-muted">Retrieval diagnostics for retrieval-augmented generation (RAG). Compare techniques and inspect the evidence behind each change.</p>
           <p className="mt-5 font-mono text-xs text-muted">Built independently by <OwnerLink className="text-ink hover:text-signal-ink" />.</p>
+          <div className="mt-5"><DonationLink /></div>
         </div>
         <div className="grid grid-cols-2 gap-8 sm:grid-cols-3">
           {groups.map((group) => (

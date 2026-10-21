@@ -6,6 +6,7 @@ import { OnThisPage } from "./on-this-page";
 import { docPath } from "@/lib/doc-path";
 import { cliIssuesUrl, cliRepositoryUrl, ownerIdentity, serializeJsonLd, siteUrl } from "@/lib/seo";
 import { DocMarkdown } from "./doc-markdown";
+import { DonationLink } from "@/components/donation-link";
 
 export function DocPage({ doc }: { doc: DocPageType }) {
   const { previous, next } = adjacentDocs(doc.slug);
@@ -54,6 +55,10 @@ export function DocPage({ doc }: { doc: DocPageType }) {
       </nav>
       <div className="mt-8 text-sm text-muted">Was something unclear? <a href={`mailto:midaghdour@gmail.com?subject=RAGvidence%20docs%20feedback%3A%20${encodeURIComponent(doc.title)}`} className="text-signal-ink hover:text-ink">Send documentation feedback.</a></div>
       <div className="mt-4 flex flex-wrap gap-x-6 gap-y-3 text-sm text-signal-ink"><a href={cliRepositoryUrl} className="hover:text-ink">CLI source on GitHub</a><a href={cliIssuesUrl} className="hover:text-ink">Report an issue on GitHub</a></div>
+      <div className="mt-8 border-t border-line pt-6">
+        <p className="mb-4 text-sm leading-6 text-muted">Support ongoing CLI and documentation maintenance with an optional donation.</p>
+        <DonationLink />
+      </div>
       </div>
     </article>
   );
